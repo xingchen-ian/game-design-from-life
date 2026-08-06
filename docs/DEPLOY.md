@@ -1,10 +1,11 @@
 # GitHub Pages 部署指南
 
-> **状态：⛔ 已转私有（2026-08-06）**
-> - 仓库：https://github.com/xingchen-ian/game-design-from-life（**PRIVATE**）
-> - 线上网站：~~https://xingchen-ian.github.io/game-design-from-life/~~（已下线，GitHub Pages 免费版仅支持公开仓库）
-> - 恢复方法：`gh repo edit xingchen-ian/game-design-from-life --visibility public`，约 1 分钟后网站自动恢复
-> - 以下为部署步骤记录，供日后恢复公开或复现时参考。
+> **状态：✅ 已上线（2026-08-06，转私有后恢复公开）**
+> - 线上地址：https://xingchen-ian.github.io/game-design-from-life/
+> - 仓库：https://github.com/xingchen-ian/game-design-from-life（PUBLIC）
+> - Pages 配置：main 分支 /docs 目录（legacy build type）
+> - 注意：转 private 会删除 Pages 站点配置，恢复 public 后需重新 `POST /pages` 配置
+> - 以下为部署步骤记录，供日后修改部署或复现时参考。
 
 ## 快速开始（5步完成部署）
 

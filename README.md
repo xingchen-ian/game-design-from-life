@@ -4,7 +4,9 @@
 
 本项目是一个关于"来自生活的游戏设计"方法论的研究仓库，包含学术论文、文献整理、教学材料等内容。
 
-> **仓库可见性：PRIVATE（2026-08-06 转为私有）** — 线上网站已下线（GitHub Pages 免费版仅支持公开仓库）。如需恢复公开访问，将仓库转回 public 即可，约 1 分钟后网站自动恢复。夏令营站点（domain-learning-camp）为独立仓库，不受此设置影响。
+- **线上网站**：https://xingchen-ian.github.io/game-design-from-life/
+- **夏令营站点**：https://xingchen-ian.github.io/domain-learning-camp/（62 个学生作品可在线试玩）
+- **仓库可见性**：PUBLIC（2026-08-06 曾短暂转私有后恢复公开）
 
 ## 项目总览
 
