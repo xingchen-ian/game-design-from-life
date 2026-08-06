@@ -4,6 +4,9 @@
 
 本项目是一个关于"来自生活的游戏设计"方法论的研究仓库，包含学术论文、文献整理、教学材料等内容。
 
+- **线上网站**：https://xingchen-ian.github.io/game-design-from-life/
+- **夏令营站点**：https://xingchen-ian.github.io/domain-learning-camp/（62 个学生作品可在线试玩）
+
 ## 项目总览
 
 - **本地网页入口**：[docs/project-index.html](./docs/project-index.html) — 项目总览索引，汇总研究、方法论、课程证据、文献库和展示页面。
