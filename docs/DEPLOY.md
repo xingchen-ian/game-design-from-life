@@ -1,5 +1,11 @@
 # GitHub Pages 部署指南
 
+> **状态：✅ 已部署（2026-08-06）**
+> - 线上地址：https://xingchen-ian.github.io/game-design-from-life/
+> - 仓库：https://github.com/xingchen-ian/game-design-from-life
+> - Pages 配置：main 分支 /docs 目录（legacy build type）
+> - 以下为原始步骤记录，供日后修改部署或复现时参考。
+
 ## 快速开始（5步完成部署）
 
 ### 第一步：在 GitHub 创建新仓库
