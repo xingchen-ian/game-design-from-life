@@ -1,0 +1,35 @@
+Create 13 poker-style cards for the clubs suit of the "Life-to-Game Prototype Deck".
+
+Deck title: 来自生活的游戏设计：桌游原型扑克牌
+Clubs represent: 行动 / 机制
+Accent color: green
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: 行动
+- Large Chinese keyword
+- Small English keyword
+- Simple symbolic icon
+- One short Chinese design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♣ 核心行动 / Core Action / 玩家最常做什么？
+2♣ 选择 / Choose / 选项之间差异在哪？
+3♣ 移动 / Move / 位置变化带来什么？
+4♣ 收集 / Collect / 收集什么才有意义？
+5♣ 交换 / Trade / 交易如何产生博弈？
+6♣ 投票 / Vote / 多数决定是否公平？
+7♣ 竞价 / Bid / 价值如何由玩家决定？
+8♣ 合作 / Cooperate / 为什么必须一起做？
+9♣ 背叛 / Betray / 何时背叛更划算？
+10♣ 隐藏 / Hide / 隐藏什么会制造张力？
+J♣ 角色能力 / Role Power / 每个人有何不同？
+Q♣ 规则变化 / Rule Shift / 规则何时改变？
+K♣ 胜利条件 / Win Condition / 怎样才算赢？
+
+Important:
+Keep all cards visually consistent. Make the Chinese text accurate and readable.
+

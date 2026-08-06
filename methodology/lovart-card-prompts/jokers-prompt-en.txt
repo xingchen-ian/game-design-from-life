@@ -1,0 +1,29 @@
+Create two joker cards for the "Life-to-Game Prototype Deck".
+
+Language rule:
+Use ENGLISH ONLY on the card faces. Do not use Chinese text anywhere.
+
+Jokers represent: Variant / Twist
+
+Use the same visual system as the four suits, but make these two cards feel special.
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+
+Small Joker
+Category: Variant
+Keyword: Event
+Prompt: Add a surprise.
+Icon idea: lightning or sudden card flip
+
+Big Joker
+Category: Variant
+Keyword: Rule Reversal
+Prompt: Reverse one rule.
+Icon idea: mirrored arrows
+
+Important:
+Avoid clown imagery. Avoid casino joker imagery. Make the cards feel like design-tool cards, not gambling cards.
+

@@ -1,0 +1,55 @@
+card,suit,category,keyword_cn,keyword_en,prompt_cn,color
+A,heart,情绪,核心感受,Core Feeling,这局想让玩家感到什么？,heart red
+2,heart,情绪,好奇,Curiosity,玩家为什么想继续探索？,heart red
+3,heart,情绪,期待,Anticipation,什么东西还没发生？,heart red
+4,heart,情绪,焦虑,Anxiety,压力来自哪里？,heart red
+5,heart,情绪,挫败,Frustration,什么反复阻止玩家？,heart red
+6,heart,情绪,信任,Trust,玩家如何把风险交给别人？,heart red
+7,heart,情绪,嫉妒,Envy,谁拥有你想要的东西？,heart red
+8,heart,情绪,羞耻,Shame,什么行为会被看见？,heart red
+9,heart,情绪,归属,Belonging,玩家如何被接纳？,heart red
+10,heart,情绪,暗爽,Secret Pleasure,什么小胜利不能明说？,heart red
+J,heart,情绪,关系人,Relationship,谁影响你的决定？,heart red
+Q,heart,情绪,情感转折,Emotional Turn,情绪何时改变方向？,heart red
+K,heart,情绪,余韵,Aftertaste,游戏结束后留下什么？,heart red
+A,spade,阻碍,核心矛盾,Core Tension,想要什么却得不到？,dark blue-black
+2,spade,阻碍,时间压力,Time Pressure,倒计时如何改变选择？,dark blue-black
+3,spade,阻碍,资源不足,Scarcity,少了什么就会紧张？,dark blue-black
+4,spade,阻碍,规则不公,Unfair Rule,规则偏向了谁？,dark blue-black
+5,spade,阻碍,他人干扰,Interference,谁能打乱你的计划？,dark blue-black
+6,spade,阻碍,信息不全,Incomplete Info,玩家不知道什么？,dark blue-black
+7,spade,阻碍,选择不可逆,Irreversible Choice,哪个决定不能撤回？,dark blue-black
+8,spade,阻碍,位置受限,Spatial Limit,空间如何卡住玩家？,dark blue-black
+9,spade,阻碍,身份误解,Misread Identity,谁被错误理解？,dark blue-black
+10,spade,阻碍,失控,Loss of Control,哪个系统不听使唤？,dark blue-black
+J,spade,阻碍,对手,Opponent,谁在主动阻止你？,dark blue-black
+Q,spade,阻碍,道德困境,Moral Dilemma,赢的代价是什么？,dark blue-black
+K,spade,阻碍,危机高峰,Crisis Peak,什么时候最危险？,dark blue-black
+A,diamond,资源,核心资源,Core Resource,玩家最在乎什么？,amber-orange
+2,diamond,资源,时间,Time,时间如何被花掉？,amber-orange
+3,diamond,资源,金钱,Money,钱能买到什么？,amber-orange
+4,diamond,资源,体力,Energy,疲惫如何限制行动？,amber-orange
+5,diamond,资源,信息,Information,谁掌握关键消息？,amber-orange
+6,diamond,资源,空间,Space,哪个位置最有价值？,amber-orange
+7,diamond,资源,人情,Favor,欠下的人情如何还？,amber-orange
+8,diamond,资源,机会,Opportunity,机会何时出现又消失？,amber-orange
+9,diamond,资源,声望,Reputation,别人如何评价你？,amber-orange
+10,diamond,资源,记忆,Memory,过去如何影响现在？,amber-orange
+J,diamond,资源,道具,Item,哪个物件改变规则？,amber-orange
+Q,diamond,资源,交换,Exchange,玩家愿意付出什么？,amber-orange
+K,diamond,资源,积累,Accumulation,越多是否越好？,amber-orange
+A,club,行动,核心行动,Core Action,玩家最常做什么？,green
+2,club,行动,选择,Choose,选项之间差异在哪？,green
+3,club,行动,移动,Move,位置变化带来什么？,green
+4,club,行动,收集,Collect,收集什么才有意义？,green
+5,club,行动,交换,Trade,交易如何产生博弈？,green
+6,club,行动,投票,Vote,多数决定是否公平？,green
+7,club,行动,竞价,Bid,价值如何由玩家决定？,green
+8,club,行动,合作,Cooperate,为什么必须一起做？,green
+9,club,行动,背叛,Betray,何时背叛更划算？,green
+10,club,行动,隐藏,Hide,隐藏什么会制造张力？,green
+J,club,行动,角色能力,Role Power,每个人有何不同？,green
+Q,club,行动,规则变化,Rule Shift,规则何时改变？,green
+K,club,行动,胜利条件,Win Condition,怎样才算赢？,green
+Small Joker,joker,变体,突发事件,Event,加一个意外打乱节奏,mixed
+Big Joker,joker,变体,规则反转,Rule Reversal,把一个规则反过来,mixed

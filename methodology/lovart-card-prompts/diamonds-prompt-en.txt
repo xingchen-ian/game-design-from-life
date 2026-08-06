@@ -1,0 +1,36 @@
+Create 13 poker-style cards for the diamonds suit of the "Life-to-Game Prototype Deck".
+
+Language rule:
+Use ENGLISH ONLY on the card faces. Do not use Chinese text anywhere.
+
+Diamonds represent: Resource / Exchange
+Accent color: amber-orange
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: Resource
+- Large English keyword
+- Simple symbolic icon
+- One short English design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♦ Core Resource / What matters most?
+2♦ Time / How is time spent?
+3♦ Money / What can money buy?
+4♦ Energy / How does fatigue limit action?
+5♦ Information / Who knows the key fact?
+6♦ Space / Which position has value?
+7♦ Favor / How is a favor repaid?
+8♦ Opportunity / When does a chance vanish?
+9♦ Reputation / How do others judge you?
+10♦ Memory / How does the past matter?
+J♦ Item / What object changes a rule?
+Q♦ Exchange / What are players willing to give?
+K♦ Accumulation / Is more always better?
+
+Important:
+Keep all cards visually consistent. Make the English text accurate and readable.
+

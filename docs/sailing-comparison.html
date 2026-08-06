@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sailing Domain Learning Comparison</title>
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --paper: #ffffff;
+      --ink: #1e2622;
+      --muted: #5c6862;
+      --line: #d9dfd8;
+      --accent: #0f766e;
+      --accent-soft: #e0f2ef;
+      --warn: #9a5b11;
+      --warn-soft: #fff4df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      line-height: 1.55;
+    }
+
+    header {
+      padding: 56px 24px 28px;
+      background: #10231f;
+      color: #f7fbf8;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100vw - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #a7d7d0;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      margin: 18px 0 0;
+      color: #d8e5e1;
+      font-size: 17px;
+    }
+
+    main {
+      padding: 32px 0 56px;
+    }
+
+    section {
+      margin: 0 0 28px;
+      padding: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .note {
+      padding: 14px 16px;
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      color: #16433e;
+      border-radius: 4px;
+      margin: 14px 0;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: #f8faf8;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 8px 11px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .toggle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #eef4f1;
+      color: #1a332e;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    td:first-child,
+    th:first-child {
+      font-weight: 700;
+      color: #183833;
+      width: 150px;
+    }
+
+    .compact table {
+      min-width: 760px;
+    }
+
+    .qa-table table {
+      min-width: 1840px;
+    }
+
+    .qa-table td:first-child,
+    .qa-table th:first-child {
+      width: 120px;
+    }
+
+    .qa-table td:nth-child(2),
+    .qa-table th:nth-child(2) {
+      width: 300px;
+    }
+
+    .qa-table td:nth-child(3),
+    .qa-table th:nth-child(3) {
+      width: 300px;
+    }
+
+    .qa-table td:nth-child(4),
+    .qa-table th:nth-child(4) {
+      width: 330px;
+    }
+
+    .qa-table td:nth-child(5),
+    .qa-table th:nth-child(5),
+    .qa-table td:nth-child(6),
+    .qa-table th:nth-child(6) {
+      width: 360px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--warn-soft);
+      color: var(--warn);
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .question-control {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 9px;
+      align-items: start;
+    }
+
+    .question-control input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+    }
+
+    tr.is-hidden-by-filter {
+      display: none;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      background: #edf1ee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 0 0 40px;
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 18px;
+      }
+
+      table {
+        min-width: 780px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Domain Learning to Game System</p>
+      <h1 data-i18n="heroTitle">Sailing Answers Comparison</h1>
+      <p class="subtitle" data-i18n="heroSubtitle">对比 Google Form 中的 Sailing 回答与示例答案 <code>domain-learning-sailing-example-en.md</code>，用于看清真实学生回答、教学示例和可整合版本之间的关系。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <div class="toolbar-group" aria-label="Language">
+        <button class="btn active" type="button" data-lang-button="zh">中文</button>
+        <button class="btn" type="button" data-lang-button="en">English</button>
+      </div>
+      <div class="toolbar-group">
+        <label class="toggle-label">
+          <input id="showSelectedOnly" type="checkbox" />
+          <span data-i18n="showSelectedOnly">只看已勾选问题</span>
+        </label>
+        <button class="btn" type="button" id="clearSelection" data-i18n="clearSelection">清空勾选</button>
+        <span id="selectionCount" class="toggle-label">0 selected</span>
+      </div>
+    </div>
+
+    <section>
+      <h2 data-i18n="sourceTitle">数据来源</h2>
+      <p data-i18n="sourceA"><span class="tag">Source A</span>Google Form response by Ian, submitted 2026-07-05.</p>
+      <p data-i18n="sourceB"><span class="tag">Source B</span>本地示例文件：<code>methodology/domain-learning-sailing-example-en.md</code>.</p>
+      <div class="note" data-i18n="sourceNote">核心判断：Google Form 回答更像真实研究数据，保留了真实动机、误解和未完成状态；示例答案更像教学脚手架，结构完整但没有那么“真实”。问题和设置原因支持中英文切换；回答保留原始英文。</div>
+    </section>
+
+    <section>
+      <h2 data-i18n="qaTitle">1. Question-by-Question Answer Comparison</h2>
+      <p data-i18n="qaIntro">这一部分先不做评价，只把 Google Form 中每个设计问题的回答，与示例答案逐题并排放在一起。Student Info 不纳入比较。每个问题前的 checkbox 用于标记你认为应该保留的问题。</p>
+      <div class="table-wrap qa-table">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="thStep">Step</th>
+              <th data-i18n="thQuestion">Question</th>
+              <th data-i18n="thPartRationale">Part Rationale</th>
+              <th data-i18n="thQuestionRationale">Question Rationale</th>
+              <th data-i18n="thGoogleAnswer">Google Form Answer</th>
+              <th data-i18n="thModelAnswer">Model Example Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Step 1</td>
+              <td>What domain do you want to choose?</td>
+              <td>Sailing.</td>
+              <td>Sailing a small sailboat.</td>
+            </tr>
+            <tr>
+              <td>Step 1</td>
+              <td>Why do you know about this domain, or why do you want to learn it? What real situation connects you to it?</td>
+              <td>One family member is learning sailing. I love to see his training and want to learn more about sailing.</td>
+              <td>I once joined a beginner sailing lesson and realized that the boat does not simply go wherever I point it. It depends on wind direction, sail angle, boat angle, and speed.</td>
+            </tr>
+            <tr>
+              <td>Step 1</td>
+              <td>When beginners first enter this domain, what do they usually think is most important?</td>
+              <td>They usually think to use the sail to catch the wind instead of making an angle between the sail and wind direction.</td>
+              <td>Beginners usually think the most important thing is steering directly toward the destination.</td>
+            </tr>
+            <tr>
+              <td>Step 1</td>
+              <td>When did you, or a beginner you observed, first get stuck or clearly fail?</td>
+              <td>Cannot move the boat to the direction I want.</td>
+              <td>I got stuck when the destination was upwind. I kept pointing the boat toward the target, but the boat slowed down and could not move forward well.</td>
+            </tr>
+            <tr>
+              <td>Step 1</td>
+              <td>After learning for a while, what did you begin to notice that you could not see before?</td>
+              <td>There is a perfect angle of the sail to the wind to move the boat efficiently.</td>
+              <td>I began to notice wind direction, the angle between the boat and the wind, sail shape, sail flapping, and whether the boat was losing speed.</td>
+            </tr>
+            <tr>
+              <td>Step 1</td>
+              <td>What attracts you most about this domain?</td>
+              <td>Sailing on the ocean is challenging, but the reward is rich. There are many interesting stories and historical facts with evidence and traces.</td>
+              <td>Judgment and environment. Sailing is interesting because the player must read an invisible force, the wind, through visible feedback from boat, sail, and water.</td>
+            </tr>
+
+            <tr>
+              <td>Step 2</td>
+              <td>What is the most common misunderstanding beginners have?</td>
+              <td>Set the angle between sail and wind direction to 90 degrees to catch the wind.</td>
+              <td>Beginners think the boat should move directly toward the target if they steer correctly.</td>
+            </tr>
+            <tr>
+              <td>Step 2</td>
+              <td>When experts and beginners look at the same situation, how are their judgments different?</td>
+              <td>Beginners try to find a sail angle, which results in unstable movement. Experts can confidently set the sail to move the ship instead of changing the sail frequently.</td>
+              <td>A beginner sees the target and tries to steer straight toward it. An expert first checks wind direction, then decides whether the target can be reached directly or whether tacking is needed.</td>
+            </tr>
+            <tr>
+              <td>Step 2</td>
+              <td>What is the most important challenge in this domain?</td>
+              <td>Changeable wind.</td>
+              <td>The relationship between wind direction, boat direction, sail angle, and route planning.</td>
+            </tr>
+            <tr>
+              <td>Step 2</td>
+              <td>What action or decision do beginners most often get wrong?</td>
+              <td>Set the angle as 90 degrees between the sail and wind.</td>
+              <td>Beginners point the boat too close to the wind, forget to adjust sail angle, or try to sail straight when a zigzag route is needed.</td>
+            </tr>
+            <tr>
+              <td>Step 2</td>
+              <td>What signals do experts use to judge whether they are doing well?</td>
+              <td>The ship moves smoothly and fast.</td>
+              <td>Boat speed, sail shape, sail flapping, boat tilt, wind indicator direction, and whether the boat drifts away from the planned route.</td>
+            </tr>
+            <tr>
+              <td>Step 2</td>
+              <td>Can you summarize the core learning shift in this domain in one sentence?</td>
+              <td>People learn how to set the sail angle and control the ship intuitively.</td>
+              <td>Beginners think sailing means steering toward the target; experts know sailing means reading the wind and adjusting the boat, sail, and route in relation to it.</td>
+            </tr>
+
+            <tr>
+              <td>Step 3</td>
+              <td>What does the player need to observe?</td>
+              <td>Wind direction by the wind flag and water moving direction.</td>
+              <td>Wind direction, target direction, sail shape, boat speed, boat angle, water current, obstacles, and distance to the goal.</td>
+            </tr>
+            <tr>
+              <td>Step 3</td>
+              <td>What does the player need to judge?</td>
+              <td>Wind and water direction mainly.</td>
+              <td>Whether the boat can reach the target directly, whether sail angle is efficient, whether the boat is too close to wind, and whether the route needs to change.</td>
+            </tr>
+            <tr>
+              <td>Step 3</td>
+              <td>What actions can the player take?</td>
+              <td>Control the rudder and control the sail.</td>
+              <td>Turn the boat left or right, adjust sail angle, choose a route, tack, slow down, or avoid obstacles.</td>
+            </tr>
+            <tr>
+              <td>Step 3</td>
+              <td>How does the system give feedback on whether the player is doing well?</td>
+              <td>The ship moves to where the player hopes to go.</td>
+              <td>The boat speeds up or slows down, sail becomes smooth or flaps, boat tilts, route line drifts away from the goal, and a wind indicator shows wind direction.</td>
+            </tr>
+            <tr>
+              <td>Step 3</td>
+              <td>How can the player adjust their next action based on feedback?</td>
+              <td>Keep changing the angle of sail to keep the angle.</td>
+              <td>If sail flaps, adjust sail angle. If boat slows down near wind, turn away from wind. If the target is upwind, plan a zigzag route.</td>
+            </tr>
+            <tr>
+              <td>Step 3</td>
+              <td>After repeating the loop several times, what does the player become better at?</td>
+              <td>They will be good at sailing.</td>
+              <td>Reading wind, choosing a workable angle, adjusting sail, and planning a route instead of steering directly toward the goal.</td>
+            </tr>
+
+            <tr>
+              <td>Step 4</td>
+              <td>Feedback signal 1</td>
+              <td>Boat slows down; wrong sail direction / conflicts with water moving direction. It tells player that they set the wrong sail. Game appearance is unfinished.</td>
+              <td>Sail flaps: from sail and wind; tells player sail angle or boat angle is inefficient; appears as shaking sail animation and flapping sound.</td>
+            </tr>
+            <tr>
+              <td>Step 4</td>
+              <td>Feedback signal 2</td>
+              <td>Boat moves out of control when you move the boat directly toward the wind.</td>
+              <td>Boat speed drops: from boat movement; tells player boat is too close to wind or sail is poorly adjusted; speed bar drops and wake becomes smaller.</td>
+            </tr>
+            <tr>
+              <td>Step 4</td>
+              <td>Feedback signal 3</td>
+              <td>Boat movement changes when you change sail direction; tells you that you are trying to catch wind; player uses keys to change sail and boat moves with specific angles.</td>
+              <td>Boat tilts strongly / route drifts sideways / target remains unreachable; these signals show instability, current compensation problems, or upwind target issues.</td>
+            </tr>
+            <tr>
+              <td>Step 4</td>
+              <td>Which feedback should appear immediately?</td>
+              <td>Boat moves.</td>
+              <td>Sail flapping, boat speed, and boat tilt should appear immediately because they teach action-feedback relationships.</td>
+            </tr>
+            <tr>
+              <td>Step 4</td>
+              <td>Which feedback should appear later, so the player has to discover it?</td>
+              <td>Rocks could cause the ship to sink; players need to observe water flow and estimate whether rocks are underwater.</td>
+              <td>Route drift should appear over several seconds so players learn that a small wrong angle can create a large route error over time.</td>
+            </tr>
+            <tr>
+              <td>Step 4</td>
+              <td>Which feedback should not be shown only as a score?</td>
+              <td>Move speed?</td>
+              <td>Sail flapping should be visual and sound-based; boat speed should be shown through movement, wake, and sound; route drift should be shown spatially.</td>
+            </tr>
+
+            <tr>
+              <td>Step 5</td>
+              <td>What parts of this domain can become numbers?</td>
+              <td>Move speed, sail angle, wind intensity, water move speed, wind direction, destination.</td>
+              <td>Wind direction angle, wind strength, boat direction angle, sail angle, boat speed, distance to target, route drift, time remaining, and hull stability.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>What parts can become states?</td>
+              <td>Move speed?</td>
+              <td>Efficient / inefficient sail angle, stable / unstable boat, direct route possible / impossible, safe / danger zone, clear water / obstacle zone.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>What player actions change these numbers or states?</td>
+              <td>Change sail angle, boat direction.</td>
+              <td>Turning changes boat direction. Adjusting sail changes sail angle and speed. Tacking changes route direction. Steering into strong wind changes stability and speed.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>Under what conditions does the player succeed?</td>
+              <td>Reach the destination.</td>
+              <td>Reach the target within the time limit while keeping enough speed and avoiding obstacles or danger zones.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>Under what conditions does the player fail?</td>
+              <td>Time limitation / boat sink.</td>
+              <td>Run out of time, get stuck pointing too close to wind, hit rocks, lose too much speed, or drift outside the safe area.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>Is there a “just right” range?</td>
+              <td>Yes, sail angle.</td>
+              <td>Yes. Sail angle must match wind and boat direction. Too tight or too loose loses speed; boat direction also has a workable range.</td>
+            </tr>
+            <tr>
+              <td>Step 5</td>
+              <td>List your 3-5 core variables.</td>
+              <td>Sail angle, variable, changed by pressing left or right keys, change it to move the boat.</td>
+              <td>windDirection, windStrength, boatDirection, sailAngle, boatSpeed, routeDrift, stability, timeRemaining, with type, change rule, and role.</td>
+            </tr>
+
+            <tr>
+              <td>Step 6</td>
+              <td>Upload one image of your game system graph.</td>
+              <td>Blank in the original response because the earlier form did not ask for an image upload.</td>
+              <td>A graph image should show wind, sail, boat, target buoy, current, rocks, route line, and wind indicator as connected system elements.</td>
+            </tr>
+            <tr>
+              <td>Step 6</td>
+              <td>If upload is not available, paste a link to your game system graph image, document, or board.</td>
+              <td>Blank in the original response.</td>
+              <td>A link to a diagram, document, slide, or board can replace direct image upload.</td>
+            </tr>
+            <tr>
+              <td>Step 6</td>
+              <td>In 2-3 sentences, explain how this graph uses your Step 1-5 answers.</td>
+              <td>The original response partially contains this information: sail angles affect movement speed; boat direction affects movement direction; shipping goods gives a possible goal.</td>
+              <td>The graph should use Step 1-5 by connecting beginner failure, expert judgment, skill loop, feedback signals, and variables/states into one visible system.</td>
+            </tr>
+            <tr>
+              <td>Step 6</td>
+              <td>What part of this graph should become your first playable prototype?</td>
+              <td>Move the boat efficiently in wind; change sail angle and boat direction to reach destination.</td>
+              <td>The first playable prototype should focus on wind direction, sail angle, boat direction, speed feedback, and reaching a target.</td>
+            </tr>
+
+            <tr>
+              <td>Step 7</td>
+              <td>What factors in this domain affect the result of an action?</td>
+              <td>Wind direction, wind strength, waves, current, holds, light, distance, time, equipment condition.</td>
+              <td>Wind direction, wind strength, sail angle, boat direction, current direction, current strength, waves, rocks, channel width, target position, visibility, time pressure.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Which factors force the player to change their judgment or strategy when they change?</td>
+              <td>Wind directions, ocean flow.</td>
+              <td>Wind direction, target position, current direction, rocks, and wind strength. If these change, player may need a different route or sail setting.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Which factors can the player directly perceive? Which must be inferred slowly through feedback?</td>
+              <td>Steering the boat intuitively will be inferred slowly. Moving the boat can be perceived directly.</td>
+              <td>Directly perceive target, rocks, boat direction, sail shape, wind indicator. Infer current strength and inefficient angle through drift and speed changes.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Fill in 3-5 challenge dimensions.</td>
+              <td>Moving ship in unstable wind. Main factor: wind direction. Simple: stable wind. Difficult: changeable wind. Player learns to observe wind direction changes and respond.</td>
+              <td>Wind direction, wind strength, current, obstacles, visibility, time pressure, each with simple/difficult states and learning target.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Design 2-3 challenge combinations with changing difficulty.</td>
+              <td>Challenge 1: changeable wind direction + hidden rocks. Challenge 2: high water speed + hidden rocks. Challenge 3: high water speed + changeable wind direction.</td>
+              <td>Smooth Side Wind; Upwind Target; Drifting Channel; Rocky Gusts, each with factor combination, situation, and skill tested.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Do these challenges have an order from simple to complex?</td>
+              <td>1. calm water and stable wind; 2. calm water + unstable wind; 3. ...</td>
+              <td>Yes: Smooth Side Wind -> Upwind Target -> Drifting Channel -> Rocky Gusts.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>After failing, can the player know what they should observe and adjust next time?</td>
+              <td>For each factor, the game should set specific challenges focusing on learning that factor.</td>
+              <td>Yes. Low speed means check sail angle and boat direction; unreachable target means check wind and tack; drift means check current earlier.</td>
+            </tr>
+            <tr>
+              <td>Step 7</td>
+              <td>Choose 2-3 progressive challenges for the first minimum playable prototype.</td>
+              <td>Blank.</td>
+              <td>Smooth Side Wind, Upwind Target, Drifting Channel.</td>
+            </tr>
+
+            <tr>
+              <td>Step 8</td>
+              <td>What can the player do within 30 seconds?</td>
+              <td>1. Learn steering the boat. 2. Learn move to destination.</td>
+              <td>Steer the boat, adjust sail angle, read a wind indicator, and try to reach a target buoy.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>What mistake will the player likely make the first time they play?</td>
+              <td>Set the angle of sail 90 degrees to wind.</td>
+              <td>Steer straight toward the target and forget to adjust sail; in an upwind challenge, keep pointing directly at target while boat slows down.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>Will the player do better the second time because they learned from feedback? Why?</td>
+              <td>With the failure of moving the boat to destination, player will know they need to set a specific angle to move the boat faster.</td>
+              <td>Yes. The player notices sail flapping and low speed mean the angle is wrong, then adjusts sail and chooses a better route.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>Will you prototype with paper, body movement, cards, webpage, Scratch, GDevelop, p5.js, or Unity?</td>
+              <td>Yes, a paper prototype will be made.</td>
+              <td>A simple p5.js or webpage prototype; paper can also work because top-down boat, wind arrow, target buoy, and speed feedback are enough.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>Which 2-3 challenge combinations from Step 7 does the prototype implement?</td>
+              <td>Blank.</td>
+              <td>Smooth Side Wind, Upwind Target, Drifting Channel.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>If you can only complete one challenge first, which one best represents the core learning experience?</td>
+              <td>Blank.</td>
+              <td>Upwind Target, because it breaks the beginner misunderstanding that sailing is just steering directly toward the destination.</td>
+            </tr>
+            <tr>
+              <td>Step 8</td>
+              <td>Which parts of the prototype can be simplified without damaging the core learning experience?</td>
+              <td>Blank.</td>
+              <td>Omit waves, detailed physics, advanced sail controls, weather changes, and realistic graphics. Keep wind direction, boat direction, sail angle, speed feedback, and target.</td>
+            </tr>
+
+            <tr>
+              <td>Step 9</td>
+              <td>What do you want AI to help you with?</td>
+              <td>Code.</td>
+              <td>Variables, simple boat movement code, wind indicator UI, sail angle feedback, and level setup for three challenges.</td>
+            </tr>
+            <tr>
+              <td>Step 9</td>
+              <td>Does your prompt explain the domain structure clearly?</td>
+              <td>Blank.</td>
+              <td>Yes: the prompt should explain that the core learning is not “drive a boat to a target,” but “read wind direction, adjust sail angle, and plan a route when the target is upwind.”</td>
+            </tr>
+            <tr>
+              <td>Step 9</td>
+              <td>Did AI's suggestion turn your design into a generic mini-game?</td>
+              <td>Blank.</td>
+              <td>If AI suggests only collecting coins or avoiding random obstacles, reject or modify it because it does not teach sailing judgment.</td>
+            </tr>
+            <tr>
+              <td>Step 9</td>
+              <td>Which AI suggestions did you accept?</td>
+              <td>Blank.</td>
+              <td>Calculating boat speed based on wind angle, drawing a wind arrow, creating level data, and showing visual feedback when sail angle is inefficient.</td>
+            </tr>
+            <tr>
+              <td>Step 9</td>
+              <td>Which AI suggestions did you modify or reject? Why?</td>
+              <td>Blank.</td>
+              <td>Reject score-only or racing-only designs; modify obstacle course ideas so obstacles connect to route planning and wind judgment.</td>
+            </tr>
+            <tr>
+              <td>Step 9</td>
+              <td>In this design process, who made the final design decisions?</td>
+              <td>Blank.</td>
+              <td>I made the final decisions. AI helped implement and test, but the domain learning goal and challenge progression came from my analysis.</td>
+            </tr>
+
+            <tr>
+              <td>Step 10</td>
+              <td>Where was the player most confused during the first playthrough?</td>
+              <td>Blank.</td>
+              <td>The player may be confused about why the boat slows down when pointing directly at the target.</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>When did the player begin to understand the rules?</td>
+              <td>Blank.</td>
+              <td>After noticing that changing sail angle makes the boat speed up or slow down.</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>Did the player learn a domain-specific judgment?</td>
+              <td>Blank.</td>
+              <td>Yes: the target is not always reachable by a straight route; player needs to judge wind direction, boat direction, and target relation.</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>Was the player only chasing score, or did they enter the domain way of thinking?</td>
+              <td>Blank.</td>
+              <td>A successful playtest would show players saying “I need to turn away from the wind first” or “I should tack here,” not only “I need more points.”</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>Did the player's feedback match your design goal?</td>
+              <td>Blank.</td>
+              <td>If players mention wind, sail angle, speed, and route planning, the feedback matches the design goal.</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>What will you change in the next version?</td>
+              <td>Blank.</td>
+              <td>Improve wind indicator, add tutorial level, make sail flapping more visible, and add replay screen comparing player route with a better route.</td>
+            </tr>
+            <tr>
+              <td>Step 10</td>
+              <td>Write your final designer statement.</td>
+              <td>Blank.</td>
+              <td>The game comes from sailing learning. It moves players from “steer directly” to “read wind, adjust sail, and plan a route.” Core mechanic: adjust boat direction and sail angle through wind feedback.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Analysis: Overall Comparison</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Google Form Response</th>
+              <th>My Example Response</th>
+              <th>Main Difference</th>
+              <th>Design Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Starting point</td>
+              <td>A family member is learning sailing; the writer observes training and wants to understand sailing.</td>
+              <td>A beginner sailing lesson; the learner discovers that sailing is not like steering a car.</td>
+              <td>The Google response has a more real personal context; my response has a clearer learning incident.</td>
+              <td>Keep the personal family-observation context, but add one concrete failure moment.</td>
+            </tr>
+            <tr>
+              <td>Core beginner misunderstanding</td>
+              <td>Beginners think they should set the sail at 90 degrees to catch wind.</td>
+              <td>Beginners think sailing means steering directly toward the destination.</td>
+              <td>The Google response focuses on sail angle; my response focuses on route and wind relationship.</td>
+              <td>Both are useful: one is a technical misconception, the other is a system-level misconception.</td>
+            </tr>
+            <tr>
+              <td>Expert judgment</td>
+              <td>Experts confidently set the sail and avoid frequent unstable adjustments.</td>
+              <td>Experts read wind direction, sail angle, boat angle, route, drift, and target relation.</td>
+              <td>Google response has a strong intuitive idea: experts act confidently; my response gives more system details.</td>
+              <td>Combine them: expert judgment means stable adjustment based on wind, not constant guessing.</td>
+            </tr>
+            <tr>
+              <td>Core learning shift</td>
+              <td>Learn how to set the sail angle and control the ship intuitively.</td>
+              <td>Move from steering toward target to reading wind, adjusting sail, and planning a route.</td>
+              <td>Google response emphasizes intuitive control; my response emphasizes readable system structure.</td>
+              <td>Stronger version: players learn to control the boat by reading wind and finding efficient sail/boat angles.</td>
+            </tr>
+            <tr>
+              <td>Feedback design</td>
+              <td>Boat slows down, boat moves out of control, boat movement changes with sail direction.</td>
+              <td>Sail flaps, speed drops, boat tilts, route drifts, target remains unreachable.</td>
+              <td>Google response captures real feedback but leaves some entries incomplete; my response organizes feedback signals more clearly.</td>
+              <td>Keep the raw sailing feedback, then translate each into game feedback.</td>
+            </tr>
+            <tr>
+              <td>Variables</td>
+              <td>Move speed, sail angle, wind intensity, water speed, wind direction, destination.</td>
+              <td>Wind direction, wind strength, boat direction, sail angle, speed, drift, stability, time.</td>
+              <td>Google response already has the important variables; my response adds state and role in experience.</td>
+              <td>The Google answer is strong here; it needs typing and role explanation.</td>
+            </tr>
+            <tr>
+              <td>Challenge space</td>
+              <td>Changeable wind, ocean flow, hidden rocks, high water speed.</td>
+              <td>Side wind, upwind target, current, rocks, visibility, time pressure, progressive combinations.</td>
+              <td>Google response has good factors but challenge progression is incomplete.</td>
+              <td>Keep hidden rocks and ocean flow; add a simple-to-complex order.</td>
+            </tr>
+            <tr>
+              <td>Prototype</td>
+              <td>Paper prototype; first learn steering, then move to destination.</td>
+              <td>Web/p5.js or paper prototype; side wind, upwind target, drifting channel.</td>
+              <td>Google response is more feasible for camp; my response is more system-complete.</td>
+              <td>For first class, paper prototype is better. For AI-agent later, convert it into a web prototype.</td>
+            </tr>
+            <tr>
+              <td>AI use</td>
+              <td>AI helps with code.</td>
+              <td>AI helps with variables, movement code, wind UI, sail feedback, and level setup.</td>
+              <td>Google response is concise but too broad.</td>
+              <td>Specify exactly what AI should build, otherwise it may produce a generic boat game.</td>
+            </tr>
+            <tr>
+              <td>Research usefulness</td>
+              <td>Shows authentic thinking, mistakes, partial understanding, and unfinished design decisions.</td>
+              <td>Shows a polished target example.</td>
+              <td>Google response is better as real student/research evidence; my response is better as a model answer.</td>
+              <td>Use both: student responses reveal learning gaps; model answers show possible scaffolding.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Analysis: Step-by-Step Summary</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Google Form Response: Main Idea</th>
+              <th>My Example: Main Idea</th>
+              <th>Difference</th>
+              <th>Suggested Merge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Step 1: Domain Learning Sample</td>
+              <td>Sailing comes from observing a family member’s sailing training. Beginners think sail should catch wind; first failure is not moving the boat where intended.</td>
+              <td>Sailing lesson; beginner realizes boat does not simply go where pointed.</td>
+              <td>Google response is more personally grounded; my response gives clearer beginner-failure narrative.</td>
+              <td>Use the family training context, then describe: “The boat would not go where I wanted because wind, sail angle, and boat direction did not align.”</td>
+            </tr>
+            <tr>
+              <td>Step 2: Novice / Expert Difference</td>
+              <td>Beginners set sail at 90 degrees and adjust unstably; experts set sail confidently based on movement.</td>
+              <td>Beginners steer toward target; experts check wind and plan route/tacking.</td>
+              <td>Google response is about sail-control intuition; my response is about navigation logic.</td>
+              <td>Combine as two learning layers: first sail angle efficiency, then route planning.</td>
+            </tr>
+            <tr>
+              <td>Step 3: Skill Loop</td>
+              <td>Observe wind direction with wind flag and water movement; judge wind/water direction; control rudder and sail; adjust sail angle.</td>
+              <td>Observe wind, target, sail, speed, current, obstacles; judge route, sail efficiency, and route change.</td>
+              <td>Google response has the loop but remains general.</td>
+              <td>Rewrite loop as: observe wind/water -> judge efficient angle and target relation -> adjust rudder/sail -> read speed/drift -> adjust route.</td>
+            </tr>
+            <tr>
+              <td>Step 4: Domain Feedback Table</td>
+              <td>Boat slows down; boat moves out of control; boat movement changes when sail direction changes.</td>
+              <td>Sail flaps, speed drops, boat tilts, route drifts, target unreachable.</td>
+              <td>Google response has authentic signals but incomplete game representation.</td>
+              <td>Make every feedback row answer four parts: signal / source / meaning / game expression.</td>
+            </tr>
+            <tr>
+              <td>Step 5: Data-Based Abstraction</td>
+              <td>Numbers: speed, sail angle, wind intensity, water speed, wind direction, destination. Success: reach destination. Failure: time limit, boat sinks.</td>
+              <td>Numbers and states are separated; success/failure includes safe route, speed, time, obstacles.</td>
+              <td>Google response has good variable candidates but state modeling needs work.</td>
+              <td>Add states: efficient/inefficient sail, stable/unstable boat, safe/danger, drifting/on-course.</td>
+            </tr>
+            <tr>
+              <td>Step 6: System Structure Diagram</td>
+              <td>Sail angle -> movement speed; boat direction -> movement direction; reward by shipping goods.</td>
+              <td>Wind, sail, target, current, rocks, wind zones connect to actions, feedback, resources.</td>
+              <td>Google response introduces a game goal: shipping goods. My response stays closer to core sailing learning.</td>
+              <td>Shipping goods can be the mission theme, but the learning system should still center wind/sail/route feedback.</td>
+            </tr>
+            <tr>
+              <td>Step 7: Challenge Space Design</td>
+              <td>Strong factors: wind direction, wind strength, waves, current, time, equipment, ocean flow, hidden rocks.</td>
+              <td>Structured challenge dimensions: side wind, upwind target, drifting channel, rocky gusts.</td>
+              <td>Google response has promising challenge material but not fully ordered.</td>
+              <td>Create a 3-level progression: stable wind -> changeable wind -> changeable wind + current + hidden rocks.</td>
+            </tr>
+            <tr>
+              <td>Step 8: Minimum Playable Prototype</td>
+              <td>Paper prototype; player learns steering and moving to destination. First mistake: setting sail angle to 90 degrees.</td>
+              <td>p5.js/web or paper; player adjusts sail and route through 2-3 challenges.</td>
+              <td>Google response is more feasible but needs clearer feedback and challenge scope.</td>
+              <td>Use paper first: wind cards, sail-angle dial, boat token, destination, current/rock cards.</td>
+            </tr>
+            <tr>
+              <td>Step 9: AI-Assisted Development</td>
+              <td>AI helps with code.</td>
+              <td>AI helps with boat movement, wind indicator, sail feedback, and level setup.</td>
+              <td>Google response is too broad to guide AI.</td>
+              <td>Prompt AI with specific variables: windDirection, sailAngle, boatDirection, boatSpeed, currentDirection, rocks.</td>
+            </tr>
+            <tr>
+              <td>Step 10: Playtesting and Reflection</td>
+              <td>Mostly blank in the current response.</td>
+              <td>Includes expected confusion, learning moment, domain judgment, feedback match, next changes, final statement.</td>
+              <td>Google response is unfinished after Step 9.</td>
+              <td>Add playtest questions: Did players stop setting sail at 90 degrees? Did they use speed/drift feedback?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Strongest Ideas From The Google Form Response</h2>
+      <div class="table-wrap compact">
+        <table>
+          <thead>
+            <tr>
+              <th>Strong Idea</th>
+              <th>Why It Is Valuable</th>
+              <th>How To Use It</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Family member learning sailing</td>
+              <td>Gives the project a real-life source and personal motivation.</td>
+              <td>Use it in Step 1 as the authentic learning context.</td>
+            </tr>
+            <tr>
+              <td>“Cannot move the boat to the direction I want”</td>
+              <td>This is a clear beginner failure.</td>
+              <td>Make it the central failure moment of the design.</td>
+            </tr>
+            <tr>
+              <td>Sail angle is not simply 90 degrees</td>
+              <td>This is a concrete sailing misconception.</td>
+              <td>Turn it into the first playable lesson: “90 degrees is not always efficient.”</td>
+            </tr>
+            <tr>
+              <td>Experts adjust confidently instead of constantly changing sail</td>
+              <td>Captures the feel of expertise.</td>
+              <td>Translate into game goal: reduce unstable over-adjustment.</td>
+            </tr>
+            <tr>
+              <td>Wind direction + ocean flow + hidden rocks</td>
+              <td>Strong challenge-space material.</td>
+              <td>Use these as progressive challenge factors.</td>
+            </tr>
+            <tr>
+              <td>Paper prototype</td>
+              <td>Very suitable for summer camp.</td>
+              <td>Build with wind cards, boat token, sail-angle marker, current cards, and hidden rock tiles.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. Main Gaps In The Google Form Response</h2>
+      <div class="table-wrap compact">
+        <table>
+          <thead>
+            <tr>
+              <th>Gap</th>
+              <th>Why It Matters</th>
+              <th>Suggested Fix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Some answers repeat “move speed” instead of separating number/state/action.</td>
+              <td>The system structure becomes unclear.</td>
+              <td>Separate numbers, states, actions, and feedback.</td>
+            </tr>
+            <tr>
+              <td>Feedback table entries are incomplete.</td>
+              <td>Players learn through feedback; this is central to the method.</td>
+              <td>For each signal, specify source, meaning, and game expression.</td>
+            </tr>
+            <tr>
+              <td>Challenge progression stops after listing factors.</td>
+              <td>The prototype needs a learning curve.</td>
+              <td>Build 3 levels: stable wind, changing wind, wind + current + hidden rocks.</td>
+            </tr>
+            <tr>
+              <td>Prototype scope is not yet concrete.</td>
+              <td>Students need to know what to build first.</td>
+              <td>Define a 30-second paper prototype loop.</td>
+            </tr>
+            <tr>
+              <td>AI prompt is too broad.</td>
+              <td>“Code” alone may produce a generic boat game.</td>
+              <td>Ask AI for a specific system with named variables and feedback.</td>
+            </tr>
+            <tr>
+              <td>Playtest/reflection is blank.</td>
+              <td>Research evidence depends on what players actually learn.</td>
+              <td>Add 2-3 test questions after the first paper prototype.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. Suggested Integrated Version</h2>
+      <div class="table-wrap compact">
+        <table>
+          <thead>
+            <tr>
+              <th>Design Element</th>
+              <th>Integrated Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Domain</td>
+              <td>Sailing</td>
+            </tr>
+            <tr>
+              <td>Real source</td>
+              <td>I observed a family member learning sailing and became interested in how beginners learn to control the boat.</td>
+            </tr>
+            <tr>
+              <td>Beginner misunderstanding</td>
+              <td>Beginners think sailing means setting the sail to catch wind, often imagining a fixed 90-degree angle, and then steering the boat toward the destination.</td>
+            </tr>
+            <tr>
+              <td>First failure</td>
+              <td>The boat does not move where the beginner wants; it slows down, drifts, or becomes unstable.</td>
+            </tr>
+            <tr>
+              <td>Expert judgment</td>
+              <td>Experts read wind direction, water flow, boat direction, sail angle, and boat speed, then adjust calmly instead of constantly guessing.</td>
+            </tr>
+            <tr>
+              <td>Core learning shift</td>
+              <td>From “set sail and steer directly” to “read wind/water feedback and find an efficient relationship between sail, boat, and route.”</td>
+            </tr>
+            <tr>
+              <td>Core loop</td>
+              <td>Observe wind/water -> judge efficient sail and boat angle -> adjust rudder/sail -> read speed/drift/stability -> adjust route.</td>
+            </tr>
+            <tr>
+              <td>Key feedback</td>
+              <td>Boat speed, sail behavior, drift, instability, collision/sinking near hidden rocks.</td>
+            </tr>
+            <tr>
+              <td>Core variables</td>
+              <td>windDirection, windStrength, waterCurrent, sailAngle, boatDirection, boatSpeed, routeDrift, stability.</td>
+            </tr>
+            <tr>
+              <td>Challenge progression</td>
+              <td>Stable wind -> changing wind -> changing wind + current -> current + hidden rocks.</td>
+            </tr>
+            <tr>
+              <td>First prototype</td>
+              <td>Paper prototype with boat token, destination, wind direction card, sail-angle dial, current cards, and hidden rock tiles.</td>
+            </tr>
+            <tr>
+              <td>AI task</td>
+              <td>Later ask AI to implement the same variables and feedback in a simple web prototype.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Paper Prototype Proposal Based On The Google Response</h2>
+      <div class="table-wrap compact">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Paper Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Boat</td>
+              <td>A token on a grid or simple map.</td>
+            </tr>
+            <tr>
+              <td>Wind</td>
+              <td>A wind-direction card or arrow.</td>
+            </tr>
+            <tr>
+              <td>Sail angle</td>
+              <td>A small dial or card showing current sail angle.</td>
+            </tr>
+            <tr>
+              <td>Water flow</td>
+              <td>Current cards that push the boat sideways.</td>
+            </tr>
+            <tr>
+              <td>Hidden rocks</td>
+              <td>Face-down tiles that create risk.</td>
+            </tr>
+            <tr>
+              <td>Destination</td>
+              <td>A port or buoy.</td>
+            </tr>
+            <tr>
+              <td>Feedback</td>
+              <td>Boat moves faster/slower, drifts, becomes unstable, or sinks.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Three Progressive Challenges</h3>
+      <div class="table-wrap compact">
+        <table>
+          <thead>
+            <tr>
+              <th>Challenge</th>
+              <th>Factors</th>
+              <th>What Players Learn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Stable Wind Practice</td>
+              <td>stable wind + open water</td>
+              <td>90 degrees is not always the answer; sail angle affects speed.</td>
+            </tr>
+            <tr>
+              <td>Changing Wind</td>
+              <td>wind changes every round</td>
+              <td>Players must observe and adjust, not set once.</td>
+            </tr>
+            <tr>
+              <td>Current And Hidden Rocks</td>
+              <td>water flow + hidden rock tiles</td>
+              <td>Route planning matters; speed alone is dangerous.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>8. Short Evaluation</h2>
+      <p>The Google Form response is better as <strong>research data</strong> because it shows a real designer’s partial understanding, wording uncertainty, and authentic learning focus. The model answer is better as <strong>teaching scaffolding</strong> because it is complete and organized.</p>
+      <p>For the summer camp, the best use is not to replace one with the other. Use the Google response to show students that early answers can be incomplete but meaningful. Then use the model answer to show how to develop those answers into a clearer game system.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Generated from <code>methodology/domain-learning-sailing-comparison.md</code>.
+  </footer>
+  <script>
+    const partRationales = {
+      "Step 1": "Establish the real learning source. This part checks whether the design starts from a concrete domain-learning experience rather than a vague topic.",
+      "Step 2": "Identify the learning target. This part compares beginner misunderstanding with expert judgment, which becomes the core transformation the game should teach.",
+      "Step 3": "Turn domain learning into a playable loop. This part maps observation, judgment, action, feedback, and adjustment.",
+      "Step 4": "Design feedback as the player's teacher. This part asks what signals help the player learn without relying only on text or score.",
+      "Step 5": "Translate experience into implementable system elements. This part separates numbers, states, actions, success, failure, and calibration ranges.",
+      "Step 6": "Turn Step 1-5 into a visible game system graph. This part shows whether domain objects, player actions, feedback signals, variables, and states are connected, and helps choose the first prototype.",
+      "Step 7": "Derive challenges from domain factors. This part turns wind, current, rocks, time, and other factors into progressive challenge space.",
+      "Step 8": "Define the smallest playable test. This part protects the core learning loop and prevents the first prototype from becoming too large.",
+      "Step 9": "Clarify AI's role. This part keeps AI as an implementation assistant while preserving student domain judgment.",
+      "Step 10": "Collect evidence of learning. This part checks whether playtesters actually formed the intended domain-specific judgment."
+    };
+
+    const questionRationales = {
+      "What domain do you want to choose?": "Names the design source and keeps the project specific.",
+      "Why do you know about this domain, or why do you want to learn it? What real situation connects you to it?": "Connects the project to lived experience, observation, or real motivation.",
+      "When beginners first enter this domain, what do they usually think is most important?": "Reveals the starting misconception or beginner focus.",
+      "When did you, or a beginner you observed, first get stuck or clearly fail?": "Finds a concrete failure moment where the domain demands become visible.",
+      "After learning for a while, what did you begin to notice that you could not see before?": "Identifies the hidden perception or judgment the game should teach.",
+      "What attracts you most about this domain?": "Clarifies what experience quality should be preserved in the game.",
+
+      "What is the most common misunderstanding beginners have?": "Defines the player's starting point before learning.",
+      "When experts and beginners look at the same situation, how are their judgments different?": "Shows what expert-like perception or decision-making looks like.",
+      "What is the most important challenge in this domain?": "Identifies the main pressure or difficulty the game should model.",
+      "What action or decision do beginners most often get wrong?": "Turns common mistakes into playable failure and feedback.",
+      "What signals do experts use to judge whether they are doing well?": "Finds domain feedback that can become game feedback.",
+      "Can you summarize the core learning shift in this domain in one sentence?": "Creates a concise design thesis for the whole project.",
+
+      "What does the player need to observe?": "Defines what information the game must make visible, audible, or inferable.",
+      "What does the player need to judge?": "Names the domain-specific decision the player should learn to make.",
+      "What actions can the player take?": "Defines the player's action vocabulary.",
+      "How does the system give feedback on whether the player is doing well?": "Checks whether the game can teach through system response.",
+      "How can the player adjust their next action based on feedback?": "Completes the learning loop by connecting feedback to revision.",
+      "After repeating the loop several times, what does the player become better at?": "States the skill or judgment that should improve through play.",
+
+      "Feedback signal 1": "Captures the clearest action-result signal in the domain.",
+      "Feedback signal 2": "Adds a second learning signal so the system is not reduced to one score.",
+      "Feedback signal 3": "Tests whether the domain has enough feedback richness for progression.",
+      "Which feedback should appear immediately?": "Immediate feedback teaches direct cause and effect.",
+      "Which feedback should appear later, so the player has to discover it?": "Delayed feedback creates pattern recognition and deeper learning.",
+      "Which feedback should not be shown only as a score?": "Encourages visual, audio, spatial, or state-based feedback.",
+
+      "What parts of this domain can become numbers?": "Finds quantities that can drive rules, thresholds, and progression.",
+      "What parts can become states?": "Finds qualitative conditions such as stable/unstable or safe/danger.",
+      "What player actions change these numbers or states?": "Links player agency to system behavior.",
+      "Under what conditions does the player succeed?": "Defines what good domain judgment achieves.",
+      "Under what conditions does the player fail?": "Defines what misunderstanding or poor judgment causes.",
+      "Is there a “just right” range?": "Identifies calibration, not just maximizing or minimizing a number.",
+      "List your 3-5 core variables.": "Keeps the prototype focused on a small implementable system.",
+
+      "Upload one image of your game system graph.": "The uploaded graph is the visual evidence that Step 1-5 have become one connected system.",
+      "If upload is not available, paste a link to your game system graph image, document, or board.": "A link is a backup when direct image upload is not convenient or not allowed.",
+      "In 2-3 sentences, explain how this graph uses your Step 1-5 answers.": "This checks that the graph comes from earlier analysis, not from decoration or guesswork.",
+      "What part of this graph should become your first playable prototype?": "The graph should help identify the smallest testable system loop.",
+
+      "What factors in this domain affect the result of an action?": "Lists raw material for challenge design.",
+      "Which factors force the player to change their judgment or strategy when they change?": "Filters for factors that actually affect decisions.",
+      "Which factors can the player directly perceive? Which must be inferred slowly through feedback?": "Distinguishes visible information from learned inference.",
+      "Fill in 3-5 challenge dimensions.": "Turns domain factors into difficulty dimensions.",
+      "Design 2-3 challenge combinations with changing difficulty.": "Combines factors into playable situations.",
+      "Do these challenges have an order from simple to complex?": "Checks for a learnable progression.",
+      "After failing, can the player know what they should observe and adjust next time?": "Ensures failure is instructive, not arbitrary.",
+      "Choose 2-3 progressive challenges for the first minimum playable prototype.": "Narrows challenge space into a realistic first build.",
+
+      "What can the player do within 30 seconds?": "Defines the minimum playable action loop.",
+      "What mistake will the player likely make the first time they play?": "Predicts the first learning opportunity.",
+      "Will the player do better the second time because they learned from feedback? Why?": "Tests whether the prototype teaches through replay.",
+      "Will you prototype with paper, body movement, cards, webpage, Scratch, GDevelop, p5.js, or Unity?": "Matches prototype medium to scope and available time.",
+      "Which 2-3 challenge combinations from Step 7 does the prototype implement?": "Ensures the prototype tests progression, not just a single static scene.",
+      "If you can only complete one challenge first, which one best represents the core learning experience?": "Identifies the most important challenge to protect.",
+      "Which parts of the prototype can be simplified without damaging the core learning experience?": "Controls scope while preserving the learning target.",
+
+      "What do you want AI to help you with?": "Defines AI's task so help is specific and assessable.",
+      "Does your prompt explain the domain structure clearly?": "Checks whether AI is given the learning system, not just the topic.",
+      "Did AI's suggestion turn your design into a generic mini-game?": "Guards against losing domain judgment during implementation.",
+      "Which AI suggestions did you accept?": "Tracks where AI influenced the design.",
+      "Which AI suggestions did you modify or reject? Why?": "Shows student design judgment and critique.",
+      "In this design process, who made the final design decisions?": "Keeps responsibility with the student designer.",
+
+      "Where was the player most confused during the first playthrough?": "Finds unclear rules, feedback, or domain signals.",
+      "When did the player begin to understand the rules?": "Identifies the learning moment.",
+      "Did the player learn a domain-specific judgment?": "Checks the main success criterion for the domain-learning path.",
+      "Was the player only chasing score, or did they enter the domain way of thinking?": "Distinguishes score optimization from domain learning.",
+      "Did the player's feedback match your design goal?": "Compares player experience with designer intention.",
+      "What will you change in the next version?": "Turns reflection into a concrete design revision.",
+      "Write your final designer statement.": "Connects source experience, learning shift, mechanic, feedback, and challenge in one claim."
+    };
+
+    function addRationaleColumns() {
+      const rows = document.querySelectorAll(".qa-table tbody tr");
+      rows.forEach((row) => {
+        if (row.children.length > 4) return;
+        const step = row.children[0].textContent.trim();
+        const question = row.children[1].textContent.trim();
+        const partCell = document.createElement("td");
+        const questionCell = document.createElement("td");
+        partCell.textContent = partRationales[step] || "";
+        questionCell.textContent = questionRationales[question] || "";
+        row.insertBefore(partCell, row.children[2]);
+        row.insertBefore(questionCell, row.children[3]);
+      });
+    }
+
+    addRationaleColumns();
+  </script>
+  <script>
+    const uiText = {
+      zh: {
+        heroTitle: "Sailing 回答逐题对比",
+        heroSubtitle: '对比 Google Form 中的 Sailing 回答与示例答案 <code>domain-learning-sailing-example-en.md</code>，用于筛选哪些问题值得保留，并看清真实回答、教学示例和后续分析之间的关系。',
+        sourceTitle: "数据来源",
+        sourceA: '<span class="tag">Source A</span>Google Form response by Ian, submitted 2026-07-05.',
+        sourceB: '<span class="tag">Source B</span>本地示例文件：<code>methodology/domain-learning-sailing-example-en.md</code>.',
+        sourceNote: "核心判断：Google Form 回答更像真实研究数据，保留了真实动机、误解和未完成状态；示例答案更像教学脚手架，结构完整但没有那么“真实”。问题和设置原因支持中英文切换；回答保留原始英文。",
+        qaTitle: "1. 逐题答案对比",
+        qaIntro: "这一部分先不做评价，只把 Google Form 中每个设计问题的回答，与示例答案逐题并排放在一起。Student Info 不纳入比较。每个问题前的 checkbox 用于标记你认为应该保留的问题。",
+        thStep: "步骤",
+        thQuestion: "问题",
+        thPartRationale: "设置这个 Part 的原因",
+        thQuestionRationale: "设置这个问题的原因",
+        thGoogleAnswer: "Google Form 回答",
+        thModelAnswer: "示例回答",
+        showSelectedOnly: "只看已勾选问题",
+        clearSelection: "清空勾选",
+        selectedSuffix: "已勾选"
+      },
+      en: {
+        heroTitle: "Sailing Answers Comparison",
+        heroSubtitle: 'Compare the Google Form sailing response with <code>domain-learning-sailing-example-en.md</code>. Use this page to decide which questions should stay and to separate raw answers from later analysis.',
+        sourceTitle: "Data Sources",
+        sourceA: '<span class="tag">Source A</span>Google Form response by Ian, submitted 2026-07-05.',
+        sourceB: '<span class="tag">Source B</span>Local example file: <code>methodology/domain-learning-sailing-example-en.md</code>.',
+        sourceNote: "Core judgment: the Google Form response is closer to real research data, while the model answer is stronger as teaching scaffolding. Questions and rationales can switch between Chinese and English; answers remain in their original English wording.",
+        qaTitle: "1. Question-by-Question Answer Comparison",
+        qaIntro: "This section compares each design question first, before analysis. Student Info is excluded. Use the checkbox before each question to mark questions you want to keep.",
+        thStep: "Step",
+        thQuestion: "Question",
+        thPartRationale: "Part Rationale",
+        thQuestionRationale: "Question Rationale",
+        thGoogleAnswer: "Google Form Answer",
+        thModelAnswer: "Model Example Answer",
+        showSelectedOnly: "Show selected only",
+        clearSelection: "Clear selection",
+        selectedSuffix: "selected"
+      }
+    };
+
+    const questionZh = {
+      "What domain do you want to choose?": "你想选择哪个领域？",
+      "Why do you know about this domain, or why do you want to learn it? What real situation connects you to it?": "你为什么了解或想了解这个领域？你接触它的真实场景是什么？",
+      "When beginners first enter this domain, what do they usually think is most important?": "新手刚进入这个领域时，通常会以为什么最重要？",
+      "When did you, or a beginner you observed, first get stuck or clearly fail?": "你自己或你观察到的新手，第一次明显卡住或失败发生在什么时候？",
+      "After learning for a while, what did you begin to notice that you could not see before?": "学了一段时间后，你开始看见哪些以前看不见的东西？",
+      "What attracts you most about this domain?": "这个领域最吸引你的地方是什么？",
+
+      "What is the most common misunderstanding beginners have?": "新手最常见的误解是什么？",
+      "When experts and beginners look at the same situation, how are their judgments different?": "高手和新手看到同一个情境时，判断有什么不同？",
+      "What is the most important challenge in this domain?": "这个领域里最重要的挑战是什么？",
+      "What action or decision do beginners most often get wrong?": "新手最容易做错的动作或决策是什么？",
+      "What signals do experts use to judge whether they are doing well?": "高手会根据哪些信号判断自己做得对不对？",
+      "Can you summarize the core learning shift in this domain in one sentence?": "你能否用一句话概括这个领域的核心学习转变？",
+
+      "What does the player need to observe?": "玩家需要观察什么？",
+      "What does the player need to judge?": "玩家需要判断什么？",
+      "What actions can the player take?": "玩家可以做哪些行动？",
+      "How does the system give feedback on whether the player is doing well?": "系统如何反馈玩家做得好不好？",
+      "How can the player adjust their next action based on feedback?": "玩家如何根据反馈调整下一次行动？",
+      "After repeating the loop several times, what does the player become better at?": "重复几次后，玩家会变得更会什么？",
+
+      "Feedback signal 1": "反馈信号 1",
+      "Feedback signal 2": "反馈信号 2",
+      "Feedback signal 3": "反馈信号 3",
+      "Which feedback should appear immediately?": "哪些反馈应该立刻出现？",
+      "Which feedback should appear later, so the player has to discover it?": "哪些反馈应该延迟出现，让玩家自己发现？",
+      "Which feedback should not be shown only as a score?": "哪些反馈不能只用分数表示？",
+
+      "What parts of this domain can become numbers?": "这个领域里有哪些东西可以变成数字？",
+      "What parts can become states?": "有哪些东西可以变成状态？",
+      "What player actions change these numbers or states?": "玩家做什么动作会改变这些数字或状态？",
+      "Under what conditions does the player succeed?": "什么情况下玩家会成功？",
+      "Under what conditions does the player fail?": "什么情况下玩家会失败？",
+      "Is there a “just right” range?": "有没有“刚刚好”的范围？",
+      "List your 3-5 core variables.": "列出 3-5 个核心变量。",
+
+      "Upload one image of your game system graph.": "上传一张你的游戏系统图。",
+      "If upload is not available, paste a link to your game system graph image, document, or board.": "如果不能上传，请粘贴系统图图片、文档或白板链接。",
+      "In 2-3 sentences, explain how this graph uses your Step 1-5 answers.": "用 2-3 句话说明这张图如何使用了 Step 1-5 的回答。",
+      "What part of this graph should become your first playable prototype?": "这张图中的哪一部分应该成为第一版可玩原型？",
+      "What domain objects are in your system?": "你的系统里有哪些领域对象？",
+      "What feedback does each action produce?": "每个行动会产生什么反馈？",
+      "What resources or states change as a result?": "哪些资源或状态会因此变化？",
+      "Does this diagram show that the player is learning how to think in this domain?": "这张图是否能看出玩家正在学习这个领域的思考方式？",
+      "Optional: paste a link to your system structure diagram.": "可选：粘贴你的系统结构图链接。",
+
+      "What factors in this domain affect the result of an action?": "这个领域中有哪些因素会影响行动结果？",
+      "Which factors force the player to change their judgment or strategy when they change?": "哪些因素改变后，玩家必须改变判断或策略？",
+      "Which factors can the player directly perceive? Which must be inferred slowly through feedback?": "哪些因素玩家可以直接感知？哪些需要通过反馈慢慢推断？",
+      "Fill in 3-5 challenge dimensions.": "填写 3-5 个挑战维度。",
+      "Design 2-3 challenge combinations with changing difficulty.": "设计 2-3 个有难度变化的挑战组合。",
+      "Do these challenges have an order from simple to complex?": "这些挑战是否有从简单到复杂的顺序？",
+      "After failing, can the player know what they should observe and adjust next time?": "玩家失败之后，是否能知道下次应该观察什么、调整什么？",
+      "Choose 2-3 progressive challenges for the first minimum playable prototype.": "选择 2-3 个递进挑战作为第一版最小可玩原型。",
+
+      "What can the player do within 30 seconds?": "玩家 30 秒内能做什么？",
+      "What mistake will the player likely make the first time they play?": "玩家第一次玩最可能犯什么错？",
+      "Will the player do better the second time because they learned from feedback? Why?": "玩家第二次是否会因为学到反馈而做得更好？为什么？",
+      "Will you prototype with paper, body movement, cards, webpage, Scratch, GDevelop, p5.js, or Unity?": "你准备用纸面、身体、卡牌、网页、Scratch、GDevelop、p5.js 还是 Unity 做原型？",
+      "Which 2-3 challenge combinations from Step 7 does the prototype implement?": "原型实现 Step 7 中哪 2-3 个挑战组合？",
+      "If you can only complete one challenge first, which one best represents the core learning experience?": "如果只能先完成一个挑战，哪一个最能代表核心学习体验？",
+      "Which parts of the prototype can be simplified without damaging the core learning experience?": "原型里哪些部分可以先省略，不影响核心学习体验？",
+
+      "What do you want AI to help you with?": "你希望 AI 帮你解决什么问题？",
+      "Does your prompt explain the domain structure clearly?": "你的提示词是否说清楚了领域结构？",
+      "Did AI's suggestion turn your design into a generic mini-game?": "AI 的建议有没有把你的设计变成普通小游戏？",
+      "Which AI suggestions did you accept?": "你接受了 AI 的哪些建议？",
+      "Which AI suggestions did you modify or reject? Why?": "你修改或拒绝了 AI 的哪些建议？为什么？",
+      "In this design process, who made the final design decisions?": "这次设计中，最终决策是谁做的？",
+
+      "Where was the player most confused during the first playthrough?": "玩家第一次玩时哪里最困惑？",
+      "When did the player begin to understand the rules?": "玩家什么时候开始理解规则？",
+      "Did the player learn a domain-specific judgment?": "玩家是否学会了某个领域判断？",
+      "Was the player only chasing score, or did they enter the domain way of thinking?": "玩家是否只是追求分数，而没有进入领域思维？",
+      "Did the player's feedback match your design goal?": "玩家说出的反馈，是否和你的设计目标一致？",
+      "What will you change in the next version?": "下一版你会改什么？",
+      "Write your final designer statement.": "写下你的最终设计师陈述。"
+    };
+
+    const partRationalesZh = {
+      "Step 1": "建立真实学习来源。这个部分检查设计是否从具体的领域学习经验出发，而不是从模糊主题出发。",
+      "Step 2": "确定学习目标。这个部分比较新手误解和高手判断，形成游戏要帮助玩家完成的核心转变。",
+      "Step 3": "把领域学习转成可玩的循环。这个部分对应观察、判断、行动、反馈和调整。",
+      "Step 4": "把反馈设计成玩家的老师。这个部分寻找能帮助玩家学习的信号，而不是只依赖文字或分数。",
+      "Step 5": "把经验转成可实现的系统元素。这个部分区分数字、状态、行动、成功、失败和校准范围。",
+      "Step 6": "把 Step 1-5 转成可见的游戏系统图。这个部分检查领域对象、玩家行动、反馈信号、变量和状态是否连成系统，并帮助选择第一版原型。",
+      "Step 7": "从领域因素推导挑战。这个部分把风、洋流、礁石、时间等因素转化为递进挑战空间。",
+      "Step 8": "定义最小可玩测试。这个部分保护核心学习循环，避免第一版原型过大。",
+      "Step 9": "明确 AI 的角色。这个部分让 AI 作为实现助手，同时保留学生自己的领域判断。",
+      "Step 10": "收集学习证据。这个部分检查试玩者是否真的形成了预期的领域判断。"
+    };
+
+    const questionRationalesZh = {
+      "What domain do you want to choose?": "明确设计来源，让项目保持具体。",
+      "Why do you know about this domain, or why do you want to learn it? What real situation connects you to it?": "把项目连接到真实经验、观察或学习动机。",
+      "When beginners first enter this domain, what do they usually think is most important?": "找出新手一开始的误解或注意焦点。",
+      "When did you, or a beginner you observed, first get stuck or clearly fail?": "找到领域要求变得可见的具体失败时刻。",
+      "After learning for a while, what did you begin to notice that you could not see before?": "识别游戏需要帮助玩家学会的隐藏感知或判断。",
+      "What attracts you most about this domain?": "明确游戏需要保留的体验质量。",
+      "What is the most common misunderstanding beginners have?": "定义玩家学习前的起点。",
+      "When experts and beginners look at the same situation, how are their judgments different?": "说明高手式感知或决策是什么样的。",
+      "What is the most important challenge in this domain?": "识别游戏需要模拟的核心压力或困难。",
+      "What action or decision do beginners most often get wrong?": "把常见错误转化为可玩的失败和反馈。",
+      "What signals do experts use to judge whether they are doing well?": "寻找可以转化为游戏反馈的领域信号。",
+      "Can you summarize the core learning shift in this domain in one sentence?": "为整个项目形成一句清晰的设计主张。",
+      "What does the player need to observe?": "定义游戏必须让玩家看见、听见或推断的信息。",
+      "What does the player need to judge?": "命名玩家需要学会的领域判断。",
+      "What actions can the player take?": "定义玩家的行动词汇。",
+      "How does the system give feedback on whether the player is doing well?": "检查游戏是否能通过系统回应来教学。",
+      "How can the player adjust their next action based on feedback?": "把反馈连接到下一次修正，完成学习循环。",
+      "After repeating the loop several times, what does the player become better at?": "说明玩家通过重复游玩会提升的技能或判断。",
+      "Feedback signal 1": "记录最清楚的行动-结果信号。",
+      "Feedback signal 2": "加入第二个学习信号，避免系统只剩一个分数。",
+      "Feedback signal 3": "检查这个领域是否有足够丰富的反馈支撑递进挑战。",
+      "Which feedback should appear immediately?": "即时反馈帮助玩家理解因果关系。",
+      "Which feedback should appear later, so the player has to discover it?": "延迟反馈让玩家通过模式识别产生更深学习。",
+      "Which feedback should not be shown only as a score?": "鼓励视觉、声音、空间或状态反馈。",
+      "What parts of this domain can become numbers?": "寻找能驱动规则、阈值和递进的量化元素。",
+      "What parts can become states?": "寻找稳定/不稳定、安全/危险等质性条件。",
+      "What player actions change these numbers or states?": "把玩家行动连接到系统变化。",
+      "Under what conditions does the player succeed?": "定义好的领域判断会达成什么结果。",
+      "Under what conditions does the player fail?": "定义误解或错误判断会导致什么结果。",
+      "Is there a “just right” range?": "识别需要校准的范围，而不是简单追求最大或最小。",
+      "List your 3-5 core variables.": "把第一版原型控制在少量可实现变量内。",
+      "Upload one image of your game system graph.": "上传的图是 Step 1-5 已经转化为一个连贯系统的视觉证据。",
+      "If upload is not available, paste a link to your game system graph image, document, or board.": "当 Google Form 不方便或不允许上传时，链接是备用提交方式。",
+      "In 2-3 sentences, explain how this graph uses your Step 1-5 answers.": "检查这张图是否来自前面的分析，而不是装饰性图示或临时想法。",
+      "What part of this graph should become your first playable prototype?": "系统图应该帮助选择最小、最值得测试的第一版循环。",
+      "What domain objects are in your system?": "命名玩家需要读取、操作或回应的对象。",
+      "What feedback does each action produce?": "检查每个行动是否能教给玩家东西。",
+      "What resources or states change as a result?": "说明系统是否会随玩家行动而变化。",
+      "Does this diagram show that the player is learning how to think in this domain?": "检查图里呈现的是领域判断，而不是题材装饰。",
+      "Optional: paste a link to your system structure diagram.": "允许用视觉图证明系统关系。",
+      "What factors in this domain affect the result of an action?": "列出挑战设计的原材料。",
+      "Which factors force the player to change their judgment or strategy when they change?": "筛选真正会改变决策的因素。",
+      "Which factors can the player directly perceive? Which must be inferred slowly through feedback?": "区分直接可见信息和需要学习推断的信息。",
+      "Fill in 3-5 challenge dimensions.": "把领域因素转成难度维度。",
+      "Design 2-3 challenge combinations with changing difficulty.": "把多个因素组合成可玩的局面。",
+      "Do these challenges have an order from simple to complex?": "检查是否形成可学习的递进。",
+      "After failing, can the player know what they should observe and adjust next time?": "确保失败能教学，而不是随机惩罚。",
+      "Choose 2-3 progressive challenges for the first minimum playable prototype.": "把挑战空间收束成现实可做的第一版。",
+      "What can the player do within 30 seconds?": "定义最小可玩的行动循环。",
+      "What mistake will the player likely make the first time they play?": "预测第一次学习机会。",
+      "Will the player do better the second time because they learned from feedback? Why?": "测试原型是否能通过重复游玩产生学习。",
+      "Will you prototype with paper, body movement, cards, webpage, Scratch, GDevelop, p5.js, or Unity?": "让原型媒介匹配时间和核心循环。",
+      "Which 2-3 challenge combinations from Step 7 does the prototype implement?": "确保原型测试递进挑战，而不是单一静态场景。",
+      "If you can only complete one challenge first, which one best represents the core learning experience?": "识别第一版必须保护的核心挑战。",
+      "Which parts of the prototype can be simplified without damaging the core learning experience?": "控制范围，同时不损害核心学习体验。",
+      "What do you want AI to help you with?": "明确 AI 任务，让帮助具体、可评估。",
+      "Does your prompt explain the domain structure clearly?": "检查给 AI 的不是题材，而是学习系统。",
+      "Did AI's suggestion turn your design into a generic mini-game?": "防止实现过程中丢失领域判断。",
+      "Which AI suggestions did you accept?": "记录 AI 在哪里影响了设计。",
+      "Which AI suggestions did you modify or reject? Why?": "体现学生自己的设计判断和批判能力。",
+      "In this design process, who made the final design decisions?": "确保最终设计责任仍在学生自己手中。",
+      "Where was the player most confused during the first playthrough?": "发现规则、反馈或领域信号哪里不清楚。",
+      "When did the player begin to understand the rules?": "识别玩家开始理解的时刻。",
+      "Did the player learn a domain-specific judgment?": "检查领域学习路径最核心的成功标准。",
+      "Was the player only chasing score, or did they enter the domain way of thinking?": "区分追分和真正进入领域思维。",
+      "Did the player's feedback match your design goal?": "比较玩家体验和设计意图是否一致。",
+      "What will you change in the next version?": "把反思转化为具体修改。",
+      "Write your final designer statement.": "把经验来源、学习转变、机制、反馈和挑战整合成一个设计主张。"
+    };
+
+    const storage = (() => {
+      try {
+        const testKey = "__sailing_compare_test__";
+        localStorage.setItem(testKey, "1");
+        localStorage.removeItem(testKey);
+        return localStorage;
+      } catch (error) {
+        const fallback = {};
+        return {
+          getItem: (key) => fallback[key] || null,
+          setItem: (key, value) => { fallback[key] = value; },
+          removeItem: (key) => { delete fallback[key]; }
+        };
+      }
+    })();
+
+    const selectionKey = "sailing-comparison-selected-questions";
+    const languageKey = "sailing-comparison-language";
+
+    function readSelection() {
+      try {
+        return JSON.parse(storage.getItem(selectionKey) || "{}");
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function writeSelection(selection) {
+      storage.setItem(selectionKey, JSON.stringify(selection));
+    }
+
+    function rowKey(row) {
+      return `${row.dataset.step}::${row.dataset.questionEn}`;
+    }
+
+    function initializeQuestionControls() {
+      const selection = readSelection();
+      document.querySelectorAll(".qa-table tbody tr").forEach((row) => {
+        const questionCell = row.children[1];
+        if (!row.dataset.step) row.dataset.step = row.children[0].textContent.trim();
+        if (!row.dataset.questionEn) row.dataset.questionEn = questionCell.textContent.trim();
+        if (!row.dataset.partRationaleEn) row.dataset.partRationaleEn = row.children[2].textContent.trim();
+        if (!row.dataset.questionRationaleEn) row.dataset.questionRationaleEn = row.children[3].textContent.trim();
+        if (questionCell.querySelector(".question-control")) return;
+
+        const label = document.createElement("label");
+        label.className = "question-control";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = Boolean(selection[rowKey(row)]);
+        const text = document.createElement("span");
+        text.className = "question-text";
+        text.textContent = row.dataset.questionEn;
+        checkbox.addEventListener("change", () => {
+          const nextSelection = readSelection();
+          if (checkbox.checked) {
+            nextSelection[rowKey(row)] = true;
+          } else {
+            delete nextSelection[rowKey(row)];
+          }
+          writeSelection(nextSelection);
+          updateSelectionView();
+        });
+        label.appendChild(checkbox);
+        label.appendChild(text);
+        questionCell.textContent = "";
+        questionCell.appendChild(label);
+      });
+    }
+
+    function setLanguage(lang) {
+      const texts = uiText[lang] || uiText.zh;
+      document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (texts[key]) node.innerHTML = texts[key];
+      });
+      document.querySelectorAll("[data-lang-button]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.langButton === lang);
+      });
+      document.querySelectorAll(".qa-table tbody tr").forEach((row) => {
+        const question = row.dataset.questionEn;
+        const textNode = row.querySelector(".question-text");
+        if (textNode) {
+          textNode.textContent = lang === "zh" ? (questionZh[question] || question) : question;
+        }
+        row.children[2].textContent = lang === "zh"
+          ? (partRationalesZh[row.dataset.step] || row.dataset.partRationaleEn)
+          : row.dataset.partRationaleEn;
+        row.children[3].textContent = lang === "zh"
+          ? (questionRationalesZh[question] || row.dataset.questionRationaleEn)
+          : row.dataset.questionRationaleEn;
+      });
+      storage.setItem(languageKey, lang);
+      updateSelectionView();
+    }
+
+    function updateSelectionView() {
+      const selection = readSelection();
+      const selectedCount = Object.keys(selection).length;
+      const lang = storage.getItem(languageKey) || "zh";
+      const suffix = (uiText[lang] || uiText.zh).selectedSuffix;
+      const counter = document.getElementById("selectionCount");
+      if (counter) counter.textContent = `${selectedCount} ${suffix}`;
+      const showSelectedOnly = document.getElementById("showSelectedOnly");
+      const filter = Boolean(showSelectedOnly && showSelectedOnly.checked);
+      document.querySelectorAll(".qa-table tbody tr").forEach((row) => {
+        row.classList.toggle("is-hidden-by-filter", filter && !selection[rowKey(row)]);
+      });
+    }
+
+    initializeQuestionControls();
+    setLanguage(storage.getItem(languageKey) || "zh");
+
+    document.querySelectorAll("[data-lang-button]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.langButton));
+    });
+
+    document.getElementById("showSelectedOnly").addEventListener("change", updateSelectionView);
+    document.getElementById("clearSelection").addEventListener("click", () => {
+      writeSelection({});
+      document.querySelectorAll(".qa-table input[type='checkbox']").forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      updateSelectionView();
+    });
+  </script>
+</body>
+</html>

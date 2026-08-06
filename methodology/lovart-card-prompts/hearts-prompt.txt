@@ -1,0 +1,35 @@
+Create 13 poker-style cards for the hearts suit of the "Life-to-Game Prototype Deck".
+
+Deck title: 来自生活的游戏设计：桌游原型扑克牌
+Hearts represent: 情绪 / 关系
+Accent color: heart red
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: 情绪
+- Large Chinese keyword
+- Small English keyword
+- Simple symbolic icon
+- One short Chinese design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♥ 核心感受 / Core Feeling / 这局想让玩家感到什么？
+2♥ 好奇 / Curiosity / 玩家为什么想继续探索？
+3♥ 期待 / Anticipation / 什么东西还没发生？
+4♥ 焦虑 / Anxiety / 压力来自哪里？
+5♥ 挫败 / Frustration / 什么反复阻止玩家？
+6♥ 信任 / Trust / 玩家如何把风险交给别人？
+7♥ 嫉妒 / Envy / 谁拥有你想要的东西？
+8♥ 羞耻 / Shame / 什么行为会被看见？
+9♥ 归属 / Belonging / 玩家如何被接纳？
+10♥ 暗爽 / Secret Pleasure / 什么小胜利不能明说？
+J♥ 关系人 / Relationship / 谁影响你的决定？
+Q♥ 情感转折 / Emotional Turn / 情绪何时改变方向？
+K♥ 余韵 / Aftertaste / 游戏结束后留下什么？
+
+Important:
+Keep all cards visually consistent. Make the Chinese text accurate and readable.
+

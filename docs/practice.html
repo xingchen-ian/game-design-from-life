@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>设计实践 · 来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="practice.html" class="nav-link active">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero page-hero--practice">
+    <div class="container">
+      <div class="section-tag">Design Practice</div>
+      <h1 class="page-title">设计实践</h1>
+      <p class="page-subtitle">每一次设计实践，都是理论的验证与深化。</p>
+    </div>
+  </div>
+
+  <!-- Active Project: 排队 -->
+  <section class="section" id="queue">
+    <div class="container">
+      <div class="project-header">
+        <div class="project-status project-status--active">进行中</div>
+        <h2 class="project-title">「排队」</h2>
+        <p class="project-subtitle">Queue — 将日常排队的社会性体验转化为桌游</p>
+      </div>
+
+      <div class="project-body">
+        <div class="project-section">
+          <h3>体验来源</h3>
+          <p>排队是中国日常生活中极为普遍的社会性体验。它不仅仅是等待，更是一个充满人际博弈的微型社会场景：你必须在维护自身利益和遵从社会规范之间不断权衡。插队者带来的愤怒、被人推挤的无奈、眼看着前方的人快速离开而自己还原地踏步的焦虑……这些情感极具共鸣，却几乎从未出现在游戏设计中。</p>
+        </div>
+
+        <div class="project-section">
+          <h3>情感原型提取</h3>
+          <div class="emotion-tags">
+            <span class="etag etag--primary">绝处逢生</span>
+            <span class="etag">遗憾</span>
+            <span class="etag">无奈</span>
+            <span class="etag">惊喜</span>
+            <span class="etag">紧张</span>
+            <span class="etag">暗爽</span>
+          </div>
+          <p>排队的核心情感张力在于：规则与欲望的冲突。「绝处逢生」体现在眼看快到门口却被人抢先，最终仍然成功进入的戏剧性时刻；「暗爽」发生在合理利用规则漏洞悄然超越他人时；「遗憾」来自于因为犹豫而错失良机。</p>
+        </div>
+
+        <div class="project-section">
+          <h3>游戏转化方案</h3>
+          <div class="mechanic-grid">
+            <div class="mechanic-card">
+              <div class="mechanic-icon">&#9889;</div>
+              <div class="mechanic-name">体力 / 耐心值</div>
+              <div class="mechanic-desc">玩家有限的资源，消耗殆尽则无法继续强行推进，模拟现实中等待的心理极限</div>
+            </div>
+            <div class="mechanic-card">
+              <div class="mechanic-icon">&#128118;</div>
+              <div class="mechanic-name">推挤行动系统</div>
+              <div class="mechanic-desc">玩家可以选择「推挤」向前，但会激起周围 NPC 的反应，造成连锁影响</div>
+            </div>
+            <div class="mechanic-card">
+              <div class="mechanic-icon">&#127183;</div>
+              <div class="mechanic-name">插队事件卡</div>
+              <div class="mechanic-desc">随机触发的社会事件：遇到老人、大声斥责者、私下交易机会……迫使玩家做出道德选择</div>
+            </div>
+            <div class="mechanic-card">
+              <div class="mechanic-icon">&#128100;</div>
+              <div class="mechanic-name">NPC 角色系统</div>
+              <div class="mechanic-desc">每个 NPC 有独特性格和行为模式，形成差异化的博弈情境</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h3>案例参考：Kolejka</h3>
+          <p><strong>Kolejka</strong>（波兰语意为"队列/排队"）是由波兰国家记忆研究所于 2011 年发行的历史教育桌游，设计者是 Karol Madaj。游戏以 1945–1989 年波兰共产主义时期的计划经济为背景，还原了物资严重短缺、商店货架经常空空如也、人们必须在各个商店门口排队等候的真实生活记忆。</p>
+          <p>玩家扮演一个想要采购生活物资的家庭，手持一张购物清单，需要凑齐清单上的所有商品。商品分布在 5 家不同的商店，外加一个黑市。**率先购齐清单上所有商品的玩家获胜**。</p>
+          <p>每回合的核心流程是：秘密决定将家庭成员派往哪几家商店门口排队 → 随机抽取决定今天哪些商店到货、到什么货，排在队首的人优先购买 → 打出手牌卡片，调整自己或对手的排队位置，或触发特殊事件。商品供应完全随机且数量有限——轮到你时很可能已经没货了，只能空手而归，下一轮重新排队。</p>
+          <p><strong>核心机制</strong>包括手牌管理与工人放置的结合、功能卡牌系统（排队卡）、信息不对称与风险决策、"坑人"互动机制。功能卡牌包含各种充满时代感的事件，例如"带小孩的母亲"（可以插到队列前面）、"政府里有熟人"（直接跳到队首）、"这不是你的位置"（把对手赶出队列）、"盘点歇业"（商店今天不营业，队列白排）、黑市选项（花高价跳过排队，直接买到商品）。</p>
+          <p>Kolejka 之所以被学界视为情感设计的典范，是因为它的机制与主题情感高度一致：机制没有在规则里写任何道德判断，但每一张卡牌都在还原一种真实的社会行为——有些是制度漏洞，有些是人情世故，有些是赤裸裸的强权。玩家自然而然地会经历那个时代的无奈与荒诞。这正是"情感等价转换"在现实中最成功的案例之一。</p>
+          <p><strong>相关链接</strong>：<a href="https://boardgamegeek.com/boardgame/85325/kolejka" target="_blank">BoardGameGeek 页面</a> · <a href="https://pamiec.pl/ftp/kolejka/GB_print_and_play/GB_instrukcja_2013_podglad.pdf" target="_blank">官方规则书（英文 PDF）</a> · <a href="https://boardgameguys.com/kolejka/" target="_blank">Board Game Guys 详细评测</a> · <a href="https://jandan.net/p/77297" target="_blank">中文报道（煎蛋）</a> · <a href="https://github.com/board-games-ai/Kolejka" target="_blank">GitHub 上的 AI 实现版本</a></p>
+        </div>
+
+        <div class="project-section">
+          <h3>设计反思：从 Kolejka 到机场排队</h3>
+          <p>Kolejka 的设计为我的"排队"游戏提供了多个关键启发：</p>
+          <p><strong>情境选择</strong>：Kolejka 启发我将机场中办理登机的排队为背景。机场排队比"共产主义商店排队"在情感层面更贴近当代玩家的真实记忆。</p>
+          <p><strong>秘密派遣机制</strong>：玩家秘密决定将家庭成员派往哪几家商店门口排队，这提醒我可以在我的排队游戏中让玩家自由选择窗口。这个机制直接复现了现实中"扫描哪个队更快"的那种眼神博弈。</p>
+          <p><strong>胜利条件</strong>：率先办理完的玩家获胜。在电子游戏设计的时候，其他玩家即是 NPC。</p>
+          <p><strong>随机供应与空手而归</strong>：Kolejka 中"商品供应完全随机且数量有限——轮到你时很可能已经没货了，只能空手而归，下一轮重新排队"的机制，启发我设计为：玩家必须在飞机起飞前成功办理托运和登记牌。要想方设法挤到前面去，有时需要靠口才、有时需要靠力气，当然还有防守，因为你不是唯一想挤到前面去的人。</p>
+          <p><strong>情感等价设计</strong>：Kolejka 之所以被学界视为情感设计的典范，是因为它的机制与主题情感高度一致。我的游戏也是体验不同的人的性格，这些性格也是通过他们的行为体验到的。每种角色的行为逻辑就是性格的可见化，玩家在和他们互动的过程中自然形成情感判断。</p>
+        </div>
+
+        <div class="project-section">
+          <h3>设计进展</h3>
+          <div class="timeline">
+            <div class="timeline-item timeline-item--done">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date">2026 年初</div>
+                <div class="tl-title">概念确立</div>
+                <div class="tl-desc">确定「排队」作为体验来源，完成情感原型提取与核心设计方向</div>
+              </div>
+            </div>
+            <div class="timeline-item timeline-item--active">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date">进行中</div>
+                <div class="tl-title">机制设计与原型制作</div>
+                <div class="tl-desc">设计核心机制，制作实体原型，准备首轮内部测试</div>
+              </div>
+            </div>
+            <div class="timeline-item timeline-item--pending">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date">待完成</div>
+                <div class="tl-title">玩家测试与迭代</div>
+                <div class="tl-desc">邀请玩家测试，收集情感体验数据，验证情感等价性</div>
+              </div>
+            </div>
+            <div class="timeline-item timeline-item--pending">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date">未来</div>
+                <div class="tl-title">电子游戏转化</div>
+                <div class="tl-desc">探索从桌游到电子游戏的进一步转化</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h3>核心设计问题</h3>
+          <div class="questions-list">
+            <div class="q-item">
+              <span class="q-num">Q1</span>
+              <span>如何让玩家在游戏中真正感受到「被迫」而非「主动选择」违规？</span>
+            </div>
+            <div class="q-item">
+              <span class="q-num">Q2</span>
+              <span>「暗爽」的情感如何在不让玩家感到道德愧疚的前提下呈现？</span>
+            </div>
+            <div class="q-item">
+              <span class="q-num">Q3</span>
+              <span>桌游是否能有效还原排队的时间压力感？</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More Practices -->
+  <section class="section section-dark" id="more-practices">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">更多实践</div>
+        <h2 class="section-title">其他设计实践</h2>
+        <p class="section-desc">从桌游到身体原型再到领域学习模拟器，每一次实践都在验证方法论的另一个侧面。</p>
+      </div>
+      <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="card">
+          <div class="card-num">01</div>
+          <h3 class="card-title">帆船模拟器</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">领域学习路径代表案例：新手以为"我要控制船"，高手知道"我要读取风"。风向不可控，玩家通过调帆和转向借力，形成观察-判断-行动-反馈的技能循环。</p>
+          <a href="domain-learning.html" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">了解领域学习路径 →</a>
+        </article>
+        <article class="card" id="square-dance">
+          <div class="card-num">02</div>
+          <h3 class="card-title">广场舞身体原型</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">退休女性广场舞的"跟上队伍"体验：看见目标动作 → 节奏压力下用身体模仿 → 相似度评分 → 跟上、掉队、自信或尴尬。验证非数字/身体活动如何进入方法论。</p>
+          <a href="https://github.com/xingchen-ian/game-design-from-life/blob/main/methodology/square-dance-physical-prototype.md" target="_blank" rel="noopener" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">查看原型文档 →</a>
+        </article>
+        <article class="card">
+          <div class="card-num">03</div>
+          <h3 class="card-title">Anxiety In Lines</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">教师同步项目：排队中的不确定等待、有限控制和封闭社交压力。NoP / GT / RWT 变量驱动排队管理与协商，展示完整"生活经验 → 数据化抽象 → 原型"链路。</p>
+          <a href="research.html" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">查看课程案例 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 游戏是艺术，创新源于生活</p>
+        <p class="footer-note">研究持续更新中 · 最后更新：2026年8月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

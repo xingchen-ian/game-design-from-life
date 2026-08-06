@@ -1,0 +1,36 @@
+Create 13 poker-style cards for the hearts suit of the "Life-to-Game Prototype Deck".
+
+Language rule:
+Use ENGLISH ONLY on the card faces. Do not use Chinese text anywhere.
+
+Hearts represent: Emotion / Relationship
+Accent color: heart red
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: Emotion
+- Large English keyword
+- Simple symbolic icon
+- One short English design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♥ Core Feeling / What should players feel?
+2♥ Curiosity / Why keep exploring?
+3♥ Anticipation / What has not happened yet?
+4♥ Anxiety / Where does pressure come from?
+5♥ Frustration / What keeps blocking players?
+6♥ Trust / How do players share risk?
+7♥ Envy / Who has what you want?
+8♥ Shame / What action becomes visible?
+9♥ Belonging / How are players accepted?
+10♥ Secret Pleasure / What small win stays hidden?
+J♥ Relationship / Who shapes your decision?
+Q♥ Emotional Turn / When does the feeling shift?
+K♥ Aftertaste / What remains after play?
+
+Important:
+Keep all cards visually consistent. Make the English text accurate and readable.
+

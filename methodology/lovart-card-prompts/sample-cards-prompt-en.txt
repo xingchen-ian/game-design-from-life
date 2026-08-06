@@ -1,0 +1,58 @@
+Design 5 sample cards for a poker-style educational deck titled "Life-to-Game Prototype Deck".
+
+The deck helps game design students transform everyday life experiences into tabletop game prototypes.
+
+Language rule:
+Use ENGLISH ONLY on the card faces. Do not use Chinese text anywhere on the cards.
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal symbolic icons, warm off-white background, restrained colors, no casino style, no fantasy decoration, no childish cartoon style.
+
+Card layout:
+1. Top-left and bottom-right: poker rank and suit.
+2. Small category label in English.
+3. Large English keyword in the center.
+4. Optional small subtitle only if needed.
+5. One simple symbolic icon.
+6. Bottom: one short English design prompt.
+
+Create these 5 cards:
+
+A♥
+Category: Emotion
+Keyword: Core Feeling
+Prompt: What should players feel?
+Color: heart red
+Icon idea: heart with a small pulse line
+
+4♠
+Category: Conflict
+Keyword: Unfair Rule
+Prompt: Who does the rule favor?
+Color: dark blue-black
+Icon idea: tilted scale
+
+5♦
+Category: Resource
+Keyword: Information
+Prompt: Who knows the key fact?
+Color: amber-orange
+Icon idea: folded note or signal dot
+
+7♣
+Category: Action
+Keyword: Bid
+Prompt: How do players set value?
+Color: green
+Icon idea: raised hand with token
+
+Big Joker
+Category: Variant
+Keyword: Rule Reversal
+Prompt: Reverse one rule.
+Color: mixed accent colors
+Icon idea: mirrored arrows
+
+Important:
+All five cards must share the same grid layout and visual system. Make the English text accurate, readable, and professionally typeset.
+

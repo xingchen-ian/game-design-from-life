@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>课程研究 · 来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="practice.html" class="nav-link">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link active">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero page-hero--research">
+    <div class="container">
+      <div class="section-tag">Course Research</div>
+      <h1 class="page-title">课程研究档案</h1>
+      <p class="page-subtitle">持续汇总学生项目、AI 协作日志、系统设计图与研究问题。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="research-overview">
+        <div class="research-lede">
+          <div class="section-tag">Research Frame</div>
+          <h2 class="section-title">从课程成果到研究证据</h2>
+          <p>本页面把课堂中的游戏项目整理为一个持续更新的研究现场。每个项目都由生活经验出发，经由系统设计图、GitHub 原型和 `agent-development-log.md` 记录，逐步形成可分析的案例材料。</p>
+        </div>
+        <div class="evidence-stack">
+          <div class="evidence-item">
+            <span class="evidence-num">01</span>
+            <h3>系统设计图</h3>
+            <p>观察学生如何把生活经验拆成 Game World、Player Input、Game Resource、Data 与胜负条件。</p>
+          </div>
+          <div class="evidence-item">
+            <span class="evidence-num">02</span>
+            <h3>GitHub Repo</h3>
+            <p>检查设计变量是否进入代码，机制是否被实现，以及从设计图到原型时发生了哪些改变。</p>
+          </div>
+          <div class="evidence-item">
+            <span class="evidence-num">03</span>
+            <h3>Agent Development Log</h3>
+            <p>记录学生如何与 AI 协作，AI 是代码助手、设计合作者、反思镜子，还是造成设计偏移的来源。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Coding Framework · 2026-07</div>
+        <h2 class="section-title">分析编码体系</h2>
+        <p class="section-desc">基于 analysis-framework.md 的分类编码，用于跨项目比较与案例选择。</p>
+      </div>
+
+      <div class="coding-grid">
+        <div class="coding-item"><strong>PATH-emotion</strong><span>主走情感经验路径</span></div>
+        <div class="coding-item"><strong>PATH-domain</strong><span>主走领域学习路径</span></div>
+        <div class="coding-item"><strong>PATH-hybrid</strong><span>双路径结合</span></div>
+        <div class="coding-item"><strong>LE-clear</strong><span>生活经验具体可用</span></div>
+        <div class="coding-item"><strong>EM-clear</strong><span>核心情感明确</span></div>
+        <div class="coding-item"><strong>ME-aligned</strong><span>机制支撑情感</span></div>
+        <div class="coding-item"><strong>ME-drift</strong><span>机制情感漂移</span></div>
+        <div class="coding-item"><strong>DATA-clear</strong><span>变量与状态清晰</span></div>
+        <div class="coding-item"><strong>DOMAIN-clear</strong><span>领域学习情境具体</span></div>
+        <div class="coding-item"><strong>NOVICE-clear</strong><span>新手误解明确</span></div>
+        <div class="coding-item"><strong>EXPERT-clear</strong><span>高手判断被表达</span></div>
+        <div class="coding-item"><strong>FB-clear</strong><span>领域反馈转游戏反馈</span></div>
+        <div class="coding-item"><strong>SKILL-loop</strong><span>观察-行动-反馈循环</span></div>
+        <div class="coding-item"><strong>CHAL-combo</strong><span>挑战来自变量组合</span></div>
+        <div class="coding-item"><strong>CHAL-curve</strong><span>挑战形成学习曲线</span></div>
+        <div class="coding-item"><strong>AI-code</strong><span>AI 支持实现</span></div>
+        <div class="coding-item"><strong>AI-design</strong><span>AI 影响设计方向</span></div>
+        <div class="coding-item"><strong>AI-reflect</strong><span>AI 支持反思</span></div>
+        <div class="coding-item"><strong>REF-strong</strong><span>反思具体自省</span></div>
+        <div class="coding-item"><strong>REF-thin</strong><span>反思泛泛描述</span></div>
+        <div class="coding-item"><strong>PLAY-verified</strong><span>核心循环已验证</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Research Questions</div>
+        <h2 class="section-title">当前研究问题</h2>
+        <p class="section-desc">这些问题会随着学生项目推进不断收敛，并最终进入论文框架。</p>
+      </div>
+      <div class="question-grid">
+        <div class="question-card">
+          <h3>方法论是否可操作？</h3>
+          <p>学生是否能从真实生活经验出发，选择情感经验路径或领域学习路径，并转化为变量、输入、规则和反馈？</p>
+        </div>
+        <div class="question-card">
+          <h3>情感如何在实现中保真？</h3>
+          <p>从设计图到可玩原型时，核心情感是否被保留？哪些项目发生了机制漂移？</p>
+        </div>
+        <div class="question-card">
+          <h3>AI 改变了什么？</h3>
+          <p>AI 主要帮助实现、修复、扩展，还是影响了学生对原始生活经验的理解和设计选择？</p>
+        </div>
+        <div class="question-card">
+          <h3>挑战空间是否成立？</h3>
+          <p>学生是否能从变量和领域因素中推导 2～3 个递进挑战，而不是临时想几个关卡？</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Project Matrix</div>
+        <h2 class="section-title">项目案例矩阵</h2>
+        <p class="section-desc">先以系统设计图为基础，后续将继续补充 repo 检查和开发日志分析。</p>
+      </div>
+
+      <div class="project-matrix">
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P00-anxiety-in-lines.png" alt="Anxiety In Lines system design" />
+          <div class="student-project-body">
+            <div class="project-id">P00 · 教师同步项目</div>
+            <h3>Anxiety In Lines</h3>
+            <p><strong>Repo：</strong><a href="https://github.com/xingchen-ian/AnxietyInLines" target="_blank" rel="noopener">xingchen-ian/AnxietyInLines</a></p>
+            <p><strong>生活经验：</strong>排队中的不确定等待、有限控制和封闭社交压力。</p>
+            <p><strong>核心机制：</strong>NoP / GT / RWT 驱动的排队管理与协商。</p>
+            <p><strong>研究价值：</strong>目前最完整地展示了“生活经验 → 数据化抽象 → 原型”的链路。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P01-raine-gambler.png" alt="Gambler system design" />
+          <div class="student-project-body">
+            <div class="project-id">P01 · Raine</div>
+            <h3>无为 / Wuwei</h3>
+            <p><strong>Repo：</strong><a href="https://github.com/raineraine-go-away/Raine-nyu-2026-summer-game.git" target="_blank" rel="noopener">raineraine-go-away/Raine-nyu-2026-summer-game</a></p>
+            <p><strong>生活经验：</strong>陷在并非自己设计的规则系统里，越用力越无法脱身，最终通过停止强行解决获得释放。</p>
+            <p><strong>核心机制：</strong>五行房间解谜：寻找规则、遵循规则、改变规则，最后进入“无为”等待。</p>
+            <p><strong>研究价值：</strong>这是一个重要的设计方向变化案例：当前 repo 已从 Canva 上的“赌鬼 / Gambler”转向“无为 / Wuwei”。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P02-one-more-sip.png" alt="One More Sip system design" />
+          <div class="student-project-body">
+            <div class="project-id">P02 · Christina & Bella</div>
+            <h3>One More Sip</h3>
+            <p><strong>Repo：</strong><a href="https://github.com/Christina0205/OneMoreSip.git" target="_blank" rel="noopener">Christina0205/OneMoreSip</a></p>
+            <p><strong>生活经验：</strong>压力后的饮酒放松与失控风险，以及校园禁令。</p>
+            <p><strong>核心机制：</strong>Drunk Level、位置、躲避与被抓状态。</p>
+            <p><strong>研究价值：</strong>适合观察“控制感下降”如何被转成操作难度和风险系统。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P03-the-darkroom.png" alt="The Darkroom system design" />
+          <div class="student-project-body">
+            <div class="project-id">P03 · Boyan</div>
+            <h3>The Darkroom</h3>
+            <p><strong>Repo：</strong><a href="https://github.com/King-Raphael/26SM_Demo/tree/main/Assignment3/The%20Darkroom?authuser=0" target="_blank" rel="noopener">26SM_Demo / Assignment3 / The Darkroom</a></p>
+            <p><strong>生活经验：</strong>照片无法捕捉所见，曝光让现实被改变或重新显现。</p>
+            <p><strong>核心机制：</strong>曝光状态、光轨路径列表、轨迹持续时间与倒计时。</p>
+            <p><strong>研究价值：</strong>很强的感知经验转机制案例，可作为重点案例候选。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P04-coaster-carnage.png" alt="Coaster Carnage system design" />
+          <div class="student-project-body">
+            <div class="project-id">P04 · Savanna</div>
+            <h3>Coaster Carnage</h3>
+            <p><strong>Repo：</strong><a href="https://github.com/syc9459-ui/Coaster-Carnage-.git" target="_blank" rel="noopener">syc9459-ui/Coaster-Carnage-</a></p>
+            <p><strong>生活经验：</strong>第一次坐过山车的恐惧、肾上腺素、好奇与最坏想象。</p>
+            <p><strong>核心机制：</strong>HP、Points、Ride Time、躲避障碍与收集。</p>
+            <p><strong>研究价值：</strong>可观察情感是否被保留，还是滑向通用躲避收集玩法。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P05-cat-servant-simulator.png" alt="Cat Servant Simulator system design" />
+          <div class="student-project-body">
+            <div class="project-id">P05 · Repo 待收集</div>
+            <h3>Cat Servant Simulator</h3>
+            <p><strong>生活经验：</strong>照顾猫时需要读取反馈，过度安抚也可能转化为危险。</p>
+            <p><strong>核心机制：</strong>Satisfaction、Anger、Pass threshold、Perfect range。</p>
+            <p><strong>研究价值：</strong>很适合分析"关怀、风险、阈值和适时停止"的情感结构。</p>
+          </div>
+        </article>
+
+        <article class="student-project-card">
+          <img src="assets/course-screenshots/P06-pre-made-panic.png" alt="Pre-Made Panic system design" />
+          <div class="student-project-body">
+            <div class="project-id">P06 · Repo 待收集</div>
+            <h3>Pre-Made Panic</h3>
+            <p><strong>生活经验：</strong>看似简单的预制餐小店，在多任务同时到来时变成压力场。</p>
+            <p><strong>核心机制：</strong>Pending Tasks、Customer Patience、Mess Count、Closing Timer。</p>
+            <p><strong>研究价值：</strong>很适合分析"并发任务造成的焦虑"和牺牲选择。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-accent">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Next Step</div>
+        <h2 class="section-title">下一步整理方向</h2>
+      </div>
+      <div class="research-roadmap">
+        <div class="roadmap-item">
+          <span>✓</span>
+          <p>分析框架已更新至 7 月：PATH / LE / EM / ME / DATA / DOMAIN / CHAL / AI / REF / PLAY 编码体系。</p>
+        </div>
+        <div class="roadmap-item">
+          <span>2</span>
+          <p>逐个检查 GitHub repo，确认是否包含 `README.md`、`PROJECT_INDEX.md`、`agent-development-log.md`；收集 P05 / P06 仓库。</p>
+        </div>
+        <div class="roadmap-item">
+          <span>3</span>
+          <p>对照系统图和代码，记录哪些变量被实现、哪些机制被改写或消失。</p>
+        </div>
+        <div class="roadmap-item">
+          <span>4</span>
+          <p>分析 `agent-development-log.md`，标注 AI 的角色：代码实现、机制建议、debug、文档整理或反思引导。</p>
+        </div>
+        <div class="roadmap-item">
+          <span>5</span>
+          <p>形成案例矩阵，比较情感保真、机制漂移、教学难点和方法论改进点。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="resource-strip">
+        <div>
+          <div class="section-tag">Summer Camp</div>
+          <h2>夏令营研究观察</h2>
+          <p>2026 暑期夏令营落地领域学习路径，62 个学生作品可在线试玩，形成独立的研究证据源。</p>
+        </div>
+        <div class="resource-links">
+          <a href="summer-camp.html">夏令营成果页</a>
+          <a href="https://xingchen-ian.github.io/domain-learning-camp/gallery/" target="_blank" rel="noopener">作品 Gallery ↗</a>
+          <a href="https://github.com/xingchen-ian/game-design-from-life/blob/main/course-tracking/analysis-framework.md" target="_blank" rel="noopener">分析框架</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Progress Update</div>
+        <h2 class="section-title">2026-06-30 进度判断</h2>
+        <p class="section-desc">基于 GitHub repo、开发日志和系统图的阶段性研究判断。</p>
+      </div>
+      <div class="question-grid">
+        <div class="question-card">
+          <h3>Raine</h3>
+          <p>当前 repo 已转为“无为 / Wuwei”，与 Canva 的“赌鬼 / Gambler”不一致。价值在于研究概念漂移和 AI 对主题字段的推断。</p>
+        </div>
+        <div class="question-card">
+          <h3>One More Sip</h3>
+          <p>实现进展明显：17 个脚本、图片和音频都已进入 repo。但开发日志只有初始记录，过程证据不足。</p>
+        </div>
+        <div class="question-card">
+          <h3>The Darkroom</h3>
+          <p>最成熟案例：51 个脚本、72 条交互日志、多份设计文档和音画系统。适合作为主案例深入分析。</p>
+        </div>
+        <div class="question-card">
+          <h3>Coaster Carnage</h3>
+          <p>早期原型清楚，日志记录了脚手架、bug 修复和“车厢向前”架构变化。反思显示该变化强化了过山车情感。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 课程研究档案</p>
+        <p class="footer-note">研究持续更新中 · 最后更新：2026年8月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

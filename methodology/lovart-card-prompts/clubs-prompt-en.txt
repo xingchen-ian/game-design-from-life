@@ -1,0 +1,36 @@
+Create 13 poker-style cards for the clubs suit of the "Life-to-Game Prototype Deck".
+
+Language rule:
+Use ENGLISH ONLY on the card faces. Do not use Chinese text anywhere.
+
+Clubs represent: Action / Mechanism
+Accent color: green
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: Action
+- Large English keyword
+- Simple symbolic icon
+- One short English design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♣ Core Action / What do players do most?
+2♣ Choose / How do options differ?
+3♣ Move / What changes through position?
+4♣ Collect / What is worth collecting?
+5♣ Trade / How does exchange create tension?
+6♣ Vote / Is majority rule fair?
+7♣ Bid / How do players set value?
+8♣ Cooperate / Why must players work together?
+9♣ Betray / When is betrayal worth it?
+10♣ Hide / What hidden fact creates tension?
+J♣ Role Power / How is each player different?
+Q♣ Rule Shift / When does a rule change?
+K♣ Win Condition / What counts as winning?
+
+Important:
+Keep all cards visually consistent. Make the English text accurate and readable.
+

@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# 内部工作目录（含项目记忆，不公开）
+.workbuddy/
+
+# 夏令营独立站点（16G，已单独部署在 domain-learning-camp 仓库）
+distribution/
+
+# Python / Node
+.venv/
+__pycache__/
+node_modules/
+
+# 备份与临时
+*.zip
+*.bak
+*.tmp

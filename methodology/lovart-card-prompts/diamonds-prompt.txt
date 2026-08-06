@@ -1,0 +1,35 @@
+Create 13 poker-style cards for the diamonds suit of the "Life-to-Game Prototype Deck".
+
+Deck title: 来自生活的游戏设计：桌游原型扑克牌
+Diamonds represent: 资源 / 交换
+Accent color: amber-orange
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: 资源
+- Large Chinese keyword
+- Small English keyword
+- Simple symbolic icon
+- One short Chinese design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♦ 核心资源 / Core Resource / 玩家最在乎什么？
+2♦ 时间 / Time / 时间如何被花掉？
+3♦ 金钱 / Money / 钱能买到什么？
+4♦ 体力 / Energy / 疲惫如何限制行动？
+5♦ 信息 / Information / 谁掌握关键消息？
+6♦ 空间 / Space / 哪个位置最有价值？
+7♦ 人情 / Favor / 欠下的人情如何还？
+8♦ 机会 / Opportunity / 机会何时出现又消失？
+9♦ 声望 / Reputation / 别人如何评价你？
+10♦ 记忆 / Memory / 过去如何影响现在？
+J♦ 道具 / Item / 哪个物件改变规则？
+Q♦ 交换 / Exchange / 玩家愿意付出什么？
+K♦ 积累 / Accumulation / 越多是否越好？
+
+Important:
+Keep all cards visually consistent. Make the Chinese text accurate and readable.
+

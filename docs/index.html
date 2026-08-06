@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="practice.html" class="nav-link">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">Game Design from Life</div>
+      <h1 class="hero-title">
+        来自生活的<br /><em>游戏设计</em>
+      </h1>
+      <p class="hero-subtitle">
+        游戏是艺术，创新源于生活。<br />
+        通过情感经验路径或领域学习路径，将真实生活经验转化为游戏系统。
+      </p>
+      <div class="hero-actions">
+        <a href="project-index.html" class="btn btn-primary">查看项目索引</a>
+        <a href="practice.html" class="btn btn-primary">探索设计实践</a>
+        <a href="summer-camp.html" class="btn btn-outline">夏令营成果</a>
+        <a href="domain-learning.html" class="btn btn-outline">领域学习路径</a>
+        <a href="research.html" class="btn btn-outline">查看课程研究</a>
+        <a href="paper.html" class="btn btn-outline">阅读研究论文</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>向下探索</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Core Concept -->
+  <section class="section" id="concept">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">核心理念</div>
+        <h2 class="section-title">真实经验是起点，结构是桥梁</h2>
+        <p class="section-desc">来自生活的游戏设计不是单一路径：情感经验可以转化为情感等价的玩法，领域学习也可以转化为技能反馈与递进挑战。</p>
+      </div>
+
+      <div class="design-chain">
+        <div class="chain-item">
+          <svg class="chain-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path>
+          </svg>
+          <div class="chain-label">真实生活经验</div>
+          <div class="chain-desc">生活事件或领域学习过程</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-item chain-bridge">
+          <svg class="chain-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <div class="chain-label">提取经验结构</div>
+          <div class="chain-desc">情感结构或认知/技能结构</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-item">
+          <svg class="chain-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="1"></circle>
+            <path d="M12 6v6m0 0v6M8.59 8.59L12 12m0 0l3.41 3.41M15.41 8.59L12 12m0 0L8.59 15.41"></path>
+          </svg>
+          <div class="chain-label">挑战空间设计</div>
+          <div class="chain-desc">变量组合成任务、关卡和学习曲线</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-item">
+          <svg class="chain-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <div class="chain-label">游戏系统体验</div>
+          <div class="chain-desc">情感共鸣或领域判断</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section section-dark" id="highlights">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">核心亮点</div>
+        <h2 class="section-title">研究贡献</h2>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3 class="card-title">双路径框架</h3>
+          <p class="card-text">将“来自生活”明确拆成情感经验路径与领域学习路径：前者关注情感等价，后者关注认知变化、技能循环和反馈理解。</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3 class="card-title">挑战空间设计</h3>
+          <p class="card-text">变量表本身还不是游戏。通过挑战维度和变量组合，将系统推导为关卡、任务、压力变化和学习曲线。</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3 class="card-title">情感原型库</h3>
+          <p class="card-text">归纳并持续生长情感原型——绝处逢生、三顾茅庐、遗憾、惊喜等——作为情感经验路径的创意工具。</p>
+        </div>
+        <div class="card">
+          <div class="card-num">04</div>
+          <h3 class="card-title">教学应用实践</h3>
+          <p class="card-text">方法论已形成问题清单、Google Form、AI-Agent辅助流程和课程证据，支持学生从真实经验进入原型开发。</p>
+        </div>
+        <div class="card">
+          <div class="card-num">05</div>
+          <h3 class="card-title">实践驱动研究</h3>
+          <p class="card-text">每次设计实践既是作品生产，也是方法验证。研究与创作相互推动，在桌游、身体原型和数字游戏中持续迭代。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emotional Prototypes -->
+  <section class="section" id="prototypes">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">情感原型</div>
+        <h2 class="section-title">情感原型库</h2>
+        <p class="section-desc">这些情感原型是连接生活与游戏的密码，在不同文化、不同时代中反复出现。</p>
+      </div>
+
+      <div class="prototypes-grid">
+        <div class="prototype-card" data-emotion="survival">
+          <svg class="proto-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <path d="M9 10h.01M15 10h.01"></path>
+          </svg>
+          <div class="proto-zh">绝处逢生</div>
+          <div class="proto-en">Against All Odds</div>
+          <div class="proto-desc">绝境之中找到出路，极限压力下的逆转时刻</div>
+        </div>
+        <div class="prototype-card" data-emotion="persistence">
+          <svg class="proto-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v18M3 12h18"></path>
+            <circle cx="12" cy="12" r="9"></circle>
+          </svg>
+          <div class="proto-zh">三顾茅庐</div>
+          <div class="proto-en">Persistent Effort</div>
+          <div class="proto-desc">一次次失败后的坚持，终于获得回报的感动</div>
+        </div>
+        <div class="prototype-card" data-emotion="regret">
+          <svg class="proto-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v4h4"></path>
+          </svg>
+          <div class="proto-zh">遗憾</div>
+          <div class="proto-en">Reflective Regret</div>
+          <div class="proto-desc">错过之后的反思，不完美选择留下的余味</div>
+        </div>
+        <div class="prototype-card" data-emotion="surprise">
+          <svg class="proto-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <div class="proto-zh">惊喜</div>
+          <div class="proto-en">Serendipity</div>
+          <div class="proto-desc">意外的美好，打破预期的愉悦</div>
+        </div>
+        <div class="prototype-card prototype-card--more">
+          <svg class="proto-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v12M6 12h12"></path>
+          </svg>
+          <div class="proto-zh">持续探索中</div>
+          <div class="proto-en">More to Come</div>
+          <div class="proto-desc">情感原型库随每次设计实践不断扩充</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Practice Preview -->
+  <section class="section section-accent" id="latest">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">最新实践</div>
+        <h2 class="section-title">设计实践矩阵</h2>
+        <p class="section-desc">每一次设计实践，都是理论的验证与深化——从桌游、身体原型到数字游戏。</p>
+      </div>
+
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <article class="card">
+          <div class="card-num">01</div>
+          <h3 class="card-title">「排队」桌游</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">将排队的社会性体验转化为桌游——人际博弈、推挤竞争、道德抉择。情感原型：绝处逢生、遗憾、无奈、暗爽。</p>
+          <a href="practice.html#queue" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">查看完整设计过程 →</a>
+        </article>
+        <article class="card">
+          <div class="card-num">02</div>
+          <h3 class="card-title">帆船模拟器</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">领域学习路径的代表案例：新手以为"我要控制船"，高手知道"我要读取风"。读风→调帆→借力，形成观察-判断-行动-反馈循环。</p>
+          <a href="domain-learning.html" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">了解领域学习路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-num">03</div>
+          <h3 class="card-title">广场舞身体原型</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">退休女性广场舞的"跟上队伍"体验：动作模仿 + 节奏压力 + 相似度评分，验证非数字/身体活动如何进入方法论。</p>
+          <a href="practice.html#square-dance" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">查看身体原型 →</a>
+        </article>
+        <article class="card">
+          <div class="card-num">04</div>
+          <h3 class="card-title">Anxiety In Lines</h3>
+          <p class="card-text" style="color: var(--text-2); font-size: 0.92rem; line-height: 1.75;">教师同步项目：排队中的不确定等待、有限控制和封闭社交压力，以 NoP / GT / RWT 变量驱动排队管理与协商。</p>
+          <a href="research.html" style="display:inline-block; margin-top:1rem; color: var(--accent, #d4a853); font-weight:500;">查看课程案例 →</a>
+        </article>
+      </div>
+
+      <div class="preview-card" style="margin-top: 2.5rem;">
+        <div class="preview-meta">
+          <span class="preview-tag">2026 暑期夏令营</span>
+          <span class="preview-tag">62 个学生作品</span>
+          <span class="preview-tag">可在线试玩</span>
+        </div>
+        <div class="preview-content">
+          <div class="preview-col">
+            <h4>成果</h4>
+            <ul>
+              <li>62 个可玩游戏</li>
+              <li>学生作品 Gallery</li>
+              <li>Game Showreel</li>
+            </ul>
+          </div>
+          <div class="preview-col">
+            <h4>领域分布</h4>
+            <ul>
+              <li>滑冰、骑马、越野跑</li>
+              <li>烘焙、摄影、帆船</li>
+              <li>射箭、魔方、无人机</li>
+            </ul>
+          </div>
+          <div class="preview-col">
+            <h4>课程</h4>
+            <ul>
+              <li>INSIDE 设计分析</li>
+              <li>领域学习工作簿</li>
+              <li>Agent 开发工作坊</li>
+            </ul>
+          </div>
+        </div>
+        <a href="summer-camp.html" class="preview-cta">
+          查看夏令营成果
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 游戏是艺术，创新源于生活</p>
+        <p class="footer-note">研究持续更新中 · 最后更新：2026年8月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

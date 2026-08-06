@@ -1,0 +1,35 @@
+Create 13 poker-style cards for the spades suit of the "Life-to-Game Prototype Deck".
+
+Deck title: 来自生活的游戏设计：桌游原型扑克牌
+Spades represent: 阻碍 / 冲突
+Accent color: dark blue-black
+
+Use the same layout across all cards:
+- Poker rank and suit corners
+- Category label: 阻碍
+- Large Chinese keyword
+- Small English keyword
+- Simple symbolic icon
+- One short Chinese design prompt at the bottom
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal icons, warm off-white background, no casino style, no fantasy decoration, no childish cartoon style.
+
+Cards:
+A♠ 核心矛盾 / Core Tension / 想要什么却得不到？
+2♠ 时间压力 / Time Pressure / 倒计时如何改变选择？
+3♠ 资源不足 / Scarcity / 少了什么就会紧张？
+4♠ 规则不公 / Unfair Rule / 规则偏向了谁？
+5♠ 他人干扰 / Interference / 谁能打乱你的计划？
+6♠ 信息不全 / Incomplete Info / 玩家不知道什么？
+7♠ 选择不可逆 / Irreversible Choice / 哪个决定不能撤回？
+8♠ 位置受限 / Spatial Limit / 空间如何卡住玩家？
+9♠ 身份误解 / Misread Identity / 谁被错误理解？
+10♠ 失控 / Loss of Control / 哪个系统不听使唤？
+J♠ 对手 / Opponent / 谁在主动阻止你？
+Q♠ 道德困境 / Moral Dilemma / 赢的代价是什么？
+K♠ 危机高峰 / Crisis Peak / 什么时候最危险？
+
+Important:
+Keep all cards visually consistent. Make the Chinese text accurate and readable.
+

@@ -1,0 +1,32 @@
+Design the back side for the "Life-to-Game Prototype Deck".
+
+Language rule:
+Use ENGLISH ONLY. Do not use Chinese text.
+
+Purpose:
+This is the shared card back for all 54 cards. The back must not reveal suit, category, rank, or card type.
+
+Visual direction:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, restrained and professional. It should feel like a design tool, not a casino deck.
+
+Composition:
+- Standard poker card ratio, 63mm x 88mm.
+- Warm off-white or very light neutral background.
+- Center title: Life-to-Game Prototype Deck.
+- Optional small subtitle: Emotion · Conflict · Resource · Action.
+- Use a symmetrical repeating pattern made from four abstract icons:
+  heart/pulse for Emotion,
+  scale or obstacle mark for Conflict,
+  diamond/token for Resource,
+  clover/arrow for Action.
+- Use all four accent colors subtly:
+  heart red, dark blue-black, amber-orange, green.
+- Add a thin border that matches the front card style.
+- Keep enough empty space; avoid clutter.
+
+Important constraints:
+- The back must look identical for every card.
+- Do not include rank, suit, category, or any hidden information.
+- Avoid casino ornament, joker faces, fantasy art, childish cartoon style, and overly decorative patterns.
+- Make it usable in black-and-white print: pattern should still be visible through shape, not only color.
+

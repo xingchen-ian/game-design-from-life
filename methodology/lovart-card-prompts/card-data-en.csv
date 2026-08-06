@@ -1,0 +1,55 @@
+card,suit,category,keyword,prompt,color
+A,heart,Emotion,Core Feeling,What should players feel?,heart red
+2,heart,Emotion,Curiosity,Why keep exploring?,heart red
+3,heart,Emotion,Anticipation,What has not happened yet?,heart red
+4,heart,Emotion,Anxiety,Where does pressure come from?,heart red
+5,heart,Emotion,Frustration,What keeps blocking players?,heart red
+6,heart,Emotion,Trust,How do players share risk?,heart red
+7,heart,Emotion,Envy,Who has what you want?,heart red
+8,heart,Emotion,Shame,What action becomes visible?,heart red
+9,heart,Emotion,Belonging,How are players accepted?,heart red
+10,heart,Emotion,Secret Pleasure,What small win stays hidden?,heart red
+J,heart,Emotion,Relationship,Who shapes your decision?,heart red
+Q,heart,Emotion,Emotional Turn,When does the feeling shift?,heart red
+K,heart,Emotion,Aftertaste,What remains after play?,heart red
+A,spade,Conflict,Core Tension,What is wanted but blocked?,dark blue-black
+2,spade,Conflict,Time Pressure,How does a countdown change choices?,dark blue-black
+3,spade,Conflict,Scarcity,What shortage creates tension?,dark blue-black
+4,spade,Conflict,Unfair Rule,Who does the rule favor?,dark blue-black
+5,spade,Conflict,Interference,Who can disrupt the plan?,dark blue-black
+6,spade,Conflict,Incomplete Info,What do players not know?,dark blue-black
+7,spade,Conflict,Irreversible Choice,What cannot be undone?,dark blue-black
+8,spade,Conflict,Spatial Limit,How does space trap players?,dark blue-black
+9,spade,Conflict,Misread Identity,Who is misunderstood?,dark blue-black
+10,spade,Conflict,Loss of Control,What system stops obeying?,dark blue-black
+J,spade,Conflict,Opponent,Who actively blocks you?,dark blue-black
+Q,spade,Conflict,Moral Dilemma,What is the cost of winning?,dark blue-black
+K,spade,Conflict,Crisis Peak,When is danger highest?,dark blue-black
+A,diamond,Resource,Core Resource,What matters most?,amber-orange
+2,diamond,Resource,Time,How is time spent?,amber-orange
+3,diamond,Resource,Money,What can money buy?,amber-orange
+4,diamond,Resource,Energy,How does fatigue limit action?,amber-orange
+5,diamond,Resource,Information,Who knows the key fact?,amber-orange
+6,diamond,Resource,Space,Which position has value?,amber-orange
+7,diamond,Resource,Favor,How is a favor repaid?,amber-orange
+8,diamond,Resource,Opportunity,When does a chance vanish?,amber-orange
+9,diamond,Resource,Reputation,How do others judge you?,amber-orange
+10,diamond,Resource,Memory,How does the past matter?,amber-orange
+J,diamond,Resource,Item,What object changes a rule?,amber-orange
+Q,diamond,Resource,Exchange,What are players willing to give?,amber-orange
+K,diamond,Resource,Accumulation,Is more always better?,amber-orange
+A,club,Action,Core Action,What do players do most?,green
+2,club,Action,Choose,How do options differ?,green
+3,club,Action,Move,What changes through position?,green
+4,club,Action,Collect,What is worth collecting?,green
+5,club,Action,Trade,How does exchange create tension?,green
+6,club,Action,Vote,Is majority rule fair?,green
+7,club,Action,Bid,How do players set value?,green
+8,club,Action,Cooperate,Why must players work together?,green
+9,club,Action,Betray,When is betrayal worth it?,green
+10,club,Action,Hide,What hidden fact creates tension?,green
+J,club,Action,Role Power,How is each player different?,green
+Q,club,Action,Rule Shift,When does a rule change?,green
+K,club,Action,Win Condition,What counts as winning?,green
+Small Joker,joker,Variant,Event,Add a surprise.,mixed
+Big Joker,joker,Variant,Rule Reversal,Reverse one rule.,mixed

@@ -1,0 +1,60 @@
+Design 5 sample cards for a poker-style educational deck titled "来自生活的游戏设计：桌游原型扑克牌", English subtitle "Life-to-Game Prototype Deck".
+
+The deck helps game design students transform everyday life experiences into tabletop game prototypes.
+
+Visual style:
+Clean educational design, modern tabletop prototype aesthetic, print-friendly, high readability, minimal symbolic icons, warm off-white background, restrained colors, no casino style, no fantasy decoration, no childish cartoon style.
+
+Card layout:
+1. Top-left and bottom-right: poker rank and suit.
+2. Small category label.
+3. Large Chinese keyword in the center.
+4. Smaller English keyword under it.
+5. One simple symbolic icon.
+6. Bottom: one short Chinese design prompt.
+
+Create these 5 cards:
+
+A♥
+Category: 情绪
+Chinese keyword: 核心感受
+English keyword: Core Feeling
+Prompt: 这局想让玩家感到什么？
+Color: heart red
+Icon idea: heart with a small pulse line
+
+4♠
+Category: 阻碍
+Chinese keyword: 规则不公
+English keyword: Unfair Rule
+Prompt: 规则偏向了谁？
+Color: dark blue-black
+Icon idea: tilted scale
+
+5♦
+Category: 资源
+Chinese keyword: 信息
+English keyword: Information
+Prompt: 谁掌握关键消息？
+Color: amber-orange
+Icon idea: folded note or signal dot
+
+7♣
+Category: 行动
+Chinese keyword: 竞价
+English keyword: Bid
+Prompt: 价值如何由玩家决定？
+Color: green
+Icon idea: raised hand with token
+
+Big Joker
+Category: 变体
+Chinese keyword: 规则反转
+English keyword: Rule Reversal
+Prompt: 把一个规则反过来
+Color: mixed accent colors
+Icon idea: mirrored arrows
+
+Important:
+All five cards must share the same grid layout and visual system. Make the Chinese text accurate and readable.
+
