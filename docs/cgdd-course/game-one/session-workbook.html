@@ -884,6 +884,63 @@
 
       .mode-tab { white-space: nowrap; }
     }
+
+    /* ---------- Question rating (5 stars) ---------- */
+    .question-rating {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      margin: 24px 0 0;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 226, 226, 0.2);
+    }
+    .rating-label {
+      font-size: 13px;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+    .rating-stars {
+      display: flex;
+      gap: 2px;
+    }
+    .star {
+      background: none;
+      border: 1px solid rgba(212, 226, 226, 0.18);
+      background: rgba(12, 18, 21, 0.4);
+      font-size: 22px;
+      line-height: 1;
+      color: #555;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .star:hover, .star.is-hover {
+      color: #fbbf24;
+      background: rgba(251, 191, 36, 0.12);
+    }
+    .star.rated {
+      color: #fbbf24 !important;
+      background: rgba(251, 191, 36, 0.18) !important;
+      border-color: rgba(251, 191, 36, 0.55) !important;
+      font-weight: 700;
+      text-shadow: 0 0 4px rgba(251, 191, 36, 0.55);
+    }
+    .rating-reset {
+      margin-left: auto;
+      font-size: 12px;
+      background: none;
+      border: 1px solid rgba(212, 226, 226, 0.24);
+      background: rgba(12, 18, 21, 0.6);
+      color: var(--muted, #a8b5b1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .rating-reset:hover { border-color: var(--ink, #edf2ef); color: var(--ink, #edf2ef); }
   </style>
 </head>
 <body data-lang="en">
@@ -914,10 +971,6 @@
       <a class="mode-tab active" href="session-workbook.html#slide-1">
         <span class="zh">Session 2 · 完整版</span>
         <span class="en">Session 2 · Full</span>
-      </a>
-      <a class="mode-tab" href="domain-learning-workbook-simple.html#slide-1">
-        <span class="zh">Session 2 Simple</span>
-        <span class="en">Session 2 Simple</span>
       </a>
       <a class="mode-tab" href="session-agent.html">
         <span class="zh">Session 3 · AI开发</span>
@@ -1084,6 +1137,19 @@
           <p id="referenceAnswer"></p>
         </aside>
       </div>
+      <div class="question-rating" data-rating-for="">
+        <span class="rating-label zh">这个问题清晰吗？</span>
+        <span class="rating-label en">Is this question clear?</span>
+        <div class="rating-stars">
+          <button class="star" type="button" data-value="1" aria-label="1 star">★</button>
+          <button class="star" type="button" data-value="2" aria-label="2 stars">★</button>
+          <button class="star" type="button" data-value="3" aria-label="3 stars">★</button>
+          <button class="star" type="button" data-value="4" aria-label="4 stars">★</button>
+          <button class="star" type="button" data-value="5" aria-label="5 stars">★</button>
+        </div>
+        <button type="button" class="rating-reset zh">清除</button>
+        <button type="button" class="rating-reset en">Clear</button>
+      </div>
     </section>
 
     <section class="slide" data-slide-type="brief">
@@ -1133,9 +1199,7 @@
         <div class="controls" style="justify-content:flex-start;margin-top:18px">
           <button type="button" class="primary" id="copyBrief"><span class="zh">复制开发摘要</span><span class="en">Copy Development Brief</span></button>
           <button type="button" id="downloadBrief"><span class="zh">下载开发摘要</span><span class="en">Download Development Brief</span></button>
-          <button type="button" id="setReference"><span class="zh">将当前答案设为参考</span><span class="en">Use Current Answers as Reference</span></button>
-          <button type="button" id="clearReference"><span class="zh">清除本地参考</span><span class="en">Clear Local Reference</span></button>
-          <button type="button" id="clearDraft"><span class="zh">清空本地草稿</span><span class="en">Clear Local Draft</span></button>
+          <button type="button" id="exportRatingsCsv"><span class="zh">导出问题评分 CSV</span><span class="en">Export Question Ratings CSV</span></button>
         </div>
         <pre id="briefPreview"></pre>
       </details>
@@ -1155,14 +1219,14 @@
           <h3><span class="zh">绘图步骤</span><span class="en">Drawing Process</span></h3>
           <ol class="zh">
             <li>打开上一页，检查你的设计摘要和四类数据。</li>
-            <li>进入自己小组的 Canva 白板，找到 Sailing example。</li>
+            <li>进入上方共享 Canva 白板，找到 Sailing example。</li>
             <li>不要覆盖 example；在旁边复制结构或建立自己的区域。</li>
             <li>用有动词的箭头连接数据、操作、计算、反馈和结果。</li>
             <li>加入2–3个由系统变量产生的递进挑战。</li>
           </ol>
           <ol class="en">
             <li>Review your design summary and four data categories on the previous page.</li>
-            <li>Open your group's Canva board and locate the Sailing example.</li>
+            <li>Open the shared Canva board above and locate the Sailing example.</li>
             <li>Do not overwrite the example; build your own graph beside it.</li>
             <li>Connect data, actions, calculations, feedback, and outcomes with verb-labeled arrows.</li>
             <li>Add 2-3 progressive challenges generated from system variables.</li>
@@ -1189,26 +1253,12 @@
         </section>
       </div>
 
-      <div class="group-board-grid" aria-label="Canva group boards">
-        <article class="group-board-card">
-          <h3>Group 1</h3>
-          <p class="zh">只进入你被分配的小组白板。</p><p class="en">Open only your assigned group board.</p>
-          <a class="group-board-link" href="https://www.canva.com/design/DAHPImFnTIU/Wga1EYzmCpGXZsS9TZOcHA/edit" target="_blank" rel="noopener noreferrer"><span class="zh">打开 Canva 白板 ↗</span><span class="en">Open Canva Board ↗</span></a>
-        </article>
-        <article class="group-board-card">
-          <h3>Group 2</h3>
-          <p class="zh">只进入你被分配的小组白板。</p><p class="en">Open only your assigned group board.</p>
-          <a class="group-board-link" href="https://www.canva.com/design/DAHPI6HyRVE/YbJe0rJ2k1zAICAARQQcjg/edit" target="_blank" rel="noopener noreferrer"><span class="zh">打开 Canva 白板 ↗</span><span class="en">Open Canva Board ↗</span></a>
-        </article>
-        <article class="group-board-card">
-          <h3>Group 3</h3>
-          <p class="zh">只进入你被分配的小组白板。</p><p class="en">Open only your assigned group board.</p>
-          <a class="group-board-link" href="https://www.canva.com/design/DAHPIzLsTJQ/I3l-ZS3dUiLyf8bEJawAsA/edit" target="_blank" rel="noopener noreferrer"><span class="zh">打开 Canva 白板 ↗</span><span class="en">Open Canva Board ↗</span></a>
-        </article>
-        <article class="group-board-card">
-          <h3>Group 4</h3>
-          <p class="zh">只进入你被分配的小组白板。</p><p class="en">Open only your assigned group board.</p>
-          <a class="group-board-link" href="https://www.canva.com/design/DAHPI4KdqLw/PPMaXMwU_xP7Tlpocs5kCQ/edit" target="_blank" rel="noopener noreferrer"><span class="zh">打开 Canva 白板 ↗</span><span class="en">Open Canva Board ↗</span></a>
+      <div class="group-board-grid group-board-single" aria-label="Canva shared board">
+        <article class="group-board-card group-board-card-hero">
+          <h3><span class="zh">共用 Canva 白板</span><span class="en">Shared Canva Board</span></h3>
+          <p class="zh">所有同学在同一张 Canva 白板上绘制（找一个空白区域作为自己的位置，不要覆盖他人的图）。</p>
+          <p class="en">All students work on the same Canva board (find an empty area for your graph; do not overwrite others).</p>
+          <a class="group-board-link" href="https://www.canva.com/design/DAHTkne6Up4/FoGC2_L0QZLbyuh7WyafkQ/edit" target="_blank" rel="noopener noreferrer"><span class="zh">打开共享 Canva 白板 ↗</span><span class="en">Open Shared Canva Board ↗</span></a>
         </article>
       </div>
 
@@ -1480,9 +1530,139 @@
             zh: "列出 3-5 个核心变量，格式：变量名 / 类型 / 如何变化 / 对体验的作用。",
             en: "List your 3-5 core variables using this format: Variable Name / Type / How It Changes / Role in the Experience.",
             reason: { zh: "少量核心变量能让第一版原型保持聚焦且可完成。", en: "A small variable list keeps the first prototype focused and buildable." }
+          },
+          {
+            id: "s5q8",
+            zh: "把你的数据分成三类，并重点标出“玩家可操作数据”：环境数据（系统提供，玩家不能直接控制）、玩家可操作数据（玩家的 action/input 能直接改变）、系统计算结果（系统根据前两类算出）。",
+            en: "Sort your data into three groups and mark the Player-Controlled Data clearly: Environment Data (supplied by the system, not directly controlled), Player-Controlled Data (directly changed by the player's action/input), System-Calculated Results (computed from the first two).",
+            reason: { zh: "玩家可操作的数据是挑战设计的入口——环境中能影响这些数据的因素，就是挑战要素。", en: "Player-controlled data is the entry point for challenge design: environment factors that affect it become challenge elements." }
+          },
+        ]
+      },
+      {
+        id: "step6",
+        title: { zh: "Step 6：挑战空间设计", en: "Step 6: Challenge Space Design" },
+        purpose: {
+          zh: "挑战来自领域因素，而不是临时想关卡。从 Step 5 的“玩家可操作数据”出发，找出环境中能影响它的因素。",
+          en: "Challenges come from domain factors, not improvised levels. Start from Step 5's player-controlled data and find the environment factors that affect it."
+        },
+        questions: [
+          {
+            id: "s6q1",
+            zh: "从 Step 5 的“玩家可操作数据”出发：列出每个可操作数据，找出环境中能影响它的因素。（例如：船速 speed ← 风、浪、洋流；这些就是挑战要素）",
+            en: "Starting from Step 5's player-controlled data: list each one and find the environment factors that affect it. (Example: boat speed ← wind, waves, current; these become challenge elements)",
+            reason: { zh: "挑战要素应该是能改变玩家数据的领域因素，而不是无关的障碍。", en: "Challenge elements should be domain factors that change player data, not unrelated obstacles." }
+          },
+          {
+            id: "s6q2",
+            zh: "哪些因素改变后，玩家必须改变判断或策略？",
+            en: "Which factors, when changed, force the player to change judgment or strategy?",
+            reason: { zh: "真正有意义的挑战会迫使玩家换一种判断方式，而不是只加大难度数字。", en: "A meaningful challenge forces a different kind of judgment, not just bigger difficulty numbers." }
+          },
+          {
+            id: "s6q3",
+            zh: "哪些因素玩家可以直接感知？哪些需要通过反馈慢慢推断？",
+            en: "Which factors can the player perceive directly? Which must be inferred gradually through feedback?",
+            reason: { zh: "可感知因素适合做早期挑战，需推断因素适合做后期挑战。", en: "Perceivable factors suit early challenges; inferable factors suit later ones." }
+          },
+          {
+            id: "s6q4",
+            zh: "为 2-3 个关键因素列出“简单状态”和“困难状态”：简单时是什么样、困难时是什么样、玩家需要分别学会什么判断。",
+            en: "For 2-3 key factors, list an \"easy state\" and a \"hard state\": what each looks like, and what judgment the player must learn in each.",
+            reason: { zh: "同一个因素的不同状态，能形成从易到难的难度层级。", en: "Different states of the same factor create an easy-to-hard difficulty ladder." }
+          },
+          {
+            id: "s6q5",
+            zh: "设计 2-3 个由易到难的挑战：起个名字 + 用哪些因素组合 + 玩家在这个挑战里面对什么具体场景 + 这个挑战训练玩家什么能力。",
+            en: "Design 2-3 challenges from easy to hard: name + factor combination + concrete situation the player faces + skill it trains.",
+            reason: { zh: "第一版原型需要递进挑战来验证同一核心循环在不同难度下是否成立。", en: "The first prototype needs progressive challenges to verify the core loop holds across difficulties." }
+          },
+          {
+            id: "s6q6",
+            zh: "这些挑战是否有从简单到复杂的顺序？",
+            en: "Do these challenges form a simple-to-complex sequence?",
+            reason: { zh: "从单因素挑战到多因素组合，是玩家学习曲线的基础。", en: "From single-factor to multi-factor combinations is the basis of a player learning curve." }
+          },
+          {
+            id: "s6q7",
+            zh: "玩家失败之后，是否能知道自己应该观察什么、调整什么？",
+            en: "After failure, can the player know what to observe or adjust next?",
+            reason: { zh: "好的失败会指向下一步的学习，而不是让玩家感到随机或挫败。", en: "A good failure points to the next thing to learn, not random frustration." }
           }
         ]
-      }
+      },      {
+        id: "step7",
+        title: { zh: "Step 7：视觉与镜头", en: "Step 7: Visual & Camera" },
+        purpose: {
+          zh: "规定游戏画面和镜头，避免 AI 生成的视角不符合你的设想。",
+          en: "Specify the visuals and camera so the AI-generated view matches your intention."
+        },
+        questions: [
+          {
+            id: "s7q1",
+            zh: "玩家以什么视角看游戏世界？（俯视 top-down / 横版侧视 side-scroll / 第一人称 / 第三人称跟随 / 等距 isometric）",
+            en: "What camera perspective does the player use? (top-down / side-scroll / first-person / third-person follow / isometric)",
+            reason: { zh: "镜头决定了玩家能看见什么，直接决定核心判断能否被看到。", en: "The camera decides what the player can see, directly affecting whether the core judgment is visible." }
+          },
+          {
+            id: "s7q2",
+            zh: "为什么这个视角最适合传达你的核心学习转变？",
+            en: "Why does this perspective best convey your core learning shift?",
+            reason: { zh: "视角必须服务于领域体验，而不是随意选择。（俯视才能读风，第三人称跟随才有被带着走感）", en: "The perspective must serve the domain experience, not be arbitrary. (top-down to read wind; third-person follow for being carried along)" }
+          },
+          {
+            id: "s7q3",
+            zh: "画面是 2D、2.5D 还是 3D？",
+            en: "Is the view 2D, 2.5D, or 3D?",
+            reason: { zh: "维度影响实现复杂度和玩家的空间理解。", en: "Dimension affects implementation complexity and the player's spatial understanding." }
+          },
+          {
+            id: "s7q4",
+            zh: "视觉风格是什么？（像素 / 手绘 / 极简几何 / 写实 / 其他）",
+            en: "What is the visual style? (pixel / hand-drawn / minimal geometry / realistic / other)",
+            reason: { zh: "风格要服务于体验氛围，而不是只追求好看。", en: "Style should serve the experience mood, not just look good." }
+          },
+          {
+            id: "s7q5",
+            zh: "色彩基调是明亮还是昏暗？偏冷还是偏暖？为什么？",
+            en: "Is the color tone bright or dark? Cool or warm? Why?",
+            reason: { zh: "色彩直接传递情绪基调，是体验的一部分。", en: "Color directly conveys the emotional tone; it is part of the experience." }
+          },
+          {
+            id: "s7q6",
+            zh: "需要什么声音来强化体验？（音效类型 + 音乐情绪，如紧张 / 放松 / 节奏感 / 静默）",
+            en: "What sounds strengthen the experience? (sound type + music mood, e.g. tense / relaxed / rhythmic / silence)",
+            reason: { zh: "听觉是反馈的重要通道，也能强化领域氛围。", en: "Audio is an important feedback channel and reinforces the domain atmosphere." }
+          }
+        ]
+      },      {
+        id: "step8",
+        title: { zh: "Step 8：人机协作边界", en: "Step 8: Human-AI Collaboration Boundary" },
+        purpose: {
+          zh: "在 AI 动手前声明哪些决策保留、哪些交给 AI，避免 AI 越界。",
+          en: "Declare which decisions you keep and which you hand to the AI before it starts, to avoid overreach."
+        },
+        questions: [
+          {
+            id: "s8q1",
+            zh: "哪些设计决策是你保留的（AI 不得擅自改）？例如核心机制、学习转变、胜负条件、核心变量。",
+            en: "Which design decisions do you keep (AI must not change them without asking)? e.g. core mechanic, learning shift, win/lose conditions, core variables.",
+            reason: { zh: "明确保留项，AI 才不会把这些当成可以自由发挥的部分。", en: "Stating what you keep prevents the AI from treating them as open to improvisation." }
+          },
+          {
+            id: "s8q2",
+            zh: "哪些事情你允许 AI 自主做？例如技术实现、代码结构、视觉微调。",
+            en: "What do you allow the AI to decide on its own? e.g. technical implementation, code structure, visual polish.",
+            reason: { zh: "明确授权项，能减少无效来回，也让你知道哪些地方可能偏离。", en: "Stating what you delegate reduces unnecessary back-and-forth and flags where drift may happen." }
+          },
+          {
+            id: "s8q3",
+            zh: "如果 AI 把你的设计改成了“普通小游戏”（只是题材换皮），你会怎么发现、怎么拉回来？",
+            en: "If the AI turns your design into a generic mini-game (theme only), how will you notice and pull it back?",
+            reason: { zh: "提前想好检测和纠偏方式，是守住设计意图的关键。", en: "Planning detection and correction in advance is key to protecting the design intent." }
+          }
+        ]
+      },
     ];
 
     const embeddedReferenceAnswers = {
@@ -1609,6 +1789,74 @@
       s5q7: {
         zh: "windDirection、windStrength、boatDirection、sailAngle、boatSpeed、routeDrift、stability、timeRemaining，并写明类型、变化规则与作用。",
         en: "windDirection, windStrength, boatDirection, sailAngle, boatSpeed, routeDrift, stability, timeRemaining, with type, change rule, and role."
+      },
+      s5q8: {
+        zh: "环境数据：风向、风力、洋流、礁石、目标位置、时间。玩家可操作数据：船头方向、帆角、路线、转向。系统计算结果：船速、漂移、稳定性、与目标距离。",
+        en: "Environment Data: wind direction, wind strength, current, rocks, target position, time. Player-Controlled Data: boat direction, sail angle, route, turning. System-Calculated Results: boat speed, drift, stability, distance to target."
+      },
+      s6q1: {
+        zh: "船头方向 ← 风向；帆角 ← 风向、风力；船速 ← 风力、洋流；航线 ← 洋流、礁石。",
+        en: "Boat direction ← wind direction; sail angle ← wind direction & strength; boat speed ← wind strength & current; route ← current & rocks."
+      },
+      s6q2: {
+        zh: "目标在逆风方向（不能直线）、横向洋流（航线持续偏）、礁石密集（安全路径变窄）、低能见度（信息不全）。",
+        en: "Target upwind (cannot go straight), cross current (route keeps drifting), dense rocks (narrow safe path), low visibility (incomplete information)."
+      },
+      s6q3: {
+        zh: "风向、礁石、目标位置可直接看到；洋流需要通过船持续漂移来推断。",
+        en: "Wind direction, rocks, and target position are directly visible; current must be inferred from persistent boat drift."
+      },
+      s6q4: {
+        zh: "风向：顺风/侧风（简单）→ 逆风目标（困难），学会读风与规划航线。",
+        en: "Wind direction: downwind/reach (easy) → upwind target (hard); learn to read wind and plan route."
+      },
+      s6q5: {
+        zh: "① 稳定侧风（中等风+开阔水域）学读风调帆；② 逆风目标（逆风+无礁石）学折航；③ 漂移航道（横向洋流+窄航道）学提前补偿。",
+        en: "① Steady crosswind (medium wind + open water): learn reading wind & trimming; ② Upwind target (upwind + no rocks): learn tacking; ③ Drifting channel (cross current + narrow channel): learn compensation."
+      },
+      s6q6: {
+        zh: "有：稳定侧风 → 逆风目标 → 漂移航道 → 礁石风道，从单因素到多因素。",
+        en: "Yes: steady crosswind → upwind target → drifting channel → rocky gusts, from single to multi-factor."
+      },
+      s6q7: {
+        zh: "能：船速下降说明太迎风，航线偏说明洋流，撞礁说明路线没规划好。",
+        en: "Yes: speed drop means too close to wind; route drift means current; hitting rocks means poor route planning."
+      },
+      s7q1: {
+        zh: "俯视 top-down，能看到风向、船头、帆、目标与礁石的全貌。",
+        en: "Top-down, to see wind, boat, sail, target, and rocks at once."
+      },
+      s7q2: {
+        zh: "读风需要同时看到风向、船头方向和目标方向，俯视才能把它们放在同一个平面判断。",
+        en: "Reading wind requires seeing wind, boat, and target directions together; top-down puts them on one plane for judgment."
+      },
+      s7q3: {
+        zh: "3D。帆船用 3D 视角能更立体地呈现海面、风向、浪与礁石的关系。",
+        en: "3D. A 3D sailing view better represents the relationship between sea, wind direction, waves, and rocks."
+      },
+      s7q4: {
+        zh: "极简几何，清晰可读优先。",
+        en: "Minimal geometry, prioritizing clarity."
+      },
+      s7q5: {
+        zh: "明亮偏冷，水面蓝、礁石灰、目标亮色突出。",
+        en: "Bright and cool: blue water, gray rocks, highlighted target."
+      },
+      s7q6: {
+        zh: "帆拍打声提示帆角不对，尾流声提示速度，无背景音乐或轻节奏。",
+        en: "Sail-flap sound signals bad angle; wake sound signals speed; no music or light rhythm."
+      },
+      s8q1: {
+        zh: "核心机制（读风与调帆）、核心学习转变、胜负条件、核心变量（风向/帆角/船速）。",
+        en: "Core mechanic (read wind & trim), core learning shift, win/lose conditions, core variables (wind/sail/speed)."
+      },
+      s8q2: {
+        zh: "技术实现（HTML/Canvas）、代码结构、视觉微调、音效实现。",
+        en: "Technical implementation (HTML/Canvas), code structure, visual polish, sound implementation."
+      },
+      s8q3: {
+        zh: "如果 AI 把游戏做成“按方向键直接到达目标”的赛车式操作，我会发现它丢了读风/调帆的核心，然后要求改回“逆风不可直行”的机制。",
+        en: "If the AI turns it into a 'steer directly to target' racing game, I would notice it lost the read-wind/trim core and ask to restore the 'no direct upwind' mechanic."
       }
     };
     const sailingGraphData = {
@@ -1626,7 +1874,6 @@
       }
     };
     const storageKey = "domain-learning-workbook-v1";
-    const referenceKey = "domain-learning-workbook-reference-v1";
     const languageKey = "domain-learning-camp-language";
     const slideKey = "domain-learning-workbook-slide-v2";
     const storage = (() => {
@@ -1675,16 +1922,8 @@
       saveState.textContent = lang === "zh" ? "已自动保存" : "Auto-saved";
     }
 
-    function readLocalReferenceAnswers() {
-      try {
-        return JSON.parse(storage.getItem(referenceKey) || "{}");
-      } catch (error) {
-        return {};
-      }
-    }
-
     function readReferenceAnswers() {
-      return { ...embeddedReferenceAnswers, ...readLocalReferenceAnswers() };
+      return embeddedReferenceAnswers;
     }
 
     function setLanguage(nextLang) {
@@ -1751,6 +1990,11 @@
       }
       document.getElementById("referenceAnswer").textContent = referenceText;
       referencePanel.classList.toggle("is-visible", Boolean(referenceText));
+      const ratingContainer = document.querySelector(".question-rating");
+      if (ratingContainer) {
+        ratingContainer.setAttribute("data-rating-for", item.question.id);
+        renderRating(item.question.id);
+      }
     }
 
     function isSailingDraft(draft) {
@@ -1842,6 +2086,21 @@
           zh: "目标、失败与刚刚好的范围",
           en: "Goal, Failure, and Just-Right Range",
           value: joinAnswers("s5q4", "s5q5", "s5q6")
+        },
+        {
+          zh: "挑战空间",
+          en: "Challenge Space",
+          value: joinAnswers("s6q1", "s6q4", "s6q5")
+        },
+        {
+          zh: "视觉与镜头",
+          en: "Visual & Camera",
+          value: joinAnswers("s7q1", "s7q2", "s7q3")
+        },
+        {
+          zh: "人机协作边界",
+          en: "Human-AI Collaboration Boundary",
+          value: joinAnswers("s8q1", "s8q2")
         }
       ];
 
@@ -1973,7 +2232,42 @@
       lines.push("### Feedback Translation");
       addBullets(graphData.feedback);
       lines.push("");
-      lines.push("## 5. Rules, Boundaries, and Outcomes");
+      lines.push("## 5. Challenge Space");
+      addAnswer("Challenge factors (affecting player-controlled data)", "s6q1");
+      lines.push("");
+      addAnswer("Factors that force a new judgment", "s6q2");
+      lines.push("");
+      addAnswer("Perceivable vs inferred factors", "s6q3");
+      lines.push("");
+      addAnswer("Challenge dimension table", "s6q4");
+      lines.push("");
+      addAnswer("2-3 progressive challenge combinations", "s6q5");
+      lines.push("");
+      addAnswer("Simple-to-complex sequence", "s6q6");
+      lines.push("");
+      addAnswer("What failure teaches next", "s6q7");
+      lines.push("");
+      lines.push("## 6. Visual & Camera");
+      addAnswer("Camera perspective", "s7q1");
+      lines.push("");
+      addAnswer("Why this perspective fits the learning shift", "s7q2");
+      lines.push("");
+      addAnswer("2D / 2.5D / 3D", "s7q3");
+      lines.push("");
+      addAnswer("Visual style", "s7q4");
+      lines.push("");
+      addAnswer("Color tone", "s7q5");
+      lines.push("");
+      addAnswer("Sound", "s7q6");
+      lines.push("");
+      lines.push("## 7. AI Collaboration Boundary");
+      addAnswer("Student-owned decisions (AI must not change)", "s8q1");
+      lines.push("");
+      addAnswer("AI-autonomous decisions", "s8q2");
+      lines.push("");
+      addAnswer("How to detect and pull back a generic game", "s8q3");
+      lines.push("");
+      lines.push("## 8. Rules, Boundaries, and Outcomes");
       addAnswer("Important states", "s5q2");
       lines.push("");
       addAnswer("How player actions change the system", "s5q3");
@@ -1984,21 +2278,21 @@
       lines.push("");
       addAnswer("Just-right ranges and thresholds", "s5q6");
       lines.push("");
-      lines.push("## 6. Feedback Priorities");
+      lines.push("## 9. Feedback Priorities");
       addAnswer("Immediate feedback", "s4q4");
       lines.push("");
       addAnswer("Feedback discovered over time", "s4q5");
       lines.push("");
       addAnswer("Feedback that must be visual, spatial, audible, or state-based", "s4q6");
       lines.push("");
-      lines.push("## 7. First Playable Version Scope");
+      lines.push("## 10. First Playable Version Scope");
       lines.push("- Build a small desktop-browser game that validates one complete observe → judge → act → feedback → adjust loop.");
       lines.push("- Use the accompanying system graph to implement 2-3 challenge presets when they are clearly defined. Each challenge should change system variables or relationships, not only visual decoration.");
       lines.push("- Keep graphics simple and readable. Prioritize interaction, feedback, and learning over polish.");
       lines.push("- Do not add realistic simulation, complex menus, accounts, online multiplayer, large asset pipelines, or unrelated features in the first version.");
       lines.push("- Do not convert the project into a generic mini-game that only uses the domain as a theme.");
       lines.push("");
-      lines.push("## 8. Web Game Technical Dependencies");
+      lines.push("## 11. Web Game Technical Dependencies");
       lines.push("This project is for high-school students with little or no development experience. The AI Agent may manage development tools, but the final exhibition build must be simple to run.");
       lines.push("");
       lines.push("### Separate Development Dependencies from Exhibition Dependencies");
@@ -2042,7 +2336,7 @@
       lines.push("└── THIRD_PARTY.md             # Libraries, versions, licenses, and sources");
       lines.push("```");
       lines.push("");
-      lines.push("## 9. Integrated Project Website Requirements");
+      lines.push("## 12. Integrated Project Website Requirements");
       lines.push("The website is part of the project, not a separate marketing page. Build it together with the game and keep it current as development progresses.");
       lines.push("");
       lines.push("### Required Website Content");
@@ -2062,7 +2356,7 @@
       lines.push("- Use relative links and asset paths so the complete project can be placed inside a class Gallery subfolder without rewriting paths.");
       lines.push("- Support a clean 1920×1080 exhibition view for display on an iMac. Important controls and text must fit without overlap.");
       lines.push("");
-      lines.push("## 10. Automatic Human-AI Development Log Protocol");
+      lines.push("## 13. Automatic Human-AI Development Log Protocol");
       lines.push("In addition to building the website and game, maintain one Markdown file named `agent-development-log.md`. This file documents how the project develops through human-AI collaboration.");
       lines.push("");
       lines.push("### Initialize the Log");
@@ -2154,7 +2448,7 @@
       lines.push("- Separate factual development events from student reflection. Never invent student opinions or decisions.");
       lines.push("- After milestone reflections, update the Development Process section of the website with a concise, truthful timeline summary.");
       lines.push("");
-      lines.push("## 11. Submission and Exhibition Packaging");
+      lines.push("## 14. Submission and Exhibition Packaging");
       lines.push("At the end of Session 3, create one official self-contained ZIP that the student can upload to the course Tencent shared document. The WeChat group is used to distribute the submission link and reminders, not as the official version archive.");
       lines.push("");
       lines.push("### Required Submission Audit");
@@ -2193,7 +2487,7 @@
       lines.push("- The teacher will later place projects in `gallery/projects/group-01/` through `group-04/` and open each `exhibition/index.html`. The project must run correctly from that nested location.");
       lines.push("- Do not submit only a hosted URL. The complete ZIP is the official durable submission.");
       lines.push("");
-      lines.push("## 12. Instructions for the AI Agent");
+      lines.push("## 15. Instructions for the AI Agent");
       lines.push("1. Read this brief and the system graph before writing code.");
       lines.push("2. Restate the core learning shift, core loop, main variables, feedback mappings, and challenge presets in a short implementation plan.");
       lines.push("3. Identify missing or contradictory information. Ask only questions that block the first playable version.");
@@ -2206,7 +2500,7 @@
       lines.push("10. Keep the website, playable game, README, and development log synchronized with the actual project state.");
       lines.push("11. At the end, run the submission audit, create the manifest and preview, and package the complete Gallery-compatible ZIP.");
       lines.push("");
-      lines.push("## 13. Acceptance Checklist");
+      lines.push("## 16. Acceptance Checklist");
       lines.push("- [ ] The player can take a meaningful action within 30 seconds.");
       lines.push("- [ ] Player actions visibly change system data or state.");
       lines.push("- [ ] Important invisible data is translated into readable feedback.");
@@ -2246,28 +2540,38 @@
       URL.revokeObjectURL(link.href);
     }
 
-    function setCurrentAnswersAsReference() {
-      const answers = readDraft().answers || {};
-      storage.setItem(referenceKey, JSON.stringify(answers));
-      saveState.textContent = lang === "zh" ? "已设为本地参考答案" : "Saved as local reference";
-      render();
+    function csvField(v) {
+      if (v == null) return "";
+      v = String(v);
+      return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
     }
 
-    function clearReferenceAnswers() {
-      storage.removeItem(referenceKey);
-      saveState.textContent = lang === "zh" ? "本地参考答案已清除" : "Local reference cleared";
-      render();
-    }
-
-    function clearDraft() {
-      if (!confirm(lang === "zh" ? "确定清空这台电脑上的本地草稿？" : "Clear the local draft on this computer?")) return;
-      storage.removeItem(storageKey);
-      storage.removeItem(referenceKey);
-      storage.removeItem(slideKey);
-      current = 0;
-      restoreMeta();
-      render();
-      saveState.textContent = lang === "zh" ? "本地草稿已清空" : "Local draft cleared";
+    function exportRatingsCsv() {
+      const draft = readDraft();
+      const ratings = draft.ratings || {};
+      const meta = draft.meta || {};
+      const rows = [];
+      rows.push(["question_id", "step", "question_zh", "question_en", "rating"].join(","));
+      steps.forEach((step) => {
+        const stepLabel = step.title && step.title.zh ? step.title.zh : step.id;
+        (step.questions || []).forEach((q) => {
+          rows.push([
+            csvField(q.id),
+            csvField(stepLabel),
+            csvField(q.zh),
+            csvField(q.en),
+            ratings[q.id] != null ? ratings[q.id] : ""
+          ].join(","));
+        });
+      });
+      const csv = "\ufeff" + rows.join("\r\n");
+      const nameBase = (meta.projectTitle || meta.domain || "ratings").trim().replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, "-").replace(/^-|-$/g, "") || "ratings";
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = nameBase + "-ratings.csv";
+      link.click();
+      URL.revokeObjectURL(link.href);
     }
 
     function readHash() {
@@ -2286,9 +2590,7 @@
     document.querySelectorAll(".lang").forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
     document.getElementById("copyBrief").addEventListener("click", copyBrief);
     document.getElementById("downloadBrief").addEventListener("click", downloadBrief);
-    document.getElementById("setReference").addEventListener("click", setCurrentAnswersAsReference);
-    document.getElementById("clearReference").addEventListener("click", clearReferenceAnswers);
-    document.getElementById("clearDraft").addEventListener("click", clearDraft);
+    document.getElementById("exportRatingsCsv").addEventListener("click", exportRatingsCsv);
     document.addEventListener("keydown", (event) => {
       if (event.target.matches("textarea,input")) return;
       if (event.key === "ArrowRight" || event.key === " ") {
@@ -2301,10 +2603,96 @@
       }
     });
 
-    restoreMeta();
+        function saveRating(questionId, value) {
+      const draft = readDraft();
+      draft.ratings = draft.ratings || {};
+      if (draft.ratings[questionId] === value) {
+        delete draft.ratings[questionId];
+      } else {
+        draft.ratings[questionId] = value;
+      }
+      writeDraft(draft);
+      renderRating(questionId);
+    }
+
+    function renderRating(questionId) {
+      const container = document.querySelector('[data-rating-for="' + questionId + '"]');
+      if (!container) return;
+      const draft = readDraft();
+      const value = ((draft.ratings || {})[questionId]) || 0;
+      container.querySelectorAll(".star").forEach((btn) => {
+        const v = Number(btn.dataset.value);
+        btn.classList.toggle("rated", v <= value);
+      });
+    }
+
+    function initRatingListeners() {
+      document.addEventListener("click", (e) => {
+        const star = e.target.closest(".star");
+        if (star) {
+          const container = star.closest(".question-rating");
+          if (!container) return;
+          const qid = container.getAttribute("data-rating-for");
+          if (!qid) return;
+          saveRating(qid, Number(star.dataset.value));
+          return;
+        }
+        const reset = e.target.closest(".rating-reset");
+        if (reset) {
+          const container = reset.closest(".question-rating");
+          if (!container) return;
+          const qid = container.getAttribute("data-rating-for");
+          if (!qid) return;
+          const draft = readDraft();
+          if (draft.ratings && qid in draft.ratings) {
+            delete draft.ratings[qid];
+            writeDraft(draft);
+          }
+          renderRating(qid);
+        }
+      });
+      document.addEventListener("mouseover", (e) => {
+        const star = e.target.closest(".star");
+        if (!star) return;
+        const container = star.closest(".question-rating");
+        if (!container) return;
+        const val = Number(star.dataset.value);
+        container.querySelectorAll(".star").forEach((btn) => {
+          const v = Number(btn.dataset.value);
+          if (v <= val) btn.classList.add("is-hover");
+        });
+      });
+      document.addEventListener("mouseout", (e) => {
+        const star = e.target.closest(".star");
+        if (!star) return;
+        const container = star.closest(".question-rating");
+        if (!container) return;
+        container.querySelectorAll(".star").forEach((btn) => {
+          btn.classList.remove("is-hover");
+        });
+      });
+    }
+restoreMeta();
     renderDots();
     readHash();
     setLanguage(lang);
+    initRatingListeners();
   </script>
 </body>
 </html>
+<style>
+/* single shared Canva board card (graph page, replaces 4-group grid) */
+.group-board-single { grid-template-columns: minmax(0, 1fr); }
+.group-board-card-hero {
+  padding: 32px;
+  border-width: 2px;
+  border-style: solid;
+}
+.group-board-card-hero h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+}
+.group-board-card-hero p { margin: 8px 0 16px; }
+.group-board-card-hero .group-board-link { font-size: 16px; padding: 14px 22px; }
+</style>
