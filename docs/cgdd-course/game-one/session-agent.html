@@ -210,6 +210,20 @@
       font: 14px/1.55 "SFMono-Regular", Consolas, monospace;
     }
 
+    .prompt-links { margin-top: 16px; }
+    .prompt-links p {
+      margin: 0 0 10px;
+      padding: 14px 16px;
+      border: 1px solid rgba(211, 223, 222, 0.22);
+      border-left: 5px solid var(--teal);
+      border-radius: 3px;
+      background: rgba(3, 6, 8, 0.72);
+      color: #d7e0dd;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .prompt-links p:last-child { margin-bottom: 0; }
+
     .guardrail {
       margin-top: 32px;
       padding: 16px 18px;
@@ -329,9 +343,9 @@
           <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">亲自完成阶段反思，说明AI影响和自己的决定。</span><span class="en">Write the stage reflection, including AI influence and personal decisions.</span></p></div>
         </article>
         <article class="pipeline-stage">
-          <h3><span class="zh">检查、打包并提交</span><span class="en">Audit, Package, and Submit</span></h3>
-          <div class="role"><b>AI Agent</b><p><span class="zh">检查离线运行、相对路径、隐私和文件完整性，生成manifest与ZIP。</span><span class="en">Check offline use, relative paths, privacy, and completeness; generate the manifest and ZIP.</span></p></div>
-          <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">最终试玩并把ZIP上传到腾讯共享文档的指定位置。</span><span class="en">Complete a final playtest and upload the ZIP to the assigned Tencent shared document.</span></p></div>
+          <h3><span class="zh">发布并检查</span><span class="en">Publish and Verify</span></h3>
+          <div class="role"><b>AI Agent</b><p><span class="zh">检查相对路径、隐私和文件完整性，确认本地静态服务器下一切正常。</span><span class="en">Check relative paths, privacy, and completeness; verify everything on a local static server.</span></p></div>
+          <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">开启 GitHub Pages，打开线上链接最终试玩，把链接交给老师。</span><span class="en">Turn on GitHub Pages, do a final playtest on the live URL, and send the link to your instructor.</span></p></div>
         </article>
       </div>
     </section>
@@ -345,7 +359,7 @@
         <article class="outcome"><h3>Track B · Local Vendor</h3><p><span class="zh">只使用少量固定版本的浏览器库，并把库文件保存在项目中，不使用CDN。</span><span class="en">Use a small version-pinned browser library stored locally in the project, not a CDN.</span></p></article>
         <article class="outcome"><h3>Track C · npm + Build</h3><p><span class="zh">Three.js、多个ES Modules或复杂加载器可以使用npm与Vite；提交前必须生成静态展览版本。</span><span class="en">Three.js, multiple ES Modules, or complex loaders may use npm and Vite; produce a static exhibition build before submission.</span></p></article>
       </div>
-      <div class="guardrail"><p class="zh"><strong>统一运行标准：</strong>最终iMac只打开已经构建好的 <code>exhibition/</code>。不在展览电脑上执行 <code>npm install</code>。Three.js与ES Module项目通过静态HTTP服务器运行，不以双击HTML为验收标准。</p><p class="en"><strong>Shared runtime standard:</strong> The iMac opens the prebuilt <code>exhibition/</code>. Never run <code>npm install</code> on exhibition machines. Serve Three.js and ES Module projects through static HTTP; double-clicking HTML is not the acceptance standard.</p></div>
+      <div class="guardrail"><p class="zh"><strong>统一发布标准：</strong>网站放在仓库根目录，由 GitHub Pages 从 <code>main</code> 分支发布，地址是 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>。因为部署在子路径下，<b>所有内部链接和资源路径必须是相对路径</b>——以 <code>/</code> 开头的绝对路径在本地能用，上线就 404。Three.js 与 ES Module 项目通过本地静态HTTP服务器验证，不以双击HTML为验收标准。</p><p class="en"><strong>Shared publishing standard:</strong> The site lives at the repository root and GitHub Pages publishes it from the <code>main</code> branch at <code>https://&lt;username&gt;.github.io/&lt;repository&gt;/</code>. Because it is served from a subpath, <b>every internal link and asset path must be relative</b> — root-absolute paths beginning with <code>/</code> work locally and 404 online. Verify Three.js and ES Module projects through a local static HTTP server; double-clicking HTML is not the acceptance standard.</p></div>
     </section>
 
     <section class="section">
@@ -359,48 +373,46 @@
         <article class="outcome"><h3><span class="zh">源文件与素材</span><span class="en">Source and Assets</span></h3><p><span class="zh">HTML、CSS、JavaScript、系统图、图片和声音。</span><span class="en">HTML, CSS, JavaScript, graph, images, and sounds.</span></p></article>
         <article class="outcome"><h3>README</h3><p><span class="zh">运行方法、操作方式、文件结构、依赖和已知问题。</span><span class="en">Run instructions, controls, structure, dependencies, and known issues.</span></p></article>
         <article class="outcome"><h3><span class="zh">学生反思</span><span class="en">Student Reflection</span></h3><p><span class="zh">哪些决定属于学生，AI如何影响方向，游戏是否仍表达原目标。</span><span class="en">Student decisions, AI influence, and fidelity to the original goal.</span></p></article>
-        <article class="outcome"><h3><span class="zh">标准提交包</span><span class="en">Submission Package</span></h3><p><span class="zh">可离线运行的ZIP、manifest、预览图和全部项目文件。</span><span class="en">Offline-ready ZIP, manifest, preview image, and complete project files.</span></p></article>
+        <article class="outcome"><h3><span class="zh">展览链接</span><span class="en">Exhibition Link</span></h3><p><span class="zh">一个 GitHub Pages 网址，任何人打开就能玩，也是期末小展览的入口。</span><span class="en">One GitHub Pages URL anyone can open and play — the entry point for the end-of-module exhibition.</span></p></article>
       </div>
     </section>
 
     <section class="section">
-      <h2><span class="zh">Submission &amp; Exhibition</span><span class="en">Submission &amp; Exhibition</span></h2>
-      <p class="section-intro zh">微信群用于发送腾讯共享文档入口和课堂提醒；腾讯共享文档用于正式收取每组唯一的最终ZIP。不要把聊天记录中的零散版本当成正式提交。</p>
-      <p class="section-intro en">Use the WeChat group to distribute the Tencent shared-document link and class reminders. Use the shared document to collect one official final ZIP from each group. Scattered versions in chat are not the official submission.</p>
+      <h2><span class="zh">发布与展览</span><span class="en">Publishing &amp; Exhibition</span></h2>
+      <p class="section-intro zh">项目结束时不需要打包 ZIP。你的仓库本身就是提交物，GitHub Pages 会把它变成一个任何人都能打开的可玩链接——这也是期末小展览的入口。</p>
+      <p class="section-intro en">There is no ZIP to package. Your repository <em>is</em> the submission, and GitHub Pages turns it into a playable link anyone can open — the entry point for the end-of-module exhibition.</p>
       <div class="submission-layout">
         <div>
-          <ol class="start-steps zh"><li>让AI Agent说明所选依赖Track和理由。</li><li>如使用npm/Vite，先执行生产构建并生成 <code>exhibition/</code>。</li><li>确认展览版本在断网情况下仍能运行。</li><li>确认所有页面使用相对路径，能够放入班级Gallery子文件夹。</li><li>在1920×1080窗口进行最终展示测试。</li><li>学生确认manifest信息和隐私设置。</li><li>将最终ZIP上传到腾讯共享文档指定位置。</li></ol>
-          <ol class="start-steps en"><li>Ask the AI Agent to state the selected dependency track and reason.</li><li>If using npm/Vite, run the production build and create <code>exhibition/</code>.</li><li>Confirm the exhibition build works without internet access.</li><li>Confirm all pages use relative paths and can live inside a class Gallery subfolder.</li><li>Test the exhibition view at 1920×1080.</li><li>Confirm manifest information and privacy choices.</li><li>Upload the final ZIP to the assigned Tencent shared document.</li></ol>
+          <ol class="start-steps zh"><li>让AI Agent说明所选依赖Track和理由。</li><li>如使用npm/Vite，先执行生产构建，把静态输出放到仓库根目录。</li><li>确认所有页面使用<b>相对路径</b>——Pages 部署在子路径下，绝对路径会 404。</li><li>用本地静态HTTP服务器跑一遍，逐个测试导航、游戏、控制、挑战和胜负。</li><li>在1920×1080窗口进行最终展示测试。</li><li>确认没有提交密码、API Key、<code>node_modules</code>、缓存或临时文件。</li><li>开启 GitHub Pages：<code>Settings → Pages → Deploy from a branch → main / (root)</code>。</li><li>等几分钟，打开线上链接再测一遍，然后把链接和仓库地址交给老师。</li></ol>
+          <ol class="start-steps en"><li>Ask the AI Agent to state the selected dependency track and reason.</li><li>If using npm/Vite, run the production build and put the static output at the repository root.</li><li>Confirm every page uses <b>relative paths</b> — Pages serves from a subpath, so absolute paths 404.</li><li>Serve the project through a local static HTTP server and test navigation, the game, controls, challenges, win and loss.</li><li>Test the exhibition view at 1920×1080.</li><li>Confirm no passwords, API keys, <code>node_modules</code>, caches, or temporary files are committed.</li><li>Turn on GitHub Pages: <code>Settings → Pages → Deploy from a branch → main / (root)</code>.</li><li>Wait a few minutes, re-test the live URL, then send the link and the repository URL to your instructor.</li></ol>
         </div>
-        <pre class="package-tree">2026-Camp-Group-01-ProjectName.zip
-├── exhibition/
-│   ├── index.html
-│   ├── game.html
-│   ├── process.html
-│   └── assets/
-├── source/
-│   ├── src/
-│   ├── package.json (optional)
-│   └── package-lock.json (optional)
-├── README.md
-├── THIRD_PARTY.md
-├── agent-development-log.md
-├── development-brief.md
+        <pre class="package-tree">repository/                  ← GitHub Pages 根目录
+├── index.html               # 首页：设计者陈述、系统图、开始游戏
+├── game.html                # 可玩游戏
+├── process.html             # 人机开发时间线
+├── assets/                  # JS/CSS、系统图、音频、字体
+├── development-log/
+│   └── agent-development-log.md
+├── brief.md                 # 开发规格（你从 Workbook 导出）
 ├── system-graph.png
-├── submission-manifest.json
-└── preview.png</pre>
+├── ratings.csv              # 问题评分（教学反馈用）
+├── README.md                # 运行方法、操作、依赖、主要变量
+└── source/                  # 仅 Track C：src/、package.json</pre>
       </div>
-      <div class="guardrail"><p class="zh"><strong>Gallery兼容要求：</strong>不要使用以 <code>/</code> 开头的绝对资源路径，不要依赖学生电脑上的本地文件路径，不要提交密码、API Key、<code>node_modules</code>、缓存或临时文件。</p><p class="en"><strong>Gallery compatibility:</strong> Do not use root-absolute asset paths beginning with <code>/</code>, student-computer file paths, passwords, API keys, <code>node_modules</code>, caches, or temporary files.</p></div>
+      <div class="guardrail"><p class="zh"><strong>公开性提醒：</strong>GitHub Pages 在免费方案下要求仓库是 <b>public</b> 的。这意味着 <code>brief.md</code>、<code>ratings.csv</code>、<code>development-log/</code> 和 commit 时间线都会被公开看到。不想公开的内容就不要放进仓库。同时绝对不要提交密码、API Key 或 <code>node_modules</code>。</p><p class="en"><strong>Public by design:</strong> GitHub Pages requires a <b>public</b> repository on the free plan. That means <code>brief.md</code>, <code>ratings.csv</code>, <code>development-log/</code>, and the commit timeline are all publicly visible. Anything you do not want published simply stays out of the repository. And never commit passwords, API keys, or <code>node_modules</code>.</p></div>
     </section>
 
     <section class="section">
       <h2><span class="zh">开始开发</span><span class="en">Start Development</span></h2>
       <div class="start-panel">
-        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown和系统图PNG。</li><li>让AI Agent打开这个文件夹。</li><li>发送右侧启动Prompt。</li><li>先确认Agent的计划，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>private</b> repo，并把老师加为 collaborator。</li></ol>
-        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown and system graph PNG.</li><li>Open this folder with your AI Agent.</li><li>Send the startup prompt.</li><li>Confirm the Agent's plan before allowing it to write code.</li><li>Publish this folder as a <b>private</b> repo with GitHub Desktop, then add your instructor as a collaborator.</li></ol>
-        <pre class="prompt-block">Read the development brief and system graph in this folder. Follow all website, game, dependency, automatic logging, and exhibition packaging requirements in the brief. Before writing code, restate the core learning shift, core player loop, main data, feedback relationships, challenge presets, website structure, selected dependency track, and first implementation milestone. Identify any blocking questions. Wait for my confirmation before implementation.</pre>
-        <p class="zh" style="margin-top:12px">接着再发<a href="dev-log-prompt.html">开发日志提示词</a>，让 AI 在帮你开发的同时维护 <code>agent-development-log.md</code>：AI 自动写交互记录，里程碑时它停下来问你写阶段反思。</p>
-        <p class="en" style="margin-top:12px">Then send the <a href="dev-log-prompt.html">development log prompt</a> so AI maintains <code>agent-development-log.md</code> while it builds: it writes the raw interaction logs automatically, and stops at milestones to ask you for a stage reflection.</p>
+        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown和系统图PNG。</li><li>让AI Agent打开这个文件夹。</li><li>先发<a href="kickoff-prompt.html">首次对话协议</a>（让AI index 工作空间并复述设计），再发<a href="dev-log-prompt.html">开发日志提示词</a>。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
+        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown and system graph PNG.</li><li>Open this folder with your AI Agent.</li><li>Send the <a href="kickoff-prompt.html">kickoff prompt</a> (AI indexes the workspace and restates the design), then the <a href="dev-log-prompt.html">development log prompt</a>.</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
+        <div class="prompt-links">
+          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完 <code>brief.md</code> 和 <code>system-graph.png</code>，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
+          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read <code>brief.md</code> and <code>system-graph.png</code>, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
+          <p class="zh"><b>第二条：</b><a href="dev-log-prompt.html">开发日志提示词</a>——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。</p>
+          <p class="en"><b>Second:</b> the <a href="dev-log-prompt.html">development log prompt</a> — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection.</p>
+        </div>
       </div>
       <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
     </section>

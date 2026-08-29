@@ -86,7 +86,7 @@
 
   <main>
     <section class="hero">
-      <p class="eyebrow"><span class="zh">流程导览 · 21 页</span><span class="en">Flow Guide · 21 Slides</span></p>
+      <p class="eyebrow"><span class="zh">流程导览 · 24 页</span><span class="en">Flow Guide · 24 Slides</span></p>
       <h1><span class="zh">Game One：从生活经验到可玩系统</span><span class="en">Game One: From Lived Experience to a Playable System</span></h1>
       <p class="lead"><span class="zh">这页是整门课的地图。你会看到：为什么这样设计、九个步骤各自解决什么问题、哪些技术要点最容易出错，以及最后你要亲手交付什么。</span><span class="en">This page is the map for the whole module: why it is designed this way, what each of the nine steps solves, which technical points go wrong most often, and what you must deliver by hand at the end.</span></p>
       <div class="flow-toc">
@@ -296,9 +296,22 @@
         <p class="kicker" style="margin-top:14px"><span class="zh">产出</span><span class="en">Outputs</span></p>
         <ul>
           <li><span class="zh">可玩网页游戏（HTML / CSS / JS / Canvas，无构建步骤）</span><span class="en">Playable web game (HTML / CSS / JS / Canvas, no build step)</span></li>
-          <li><span class="zh">项目网站（相对路径，可直接静态托管）</span><span class="en">Project website (relative paths, static-hostable)</span></li>
+          <li><span class="zh"><b>一个持续更新的项目网站</b>——它不是最后补的总结报告，而是你的项目空间：从第一个里程碑就存在，每次设计改动都跟着长</span><span class="en"><b>A continuously updated project website</b> — not a wrap-up report bolted on at the end, but your project space: present from the first milestone and growing with every design change</span></li>
           <li><span class="zh">开发日志 agent-development-log.md（AI 自动维护）</span><span class="en">agent-development-log.md (maintained automatically by AI)</span></li>
         </ul>
+      </div>
+
+      <div class="slide-block part4">
+        <h3><span class="pnum">18b</span><span class="zh">第一次对话：先让 AI 读懂你，再让它动手</span><span class="en">The First Conversation: Make AI Read You Before It Writes</span></h3>
+        <p><span class="zh">跳过这步的 AI 会直接开始写"一个看起来像游戏的东西"，用的是它自己的想象而不是你的领域。<a href="kickoff-prompt.html">首次对话协议</a>分四步：</span><span class="en">An AI that skips this step starts writing "something that looks like a game" out of its own imagination instead of your domain. The <a href="kickoff-prompt.html">kickoff prompt</a> has four steps:</span></p>
+        <ul>
+          <li><b><span class="zh">STEP 0 index 工作空间</span><span class="en">STEP 0 — index the workspace</span></b> — <span class="zh">列出文件夹里的每个文件，读完 <code>brief.md</code> 和 <code>system-graph.png</code>，然后报告它找到了什么、brief 里有什么缺失或矛盾。<b>报告完就停。</b></span><span class="en">List every file, read <code>brief.md</code> and <code>system-graph.png</code>, then report what it found and what is missing or contradictory. <b>It stops after the report.</b></span></li>
+          <li><b><span class="zh">STEP 1 复述设计</span><span class="en">STEP 1 — restate the design</span></b> — <span class="zh">200 字内说清玩家做什么、学什么、哪些数据变、什么反馈在教他、挑战预设怎么不同。<b>brief 里没有的，它必须问你，不许自己编。</b></span><span class="en">In under 200 words: what the player does, what they learn, which data changes, which feedback teaches, how presets differ. <b>What brief.md does not say, it must ask — not invent.</b></span></li>
+          <li><b><span class="zh">STEP 2 提出项目空间</span><span class="en">STEP 2 — propose the project space</span></b> — <span class="zh">文件夹结构 + 网站页面计划（<code>index.html</code> / <code>game.html</code> / <code>process.html</code> / <code>assets/</code>）。全部相对路径。</span><span class="en">Folder structure and site page plan (<code>index.html</code> / <code>game.html</code> / <code>process.html</code> / <code>assets/</code>). All paths relative.</span></li>
+          <li><b><span class="zh">STEP 3 一起交付</span><span class="en">STEP 3 — ship both</span></b> — <span class="zh">第一版可玩 demo <b>和</b> 第一版 <code>index.html</code> 必须同一次交付。不许只给 demo，也不许只给页面。</span><span class="en">The first playable demo <b>and</b> the first <code>index.html</code> must ship in the same pass. Not one without the other.</span></li>
+        </ul>
+        <div class="callout"><span class="zh">STEP 1 是你在接管设计权的时刻。它复述的内容里如果出现你没写过的东西，那就是它在替你设计——当场纠正，比事后改代码便宜得多。</span><span class="en">STEP 1 is where you take design authority back. If its restatement contains something you never wrote, it is designing for you. Catching it there is far cheaper than fixing code later.</span></div>
+        <p style="margin-top:14px"><a href="kickoff-prompt.html"><span class="zh">→ 打开首次对话协议（整段复制给 AI）</span><span class="en">→ Open the kickoff prompt (copy the whole thing to AI)</span></a></p>
       </div>
 
       <div class="slide-block part4">
@@ -325,7 +338,7 @@
           </div>
           <div class="item">
             <h3><span class="zh">③ 用 GitHub Desktop 发布（第一次）</span><span class="en">③ Publish with GitHub Desktop (first time)</span></h3>
-            <p><span class="zh"><b>File → Add local repository</b>（或直接把文件夹拖进 GitHub Desktop）→ <b>Publish repository</b> → 起个名字 → <b>务必勾选 Keep this code private</b> → Publish。这一步会同时创建 GitHub 仓库并上传全部文件。</span><span class="en"><b>File → Add local repository</b> (or just drag the folder into GitHub Desktop) → <b>Publish repository</b> → give it a name → <b>make sure "Keep this code private" is checked</b> → Publish. This creates the GitHub repository and uploads everything in one step.</span></p>
+            <p><span class="zh"><b>File → Add local repository</b>（或直接把文件夹拖进 GitHub Desktop）→ <b>Publish repository</b> → 起个名字 → <b>不要勾选 Keep this code private</b>（Pages 需要公开仓库）→ Publish。这一步会同时创建 GitHub 仓库并上传全部文件。</span><span class="en"><b>File → Add local repository</b> (or just drag the folder into GitHub Desktop) → <b>Publish repository</b> → give it a name → <b>leave "Keep this code private" unchecked</b> (Pages requires a public repository) → Publish. This creates the GitHub repository and uploads everything in one step.</span></p>
           </div>
           <div class="item">
             <h3><span class="zh">④ 把老师加为 collaborator</span><span class="en">④ Add your instructor as collaborator</span></h3>
@@ -339,9 +352,29 @@
         <div class="callout"><span class="zh">为什么要亲手做这一步：AI 可以建文件夹、写代码，但"存档 + 上传"的版本概念必须你自己懂，而且 <b>commit 记录就是老师看进度的时间线</b>——临时抱佛脚会写在时间线上。</span><span class="en">Why do this by hand: AI can create folders and write code, but the versioning idea of "save + upload" has to be yours. And <b>your commit history is the timeline your instructor reads</b> — last-minute cramming shows up on it.</span></div>
       </div>
 
+
       <div class="slide-block part4">
         <h3><span class="pnum">20b</span><span class="zh">顺手给每道题打个分</span><span class="en">Rate Each Question While You Go</span></h3>
         <p><span class="zh">每个问题页底部有 5 颗星：这题问得清楚吗？你的评分只存在本地，<b>不会</b>进入交给 AI 的 Brief——它是用来帮老师改进问题设计的。写完所有问题后，点"导出问题评分 CSV"下载并上传。</span><span class="en">Every question page has 5 stars at the bottom: is this question clear? Your ratings stay local and do <b>not</b> go into the brief you hand to AI — they help the instructor improve the questions. When you finish, click "Export Question Ratings CSV" to download and upload it.</span></p>
+      </div>
+      <div class="slide-block part4">
+        <h3><span class="pnum">20c</span><span class="zh">开启 GitHub Pages：仓库直接变成可玩链接</span><span class="en">Turn On GitHub Pages: Your Repo Becomes a Playable Link</span></h3>
+        <p><span class="zh">不用打包 ZIP，也不用上传到网盘。仓库本身就是提交物：</span><span class="en">No ZIP to package, nothing to upload to a drive. The repository itself is the submission:</span></p>
+        <div class="setup">
+          <div class="item">
+            <h3><span class="zh">① 网站放在仓库根目录</span><span class="en">① Keep the site at the repository root</span></h3>
+            <p><span class="zh"><code>index.html</code>（设计者陈述 + 系统图 + 开始游戏）、<code>game.html</code>、<code>process.html</code>、<code>assets/</code>。游戏、日志、brief 都在同一个仓库里。</span><span class="en"><code>index.html</code> (designer statement + system graph + play link), <code>game.html</code>, <code>process.html</code>, <code>assets/</code>. Game, log, and brief all live in the same repository.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">② 开启 Pages</span><span class="en">② Enable Pages</span></h3>
+            <p><span class="zh"><code>Settings → Pages</code> → Build and deployment → Source: <b>Deploy from a branch</b> → Branch: <code>main</code>，Folder: <code>/ (root)</code> → Save。等几分钟就能打开 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>。</span><span class="en"><code>Settings → Pages</code> → Build and deployment → Source: <b>Deploy from a branch</b> → Branch: <code>main</code>, Folder: <code>/ (root)</code> → Save. In a few minutes your site is live at <code>https://&lt;username&gt;.github.io/&lt;repository&gt;/</code>.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">③ 上线后再测一遍</span><span class="en">③ Re-test on the live URL</span></h3>
+            <p><span class="zh">Pages 最常见的失败是<b>路径</b>：以 <code>/</code> 开头的绝对路径在本地能用，上线就 404。所有链接和素材必须用相对路径。</span><span class="en">The most common Pages failure is <b>paths</b>: root-absolute paths beginning with <code>/</code> work locally and 404 online. Every link and asset must use a relative path.</span></p>
+          </div>
+        </div>
+        <div class="callout"><span class="zh"><b>公开性：</b>免费方案的 Pages 要求仓库是 public 的——brief、评分 CSV、开发日志和 commit 时间线都会被公开看到。不想公开的内容就不要放进仓库。这同时也是期末小展览的入口：一条链接，谁都能玩。</span><span class="en"><b>Public by design:</b> Pages on the free plan requires a public repository — the brief, ratings CSV, development log, and commit timeline are all publicly visible. Anything you do not want published stays out of the repository. This is also the entry point for the end-of-module exhibition: one link, anyone can play.</span></div>
       </div>
     </section>
 
@@ -364,6 +397,23 @@
           <li><span class="zh">第二次玩会因为学到了反馈而做得更好</span><span class="en">A second attempt improves because the player learned from feedback</span></li>
           <li><span class="zh">挑战之间的差异来自变量、关系、信息或约束，而不是难度数字</span><span class="en">Challenge presets differ through variables, relationships, information, or constraints — not difficulty numbers</span></li>
           <li><span class="zh">游戏能在浏览器里直接跑，不需要复杂安装</span><span class="en">The game runs in a browser without a complex install</span></li>
+        </ul>
+      </div>
+
+      <div class="slide-block">
+        <h3><span class="pnum">22</span><span class="zh">期末小展览：一条链接就是一个展位</span><span class="en">The End-of-Module Exhibition: One Link Is One Booth</span></h3>
+        <p><span class="zh">不打包、不上传、不装环境。每个人的 GitHub Pages 链接就是一个展位，汇总起来就是展览。观众点开链接，第一屏应该就能读到三件事：</span><span class="en">No packaging, no uploads, no setup. Each GitHub Pages link is one booth, and the collection is the exhibition. When a visitor opens the link, the first screen should answer three things:</span></p>
+        <ul>
+          <li><span class="zh"><b>这个游戏来自什么经验</b>——一句话设计者陈述，不是项目介绍</span><span class="en"><b>What experience this game comes from</b> — the one-sentence designer statement, not a project blurb</span></li>
+          <li><span class="zh"><b>玩家要学会什么判断</b>——新手理解 → 领域判断</span><span class="en"><b>What judgment the player is learning</b> — from the novice understanding to the domain judgment</span></li>
+          <li><span class="zh"><b>怎么开始玩</b>——一个按钮，不需要读说明书</span><span class="en"><b>How to start playing</b> — one button, no manual required</span></li>
+        </ul>
+        <p class="kicker" style="margin-top:16px"><span class="zh">开展前检查</span><span class="en">Before the exhibition</span></p>
+        <ul>
+          <li><span class="zh">系统图在首页可见（观众先看图再玩，体验完全不同）</span><span class="en">The system graph is visible on the home page (visitors who see the graph first have a completely different experience)</span></li>
+          <li><span class="zh">在 1920×1080 下测一遍：文字、控制、画布、导航不重叠</span><span class="en">Test at 1920×1080: text, controls, canvas, and navigation do not overlap</span></li>
+          <li><span class="zh">线上链接（不是本地文件）再玩一遍，确认素材都加载出来了</span><span class="en">Play it once more on the live URL (not the local files) and confirm every asset loads</span></li>
+          <li><span class="zh">开发时间线是真的——包括失败和没做完的部分</span><span class="en">The development timeline is honest — including failures and unfinished parts</span></li>
         </ul>
       </div>
 

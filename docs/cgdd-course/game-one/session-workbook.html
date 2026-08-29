@@ -1267,8 +1267,8 @@
       </div>
 
       <div class="graph-handoff">
-        <p class="zh"><strong>完成标准：</strong>把系统图导出为PNG，或保留可访问的Canva链接。将它与开发摘要一起交给AI Agent，制作项目网站、可玩游戏和自动开发记录。</p>
-        <p class="en"><strong>Completion:</strong> Export the graph as a PNG or keep an accessible Canva link. Give it to the AI Agent with the development brief to build the project website, playable game, and automatic development record.</p>
+        <p class="zh"><strong>完成标准：</strong>把系统图导出为PNG，或保留可访问的Canva链接。将它与开发摘要一起交给AI Agent，制作项目网站、可玩游戏和自动开发记录。交给 AI 时先发<a href="kickoff-prompt.html" target="_blank" rel="noopener">首次对话协议</a>（让它先读完并向你复述），再发<a href="dev-log-prompt.html" target="_blank" rel="noopener">开发日志提示词</a>。</p>
+        <p class="en"><strong>Completion:</strong> Export the graph as a PNG or keep an accessible Canva link. Give it to the AI Agent with the development brief to build the project website, playable game, and automatic development record. Send the <a href="kickoff-prompt.html" target="_blank" rel="noopener">kickoff prompt</a> first (so AI reads everything and restates the design to you), then the <a href="dev-log-prompt.html" target="_blank" rel="noopener">development log prompt</a>.</p>
       </div>
     </section>
   </main>
@@ -2296,52 +2296,53 @@
       lines.push("- Do not add realistic simulation, complex menus, accounts, online multiplayer, large asset pipelines, or unrelated features in the first version.");
       lines.push("- Do not convert the project into a generic mini-game that only uses the domain as a theme.");
       lines.push("");
-      lines.push("## 11. Web Game Technical Dependencies");
-      lines.push("This project is for high-school students with little or no development experience. The AI Agent may manage development tools, but the final exhibition build must be simple to run.");
+      lines.push("## 11. Web Game Technical Dependencies and GitHub Pages");
       lines.push("");
-      lines.push("### Separate Development Dependencies from Exhibition Dependencies");
-      lines.push("- **Development environment:** npm, Node.js, Vite, Three.js, or another focused library may be used when the game genuinely needs them. The AI Agent is responsible for setup, version pinning, build commands, and explanation.");
-      lines.push("- **Exhibition environment:** the iMac must receive an already-built static website. It must not require `npm install`, Node.js, a development server, or internet access.");
-      lines.push("- The final exhibition version should be served by the teacher's ordinary static HTTP server. Do not promise that ES Module or Three.js projects will work by double-clicking `index.html` through `file://`.");
+      lines.push("This project is published as a GitHub Pages site. The published site IS the exhibition. There is no ZIP packaging step and no separate offline build.");
+      lines.push("");
+      lines.push("### GitHub Pages Publishing Rules");
+      lines.push("- The site is served from the repository root on the `main` branch, at `https://<username>.github.io/<repository-name>/`.");
+      lines.push("- Because GitHub Pages serves the site from a subpath, **every internal link and every asset path must be relative**. Root-absolute paths beginning with `/` will break on the published site even when they work locally.");
+      lines.push("- Store all required models, textures, audio, fonts, and libraries inside the repository. Do not load them from a CDN or another remote service.");
+      lines.push("- The repository is public. Never commit passwords, tokens, API keys, or personal information the student has not agreed to publish.");
+      lines.push("- After every push, the site republishes automatically. Verify the live URL, not only the local server.");
       lines.push("");
       lines.push("### Choose the Lowest Necessary Dependency Track");
-      lines.push("1. **Track A — No build step:** Prefer HTML, CSS, plain JavaScript, and Canvas 2D for simple 2D games.");
-      lines.push("2. **Track B — Local vendored library:** For one small browser library, pin its version and store it under `source/vendor/` or `exhibition/assets/vendor/`. Do not rely on a CDN for the final version.");
-      lines.push("3. **Track C — npm + build tool:** Use npm and Vite for Three.js, multiple ES Modules, loaders, or other complex dependency graphs. Run the production build before submission.");
+      lines.push("1. **Track A - No build step:** Prefer HTML, CSS, plain JavaScript, and Canvas 2D for simple 2D games. This is the default choice and needs no extra configuration.");
+      lines.push("2. **Track B - Local vendored library:** For one small browser library, pin its version and store it under `assets/vendor/`.");
+      lines.push("3. **Track C - npm + build tool:** Use npm and Vite only for Three.js, multiple ES Modules, loaders, or other complex dependency graphs.");
       lines.push("");
       lines.push("### Three.js and Vite Rules");
       lines.push("- Three.js is allowed when 3D is important to the designed experience; do not replace meaningful 3D interaction only to avoid npm.");
       lines.push("- Pin dependency versions in `package.json` and preserve `package-lock.json`.");
-      lines.push("- Configure Vite with a relative base such as `base: './'` so built assets work inside `gallery/projects/group-XX/`.");
-      lines.push("- Run `npm run build`; by default Vite outputs a static `dist/` folder. Copy the verified build output into `exhibition/`.");
-      lines.push("- Keep `node_modules` out of the submission ZIP. It is a development cache, not an exhibition dependency.");
-      lines.push("- Store all required models, textures, audio, fonts, Three.js code, and addons locally in the final build. Do not load them from blocked or remote services.");
-      lines.push("- Record dependency names, exact versions, licenses, build command, and output directory in `README.md` and `THIRD_PARTY.md`.");
+      lines.push("- Configure Vite with a relative base such as `base: './'` so built assets work under the Pages subpath.");
+      lines.push("- Run `npm run build`, then copy the verified static output into the repository root so GitHub Pages serves it.");
+      lines.push("- Add a `.gitignore` that excludes `node_modules`. Never commit `node_modules`.");
+      lines.push("- Record dependency names, exact versions, licenses, build command, and output directory in `README.md`.");
       lines.push("");
-      lines.push("### Expected File Structure");
+      lines.push("### Expected Repository Structure");
       lines.push("```text");
-      lines.push("project/");
-      lines.push("├── exhibition/               # Final static website used by Gallery and iMac");
-      lines.push("│   ├── index.html             # Project website home and navigation");
-      lines.push("│   ├── game.html              # Playable game page");
-      lines.push("│   ├── process.html           # Human-AI development timeline");
-      lines.push("│   └── assets/                # Built JS/CSS, models, textures, audio, fonts");
-      lines.push("├── source/                    # Editable development source");
-      lines.push("│   ├── src/                   # Game and website source modules");
-      lines.push("│   ├── public/                # Local source assets when used");
-      lines.push("│   ├── package.json           # Optional: npm/Vite projects only");
-      lines.push("│   └── package-lock.json      # Optional: exact dependency versions");
-      lines.push("├── agent-development-log.md   # Chronological human-AI development record");
-      lines.push("├── development-brief.md       # This design and development specification");
-      lines.push("├── system-graph.png           # Exported game system and challenge graph");
-      lines.push("├── submission-manifest.json   # Group, entry page, domain, and known issues");
-      lines.push("├── preview.png                # 16:9 exhibition and Gallery preview");
-      lines.push("├── README.md                  # How to develop, build, exhibit, and modify");
-      lines.push("└── THIRD_PARTY.md             # Libraries, versions, licenses, and sources");
+      lines.push("repository/");
+      lines.push("├── index.html                 # Project home: designer statement, system graph, play link");
+      lines.push("├── game.html                  # Playable game (or game/index.html)");
+      lines.push("├── process.html               # Human-AI development timeline");
+      lines.push("├── assets/                    # JS/CSS, system graph image, models, textures, audio, fonts");
+      lines.push("├── development-log/");
+      lines.push("│   └── agent-development-log.md");
+      lines.push("├── brief.md                   # This design and development specification");
+      lines.push("├── system-graph.png");
+      lines.push("├── ratings.csv                # Exported question-clarity ratings (teaching feedback)");
+      lines.push("├── README.md                  # How to run, controls, dependency track, main variables");
+      lines.push("└── source/                    # Track C only: src/, package.json, package-lock.json");
       lines.push("```");
       lines.push("");
       lines.push("## 12. Integrated Project Website Requirements");
-      lines.push("The website is part of the project, not a separate marketing page. Build it together with the game and keep it current as development progresses.");
+      lines.push("The website is the project space, not a final report and not a separate marketing page. It must exist from the first milestone and stay current as development progresses.");
+      lines.push("");
+      lines.push("### Website From Day One");
+      lines.push("- Create the first version of `index.html` in the same pass as the first playable demo. Do not defer the website to the end of the project.");
+      lines.push("- The website is the exhibition surface: classmates and visitors will read it before or instead of playing, so it carries the designer statement, the system graph, and the play link.");
+      lines.push("- When the design changes, the website changes with it. A website that describes an older version of the game is worse than no website.");
       lines.push("");
       lines.push("### Required Website Content");
       lines.push("- **Game Idea:** project title, short concept, player goal, and core learning shift.");
@@ -2357,7 +2358,7 @@
       lines.push("- Keep the game idea and domain-learning explanation readable by classmates who have not seen the project before.");
       lines.push("- Keep styling coherent across the informational pages and playable game, but prioritize clarity and function over decorative effects.");
       lines.push("- Make the website usable on a typical student laptop. Mobile support is helpful but is not the first-version priority.");
-      lines.push("- Use relative links and asset paths so the complete project can be placed inside a class Gallery subfolder without rewriting paths.");
+      lines.push("- Use relative links and asset paths. GitHub Pages serves the site from `https://<username>.github.io/<repository-name>/`, so root-absolute paths beginning with `/` will fail.");
       lines.push("- Support a clean 1920×1080 exhibition view for display on an iMac. Important controls and text must fit without overlap.");
       lines.push("");
       lines.push("## 13. Automatic Human-AI Development Log Protocol");
@@ -2452,57 +2453,50 @@
       lines.push("- Separate factual development events from student reflection. Never invent student opinions or decisions.");
       lines.push("- After milestone reflections, update the Development Process section of the website with a concise, truthful timeline summary.");
       lines.push("");
-      lines.push("## 14. Submission and Exhibition Packaging");
-      lines.push("At the end of Session 3, create one official self-contained ZIP that the student can upload to the course Tencent shared document. The WeChat group is used to distribute the submission link and reminders, not as the official version archive.");
+      lines.push("## 14. GitHub Pages Exhibition");
       lines.push("");
-      lines.push("### Required Submission Audit");
-      lines.push("Before packaging:");
-      lines.push("- If the project uses npm or Vite, install dependencies only in the development environment, run the production build, and copy the verified static output into `exhibition/`.");
-      lines.push("- Run `exhibition/` through an ordinary local static HTTP server and test every navigation link, the playable game, controls, challenge selection, success, failure, and restart.");
-      lines.push("- Test `exhibition/` with internet access disabled. Download any essential external library or asset into the build so the exhibition does not depend on blocked or unavailable services.");
-      lines.push("- Confirm all internal links and assets use relative paths. Do not use root-absolute paths beginning with `/` or file paths from the student's computer.");
-      lines.push("- Test the exhibition layout at 1920×1080 and ensure text, controls, canvas, and navigation do not overlap.");
-      lines.push("- Remove `.git`, `node_modules`, caches, temporary files, unused generated assets, passwords, tokens, API keys, and personal information not approved for submission.");
-      lines.push("- Preserve source files, the development brief, system graph, README, and complete chronological development log.");
-      lines.push("- Capture `preview.png` in a 16:9 format showing the actual project or playable game.");
+      lines.push("The exhibition is the published Pages site. No archive is packaged and nothing is uploaded to a shared drive.");
       lines.push("");
-      lines.push("### Submission Manifest");
-      lines.push("Create `submission-manifest.json` using this structure and verify it with the student:");
+      lines.push("### Enable GitHub Pages");
+      lines.push("1. Open the repository on GitHub.");
+      lines.push("2. `Settings` -> `Pages`.");
+      lines.push("3. Under Build and deployment, set Source to `Deploy from a branch`.");
+      lines.push("4. Branch: `main`, Folder: `/ (root)`. Save.");
+      lines.push("5. Wait a few minutes, then open `https://<username>.github.io/<repository-name>/`.");
       lines.push("");
-      lines.push("```json");
-      lines.push(JSON.stringify({
-        group: meta.studentTeam || "Group number and team name",
-        projectTitle: meta.projectTitle || "Project title",
-        domain: meta.domain || answers.s1q1 || "Domain",
-        entryPage: "exhibition/index.html",
-        gamePage: "exhibition/game.html",
-        aiAgent: meta.agentTool || "AI Agent used",
-        submissionDate: "YYYY-MM-DD",
-        knownIssues: [],
-        externalDependencies: [],
-        exhibitionTestedAt: "1920x1080",
-        publicDisplayConsent: "ask the student: yes / anonymous only / no"
-      }, null, 2));
-      lines.push("```");
+      lines.push("Every later push to `main` republishes the site automatically.");
       lines.push("");
-      lines.push("### Package Name and Gallery Compatibility");
-      lines.push("- Name the archive `2026-Camp-Group-XX-ProjectName.zip`.");
-      lines.push("- The ZIP must open directly to the project files, not contain several unnecessary wrapper folders.");
-      lines.push("- The teacher will later place projects in `gallery/projects/group-01/` through `group-04/` and open each `exhibition/index.html`. The project must run correctly from that nested location.");
-      lines.push("- Do not submit only a hosted URL. The complete ZIP is the official durable submission.");
+      lines.push("### Pre-Publish Audit");
+      lines.push("- Run the project through a local static HTTP server and test every navigation link, the playable game, controls, challenge selection, success, failure, and restart.");
+      lines.push("- Confirm every internal link and asset path is relative. Root-absolute paths are the most common cause of a Pages site that loads but shows nothing.");
+      lines.push("- Test the layout at 1920x1080 for exhibition display; text, controls, canvas, and navigation must not overlap.");
+      lines.push("- Confirm `node_modules`, caches, temporary files, passwords, tokens, and API keys are not committed.");
+      lines.push("- Push, then open the live Pages URL and repeat the navigation and gameplay test.");
+      lines.push("");
+      lines.push("### What the Student Submits");
+      lines.push("- The GitHub Pages URL: the playable exhibition link.");
+      lines.push("- The repository URL.");
+      lines.push("- Nothing else. The repository is already public, so there is no upload step.");
+      lines.push("");
+      lines.push("### Public Display");
+      lines.push("- The repository and the published site are public, because GitHub Pages requires a public repository on the free plan.");
+      lines.push("- Anything the student does not want published simply stays out of the repository.");
+      lines.push("- The student must confirm before publishing that `brief.md`, `ratings.csv`, and `development-log/agent-development-log.md` may be publicly visible.");
       lines.push("");
       lines.push("## 15. Instructions for the AI Agent");
-      lines.push("1. Read this brief and the system graph before writing code.");
+      lines.push("");
+      lines.push("1. **Index the workspace before planning anything.** List every file in the project folder, then read `brief.md` and `system-graph.png`. Report what you found: which files exist, what the brief specifies, and what is missing or contradictory. Do not write code before this step.");
       lines.push("2. Restate the core learning shift, core loop, main variables, feedback mappings, and challenge presets in a short implementation plan.");
       lines.push("3. Identify missing or contradictory information. Ask only questions that block the first playable version.");
-      lines.push("4. Create the project website structure and initialize `agent-development-log.md` before substantial implementation.");
+      lines.push("4. Propose the repository structure, then create the website skeleton (`index.html`, `game.html`, `process.html`, `assets/`) and initialize `development-log/agent-development-log.md`.");
       lines.push("5. Implement the smallest complete game loop first, then add the defined challenge presets.");
-      lines.push("6. Keep variable names clear and keep environment data, player-controlled data, and calculated results visibly separated in the code.");
+      lines.push("6. Keep variable names clear, and keep environment data, player-controlled data, and calculated results visibly separated in the code.");
       lines.push("7. Add short comments only where a high-school student needs help understanding a rule.");
-      lines.push("8. Start the local website, test navigation and gameplay, and provide the student with the local URL and simple controls.");
-      lines.push("9. Automatically append a Raw Interaction Log after meaningful development work and request student reflection at milestones.");
-      lines.push("10. Keep the website, playable game, README, and development log synchronized with the actual project state.");
-      lines.push("11. At the end, run the submission audit, create the manifest and preview, and package the complete Gallery-compatible ZIP.");
+      lines.push("8. **The first milestone must ship the playable demo and the first version of `index.html` together.** Never let the website fall behind the game, and never leave the site to the end of the project.");
+      lines.push("9. Start a local static server, test navigation and gameplay, and give the student the local URL and simple controls.");
+      lines.push("10. Automatically append a Raw Interaction Log after meaningful development work, and request student reflection at milestones.");
+      lines.push("11. After every milestone, update the website so its Development Process page matches the actual log.");
+      lines.push("12. Before the exhibition, run the pre-publish audit and confirm the live GitHub Pages URL works.");
       lines.push("");
       lines.push("## 16. Acceptance Checklist");
       lines.push("- [ ] The player can take a meaningful action within 30 seconds.");
@@ -2512,15 +2506,16 @@
       lines.push("- [ ] A second attempt can improve because the player learned from feedback.");
       lines.push("- [ ] Challenge presets differ through variables, relationships, information, or constraints.");
       lines.push("- [ ] The game runs in a browser without a complex installation process.");
-      lines.push("- [ ] README.md identifies the dependency track and explains development, build, exhibition, controls, and main variables.");
-      lines.push("- [ ] The website clearly presents the game idea, domain knowledge, system design, development process, and playable game.");
-      lines.push("- [ ] `agent-development-log.md` contains chronological Interaction and Reflection entries.");
+      lines.push("- [ ] README.md identifies the dependency track and explains how to run, the controls, and the main variables.");
+      lines.push("- [ ] `index.html` existed from the first milestone and was kept current, not added at the end.");
+      lines.push("- [ ] The site clearly presents the game idea, domain knowledge, system design, development process, and playable game.");
+      lines.push("- [ ] `development-log/agent-development-log.md` contains chronological Interaction and Reflection entries.");
       lines.push("- [ ] The Development Process page matches the actual log and does not hide failures or unfinished work.");
-      lines.push("- [ ] All internal links and assets use Gallery-compatible relative paths.");
-      lines.push("- [ ] The project works without internet access and has been tested at 1920×1080.");
-      lines.push("- [ ] The final `exhibition/` build runs from a static HTTP server without Node.js, `npm install`, or a development server.");
-      lines.push("- [ ] The ZIP includes the manifest, preview, brief, graph, README, source, assets, website, game, and development log.");
-      lines.push("- [ ] The student has checked the public-display consent field before submission.");
+      lines.push("- [ ] All internal links and assets use relative paths, because Pages serves from a subpath.");
+      lines.push("- [ ] The published GitHub Pages URL has been opened and tested at 1920x1080.");
+      lines.push("- [ ] No passwords, API keys, tokens, or `node_modules` are committed.");
+      lines.push("- [ ] The student has confirmed the brief, ratings, and development log may be publicly visible.");
+      lines.push("");
       return lines.join("\n");
     }
 

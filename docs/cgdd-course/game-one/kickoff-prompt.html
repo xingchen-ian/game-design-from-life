@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Copy-paste kickoff prompt for the first AI IDE conversation: index the workspace first, restate the design, propose the project space, and ship the first playable demo together with the first version of the project website." />
+  <title>Kickoff Prompt · CGDD</title>
+  <link rel="stylesheet" href="../assets/site.css" />
+  <script src="../assets/lang.js" defer></script>
+  <style>
+    .prompt-block {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      background: rgba(9, 16, 21, 0.72);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 14px 0 0;
+      max-height: 460px;
+      overflow: auto;
+      color: var(--ink);
+    }
+    .copy-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .copy-btn {
+      cursor: pointer; font: inherit; font-size: 13px;
+      padding: 8px 16px; border-radius: var(--radius);
+      border: 1px solid var(--accent-light);
+      background: var(--accent); color: #fff;
+    }
+    .copy-btn:hover { background: var(--accent-light); }
+    .copy-hint { font-size: 13px; color: var(--muted); }
+    .copy-hint.done { color: var(--teal); }
+    .when-list { margin: 12px 0 0; padding-left: 20px; }
+    .when-list li { margin-bottom: 6px; }
+    .note-inline { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+    .slide-block {
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      background: var(--paper);
+      margin-bottom: 18px;
+    }
+    .slide-block h3 {
+      font-size: 19px; margin: 0 0 6px;
+      display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    }
+    .slide-block h3 .pnum { font-size: 12px; font-weight: 800; color: var(--muted); letter-spacing: 1px; }
+    .slide-block .kicker { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+
+    .do-ai { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 720px) { .do-ai { grid-template-columns: 1fr; } }
+    .do-ai > div { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+    .do-ai .you { border-top: 3px solid var(--accent); }
+    .do-ai .ai  { border-top: 3px solid var(--teal); }
+    .do-ai h4 { margin: 0 0 8px; font-size: 15px; }
+
+    .callout {
+      border-left: 3px solid var(--warm);
+      background: var(--warm-soft);
+      padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 14px; font-size: 15px;
+    }
+  </style>
+</head>
+<body data-lang="en">
+  <header class="topbar">
+    <div class="brand">
+      <p class="brand-title"><span class="zh">CGDD · Game One</span><span class="en">CGDD · Game One</span></p>
+      <p class="brand-subtitle"><span class="zh">首次对话协议 · 复制即用</span><span class="en">Kickoff Prompt · Copy &amp; Paste</span></p>
+    </div>
+    <nav class="main">
+      <a class="nav-link" href="../index.html"><span class="zh">首页</span><span class="en">Home</span></a>
+      <a class="nav-link" href="index.html"><span class="zh">Game One</span><span class="en">Game One</span></a>
+      <a class="nav-link" href="flow.html"><span class="zh">流程导览</span><span class="en">Flow Guide</span></a>
+      <a class="nav-link" href="session-inside.html"><span class="zh">Session 1</span><span class="en">Session 1</span></a>
+      <a class="nav-link" href="session-workbook.html"><span class="zh">Session 2</span><span class="en">Session 2</span></a>
+      <a class="nav-link" href="session-agent.html"><span class="zh">Session 3</span><span class="en">Session 3</span></a>
+    </nav>
+    <div class="controls">
+      <button type="button" class="lang" data-lang="zh">中文</button>
+      <button type="button" class="lang active" data-lang="en">English</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow"><span class="zh">Session 3 · 第一次对话</span><span class="en">Session 3 · The First Conversation</span></p>
+      <h1><span class="zh">首次对话协议</span><span class="en">Kickoff Prompt</span></h1>
+      <p class="lead"><span class="zh">你在 AI IDE 里跟 Agent 说的第一句话，决定了后面两三个小时的走向。这份协议做三件事：<b>先让 AI 把工作空间 index 一遍</b>（它必须真的读过 <code>brief.md</code> 和 <code>system-graph.png</code>），<b>复述它理解的设计</b>（你说"对"之前它不许写代码），以及<b>要求第一版 demo 和第一版网页同时交付</b>。</span><span class="en">The first thing you say to your agent decides the next few hours. This protocol does three things: <b>make AI index the workspace first</b> (it must actually read <code>brief.md</code> and <code>system-graph.png</code>), <b>make it restate the design back to you</b> (no code until you say yes), and <b>require the first demo and the first version of the site to ship together</b>.</span></p>
+    </section>
+
+    <section id="how" class="section">
+      <h2><span class="zh">怎么用</span><span class="en">How to use it</span></h2>
+      <div class="slide-block">
+        <h3><span class="pnum zh">用法</span><span class="pnum en">USAGE</span><span class="zh">顺序</span><span class="en">Order</span></h3>
+        <p class="kicker"><span class="zh">两条提示词，先发这条，再发开发日志提示词。</span><span class="en">Two prompts: send this one first, then the development log prompt.</span></p>
+        <ol class="when-list zh">
+          <li>在 Session 2 的 Workbook 里导出 <code>brief.md</code>，把系统图存成 <code>system-graph.png</code>。</li>
+          <li>新建一个空文件夹，把这两个文件放进去，用 AI IDE 打开这个文件夹。</li>
+          <li><b>发下面这条 kickoff prompt。</b>AI 会先列出文件、读完 brief，然后向你复述它理解的设计。</li>
+          <li>你确认它读懂了之后，再发<a href="dev-log-prompt.html">开发日志提示词</a>，然后才说"开始"。</li>
+        </ol>
+        <ol class="when-list en">
+          <li>Export <code>brief.md</code> from the Session 2 workbook, and save your system graph as <code>system-graph.png</code>.</li>
+          <li>Create an empty folder, drop both files in, and open that folder in your AI IDE.</li>
+          <li><b>Send the kickoff prompt below.</b> AI lists the files, reads the brief, then restates the design back to you.</li>
+          <li>Once you confirm it understood, send the <a href="dev-log-prompt.html">development log prompt</a>, and only then say go.</li>
+        </ol>
+        <p class="note-inline"><span class="zh">为什么要多这一步：跳过 index 的 AI 会直接开始写"一个看起来像游戏的东西"，用的是它自己的想象，不是你的领域。复述这一步是你在接管设计权。</span><span class="en">Why this extra step: an AI that skips indexing starts writing "something that looks like a game" out of its own imagination instead of your domain. Restating the design back to you is how you take the design authority back.</span></p>
+      </div>
+
+      <h2><span class="zh">提示词全文</span><span class="en">The prompt</span></h2>
+      <p class="kicker"><span class="zh">点击复制，原样粘贴给 AI Agent，不要删改。</span><span class="en">Click copy and paste it to your agent verbatim — do not edit it.</span></p>
+
+      <pre class="prompt-block" id="kickoffPrompt">You are my AI development collaborator for a course project called "Game Design from Everyday Life" (CGDD). We are building a small browser game out of a domain I personally know.
+
+This folder already contains two files I made myself:
+
+- brief.md — the 16-section development brief I exported from the course workbook. It is the specification. Treat it as the source of truth.
+- system-graph.png — my system graph, drawn by hand.
+
+Do the following in order. Do not skip ahead and do not write code until I tell you to.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 0 — INDEX THE WORKSPACE
+
+1. List every file and folder in this project directory.
+2. Read brief.md in full.
+3. Read system-graph.png. If you cannot read images, say so plainly and ask me to describe it instead of guessing.
+
+Then report back:
+
+- Files you found
+- The domain, the core learning shift, the core mechanic, the main data, and the challenge presets — each quoted directly from brief.md, not paraphrased
+- Anything in brief.md that is empty, missing, or contradicts something else in it
+
+STOP after this report. Do not propose a plan. Do not write code.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1 — RESTATE THE DESIGN IN YOUR OWN WORDS
+
+In under 200 words: what the player does, what they are supposed to learn, which data changes when they act, which feedback teaches them, and how the challenge presets differ from one another.
+
+If any of these is missing from brief.md, stop and ask me. Do not fill the gap with your own invention — an invented mechanic is worse than a missing one, because I may not notice.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 2 — PROPOSE THE PROJECT SPACE
+
+Show me the folder structure you intend to create, and the pages the website will have.
+
+The website is the project space, not a final report and not a marketing page. It must exist from the first milestone and be updated at every milestone after that.
+
+Required from day one:
+
+- index.html — home: designer statement, system graph, and the play link
+- game.html — the playable game
+- process.html — the human-AI development timeline
+- assets/ — JS/CSS, system graph image, audio, fonts
+- development-log/agent-development-log.md
+- README.md — how to run it, controls, dependency track, main variables
+
+Every internal link and asset path must be relative. This project will be published with GitHub Pages from a repository subpath, so any path beginning with "/" will break on the live site even though it works locally.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 3 — DEFINE THE FIRST MILESTONE, THEN SHIP BOTH
+
+Define the smallest complete version that proves the core loop. Then deliver BOTH of these in the same pass:
+
+(a) a playable demo — one full observe → judge → act → feedback → adjust loop, and 2-3 challenge presets when brief.md defines them
+(b) the first real version of index.html — actual content, not a placeholder or a "coming soon" page
+
+Do not deliver the demo without the page, and do not deliver the page without the demo.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 4 — WAIT FOR MY CONFIRMATION
+
+Stop here. Show me what you found in STEP 0, your restatement, your proposed structure, and your first-milestone plan. Wait until I say go before writing any code.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RULES FOR EVERYTHING AFTER
+
+- Keep the website current. When the design changes, the website changes with it. A site that describes an older version of the game is worse than no site.
+- Never invent design decisions on my behalf. If brief.md does not say, ask me.
+- If you are about to make the game more generic — score attack, timer pressure, or difficulty sliders instead of genuinely different constraints — stop and tell me before you do it.
+- After every meaningful change, append a Raw Interaction Log to development-log/agent-development-log.md. When I say "reflect on this stage," draft the Reflection Log but leave the Required Student Reflection for me to answer.
+- The repository is public. Never write passwords, tokens, or API keys into any file.</pre>
+
+      <div class="copy-bar">
+        <button type="button" class="copy-btn" id="copyPrompt"><span class="zh">复制提示词</span><span class="en">Copy prompt</span></button>
+        <span class="copy-hint" id="copyHint"><span class="zh">按 ⌘/Ctrl+C 也可以手动复制。</span><span class="en">You can also select the text and press ⌘/Ctrl+C.</span></span>
+      </div>
+    </section>
+
+    <section id="why" class="section">
+      <h2><span class="zh">三条约束分别防什么</span><span class="en">What each constraint prevents</span></h2>
+      <div class="slide-block">
+        <h3><span class="pnum zh">设计</span><span class="pnum en">DESIGN</span><span class="zh">为什么这么写</span><span class="en">Why it is written this way</span></h3>
+        <ul>
+          <li><b><span class="zh">STEP 0 先 index</span><span class="en">STEP 0 — index first</span></b> — <span class="zh">防止 AI 不看你的 brief 就开始写。没有这一步，它做出来的是一个"通用小游戏套了个主题"，而你可能到很晚才发现。</span><span class="en">Stops AI from writing code before it has read your brief. Without this step you get a generic mini-game wearing your domain as a skin, and you may not notice until late.</span></li>
+          <li><b><span class="zh">STEP 1 先复述</span><span class="en">STEP 1 — restate first</span></b> — <span class="zh">这是你接管设计权的时刻。它复述的内容里如果出现了你没写过的东西，那就是它在替你设计——当场纠正，比改代码便宜得多。</span><span class="en">This is where you take design authority back. If its restatement contains something you never wrote, it is designing for you. Catching that now is far cheaper than fixing code later.</span></li>
+          <li><b><span class="zh">STEP 3 一起交付</span><span class="en">STEP 3 — ship both</span></b> — <span class="zh">防止"游戏做完了，网页最后补"。展示页是项目空间，不是总结报告；它必须从第一天就存在，并跟着设计一起长。等到最后补，它只会变成一份跟实际游戏对不上的漂亮文档。</span><span class="en">Stops the "game done, website later" trap. The site is the project space, not a wrap-up report. Bolted on at the end, it becomes a polished document that no longer matches the actual game.</span></li>
+        </ul>
+        <div class="callout"><span class="zh">判断标准：AI 可以写所有代码，但<b>它必须先证明自己读懂了你</b>，才配动手。</span><span class="en">The rule: AI may write all the code, but <b>it has to prove it understood you before it is allowed to start</b>.</span></div>
+      </div>
+    </section>
+
+    <section id="boundary" class="section">
+      <h2><span class="zh">边界：谁决定什么</span><span class="en">Boundary: who decides what</span></h2>
+      <div class="do-ai">
+        <div class="you">
+          <h4><span class="zh">✋ 你决定</span><span class="en">✋ You decide</span></h4>
+          <ul class="when-list zh">
+            <li>确认 AI 复述的设计是对的（STEP 1 之后说"对"或"不对"）。</li>
+            <li>brief.md 里没写的，由你回答，不是 AI 补。</li>
+            <li>AI 提出"要不要加个计分/计时/难度滑块"时，由你判断这算不算把游戏变普通。</li>
+            <li>每个阶段的 Required Student Reflection。</li>
+          </ul>
+          <ul class="when-list en">
+            <li>Confirm the restated design is right (say yes or no after STEP 1).</li>
+            <li>Answer what brief.md left out — AI must not fill gaps for you.</li>
+            <li>Judge whether AI's "let's add a score / timer / difficulty slider" turns the game generic.</li>
+            <li>Write every Required Student Reflection yourself.</li>
+          </ul>
+        </div>
+        <div class="ai">
+          <h4><span class="zh">🤖 AI 做</span><span class="en">🤖 AI does</span></h4>
+          <ul class="when-list zh">
+            <li>列出并读完工作空间里的文件（STEP 0）。</li>
+            <li>提出文件夹结构与网站页面计划（STEP 2）。</li>
+            <li>写代码、调试、跑本地服务器。</li>
+            <li>自动追加 Raw Interaction Log、维护相对路径。</li>
+          </ul>
+          <ul class="when-list en">
+            <li>List and read the workspace files (STEP 0).</li>
+            <li>Propose the folder structure and site page plan (STEP 2).</li>
+            <li>Write code, debug, run the local server.</li>
+            <li>Append Raw Interaction Logs automatically and keep paths relative.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cards">
+        <article class="card">
+          <h3><span class="zh">开发日志提示词</span><span class="en">Development Log Prompt</span></h3>
+          <p class="zh">第二条要发的提示词。AI 自动记交互，里程碑时停下来问你写反思。</p>
+          <p class="en">The second prompt to send. AI logs interactions automatically and stops at milestones for your reflection.</p>
+          <p><a href="dev-log-prompt.html"><span class="zh">打开开发日志提示词 →</span><span class="en">Open the log prompt →</span></a></p>
+        </article>
+        <article class="card">
+          <h3><span class="zh">流程导览</span><span class="en">Flow Guide</span></h3>
+          <p class="zh">24 页完整地图：九步设计、技术要点、开发与交付。</p>
+          <p class="en">The 24-slide map: nine design steps, technical essentials, build and submission.</p>
+          <p><a href="flow.html"><span class="zh">打开流程导览 →</span><span class="en">Open Flow Guide →</span></a></p>
+        </article>
+        <article class="card">
+          <h3><span class="zh">Session 3</span><span class="en">Session 3</span></h3>
+          <p class="zh">项目结构、GitHub Pages 发布、展览要求。</p>
+          <p class="en">Project structure, GitHub Pages publishing, exhibition requirements.</p>
+          <p><a href="session-agent.html"><span class="zh">打开 Session 3 →</span><span class="en">Open Session 3 →</span></a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>NYU Shanghai · IMA · Game Design</footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("copyPrompt");
+      var hint = document.getElementById("copyHint");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var text = document.getElementById("kickoffPrompt").innerText;
+        var done = function () {
+          hint.classList.add("done");
+          hint.textContent = document.body.getAttribute("data-lang") === "zh"
+            ? "已复制到剪贴板。"
+            : "Copied to clipboard.";
+          setTimeout(function () { hint.classList.remove("done"); }, 2400);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
