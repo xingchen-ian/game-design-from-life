@@ -291,6 +291,21 @@
 
     .guardrail p { margin: 0; color: #d8dfdc; font-size: 16px; }
 
+    /* Log prompt detail block */
+    .log-prompt-detail { margin-top: 28px; padding: 22px 24px; border: 1px solid rgba(211, 223, 222, 0.18); border-left: 5px solid var(--teal); border-radius: 3px; background: rgba(3, 6, 8, 0.72); }
+    .log-prompt-detail > h3 { margin: 0 0 10px; font-size: 19px; color: #b8d4cf; }
+    .log-prompt-detail > p { margin: 0 0 16px; font-size: 15px; color: #9fadaa; line-height: 1.55; }
+    .log-prompt-detail > h4 { margin: 18px 0 10px; font-size: 16px; color: #c5d4d1; }
+    .log-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+    .log-card { padding: 14px 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 3px; background: rgba(255,255,255,0.03); }
+    .log-card h4 { margin: 0 0 8px; font-size: 15px; color: #c5d4d1; }
+    .log-card p { margin: 4px 0 0; font-size: 14px; color: #9fadaa; line-height: 1.5; }
+    .log-table { width: 100%; border-collapse: collapse; margin: 12px 0 0; font-size: 14px; }
+    .log-table th { text-align: left; padding: 8px 12px; border-bottom: 2px solid rgba(95, 167, 162, 0.35); color: #b8d4cf; font-weight: 600; }
+    .log-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; color: #9fadaa; line-height: 1.5; }
+    .log-table code { background: rgba(95, 167, 162, 0.15); color: #7ec4bd; padding: 1px 5px; border-radius: 2px; font-size: 13px; }
+    .log-why { margin-top: 16px; border-left-color: var(--warm); background: var(--warm-soft); }
+
     .submission-layout {
       display: grid;
       grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -329,7 +344,7 @@
     @media (max-width: 680px) {
       main { width: min(100% - 28px, 1240px); padding-top: 34px; }
       .brand-subtitle { display: none; }
-      .input-strip, .pipeline, .outcome-grid, .start-panel, .submission-layout { grid-template-columns: 1fr; }
+      .input-strip, .pipeline, .outcome-grid, .start-panel, .submission-layout, .log-grid { grid-template-columns: 1fr; }
       .mode-tab { white-space: nowrap; }
     }
   </style>
@@ -402,6 +417,60 @@
         </div>
       </div>
       <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
+
+      <div class="log-prompt-detail" aria-label="开发日志提示词说明">
+        <h3><span class="zh">第三份文件：开发日志提示词</span><span class="en">The Third File: Development Log Prompt</span></h3>
+        <p class="zh">这份 <a href="generate-development-log-prompt.md" download>.md 文件</a> 不需要你手动发送——它放在项目文件夹里，AI 读完 kickoff 后会自动读取并开始执行。但你应当了解它要求 AI 做什么，以及为什么这样设计。</p>
+        <p class="en">This <a href="generate-development-log-prompt.md" download>.md file</a> does not need to be sent manually — it sits in the project folder and AI reads it automatically after kickoff. But you should understand what it asks AI to do, and why it is designed this way.</p>
+
+        <div class="log-grid">
+          <div class="log-card">
+            <h4><span class="zh">它产出什么</span><span class="en">What it produces</span></h4>
+            <p class="zh">一个持续增长的 <code>agent-development-log.md</code>，按时间线记录整个开发过程。</p>
+            <p class="en">A continuously growing <code>agent-development-log.md</code> that chronicles the entire development process.</p>
+          </div>
+          <div class="log-card">
+            <h4><span class="zh">两种记录</span><span class="en">Two types of entries</span></h4>
+            <p class="zh"><b>Raw Interaction Log</b> — 每次有意义的对话后立即记录（你要求了什么、AI 做了什么、改了哪些文件）。</p>
+            <p class="en"><b>Raw Interaction Log</b> — written immediately after every meaningful conversation (what you asked, what AI did, what changed).</p>
+            <p class="zh"><b>Reflection Log</b> — 每个里程碑结束时生成（完成了什么、AI 怎么影响方向、你自己做了哪些决定）。</p>
+            <p class="en"><b>Reflection Log</b> — generated at each milestone (what was completed, how AI influenced direction, what decisions you made yourself).</p>
+          </div>
+        </div>
+
+        <h4><span class="zh">四条关键护栏</span><span class="en">Four Key Guardrails</span></h4>
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th><span class="zh">护栏</span><span class="en">Guardrail</span></th>
+              <th><span class="zh">作用</span><span class="en">Purpose</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>AI Design Assumptions</code></td>
+              <td><span class="zh">每次交互中，AI 必须列出它在你的原始需求之外自行做出的设计决策。防止 AI "悄悄加功能"。</span><span class="en">Every interaction, AI must list design decisions it made beyond your original request. Prevents AI from quietly adding features.</span></td>
+            </tr>
+            <tr>
+              <td><code>Student Independent Changes</code></td>
+              <td><span class="zh">每个反思阶段，你必须报告自己独立做了哪些改动（不通过 AI）。证明你在主动驾驶。</span><span class="en">Each reflection stage, you must report changes you made independently (without AI). Proves you are actively driving.</span></td>
+            </tr>
+            <tr>
+              <td><code>Concept Drift</code></td>
+              <td><span class="zh">如果设计方向发生了偏移，必须记录：原概念是什么、新概念是什么、AI 在其中扮演了什么角色。</span><span class="en">If the design direction drifted, record: original concept, new concept, and what role AI played in the shift.</span></td>
+            </tr>
+            <tr>
+              <td><code>Required Student Reflection</code></td>
+              <td><span class="zh">每个里程碑的最后一步——<b>AI 不能代写</b>。你必须亲自回答：游戏是否还表达了我最初的生活体验和核心情感？</span><span class="en">The final step of every milestone — <b>AI cannot write this</b>. You must answer: does the game still express my original life experience and core emotion?</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="guardrail log-why">
+          <p class="zh"><strong>为什么需要这份日志？</strong>这个课程的目标不是"做出一个游戏"，而是"理解人机协作设计是如何发生的"。日志是你期末展示的核心证据：它展示了你的设计判断、AI 的影响、以及你对设计方向的掌控力。没有日志的项目只是一个黑盒产物；有日志的项目是一个可研究的设计过程。</p>
+          <p class="en"><strong>Why this log?</strong> This course's goal is not "make a game" but "understand how human-AI collaborative design happens." The log is your core evidence for the final exhibition: it shows your design judgment, AI's influence, and your control over the design direction. A project without a log is just a black-box product; a project with a log is a studyable design process.</p>
+        </div>
+      </div>
     </section>
 
     <section class="section">
