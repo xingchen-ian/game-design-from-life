@@ -247,7 +247,7 @@
         <ul>
           <li><b><span class="zh">系统图</span><span class="en">System graph</span></b> — <span class="zh">在共用 Canva 白板上画：挑战如何设置数据、玩家如何操作、系统如何计算、反馈如何帮助学习。</span><span class="en">Draw on the shared Canva board: how challenges configure data, how the player acts, how the system calculates, and how feedback supports learning.</span></li>
           <li><b><span class="zh">Brief（16 节）</span><span class="en">Brief (16 sections)</span></b> — <span class="zh">Workbook 自动生成：项目信息、设计摘要、玩家循环、数据模型、挑战空间、视觉镜头、人机边界、规则、反馈优先级、首版范围、技术依赖、网站要求、开发日志协议、提交打包、AI 指令、验收清单。</span><span class="en">Generated automatically by the workbook: project identity, design summary, player loop, data model, challenge space, visual &amp;camera, AI boundary, rules, feedback priorities, first-version scope, tech dependencies, site requirements, log protocol, packaging, AI instructions, acceptance checklist.</span></li>
-          <li><b><span class="zh">开发日志提示词</span><span class="en">Development log prompt</span></b> — <span class="zh">从<a href="dev-log-prompt.html">开发日志提示词页</a>下载 <code>generate-development-log-prompt.md</code>，AI 据此自动维护交互记录和里程碑反思。</span><span class="en">Download <code>generate-development-log-prompt.md</code> from the <a href="dev-log-prompt.html">development log prompt page</a>; AI uses it to maintain interaction logs and milestone reflections.</span></li>
+          <li><b><span class="zh">开发日志提示词</span><span class="en">Development log prompt</span></b> — <span class="zh">下载 <a href="generate-development-log-prompt.md">generate-development-log-prompt.md</a>，AI 据此自动维护交互记录和里程碑反思。</span><span class="en">Download <a href="generate-development-log-prompt.md">generate-development-log-prompt.md</a>; AI uses it to maintain interaction logs and milestone reflections.</span></li>
         </ul>
       </div>
     </section>
@@ -292,7 +292,7 @@
         <ul>
           <li><span class="zh">Brief（16 节）</span><span class="en">Brief (16 sections)</span></li>
           <li><span class="zh">系统图（Canva 链接或 PNG）</span><span class="en">System graph (Canva link or PNG)</span></li>
-          <li><a href="dev-log-prompt.html"><span class="zh">人机开发日志协议（Log Prompt，可复制）</span><span class="en">Human–AI Development Log Protocol (copyable prompt)</span></a></li>
+          <li><a href="generate-development-log-prompt.md" download><span class="zh">开发日志提示词（Log Prompt，下载 .md）</span><span class="en">Development Log Prompt (download .md)</span></a></li>
         </ul>
         <p class="kicker" style="margin-top:14px"><span class="zh">产出</span><span class="en">Outputs</span></p>
         <ul>
@@ -322,7 +322,7 @@
           <li><b><span class="zh">Reflection Log</span><span class="en">Reflection Log</span></b> — <span class="zh">里程碑时 AI 主动问你：你接受了 AI 哪些建议？拒绝或改了哪些？为什么？最终决策是谁做的？</span><span class="en">At milestones AI asks you: which AI suggestions did you accept? Which did you reject or change, and why? Who made the final decision?</span></li>
         </ul>
         <div class="callout"><span class="zh">这是你"独立决策"的证据——也是老师检查时最看重的部分。要如实写，包括失败和未完成。</span><span class="en">This is the evidence of your independent decisions — and the part your instructor reads most closely. Write honestly, including failures and unfinished work.</span></div>
-        <p style="margin-top:14px"><a href="dev-log-prompt.html"><span class="zh">→ 打开开发日志提示词（整段复制给 AI）</span><span class="en">→ Open the development log prompt (copy the whole thing to AI)</span></a></p>
+        <p style="margin-top:14px"><a href="generate-development-log-prompt.md" download><span class="zh">→ 下载开发日志提示词（.md）</span><span class="en">→ Download development log prompt (.md)</span></a></p>
       </div>
 
       <div class="slide-block part4">
@@ -331,11 +331,11 @@
         <div class="setup">
           <div class="item">
             <h3><span class="zh">① 从网站拿到三份输入</span><span class="en">① Take three inputs from the site</span></h3>
-            <p><span class="zh">Workbook 导出 <code>brief.md</code>；系统图保存为 <code>system-graph.png</code>（或记下 Canva 链接）；从<a href="dev-log-prompt.html">开发日志提示词页</a>下载 <code>generate-development-log-prompt.md</code>。顺手点"导出问题评分 CSV"，得到 <code>ratings.csv</code>（留在本地，不进仓库）。</span><span class="en">Export <code>brief.md</code> from the workbook; save the system graph as <code>system-graph.png</code> (or keep the Canva link); download <code>generate-development-log-prompt.md</code> from the <a href="dev-log-prompt.html">development log prompt page</a>. While you are there, click "Export Question Ratings CSV" for <code>ratings.csv</code> (keep it local, do not commit it).</span></p>
+            <p><span class="zh">Workbook 导出 <code>brief.md</code>；系统图保存为 <code>system-graph.png</code>（或记下 Canva 链接）；下载 <a href="generate-development-log-prompt.md">generate-development-log-prompt.md</a>。顺手点"导出问题评分 CSV"，得到 <code>ratings.csv</code>（留在本地，不进仓库）。</span><span class="en">Export <code>brief.md</code> from the workbook; save the system graph as <code>system-graph.png</code> (or keep the Canva link); download <a href="generate-development-log-prompt.md">generate-development-log-prompt.md</a>. While you are there, click "Export Question Ratings CSV" for <code>ratings.csv</code> (keep it local, do not commit it).</span></p>
           </div>
           <div class="item">
             <h3><span class="zh">② 用 AI IDE 打开一个空文件夹</span><span class="en">② Open an empty folder in your AI IDE</span></h3>
-            <p><span class="zh">把这三份文件放进去，同时发送<a href="kickoff-prompt.html">首次对话协议</a>和<a href="dev-log-prompt.html">开发日志提示词</a>（可在同一条消息中发送）。文件夹结构由 AI 建，但你要能说清每个文件夹装的是什么。</span><span class="en">Drop all three files in, send both the <a href="kickoff-prompt.html">kickoff prompt</a> and <a href="dev-log-prompt.html">development log prompt</a> together (in a single message). AI builds the folder structure — but you must be able to say what each folder holds.</span></p>
+            <p><span class="zh">把这三份文件放进去，同时发送<a href="kickoff-prompt.html">首次对话协议</a>和开发日志提示词（可在同一条消息中发送）。文件夹结构由 AI 建，但你要能说清每个文件夹装的是什么。</span><span class="en">Drop all three files in, send both the <a href="kickoff-prompt.html">kickoff prompt</a> and the development log prompt together (in a single message). AI builds the folder structure — but you must be able to say what each folder holds.</span></p>
           </div>
           <div class="item">
             <h3><span class="zh">③ 用 GitHub Desktop 发布（第一次）</span><span class="en">③ Publish with GitHub Desktop (first time)</span></h3>

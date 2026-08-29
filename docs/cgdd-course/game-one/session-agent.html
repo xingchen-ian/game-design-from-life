@@ -122,6 +122,64 @@
     .input-item strong { display: block; color: #f0f5f3; font-size: 16px; }
     .input-item span { display: block; margin-top: 5px; color: #9fadaa; font-size: 14px; }
 
+    .setup-panel {
+      margin-top: 36px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--warm);
+      border-radius: 3px;
+      background: rgba(10, 16, 19, 0.62);
+    }
+
+    .setup-panel h2 { margin-bottom: 20px; font-size: 22px; color: var(--warm); }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .setup-file {
+      position: relative;
+      padding: 18px 16px 14px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: rgba(14, 21, 24, 0.8);
+    }
+
+    .file-num {
+      position: absolute;
+      top: -11px;
+      left: 14px;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--warm);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 900;
+      border-radius: 50%;
+    }
+
+    .setup-file h3 { margin: 0 0 8px; font-size: 15px; color: #f0f5f3; }
+    .setup-file p { margin: 0; font-size: 13px; line-height: 1.55; }
+    .setup-file a { color: var(--teal); text-decoration: underline; }
+
+    .setup-kickoff {
+      padding: 18px 20px;
+      border: 1px solid rgba(120, 188, 182, 0.25);
+      border-radius: 3px;
+      background: rgba(120, 188, 182, 0.06);
+      margin-bottom: 18px;
+    }
+
+    .setup-kickoff h3 { margin: 0 0 8px; font-size: 16px; color: var(--teal); }
+    .setup-kickoff p { margin: 4px 0 0; font-size: 14px; }
+    .setup-kickoff a { color: var(--teal); text-decoration: underline; }
+
     .section {
       margin-top: 58px;
       padding-top: 28px;
@@ -301,10 +359,36 @@
     <p class="lead zh">你将把Session 2的开发摘要和系统图交给AI Agent，共同建立项目网站、实现可玩游戏、测试挑战，并留下真实的开发记录。</p>
     <p class="lead en">Give your Session 2 development brief and system graph to an AI Agent. Together, you will build the project website, implement a playable game, test challenges, and preserve an honest development record.</p>
 
-    <div class="input-strip" aria-label="Required inputs">
-      <div class="input-item"><strong><span class="zh">开发摘要</span><span class="en">Development Brief</span></strong><span><span class="zh">Session 2下载的Markdown</span><span class="en">Markdown downloaded from Session 2</span></span></div>
-      <div class="input-item"><strong><span class="zh">系统图</span><span class="en">System Graph</span></strong><span><span class="zh">PNG文件或可访问的Canva链接</span><span class="en">PNG file or accessible Canva link</span></span></div>
-      <div class="input-item"><strong><span class="zh">你的判断</span><span class="en">Your Design Judgment</span></strong><span><span class="zh">确认、试玩、取舍和反思不能交给AI</span><span class="en">Confirmation, playtesting, choices, and reflection stay with you</span></span></div>
+    <div class="setup-panel" aria-label="Session 3 准备">
+      <h2><span class="zh">开始之前：准备三份文件</span><span class="en">Before You Start: Prepare Three Files</span></h2>
+      <div class="setup-grid">
+        <div class="setup-file">
+          <div class="file-num">1</div>
+          <h3><code>brief.md</code></h3>
+          <p class="zh">在 Session 2 的 Workbook 中导出。16 节开发摘要，是 AI 的唯一设计来源。</p>
+          <p class="en">Export from the Session 2 workbook. A 16-section development brief — the AI's single source of design truth.</p>
+        </div>
+        <div class="setup-file">
+          <div class="file-num">2</div>
+          <h3><code>system-graph.png</code></h3>
+          <p class="zh">Session 2 画的系统图，导出为 PNG 或保留可访问的 Canva 链接。</p>
+          <p class="en">Your system graph from Session 2, exported as PNG or keep an accessible Canva link.</p>
+        </div>
+        <div class="setup-file">
+          <div class="file-num">3</div>
+          <h3><code>generate-development-log-prompt.md</code></h3>
+          <p class="zh"><a href="generate-development-log-prompt.md" download>下载开发日志提示词</a>（.md 文件）。AI 据此自动维护交互记录和里程碑反思。</p>
+          <p class="en"><a href="generate-development-log-prompt.md" download>Download the log prompt</a> (.md file). AI uses it to maintain interaction logs and milestone reflections.</p>
+        </div>
+      </div>
+
+      <div class="setup-kickoff">
+        <h3><span class="zh">第四样东西：首轮对话协议</span><span class="en">Fourth Item: The Kickoff Protocol</span></h3>
+        <p class="zh">建好文件夹、放入上面三个文件后，打开 <a href="kickoff-prompt.html">首次对话协议</a>，整段复制给 AI。<b>可与开发日志提示词在同一条消息中同时发送。</b></p>
+        <p class="en">Once the folder is ready with the three files above, open the <a href="kickoff-prompt.html">kickoff prompt</a>, copy the whole thing to your agent. <b>Can be sent in the same message as the development log prompt.</b></p>
+      </div>
+
+      <div class="callout"><span class="zh"><b>操作顺序：</b>新建空文件夹 → 放入三份文件 → 用 AI IDE 打开 → 同时发送 kickoff + dev-log 两条 prompt → 确认 AI 复述正确 → 说"开始"。</span><span class="en"><b>Workflow:</b> Create empty folder → drop in all three files → open with AI IDE → send both prompts together → confirm AI's restatement is correct → say "go".</span></div>
     </div>
 
     <section class="section">
@@ -393,13 +477,13 @@
     <section class="section">
       <h2><span class="zh">开始开发</span><span class="en">Start Development</span></h2>
       <div class="start-panel">
-        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown、系统图PNG和<a href="dev-log-prompt.html">开发日志提示词</a>。</li><li>让AI Agent打开这个文件夹。</li><li>同时发送<a href="kickoff-prompt.html">首次对话协议</a>和<a href="dev-log-prompt.html">开发日志提示词</a>（可在同一条消息中发送）。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
-        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown, system graph PNG, and <a href="dev-log-prompt.html">development log prompt</a>.</li><li>Open this folder with your AI Agent.</li><li>Send both the <a href="kickoff-prompt.html">kickoff prompt</a> and <a href="dev-log-prompt.html">development log prompt</a> together (in a single message).</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
+        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown、系统图PNG和<a href="generate-development-log-prompt.md" download>开发日志提示词.md</a>。</li><li>让AI Agent打开这个文件夹。</li><li>同时发送<a href="kickoff-prompt.html">首次对话协议</a>和开发日志提示词（可在同一条消息中发送）。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
+        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown, system graph PNG, and <a href="generate-development-log-prompt.md" download">development log prompt.md</a>.</li><li>Open this folder with your AI Agent.</li><li>Send both the <a href="kickoff-prompt.html">kickoff prompt</a> and the development log prompt together (in a single message).</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
         <div class="prompt-links">
-          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完 <code>brief.md</code>、<code>system-graph.png</code> 和 <code>generate-development-log-prompt.md</code>，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
-          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read <code>brief.md</code>, <code>system-graph.png</code>, and <code>generate-development-log-prompt.md</code>, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
-          <p class="zh"><b>第二条（可与第一条同消息发送）：</b><a href="dev-log-prompt.html">开发日志提示词</a>——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。</p>
-          <p class="en"><b>Second (can be sent in the same message):</b> the <a href="dev-log-prompt.html">development log prompt</a> — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection.</p>
+          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完三份文件，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
+          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read all three files, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
+          <p class="zh"><b>第二条（可与第一条同消息发送）：</b>开发日志提示词——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。<a href="generate-development-log-prompt.md" download>下载 .md →</a></p>
+          <p class="en"><b>Second (can be sent in the same message):</b> the development log prompt — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection. <a href="generate-development-log-prompt.md" download>Download .md →</a></p>
         </div>
       </div>
       <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
