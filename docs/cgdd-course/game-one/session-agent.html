@@ -384,12 +384,25 @@
 
       <div class="setup-kickoff">
         <h3><span class="zh">第四样东西：首轮对话协议</span><span class="en">Fourth Item: The Kickoff Protocol</span></h3>
-        <p class="zh">建好文件夹、放入上面三个文件后，打开 <a href="kickoff-prompt.html">首次对话协议</a>，整段复制给 AI。<b>可与开发日志提示词在同一条消息中同时发送。</b></p>
-        <p class="en">Once the folder is ready with the three files above, open the <a href="kickoff-prompt.html">kickoff prompt</a>, copy the whole thing to your agent. <b>Can be sent in the same message as the development log prompt.</b></p>
+        <p class="zh">建好文件夹、放入上面三个文件后，打开 <a href="kickoff-prompt.html">首次对话协议</a>，整段复制给 AI 发送。AI 会自动读取文件夹中的三份文件（含开发日志提示词）。</p>
+        <p class="en">Once the folder is ready with the three files above, open the <a href="kickoff-prompt.html">kickoff prompt</a>, copy the whole thing and send it to your agent. AI will automatically read all three files in the folder (including the log prompt).</p>
       </div>
 
-      <div class="callout"><span class="zh"><b>操作顺序：</b>新建空文件夹 → 放入三份文件 → 用 AI IDE 打开 → 同时发送 kickoff + dev-log 两条 prompt → 确认 AI 复述正确 → 说"开始"。</span><span class="en"><b>Workflow:</b> Create empty folder → drop in all three files → open with AI IDE → send both prompts together → confirm AI's restatement is correct → say "go".</span></div>
+      <div class="callout"><span class="zh"><b>操作顺序：</b>新建空文件夹 → 放入三份文件 → 用 AI IDE 打开 → 发送 kickoff 首轮对话协议 → 确认 AI 复述正确 → 说"开始"。</span><span class="en"><b>Workflow:</b> Create empty folder → drop in all three files → open with AI IDE → send the kickoff prompt → confirm AI's restatement is correct → say "go".</span></div>
     </div>
+
+    <section class="section">
+      <h2><span class="zh">开始开发</span><span class="en">Start Development</span></h2>
+      <div class="start-panel">
+        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown、系统图PNG和<a href="generate-development-log-prompt.md" download>开发日志提示词.md</a>。</li><li>让AI Agent打开这个文件夹。</li><li>在 AI Agent 中将复制的<a href="kickoff-prompt.html">首次对话协议</a>prompt 发送（这是唯一需要手动发送的提示词，AI 会自动读取文件夹中的其他文件）。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
+        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown, system graph PNG, and <a href="generate-development-log-prompt.md" download">development log prompt.md</a>.</li><li>Open this folder with your AI Agent.</li><li>Paste the copied <a href="kickoff-prompt.html">kickoff prompt</a> into your AI agent (this is the only prompt you need to send manually; AI will read the other files in the folder automatically).</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
+        <div class="prompt-links">
+          <p class="zh"><b>你需要发送的唯一提示词：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完三份文件（含开发日志提示词），向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
+          <p class="en"><b>The only prompt you need to send:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read all three files (including the log prompt), restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
+        </div>
+      </div>
+      <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
+    </section>
 
     <section class="section">
       <h2><span class="zh">Working Pipeline</span><span class="en">Working Pipeline</span></h2>
@@ -472,21 +485,6 @@
 └── source/                  # 仅 Track C：src/、package.json</pre>
       </div>
       <div class="guardrail"><p class="zh"><strong>公开性提醒：</strong>GitHub Pages 在免费方案下要求仓库是 <b>public</b> 的。这意味着 <code>brief.md</code>、<code>ratings.csv</code>、<code>development-log/</code> 和 commit 时间线都会被公开看到。不想公开的内容就不要放进仓库。同时绝对不要提交密码、API Key 或 <code>node_modules</code>。</p><p class="en"><strong>Public by design:</strong> GitHub Pages requires a <b>public</b> repository on the free plan. That means <code>brief.md</code>, <code>ratings.csv</code>, <code>development-log/</code>, and the commit timeline are all publicly visible. Anything you do not want published simply stays out of the repository. And never commit passwords, API keys, or <code>node_modules</code>.</p></div>
-    </section>
-
-    <section class="section">
-      <h2><span class="zh">开始开发</span><span class="en">Start Development</span></h2>
-      <div class="start-panel">
-        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown、系统图PNG和<a href="generate-development-log-prompt.md" download>开发日志提示词.md</a>。</li><li>让AI Agent打开这个文件夹。</li><li>同时发送<a href="kickoff-prompt.html">首次对话协议</a>和开发日志提示词（可在同一条消息中发送）。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
-        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown, system graph PNG, and <a href="generate-development-log-prompt.md" download">development log prompt.md</a>.</li><li>Open this folder with your AI Agent.</li><li>Send both the <a href="kickoff-prompt.html">kickoff prompt</a> and the development log prompt together (in a single message).</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
-        <div class="prompt-links">
-          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完三份文件，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
-          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read all three files, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
-          <p class="zh"><b>第二条（可与第一条同消息发送）：</b>开发日志提示词——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。<a href="generate-development-log-prompt.md" download>下载 .md →</a></p>
-          <p class="en"><b>Second (can be sent in the same message):</b> the development log prompt — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection. <a href="generate-development-log-prompt.md" download>Download .md →</a></p>
-        </div>
-      </div>
-      <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
     </section>
   </main>
 
