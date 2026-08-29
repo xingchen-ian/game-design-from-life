@@ -314,8 +314,8 @@
       <div class="pipeline">
         <article class="pipeline-stage">
           <h3><span class="zh">准备项目输入</span><span class="en">Prepare Project Inputs</span></h3>
-          <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">建立项目文件夹，放入开发摘要和系统图。</span><span class="en">Create the project folder and add the brief and graph.</span></p></div>
-          <div class="role"><b>AI Agent</b><p><span class="zh">读取两份文件，检查缺失和矛盾。</span><span class="en">Read both files and identify missing or conflicting information.</span></p></div>
+          <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">建立项目文件夹，放入开发摘要、系统图和开发日志提示词。</span><span class="en">Create the project folder and add the brief, graph, and development log prompt.</span></p></div>
+          <div class="role"><b>AI Agent</b><p><span class="zh">读取三份文件，检查缺失和矛盾。</span><span class="en">Read all three files and identify missing or conflicting information.</span></p></div>
         </article>
         <article class="pipeline-stage">
           <h3><span class="zh">确认实现计划</span><span class="en">Confirm the Build Plan</span></h3>
@@ -348,18 +348,6 @@
           <div class="role"><b><span class="zh">学生</span><span class="en">Student</span></b><p><span class="zh">开启 GitHub Pages，打开线上链接最终试玩，把链接交给老师。</span><span class="en">Turn on GitHub Pages, do a final playtest on the live URL, and send the link to your instructor.</span></p></div>
         </article>
       </div>
-    </section>
-
-    <section class="section">
-      <h2><span class="zh">Dependency Strategy</span><span class="en">Dependency Strategy</span></h2>
-      <p class="section-intro zh">开发工具可以复杂，展览运行必须简单。选择能实现设计目标的最低依赖等级，而不是一律禁止或一律使用npm。</p>
-      <p class="section-intro en">Development tools may be complex; exhibition runtime must be simple. Choose the lowest dependency level that can realize the design instead of always banning or always using npm.</p>
-      <div class="outcome-grid">
-        <article class="outcome"><h3>Track A · No Build</h3><p><span class="zh">HTML、CSS、原生JavaScript和Canvas 2D。适合大多数简单2D原型。</span><span class="en">HTML, CSS, plain JavaScript, and Canvas 2D for most simple 2D prototypes.</span></p></article>
-        <article class="outcome"><h3>Track B · Local Vendor</h3><p><span class="zh">只使用少量固定版本的浏览器库，并把库文件保存在项目中，不使用CDN。</span><span class="en">Use a small version-pinned browser library stored locally in the project, not a CDN.</span></p></article>
-        <article class="outcome"><h3>Track C · npm + Build</h3><p><span class="zh">Three.js、多个ES Modules或复杂加载器可以使用npm与Vite；提交前必须生成静态展览版本。</span><span class="en">Three.js, multiple ES Modules, or complex loaders may use npm and Vite; produce a static exhibition build before submission.</span></p></article>
-      </div>
-      <div class="guardrail"><p class="zh"><strong>统一发布标准：</strong>网站放在仓库根目录，由 GitHub Pages 从 <code>main</code> 分支发布，地址是 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>。因为部署在子路径下，<b>所有内部链接和资源路径必须是相对路径</b>——以 <code>/</code> 开头的绝对路径在本地能用，上线就 404。Three.js 与 ES Module 项目通过本地静态HTTP服务器验证，不以双击HTML为验收标准。</p><p class="en"><strong>Shared publishing standard:</strong> The site lives at the repository root and GitHub Pages publishes it from the <code>main</code> branch at <code>https://&lt;username&gt;.github.io/&lt;repository&gt;/</code>. Because it is served from a subpath, <b>every internal link and asset path must be relative</b> — root-absolute paths beginning with <code>/</code> work locally and 404 online. Verify Three.js and ES Module projects through a local static HTTP server; double-clicking HTML is not the acceptance standard.</p></div>
     </section>
 
     <section class="section">
@@ -405,13 +393,13 @@
     <section class="section">
       <h2><span class="zh">开始开发</span><span class="en">Start Development</span></h2>
       <div class="start-panel">
-        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown和系统图PNG。</li><li>让AI Agent打开这个文件夹。</li><li>先发<a href="kickoff-prompt.html">首次对话协议</a>（让AI index 工作空间并复述设计），再发<a href="dev-log-prompt.html">开发日志提示词</a>。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
-        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown and system graph PNG.</li><li>Open this folder with your AI Agent.</li><li>Send the <a href="kickoff-prompt.html">kickoff prompt</a> (AI indexes the workspace and restates the design), then the <a href="dev-log-prompt.html">development log prompt</a>.</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
+        <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown、系统图PNG和<a href="dev-log-prompt.html">开发日志提示词</a>。</li><li>让AI Agent打开这个文件夹。</li><li>同时发送<a href="kickoff-prompt.html">首次对话协议</a>和<a href="dev-log-prompt.html">开发日志提示词</a>（可在同一条消息中发送）。</li><li>先确认Agent复述的设计是对的，再允许它开始写代码。</li><li>用 GitHub Desktop 把这个文件夹发布成 <b>public</b> repo（Pages 需要公开仓库），并把老师加为 collaborator。</li></ol>
+        <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown, system graph PNG, and <a href="dev-log-prompt.html">development log prompt</a>.</li><li>Open this folder with your AI Agent.</li><li>Send both the <a href="kickoff-prompt.html">kickoff prompt</a> and <a href="dev-log-prompt.html">development log prompt</a> together (in a single message).</li><li>Confirm the Agent's restatement is right before allowing it to write code.</li><li>Publish this folder as a <b>public</b> repo with GitHub Desktop (Pages requires a public repository), then add your instructor as a collaborator.</li></ol>
         <div class="prompt-links">
-          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完 <code>brief.md</code> 和 <code>system-graph.png</code>，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
-          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read <code>brief.md</code> and <code>system-graph.png</code>, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
-          <p class="zh"><b>第二条：</b><a href="dev-log-prompt.html">开发日志提示词</a>——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。</p>
-          <p class="en"><b>Second:</b> the <a href="dev-log-prompt.html">development log prompt</a> — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection.</p>
+          <p class="zh"><b>第一条：</b><a href="kickoff-prompt.html">首次对话协议</a>——让 AI 先 index 工作空间、读完 <code>brief.md</code>、<code>system-graph.png</code> 和 <code>generate-development-log-prompt.md</code>，向你复述它理解的设计，并要求第一版 demo 和第一版 <code>index.html</code> 同时交付。<b>你确认之前它不许写代码。</b></p>
+          <p class="en"><b>First:</b> the <a href="kickoff-prompt.html">kickoff prompt</a> — makes AI index the workspace, read <code>brief.md</code>, <code>system-graph.png</code>, and <code>generate-development-log-prompt.md</code>, restate the design back to you, and deliver the first demo together with the first <code>index.html</code>. <b>It may not write code until you confirm.</b></p>
+          <p class="zh"><b>第二条（可与第一条同消息发送）：</b><a href="dev-log-prompt.html">开发日志提示词</a>——让 AI 在帮你开发的同时维护 <code>development-log/agent-development-log.md</code>：它自动写交互记录，里程碑时停下来问你写阶段反思。</p>
+          <p class="en"><b>Second (can be sent in the same message):</b> the <a href="dev-log-prompt.html">development log prompt</a> — while building, AI maintains <code>development-log/agent-development-log.md</code>: it writes interaction logs automatically and stops at milestones for your reflection.</p>
         </div>
       </div>
       <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>

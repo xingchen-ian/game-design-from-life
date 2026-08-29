@@ -99,18 +99,18 @@
       <h2><span class="zh">怎么用</span><span class="en">How to use it</span></h2>
       <div class="slide-block">
         <h3><span class="pnum zh">用法</span><span class="pnum en">USAGE</span><span class="zh">顺序</span><span class="en">Order</span></h3>
-        <p class="kicker"><span class="zh">两条提示词，先发这条，再发开发日志提示词。</span><span class="en">Two prompts: send this one first, then the development log prompt.</span></p>
+        <p class="kicker"><span class="zh">两条提示词，可在同一条消息中同时发送。</span><span class="en">Two prompts: both can be sent in a single message.</span></p>
         <ol class="when-list zh">
           <li>在 Session 2 的 Workbook 里导出 <code>brief.md</code>，把系统图存成 <code>system-graph.png</code>，从<a href="dev-log-prompt.html">开发日志提示词页</a>下载 <code>generate-development-log-prompt.md</code>。</li>
           <li>新建一个空文件夹，把这三个文件放进去，用 AI IDE 打开这个文件夹。</li>
-          <li><b>发下面这条 kickoff prompt。</b>AI 会先列出文件、读完 brief，然后向你复述它理解的设计。</li>
-          <li>你确认它读懂了之后，再发<a href="dev-log-prompt.html">开发日志提示词</a>，然后才说"开始"。</li>
+          <li><b>同时发送下面这条 kickoff prompt 和开发日志提示词。</b>AI 会先列出文件、读完 brief，然后向你复述它理解的设计。</li>
+          <li>你确认它读懂了之后，才说"开始"。</li>
         </ol>
         <ol class="when-list en">
           <li>Export <code>brief.md</code> from the Session 2 workbook, save your system graph as <code>system-graph.png</code>, and download <code>generate-development-log-prompt.md</code> from the <a href="dev-log-prompt.html">development log prompt page</a>.</li>
           <li>Create an empty folder, drop all three files in, and open that folder in your AI IDE.</li>
-          <li><b>Send the kickoff prompt below.</b> AI lists the files, reads the brief, then restates the design back to you.</li>
-          <li>Once you confirm it understood, send the <a href="dev-log-prompt.html">development log prompt</a>, and only then say go.</li>
+          <li><b>Send both the kickoff prompt below and the development log prompt together.</b> AI lists the files, reads the brief, then restates the design back to you.</li>
+          <li>Once you confirm it understood, say go.</li>
         </ol>
         <p class="note-inline"><span class="zh">为什么要多这一步：跳过 index 的 AI 会直接开始写"一个看起来像游戏的东西"，用的是它自己的想象，不是你的领域。复述这一步是你在接管设计权。</span><span class="en">Why this extra step: an AI that skips indexing starts writing "something that looks like a game" out of its own imagination instead of your domain. Restating the design back to you is how you take the design authority back.</span></p>
       </div>
@@ -257,8 +257,8 @@ RULES FOR EVERYTHING AFTER
       <div class="cards">
         <article class="card">
           <h3><span class="zh">开发日志提示词</span><span class="en">Development Log Prompt</span></h3>
-          <p class="zh">第二条要发的提示词。AI 自动记交互，里程碑时停下来问你写反思。</p>
-          <p class="en">The second prompt to send. AI logs interactions automatically and stops at milestones for your reflection.</p>
+          <p class="zh">可与 kickoff 同一条消息发送。AI 自动记交互，里程碑时停下来问你写反思。</p>
+          <p class="en">Can be sent in the same message as the kickoff. AI logs interactions automatically and stops at milestones for your reflection.</p>
           <p><a href="dev-log-prompt.html"><span class="zh">打开开发日志提示词 →</span><span class="en">Open the log prompt →</span></a></p>
         </article>
         <article class="card">
