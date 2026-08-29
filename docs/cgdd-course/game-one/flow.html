@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Game One — the full flow: nine design steps, technical essentials, AI collaboration, and how to submit your work." />
+  <title>Game One Flow · CGDD</title>
+  <link rel="stylesheet" href="../assets/site.css" />
+  <script src="../assets/lang.js" defer></script>
+  <style>
+    .flow-toc {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
+    }
+    .flow-toc a {
+      font-size: 13px; padding: 5px 12px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted); text-decoration: none;
+    }
+    .flow-toc a:hover { color: var(--ink); border-color: var(--ink); }
+
+    .slide-block {
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      background: var(--paper);
+      margin-bottom: 18px;
+    }
+    .slide-block.part2 { border-left-color: var(--warm); }
+    .slide-block.part3 { border-left-color: var(--teal); }
+    .slide-block.part4 { border-left-color: var(--blue); }
+    .slide-block h3 {
+      font-size: 19px; margin: 0 0 6px;
+      display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    }
+    .slide-block h3 .pnum {
+      font-size: 12px; font-weight: 800; color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .slide-block .kicker {
+      font-size: 13px; color: var(--muted); margin: 0 0 12px;
+    }
+    .slide-block ul { margin: 10px 0 0; padding-left: 20px; }
+    .slide-block li { margin-bottom: 6px; }
+
+    .flow-arrow {
+      text-align: center; font-size: 22px; color: var(--muted);
+      margin: 4px 0 14px; line-height: 1;
+    }
+
+    .do-ai {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;
+    }
+    @media (max-width: 720px) { .do-ai { grid-template-columns: 1fr; } }
+    .do-ai > div { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+    .do-ai .you { border-top: 3px solid var(--accent); }
+    .do-ai .ai  { border-top: 3px solid var(--teal); }
+    .do-ai h4 { margin: 0 0 8px; font-size: 15px; }
+
+    .callout {
+      border-left: 3px solid var(--warm);
+      background: var(--warm-soft);
+      padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 14px; font-size: 15px;
+    }
+  </style>
+</head>
+<body data-lang="en">
+  <header class="topbar">
+    <div class="brand">
+      <p class="brand-title"><span class="zh">CGDD · Game One</span><span class="en">CGDD · Game One</span></p>
+      <p class="brand-subtitle"><span class="zh">流程导览 · 九步设计 + 技术要点</span><span class="en">Flow Guide · Nine Steps + Technical Essentials</span></p>
+    </div>
+    <nav class="main">
+      <a class="nav-link" href="../index.html"><span class="zh">首页</span><span class="en">Home</span></a>
+      <a class="nav-link" href="index.html"><span class="zh">Game One</span><span class="en">Game One</span></a>
+      <a class="nav-link active" href="flow.html"><span class="zh">流程导览</span><span class="en">Flow Guide</span></a>
+      <a class="nav-link" href="session-inside.html"><span class="zh">Session 1</span><span class="en">Session 1</span></a>
+      <a class="nav-link" href="session-workbook.html"><span class="zh">Session 2</span><span class="en">Session 2</span></a>
+      <a class="nav-link" href="session-agent.html"><span class="zh">Session 3</span><span class="en">Session 3</span></a>
+    </nav>
+    <div class="controls">
+      <button type="button" class="lang" data-lang="zh">中文</button>
+      <button type="button" class="lang active" data-lang="en">English</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow"><span class="zh">流程导览 · 21 页</span><span class="en">Flow Guide · 21 Slides</span></p>
+      <h1><span class="zh">Game One：从生活经验到可玩系统</span><span class="en">Game One: From Lived Experience to a Playable System</span></h1>
+      <p class="lead"><span class="zh">这页是整门课的地图。你会看到：为什么这样设计、九个步骤各自解决什么问题、哪些技术要点最容易出错，以及最后你要亲手交付什么。</span><span class="en">This page is the map for the whole module: why it is designed this way, what each of the nine steps solves, which technical points go wrong most often, and what you must deliver by hand at the end.</span></p>
+      <div class="flow-toc">
+        <a href="#p1"><span class="zh">1 · 为什么</span><span class="en">1 · Why</span></a>
+        <a href="#p2"><span class="zh">2 · 三步流程</span><span class="en">2 · Three Sessions</span></a>
+        <a href="#p3"><span class="zh">3 · 九步设计</span><span class="en">3 · Nine Steps</span></a>
+        <a href="#p4"><span class="zh">4 · 技术要点</span><span class="en">4 · Technical Essentials</span></a>
+        <a href="#p5"><span class="zh">5 · 开发与交付</span><span class="en">5 · Build &amp; Submit</span></a>
+        <a href="#p6"><span class="zh">6 · 你的陈述</span><span class="en">6 · Your Statement</span></a>
+      </div>
+    </section>
+
+    <!-- ============ Part 1 · Why ============ -->
+    <section id="p1">
+      <p class="eyebrow"><span class="zh">Part 1 · 定位</span><span class="en">Part 1 · Why This Way</span></p>
+      <h2><span class="zh">为什么不是"让 AI 做个小游戏"</span><span class="en">Why Not Just "Let AI Make a Mini-Game"</span></h2>
+
+      <div class="slide-block">
+        <h3><span class="pnum">01</span><span class="zh">AI 能很快做出游戏，但常常是换皮</span><span class="en">AI can build a game fast — but it is often just reskinned</span></h3>
+        <p class="kicker"><span class="zh">问题</span><span class="en">The problem</span></p>
+        <p><span class="zh">你给 AI 一个主题，它能生成一个能跑的游戏。但它常常是"通用玩法 + 你的题材"——把赛车、打怪、消消乐套上一层帆船或咖啡的皮。这类游戏好玩，但不表达你对这个领域的真实理解。</span><span class="en">Give AI a theme and it produces a working game. But it is usually "generic mechanic + your topic" — racing, fighting, or match-3 wearing a sailing or coffee skin. Those games are playable, but they do not express what you actually understand about the domain.</span></p>
+      </div>
+
+      <div class="slide-block">
+        <h3><span class="pnum">02</span><span class="zh">夏校里的真实反馈：视角不是我想的那个</span><span class="en">Real feedback from the summer school: the camera was not what I imagined</span></h3>
+        <p class="kicker"><span class="zh">观察</span><span class="en">The observation</span></p>
+        <p><span class="zh">很多学生说：AI 生成的游戏视角其实不是他设想的那样。根因是——他在设计阶段从没被要求说清楚"玩家应该从哪个角度、看见什么"。等 AI 猜错了，游戏已经做完了。</span><span class="en">Many students said the AI-generated camera was not what they had imagined. The root cause: they were never asked, during design, to state clearly "from what angle, and what should the player see." By the time AI guessed wrong, the game was already built.</span></p>
+        <div class="callout"><span class="zh">所以这门课加了一整步：Step 7 视觉与镜头。视角不是美术问题，是核心判断能不能被看见的问题。</span><span class="en">That is why this course adds a whole step: Step 7 Visual &amp; Camera. The camera is not an art choice — it decides whether your core judgment is visible at all.</span></div>
+      </div>
+
+      <div class="slide-block">
+        <h3><span class="pnum">03</span><span class="zh">核心主张：游戏机制 = 你对领域的真实判断</span><span class="en">Core claim: game mechanics = your real judgment about a domain</span></h3>
+        <p class="kicker"><span class="zh">主张</span><span class="en">The claim</span></p>
+        <p><span class="zh">帆船不是"开船"，是读风、调帆、判断航线；咖啡不是"冲咖啡"，是看粉的粗细、水的温度、流速。当你把这些判断变成数据、把环境对数据的干扰变成挑战，游戏才真正来自你的领域。</span><span class="en">Sailing is not "driving a boat"; it is reading the wind, trimming the sail, judging the course. Coffee is not "making coffee"; it is reading grind size, water temperature, flow rate. When you turn those judgments into data — and turn what disturbs that data into challenges — the game finally comes from your domain.</span></p>
+      </div>
+    </section>
+
+    <!-- ============ Part 2 · Three sessions ============ -->
+    <section id="p2">
+      <p class="eyebrow"><span class="zh">Part 2 · 三步流程</span><span class="en">Part 2 · The Three Sessions</span></p>
+      <h2><span class="zh">整门课走三步</span><span class="en">The Whole Module in Three Sessions</span></h2>
+
+      <div class="step-grid">
+        <div class="step-card s1">
+          <div class="num">1</div>
+          <h3><span class="zh">INSIDE 分析</span><span class="en">INSIDE Analysis</span></h3>
+          <p><span class="zh">选一个你真正了解的领域，拆解它的体验来源：感受、机制、叙事、结构。产出：你的领域选择。</span><span class="en">Pick a domain you truly know and break down where its experience comes from: feeling, mechanics, narrative, structure. Output: your domain choice.</span></p>
+        </div>
+        <div class="step-card s2">
+          <div class="num">2</div>
+          <h3><span class="zh">Workbook 九步</span><span class="en">Workbook · Nine Steps</span></h3>
+          <p><span class="zh">用结构化问题把领域判断拆成可运行的系统：数据、操作、挑战、视角、人机边界。产出：Brief（16 节）+ 系统图。</span><span class="en">Structured questions turn your domain judgment into a runnable system: data, actions, challenges, camera, human–AI boundary. Output: a 16-section brief + system graph.</span></p>
+        </div>
+        <div class="step-card s3">
+          <div class="num">3</div>
+          <h3><span class="zh">AI 开发与记录</span><span class="en">AI Build &amp; Log</span></h3>
+          <p><span class="zh">把 Brief + 系统图 + 开发日志协议交给 AI，生成可玩 demo，并全程自动记录你的决策与反思。产出：游戏 + 项目网站 + 开发日志。</span><span class="en">Hand the brief + graph + log protocol to AI. It builds a playable demo and logs your decisions and reflections along the way. Output: game + project site + development log.</span></p>
+        </div>
+      </div>
+
+      <div class="slide-block part2" style="margin-top:22px">
+        <h3><span class="pnum">07</span><span class="zh">学生做 vs AI 做：边界在哪</span><span class="en">You vs AI: where the line is</span></h3>
+        <p class="kicker"><span class="zh">这门课不教编程，但也不让你把思考外包出去</span><span class="en">This course does not teach coding — but it will not let you outsource the thinking</span></p>
+        <div class="do-ai">
+          <div class="you">
+            <h4><span class="zh">✋ 你亲手做</span><span class="en">✋ You do by hand</span></h4>
+            <ul>
+              <li><span class="zh">建立项目文件夹结构（理解项目由什么组成）</span><span class="en">Create the project folder structure (understand what a project is made of)</span></li>
+              <li><span class="zh">填写 Workbook，写出 Brief</span><span class="en">Fill the workbook and write your brief</span></li>
+              <li><span class="zh">画系统图</span><span class="en">Draw the system graph</span></li>
+              <li><span class="zh">把文件 push 到 GitHub</span><span class="en">Push your files to GitHub</span></li>
+              <li><span class="zh">回答 AI 的反思提问，写下你的决策</span><span class="en">Answer AI's reflection questions and record your decisions</span></li>
+            </ul>
+          </div>
+          <div class="ai">
+            <h4><span class="zh">🤖 AI 做</span><span class="en">🤖 AI does</span></h4>
+            <ul>
+              <li><span class="zh">写代码、调试、生成网站</span><span class="en">Write code, debug, generate the site</span></li>
+              <li><span class="zh">整理规则与变量建议</span><span class="en">Organize rules and suggest variables</span></li>
+              <li><span class="zh">自动维护开发日志（交互记录）</span><span class="en">Maintain the development log automatically (interaction records)</span></li>
+              <li><span class="zh">技术选型与视觉微调</span><span class="en">Technical choices and visual polish</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><span class="zh">判断标准：涉及"知识框架和流程"的，你亲手做；纯技术实现苦力，交给 AI。</span><span class="en">The rule: anything about the knowledge framework or the process, you do by hand. Pure technical labor goes to AI.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ Part 3 · Nine steps ============ -->
+    <section id="p3">
+      <p class="eyebrow"><span class="zh">Part 3 · 九步设计（Session 2 核心）</span><span class="en">Part 3 · Nine Steps (Session 2 Core)</span></p>
+      <h2><span class="zh">把领域判断拆成可运行的系统</span><span class="en">Turning Domain Judgment into a Runnable System</span></h2>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">08</span><span class="zh">Step 1–4：从经验到反馈</span><span class="en">Steps 1–4: From Experience to Feedback</span></h3>
+        <ul>
+          <li><b><span class="zh">Step 1 领域采样</span><span class="en">Step 1 Domain Sampling</span></b> — <span class="zh">你为什么了解它？新手通常误以为什么最重要？你第一次卡住是什么时候？</span><span class="en">Why do you know it? What do beginners wrongly assume matters most? When did you first get stuck?</span></li>
+          <li><b><span class="zh">Step 2 新手 / 高手差异</span><span class="en">Step 2 Novice vs Expert</span></b> — <span class="zh">面对同一情境，新手和高手的判断差在哪？用一句话概括核心学习转变。</span><span class="en">In the same situation, how do novice and expert judgments differ? Summarize the core learning shift in one sentence.</span></li>
+          <li><b><span class="zh">Step 3 技能循环</span><span class="en">Step 3 Skill Loop</span></b> — <span class="zh">观察 → 判断 → 行动 → 反馈 → 调整 → 熟练。玩家的每一次循环是什么？</span><span class="en">Observe → Judge → Act → Feedback → Adjust → Master. What is one full loop for your player?</span></li>
+          <li><b><span class="zh">Step 4 领域反馈表</span><span class="en">Step 4 Domain Feedback</span></b> — <span class="zh">哪些反馈立刻出现？哪些要延迟？哪些不能用分数表示，必须用画面 / 声音 / 手感？</span><span class="en">Which feedback is immediate? Which is delayed? Which cannot be a number and must be shown through visuals, sound, or feel?</span></li>
+        </ul>
+      </div>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">09</span><span class="zh">Step 5：数据化抽象 —— 整个设计的枢纽</span><span class="en">Step 5: Data Abstraction — the Hub of the Whole Design</span></h3>
+        <p class="kicker"><span class="zh">把数据分成三类，是后面所有设计的入口</span><span class="en">Sorting your data into three groups is the entry point for everything that follows</span></p>
+        <div class="step-grid" style="margin-top:14px">
+          <div class="step-card s1">
+            <h3><span class="zh">环境数据</span><span class="en">Environment Data</span></h3>
+            <p><span class="zh">系统提供，玩家不能直接控制：风向、风力、洋流、礁石、时间。</span><span class="en">Supplied by the system, not directly controlled: wind direction, wind strength, current, rocks, time.</span></p>
+          </div>
+          <div class="step-card s2">
+            <h3><span class="zh">玩家可操作数据</span><span class="en">Player-Controlled Data</span></h3>
+            <p><span class="zh">玩家的 action / input 能直接改变：船头方向、帆角、路线。</span><span class="en">Directly changed by the player's action/input: boat heading, sail angle, route.</span></p>
+          </div>
+          <div class="step-card s3">
+            <h3><span class="zh">系统计算结果</span><span class="en">System-Calculated Results</span></h3>
+            <p><span class="zh">系统根据前两类算出：船速、漂移、稳定性、与目标距离。</span><span class="en">Computed from the first two: boat speed, drift, stability, distance to target.</span></p>
+          </div>
+        </div>
+        <div class="callout"><span class="zh">关键一问：你的每个操作（按键 / 点击 / 拖动）分别改变哪个数据？写不出来，说明机制还没想清楚。</span><span class="en">The key question: which data does each of your controls change? If you cannot write it down, the mechanic is not yet clear.</span></div>
+      </div>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">10</span><span class="zh">Step 6：挑战空间 —— 挑战来自数据，不是关卡</span><span class="en">Step 6: Challenge Space — Challenges Come from Data, Not Levels</span></h3>
+        <p><span class="zh">从 Step 5 的"玩家可操作数据"倒推：环境中有哪些因素能影响它？那些因素就是你的挑战要素。</span><span class="en">Work backwards from Step 5's player-controlled data: what in the environment can affect it? Those factors are your challenge elements.</span></p>
+        <ul>
+          <li><span class="zh">船速 ← 风力、洋流 → 挑战：横流让航线持续偏移</span><span class="en">Boat speed ← wind, current → challenge: a cross current keeps pushing your course off</span></li>
+          <li><span class="zh">帆角 ← 风向、风力 → 挑战：逆风目标不能直线到达</span><span class="en">Sail angle ← wind direction &amp; strength → challenge: an upwind target cannot be reached directly</span></li>
+          <li><span class="zh">航线 ← 洋流、礁石 → 挑战：安全路径变窄</span><span class="en">Route ← current, rocks → challenge: the safe path narrows</span></li>
+        </ul>
+        <div class="callout"><span class="zh">同一个因素的不同状态 = 难度阶梯。顺风（简单）→ 侧风 → 逆风（困难），玩家学会的是"读风与规划航线"，不是"手速更快"。</span><span class="en">Different states of the same factor = a difficulty ladder. Downwind (easy) → crosswind → upwind (hard). What the player learns is reading wind and planning a course — not faster reflexes.</span></div>
+      </div>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">11</span><span class="zh">Step 7：视觉与镜头 —— 视角必须让核心判断被看见</span><span class="en">Step 7: Visual &amp; Camera — the Camera Must Make the Core Judgment Visible</span></h3>
+        <ul>
+          <li><b><span class="zh">视角</span><span class="en">Camera</span></b> — <span class="zh">俯视 / 横版侧视 / 第一人称 / 第三人称跟随 / 等距？</span><span class="en">Top-down / side-scroll / first-person / third-person follow / isometric?</span></li>
+          <li><b><span class="zh">为什么</span><span class="en">Why</span></b> — <span class="zh">读风需要同时看见风向、船头、目标，所以俯视才成立；要"被带着走"的感觉，就得第三人称跟随。</span><span class="en">Reading wind requires seeing wind, bow, and target at once, so top-down works; for a "being carried along" feeling, you need third-person follow.</span></li>
+          <li><b><span class="zh">维度与风格</span><span class="en">Dimension &amp; style</span></b> — <span class="zh">2D / 2.5D / 3D？像素 / 手绘 / 极简几何 / 写实？</span><span class="en">2D / 2.5D / 3D? Pixel / hand-drawn / minimal geometry / realistic?</span></li>
+          <li><b><span class="zh">色彩与声音</span><span class="en">Color &amp; sound</span></b> — <span class="zh">明亮或昏暗？冷或暖？需要什么音效强化反馈？</span><span class="en">Bright or dark? Cool or warm? What sounds reinforce the feedback?</span></li>
+        </ul>
+      </div>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">12</span><span class="zh">Step 8：人机协作边界 —— 必须在 AI 动手前声明</span><span class="en">Step 8: Human–AI Boundary — Declare It Before AI Starts</span></h3>
+        <ul>
+          <li><b><span class="zh">你保留的</span><span class="en">You keep</span></b> — <span class="zh">核心机制、学习转变、胜负条件、核心变量。AI 不得擅自改。</span><span class="en">Core mechanic, learning shift, win/lose conditions, core variables. AI must not change them without asking.</span></li>
+          <li><b><span class="zh">交给 AI 的</span><span class="en">You delegate</span></b> — <span class="zh">技术实现、代码结构、视觉微调、音效实现。</span><span class="en">Technical implementation, code structure, visual polish, sound implementation.</span></li>
+          <li><b><span class="zh">纠偏预案</span><span class="en">Correction plan</span></b> — <span class="zh">如果 AI 把它做成了"普通小游戏"（只是题材换皮），你怎么发现？怎么拉回来？</span><span class="en">If AI turns it into a generic mini-game (theme only), how will you notice, and how will you pull it back?</span></li>
+        </ul>
+        <div class="callout"><span class="zh">为什么必须事前：等到开发完再反思，AI 已经越完界了。声明要写进 Brief 的第 7 节。</span><span class="en">Why it must come first: by the time you reflect after the build, AI has already crossed the line. Put the declaration in section 7 of your brief.</span></div>
+      </div>
+
+      <div class="slide-block part3">
+        <h3><span class="pnum">13</span><span class="zh">系统图 + Brief：交给 AI 的两份文件</span><span class="en">The Graph + Brief: Two Files to Hand Over</span></h3>
+        <ul>
+          <li><b><span class="zh">系统图</span><span class="en">System graph</span></b> — <span class="zh">在共用 Canva 白板上画：挑战如何设置数据、玩家如何操作、系统如何计算、反馈如何帮助学习。</span><span class="en">Draw on the shared Canva board: how challenges configure data, how the player acts, how the system calculates, and how feedback supports learning.</span></li>
+          <li><b><span class="zh">Brief（16 节）</span><span class="en">Brief (16 sections)</span></b> — <span class="zh">Workbook 自动生成：项目信息、设计摘要、玩家循环、数据模型、挑战空间、视觉镜头、人机边界、规则、反馈优先级、首版范围、技术依赖、网站要求、开发日志协议、提交打包、AI 指令、验收清单。</span><span class="en">Generated automatically by the workbook: project identity, design summary, player loop, data model, challenge space, visual &amp; camera, AI boundary, rules, feedback priorities, first-version scope, tech dependencies, site requirements, log protocol, packaging, AI instructions, acceptance checklist.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Part 4 · Technical essentials ============ -->
+    <section id="p4">
+      <p class="eyebrow"><span class="zh">Part 4 · 技术要点</span><span class="en">Part 4 · Technical Essentials</span></p>
+      <h2><span class="zh">四个最容易做错的地方</span><span class="en">Four Things That Go Wrong Most Often</span></h2>
+
+      <div class="step-grid">
+        <div class="step-card s1">
+          <div class="num">14</div>
+          <h3><span class="zh">数据三分类是枢纽</span><span class="en">The Three-Category Split Is the Hub</span></h3>
+          <p><span class="zh">环境 → 玩家操作 → 系统计算。分错了，后面挑战和反馈全会跑偏。先分类，再设计其他。</span><span class="en">Environment → player action → system calculation. Get this wrong and challenges and feedback both drift. Classify first, design after.</span></p>
+        </div>
+        <div class="step-card s2">
+          <div class="num">15</div>
+          <h3><span class="zh">挑战来自数据，不是关卡</span><span class="en">Challenges Come from Data, Not Levels</span></h3>
+          <p><span class="zh">"第 3 关加更多敌人"不是挑战设计。真正的挑战是：哪个领域因素变了，会迫使玩家换一种判断方式。</span><span class="en">"Level 3 adds more enemies" is not challenge design. A real challenge: which domain factor, when changed, forces the player to judge differently.</span></p>
+        </div>
+        <div class="step-card s3">
+          <div class="num">16</div>
+          <h3><span class="zh">视角让核心判断被看见</span><span class="en">The Camera Makes the Core Judgment Visible</span></h3>
+          <p><span class="zh">选错视角，游戏直接废掉——玩家根本看不到该看的东西。这是夏校里最高频的翻车点。</span><span class="en">Pick the wrong camera and the game is broken — the player simply cannot see what matters. This was the most common failure in the summer school.</span></p>
+        </div>
+        <div class="step-card s4">
+          <div class="num">17</div>
+          <h3><span class="zh">人机边界要事前声明</span><span class="en">Declare the Boundary Beforehand</span></h3>
+          <p><span class="zh">事后反思 AI 已经改完了。边界写进 Brief，AI 才会把它当作约束而不是建议。</span><span class="en">After-the-fact reflection is too late — AI has already changed things. Put the boundary in the brief so AI treats it as a constraint, not a suggestion.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Part 5 · Build & submit ============ -->
+    <section id="p5">
+      <p class="eyebrow"><span class="zh">Part 5 · 开发与交付</span><span class="en">Part 5 · Build &amp; Submit</span></p>
+      <h2><span class="zh">Session 3：与 AI 一起做完，并亲手交付</span><span class="en">Session 3: Finish It With AI — and Submit By Hand</span></h2>
+
+      <div class="slide-block part4">
+        <h3><span class="pnum">18</span><span class="zh">开发流程：三份输入 → 三类产出</span><span class="en">The Build Flow: Three Inputs → Three Outputs</span></h3>
+        <p class="kicker"><span class="zh">输入</span><span class="en">Inputs</span></p>
+        <ul>
+          <li><span class="zh">Brief（16 节）</span><span class="en">Brief (16 sections)</span></li>
+          <li><span class="zh">系统图（Canva 链接或 PNG）</span><span class="en">System graph (Canva link or PNG)</span></li>
+          <li><a href="dev-log-prompt.html"><span class="zh">人机开发日志协议（Log Prompt，可复制）</span><span class="en">Human–AI Development Log Protocol (copyable prompt)</span></a></li>
+        </ul>
+        <p class="kicker" style="margin-top:14px"><span class="zh">产出</span><span class="en">Outputs</span></p>
+        <ul>
+          <li><span class="zh">可玩网页游戏（HTML / CSS / JS / Canvas，无构建步骤）</span><span class="en">Playable web game (HTML / CSS / JS / Canvas, no build step)</span></li>
+          <li><span class="zh">项目网站（相对路径，可直接静态托管）</span><span class="en">Project website (relative paths, static-hostable)</span></li>
+          <li><span class="zh">开发日志 agent-development-log.md（AI 自动维护）</span><span class="en">agent-development-log.md (maintained automatically by AI)</span></li>
+        </ul>
+      </div>
+
+      <div class="slide-block part4">
+        <h3><span class="pnum">19</span><span class="zh">日志结构：AI 记流水，你写决策</span><span class="en">Log Structure: AI Logs the Trail, You Write the Decisions</span></h3>
+        <ul>
+          <li><b><span class="zh">Raw Interaction Log</span><span class="en">Raw Interaction Log</span></b> — <span class="zh">AI 自动记录：每次有意义的开发交互都追加一条，含时间、做了什么、为什么。</span><span class="en">Logged automatically by AI: every meaningful development interaction gets an entry with time, what was done, and why.</span></li>
+          <li><b><span class="zh">Reflection Log</span><span class="en">Reflection Log</span></b> — <span class="zh">里程碑时 AI 主动问你：你接受了 AI 哪些建议？拒绝或改了哪些？为什么？最终决策是谁做的？</span><span class="en">At milestones AI asks you: which AI suggestions did you accept? Which did you reject or change, and why? Who made the final decision?</span></li>
+        </ul>
+        <div class="callout"><span class="zh">这是你"独立决策"的证据——也是老师检查时最看重的部分。要如实写，包括失败和未完成。</span><span class="en">This is the evidence of your independent decisions — and the part your instructor reads most closely. Write honestly, including failures and unfinished work.</span></div>
+        <p style="margin-top:14px"><a href="dev-log-prompt.html"><span class="zh">→ 打开开发日志提示词（整段复制给 AI）</span><span class="en">→ Open the development log prompt (copy the whole thing to AI)</span></a></p>
+      </div>
+
+      <div class="slide-block part4">
+        <h3><span class="pnum">20</span><span class="zh">你的亲手部分：建结构 + push 到 GitHub</span><span class="en">Your Part By Hand: Build the Structure + Push to GitHub</span></h3>
+        <p><span class="zh">用老师提供的 template repo 新建你自己的 private repo，然后：</span><span class="en">Create your own private repo from the instructor's template, then:</span></p>
+        <div class="setup">
+          <div class="item">
+            <h3><span class="zh">① 填内容（网页编辑即可）</span><span class="en">① Fill the content (edit on the web)</span></h3>
+            <p><span class="zh">把 Brief 粘进 <code>brief.md</code>；Canva 链接写进 <code>graph.md</code>；导出的问题评分 CSV 上传为 <code>ratings.csv</code>。</span><span class="en">Paste your brief into <code>brief.md</code>; put the Canva link in <code>graph.md</code>; upload the exported ratings CSV as <code>ratings.csv</code>.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">② 把 AI 生成的成果放进去</span><span class="en">② Put AI's output in place</span></h3>
+            <p><span class="zh">游戏文件放 <code>game/</code>，网站文件放 <code>website/</code>，开发日志放 <code>development-log/</code>。</span><span class="en">Game files go in <code>game/</code>, site files in <code>website/</code>, the development log in <code>development-log/</code>.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">③ 用 GitHub Desktop 推送（三个动作）</span><span class="en">③ Push with GitHub Desktop (three moves)</span></h3>
+            <p><span class="zh">改动文件 → <b>commit</b>（本地存档，写一句"这次改了什么"）→ <b>push</b>（上传到 GitHub）。不用记命令行。</span><span class="en">Change files → <b>commit</b> (save locally, write what changed) → <b>push</b> (upload to GitHub). No command line needed.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">④ 把老师加为 collaborator</span><span class="en">④ Add your instructor as collaborator</span></h3>
+            <p><span class="zh">Settings → Collaborators，一次点击。之后老师就能看到你的进度了。</span><span class="en">Settings → Collaborators, one click. Your instructor can then see your progress.</span></p>
+          </div>
+        </div>
+        <div class="callout"><span class="zh">为什么要亲手做这一步：建文件夹 = 理解一个游戏项目由什么组成；commit / push = 理解"存档 + 上传"的版本概念。这两件事是知识框架的一部分，不外包给 AI。</span><span class="en">Why do this by hand: building the folders teaches you what a game project is made of; commit/push teaches the versioning idea of "save + upload." Both are part of the knowledge framework — do not outsource them.</span></div>
+      </div>
+
+      <div class="slide-block part4">
+        <h3><span class="pnum">20b</span><span class="zh">顺手给每道题打个分</span><span class="en">Rate Each Question While You Go</span></h3>
+        <p><span class="zh">每个问题页底部有 5 颗星：这题问得清楚吗？你的评分只存在本地，<b>不会</b>进入交给 AI 的 Brief——它是用来帮老师改进问题设计的。写完所有问题后，点"导出问题评分 CSV"下载并上传。</span><span class="en">Every question page has 5 stars at the bottom: is this question clear? Your ratings stay local and do <b>not</b> go into the brief you hand to AI — they help the instructor improve the questions. When you finish, click "Export Question Ratings CSV" to download and upload it.</span></p>
+      </div>
+    </section>
+
+    <!-- ============ Part 6 · Statement ============ -->
+    <section id="p6">
+      <p class="eyebrow"><span class="zh">Part 6 · 收尾</span><span class="en">Part 6 · Wrap-Up</span></p>
+      <h2><span class="zh">你能不能一句话说清自己的游戏</span><span class="en">Can You Explain Your Game in One Sentence?</span></h2>
+
+      <div class="slide-block">
+        <h3><span class="pnum">21</span><span class="zh">设计者陈述模板</span><span class="en">Designer Statement Template</span></h3>
+        <div class="note">
+          <span class="zh">我的游戏来自我对 ____ 领域的学习。我希望玩家从"____"的新手理解，转向"____"的领域判断。我的核心机制是 ____。玩家通过 ____ 反馈，逐渐学会 ____。第一版挑战组合是 ____，它考验的是 ____。</span>
+          <span class="en">My game comes from my learning of ____. I want the player to move from the novice understanding "____" to the domain judgment "____". My core mechanic is ____. Through ____ feedback, the player gradually learns ____. My first challenge set is ____, and it tests ____.</span>
+        </div>
+        <p class="kicker" style="margin-top:16px"><span class="zh">自检清单</span><span class="en">Self-check</span></p>
+        <ul>
+          <li><span class="zh">玩家能在 30 秒内做出一个有意义的行动</span><span class="en">The player can take a meaningful action within 30 seconds</span></li>
+          <li><span class="zh">玩家的操作能明显改变系统数据或状态</span><span class="en">Player actions visibly change system data or state</span></li>
+          <li><span class="zh">不可见的重要数据被翻译成可读的反馈</span><span class="en">Important invisible data is translated into readable feedback</span></li>
+          <li><span class="zh">第二次玩会因为学到了反馈而做得更好</span><span class="en">A second attempt improves because the player learned from feedback</span></li>
+          <li><span class="zh">挑战之间的差异来自变量、关系、信息或约束，而不是难度数字</span><span class="en">Challenge presets differ through variables, relationships, information, or constraints — not difficulty numbers</span></li>
+          <li><span class="zh">游戏能在浏览器里直接跑，不需要复杂安装</span><span class="en">The game runs in a browser without a complex install</span></li>
+        </ul>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="session-inside.html">
+          <span class="kicker">Session 1</span>
+          <h3><span class="zh">开始：INSIDE 分析</span><span class="en">Start: INSIDE Analysis</span></h3>
+        </a>
+        <a class="card" href="session-workbook.html">
+          <span class="kicker">Session 2</span>
+          <h3><span class="zh">进入 Workbook 九步</span><span class="en">Enter the Nine-Step Workbook</span></h3>
+        </a>
+        <a class="card" href="session-agent.html">
+          <span class="kicker">Session 3</span>
+          <h3><span class="zh">与 AI 一起开发</span><span class="en">Build Together With AI</span></h3>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><span class="zh">CGDD · Game One 流程导览 · 中英双语</span><span class="en">CGDD · Game One Flow Guide · Bilingual</span></p>
+  </footer>
+</body>
+</html>

@@ -271,6 +271,7 @@
     <nav class="mode-tabs" aria-label="Workshop sessions">
       <a class="mode-tab" href="../index.html"><span class="zh">首页</span><span class="en">Home</span></a>
       <a class="mode-tab" href="session-inside.html#slide-1"><span class="zh">Session 1 · INSIDE分析</span><span class="en">Session 1 · INSIDE Analysis</span></a>
+      <a class="mode-tab" href="flow.html"><span class="zh">流程导览</span><span class="en">Flow Guide</span></a>
       <a class="mode-tab" href="session-workbook.html#slide-1"><span class="zh">Session 2 · 项目设计</span><span class="en">Session 2 · Project Design</span></a>
       <a class="mode-tab active" href="session-agent.html"><span class="zh">Session 3 · AI开发</span><span class="en">Session 3 · AI Development</span></a>
     </nav>
@@ -398,6 +399,8 @@
         <ol class="start-steps zh"><li>新建一个空项目文件夹。</li><li>放入Session 2下载的Markdown和系统图PNG。</li><li>让AI Agent打开这个文件夹。</li><li>发送右侧启动Prompt。</li><li>先确认Agent的计划，再允许它开始写代码。</li></ol>
         <ol class="start-steps en"><li>Create an empty project folder.</li><li>Add the Session 2 Markdown and system graph PNG.</li><li>Open this folder with your AI Agent.</li><li>Send the startup prompt.</li><li>Confirm the Agent's plan before allowing it to write code.</li></ol>
         <pre class="prompt-block">Read the development brief and system graph in this folder. Follow all website, game, dependency, automatic logging, and exhibition packaging requirements in the brief. Before writing code, restate the core learning shift, core player loop, main data, feedback relationships, challenge presets, website structure, selected dependency track, and first implementation milestone. Identify any blocking questions. Wait for my confirmation before implementation.</pre>
+        <p class="zh" style="margin-top:12px">接着再发<a href="dev-log-prompt.html">开发日志提示词</a>，让 AI 在帮你开发的同时维护 <code>agent-development-log.md</code>：AI 自动写交互记录，里程碑时它停下来问你写阶段反思。</p>
+        <p class="en" style="margin-top:12px">Then send the <a href="dev-log-prompt.html">development log prompt</a> so AI maintains <code>agent-development-log.md</code> while it builds: it writes the raw interaction logs automatically, and stops at milestones to ask you for a stage reflection.</p>
       </div>
       <div class="guardrail"><p class="zh"><strong>重要：</strong>AI可以生成代码和建议，但不能替你决定游戏应该教什么、哪种挑战更有意义，也不能替你完成学生反思。</p><p class="en"><strong>Important:</strong> AI can generate code and suggestions, but it cannot decide what the game should teach, which challenges are meaningful, or write the student reflection for you.</p></div>
     </section>
