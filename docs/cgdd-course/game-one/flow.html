@@ -154,16 +154,17 @@
           <div class="you">
             <h4><span class="zh">✋ 你亲手做</span><span class="en">✋ You do by hand</span></h4>
             <ul>
-              <li><span class="zh">建立项目文件夹结构（理解项目由什么组成）</span><span class="en">Create the project folder structure (understand what a project is made of)</span></li>
               <li><span class="zh">填写 Workbook，写出 Brief</span><span class="en">Fill the workbook and write your brief</span></li>
               <li><span class="zh">画系统图</span><span class="en">Draw the system graph</span></li>
-              <li><span class="zh">把文件 push 到 GitHub</span><span class="en">Push your files to GitHub</span></li>
+              <li><span class="zh">说清每个文件夹装的是什么（AI 可以建结构，但框架得在你脑子里）</span><span class="en">Explain what lives in each folder (AI may build the structure, but the framework must be in your head)</span></li>
+              <li><span class="zh">用 GitHub Desktop 把整个文件夹发布并推送到 GitHub</span><span class="en">Publish and push the whole folder to GitHub with GitHub Desktop</span></li>
               <li><span class="zh">回答 AI 的反思提问，写下你的决策</span><span class="en">Answer AI's reflection questions and record your decisions</span></li>
             </ul>
           </div>
           <div class="ai">
             <h4><span class="zh">🤖 AI 做</span><span class="en">🤖 AI does</span></h4>
             <ul>
+              <li><span class="zh">在 AI IDE 里创建项目文件夹结构</span><span class="en">Create the project folder structure inside the AI IDE</span></li>
               <li><span class="zh">写代码、调试、生成网站</span><span class="en">Write code, debug, generate the site</span></li>
               <li><span class="zh">整理规则与变量建议</span><span class="en">Organize rules and suggest variables</span></li>
               <li><span class="zh">自动维护开发日志（交互记录）</span><span class="en">Maintain the development log automatically (interaction records)</span></li>
@@ -311,27 +312,31 @@
       </div>
 
       <div class="slide-block part4">
-        <h3><span class="pnum">20</span><span class="zh">你的亲手部分：建结构 + push 到 GitHub</span><span class="en">Your Part By Hand: Build the Structure + Push to GitHub</span></h3>
-        <p><span class="zh">用老师提供的 template repo 新建你自己的 private repo，然后：</span><span class="en">Create your own private repo from the instructor's template, then:</span></p>
+        <h3><span class="pnum">20</span><span class="zh">建项目空间，然后亲手推到 GitHub</span><span class="en">Build the Project Space, Then Push It to GitHub Yourself</span></h3>
+        <p><span class="zh">不用模板仓库。顺序是：<b>网站上做出 Brief 和 graph → AI IDE 建文件夹并开发 → GitHub Desktop 把整个文件夹推上去</b>。</span><span class="en">No template repository. The order is: <b>produce the brief and graph on the site → let the AI IDE create the folder and build → publish the whole folder with GitHub Desktop</b>.</span></p>
         <div class="setup">
           <div class="item">
-            <h3><span class="zh">① 填内容（网页编辑即可）</span><span class="en">① Fill the content (edit on the web)</span></h3>
-            <p><span class="zh">把 Brief 粘进 <code>brief.md</code>；Canva 链接写进 <code>graph.md</code>；导出的问题评分 CSV 上传为 <code>ratings.csv</code>。</span><span class="en">Paste your brief into <code>brief.md</code>; put the Canva link in <code>graph.md</code>; upload the exported ratings CSV as <code>ratings.csv</code>.</span></p>
+            <h3><span class="zh">① 从网站拿到两份输入</span><span class="en">① Take two inputs from the site</span></h3>
+            <p><span class="zh">Workbook 导出 <code>brief.md</code>；系统图保存为 <code>system-graph.png</code>（或记下 Canva 链接）。顺手点"导出问题评分 CSV"，得到 <code>ratings.csv</code>。</span><span class="en">Export <code>brief.md</code> from the workbook; save the system graph as <code>system-graph.png</code> (or keep the Canva link). While you are there, click "Export Question Ratings CSV" to get <code>ratings.csv</code>.</span></p>
           </div>
           <div class="item">
-            <h3><span class="zh">② 把 AI 生成的成果放进去</span><span class="en">② Put AI's output in place</span></h3>
-            <p><span class="zh">游戏文件放 <code>game/</code>，网站文件放 <code>website/</code>，开发日志放 <code>development-log/</code>。</span><span class="en">Game files go in <code>game/</code>, site files in <code>website/</code>, the development log in <code>development-log/</code>.</span></p>
+            <h3><span class="zh">② 用 AI IDE 打开一个空文件夹</span><span class="en">② Open an empty folder in your AI IDE</span></h3>
+            <p><span class="zh">把这两份文件放进去，先发<a href="session-agent.html">启动 Prompt</a>，再发<a href="dev-log-prompt.html">开发日志提示词</a>。文件夹结构由 AI 建，但你要能说清每个文件夹装的是什么。</span><span class="en">Drop the two files in, send the <a href="session-agent.html">startup prompt</a> first, then the <a href="dev-log-prompt.html">development log prompt</a>. AI builds the folder structure — but you must be able to say what each folder holds.</span></p>
           </div>
           <div class="item">
-            <h3><span class="zh">③ 用 GitHub Desktop 推送（三个动作）</span><span class="en">③ Push with GitHub Desktop (three moves)</span></h3>
-            <p><span class="zh">改动文件 → <b>commit</b>（本地存档，写一句"这次改了什么"）→ <b>push</b>（上传到 GitHub）。不用记命令行。</span><span class="en">Change files → <b>commit</b> (save locally, write what changed) → <b>push</b> (upload to GitHub). No command line needed.</span></p>
+            <h3><span class="zh">③ 用 GitHub Desktop 发布（第一次）</span><span class="en">③ Publish with GitHub Desktop (first time)</span></h3>
+            <p><span class="zh"><b>File → Add local repository</b>（或直接把文件夹拖进 GitHub Desktop）→ <b>Publish repository</b> → 起个名字 → <b>务必勾选 Keep this code private</b> → Publish。这一步会同时创建 GitHub 仓库并上传全部文件。</span><span class="en"><b>File → Add local repository</b> (or just drag the folder into GitHub Desktop) → <b>Publish repository</b> → give it a name → <b>make sure "Keep this code private" is checked</b> → Publish. This creates the GitHub repository and uploads everything in one step.</span></p>
           </div>
           <div class="item">
             <h3><span class="zh">④ 把老师加为 collaborator</span><span class="en">④ Add your instructor as collaborator</span></h3>
-            <p><span class="zh">Settings → Collaborators，一次点击。之后老师就能看到你的进度了。</span><span class="en">Settings → Collaborators, one click. Your instructor can then see your progress.</span></p>
+            <p><span class="zh">GitHub 网页上 Settings → Collaborators → Add people。加一次就行，之后老师就能看到你的进度了。</span><span class="en">On GitHub: Settings → Collaborators → Add people. One time is enough; your instructor can then follow your progress.</span></p>
+          </div>
+          <div class="item">
+            <h3><span class="zh">⑤ 之后每次改动：三个动作</span><span class="en">⑤ Every change after that: three moves</span></h3>
+            <p><span class="zh">改动文件 → <b>commit</b>（本地存档，写一句"这次改了什么"）→ <b>push</b>（上传到 GitHub）。不用记命令行。</span><span class="en">Change files → <b>commit</b> (save locally, write what changed) → <b>push</b> (upload to GitHub). No command line needed.</span></p>
           </div>
         </div>
-        <div class="callout"><span class="zh">为什么要亲手做这一步：建文件夹 = 理解一个游戏项目由什么组成；commit / push = 理解"存档 + 上传"的版本概念。这两件事是知识框架的一部分，不外包给 AI。</span><span class="en">Why do this by hand: building the folders teaches you what a game project is made of; commit/push teaches the versioning idea of "save + upload." Both are part of the knowledge framework — do not outsource them.</span></div>
+        <div class="callout"><span class="zh">为什么要亲手做这一步：AI 可以建文件夹、写代码，但"存档 + 上传"的版本概念必须你自己懂，而且 <b>commit 记录就是老师看进度的时间线</b>——临时抱佛脚会写在时间线上。</span><span class="en">Why do this by hand: AI can create folders and write code, but the versioning idea of "save + upload" has to be yours. And <b>your commit history is the timeline your instructor reads</b> — last-minute cramming shows up on it.</span></div>
       </div>
 
       <div class="slide-block part4">
