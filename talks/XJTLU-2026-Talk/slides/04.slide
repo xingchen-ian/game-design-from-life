@@ -1,0 +1,38 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 60, background: '#330662' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold', padding: '14px 60px' }}>"A game in one sentence" became a benchmark</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, left: 60, width: 700, flexDirection: 'column', gap: 18 }}>
+    <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.5 }}>
+      In 2025–26, generating a playable game from a one-sentence prompt became a standard way to demonstrate model capability.
+    </Text>
+    <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.6 }}>
+      Rosebud, Summer Engine, and chat-driven IDEs ship browser or desktop games from a short natural-language brief. Unity 7 will bundle a coding agent; UE 5.8 has experimental MCP. Industry surveys report broad adoption.
+    </Text>
+    <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.6 }}>
+      At a research university this is not just a product story. It is a teaching question: if a sentence can yield a running game, what are we asking our students to do?
+    </Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, right: 60, width: 440, height: 360, padding: 28, background: '#F6F1FA', border: '1px solid #D9D0E4', borderRadius: 10, flexDirection: 'column', gap: 12 }}>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>SINGLE-PASS GENERATION</Text>
+    <Text style={{ fontSize: 96, fontWeight: 'bold', color: '#D9534F', lineHeight: 1, fontFamily: 'Source Serif Pro, Georgia, serif' }}>0</Text>
+    <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.4 }}>
+      of <span style={{ fontWeight: 'bold' }}>10,400</span> single-pass generations compiled
+    </Text>
+    <Text style={{ fontSize: 14, color: '#4A5568', lineHeight: 1.5 }}>
+      without a fix loop, on a professional engine task
+    </Text>
+    <Box style={{ width: 40, height: 3, background: '#57068C' }} />
+    <Text style={{ fontSize: 13, color: '#8B97A8' }}>Source: arXiv:2607.10187 (2026)</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 500, left: 60, right: 60, height: 70, padding: 16, background: '#57068C', borderRadius: 8, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+    <Box style={{ width: 4, height: 40, background: '#FFFFFF' }} />
+    <Text style={{ fontSize: 18, color: '#FFFFFF', lineHeight: 1.4, flex: 1 }}>
+      Democratization of the demo is real. The next question is what survives the demo.
+    </Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold' }}>04 / 16</Text>
+  </Box>
+</Slide>

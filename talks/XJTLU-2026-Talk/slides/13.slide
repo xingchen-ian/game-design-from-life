@@ -1,0 +1,40 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 60, background: '#330662' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold', padding: '14px 60px' }}>One student’s system description: The Darkroom</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 90, left: 60, width: 720, height: 520, background: '#FAF8FC', border: '1px solid #D9D0E4', borderRadius: 8, justifyContent: 'center', alignItems: 'center', padding: 12 }}>
+    <Image src="assets/case-darkroom-canva.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+  </Box>
+  <Box style={{ position: 'absolute', top: 90, right: 60, width: 440, height: 520, flexDirection: 'column', gap: 16 }}>
+    <Box style={{ flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 12, color: '#57068C', fontWeight: 'bold', letterSpacing: 2 }}>CASE</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#330662' }}>Boyan · NYU Summer 2026</Text>
+    </Box>
+    <Box style={{ padding: 14, background: '#F6F1FA', borderRadius: 8, flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 13, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>LIVED EXPERIENCE</Text>
+      <Text style={{ fontSize: 15, color: '#1A2230', lineHeight: 1.45 }}>
+        The frustration of a long-exposure photograph that comes back too dark, too bright, or too washed out to read.
+      </Text>
+    </Box>
+    <Box style={{ padding: 14, background: '#F6F1FA', borderRadius: 8, flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 13, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>DATA</Text>
+      <Text style={{ fontSize: 15, color: '#1A2230', lineHeight: 1.5 }}>
+        ES (Exposure State) · LT (Light Trail) · TD (Trail Duration) · GT (Game Time)
+      </Text>
+    </Box>
+    <Box style={{ padding: 14, background: '#330662', borderRadius: 8, flexDirection: 'column', gap: 4 }}>
+      <Text style={{ fontSize: 13, color: '#FFC107', fontWeight: 'bold', letterSpacing: 1 }}>BUILD + LOG</Text>
+      <Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>51 Unity scripts · 72 logged interactions</Text>
+    </Box>
+    <Box style={{ padding: 14, background: '#FFFFFF', border: '1px solid #E4DCEC', borderRadius: 8, flexDirection: 'column', gap: 4 }}>
+      <Text style={{ fontSize: 13, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>STUDENT DECISION</Text>
+      <Text style={{ fontSize: 13, color: '#4A5568', lineHeight: 1.45, fontStyle: 'italic' }}>
+        “The trail becomes a platform; overexposure makes the trail too unstable to use safely, but you can burn shadows to activate photo sensors.” — Boyan
+      </Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold' }}>13 / 16</Text>
+  </Box>
+</Slide>

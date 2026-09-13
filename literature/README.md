@@ -4,6 +4,7 @@
 
 > 清理状态：2026-06-07 已校准核心文献元数据。主综述见
 > [literature-review-game-mechanics-lived-experience.md](./literature-review-game-mechanics-lived-experience.md)。
+> 索引更新：2026-09-13 并入专著馆配书单（[library-acquisition-list.md](./library-acquisition-list.md)，2026-09-12 编制，40 种专著 + 10 种中译对照）。
 
 ## 文献分类
 
@@ -42,6 +43,22 @@ Research through Design、设计型研究、实践型知识贡献
 | "An Experience That Could Not Be Found Anywhere Else": Resonance as an Explanatory Concept for Player Experience Research and Game Design | Väkevä, Vornhagen, Rautalahti & Lindqvist | 2026 | 玩家体验/共鸣 | ⭐⭐⭐⭐⭐ | 新增锚点笔记，需全文精读 | [hci-player-experience/resonance-chi2026.md](./hci-player-experience/resonance-chi2026.md) |
 | Research Through Design as a Method for Interaction Design Research in HCI | Zimmerman, Forlizzi & Evenson | 2007 | 设计研究方法 | ⭐⭐⭐⭐⭐ | 新增方法论锚点 | [design-research/research-through-design.md](./design-research/research-through-design.md) |
 
+## 专著书单（馆配索引）
+
+[library-acquisition-list.md](./library-acquisition-list.md) 是对本工作空间**实际引用过的全部专著**的采购级梳理（2026-09-12，Cursor 编制）：
+
+| 级 | 数量 | 定位 |
+|----|------|------|
+| A 优先采购 | 12 种 | 课程指定阅读 / 方法论主轴（Rules of Play、Half-Real、The Art of Failure、Persuasive Games、Play Matters、Homo Ludens、Flow、A Theory of Fun、Art as Experience、Human-Centered AI、Thinking in Systems、The Art of Game Design 第3版） |
+| B 建议采购 | 12 种 | 论文 / 工作坊 / 情感与自传体游戏（Game Design Workshop 第5版、Hamlet on the Holodeck、Researching Lived Experience、Rise of the Videogame Zinesters、A Game Design Vocabulary、Critical Play、Values at Play、How Games Move Us、In-Game、Emotional Design、AI and Games、The Game Design Reader） |
+| C 按需采购 | 10 种 | 系统思维课 / 情感理论 / 设计研究基础（一般系统论、Emotion and Adaptation、Affective Computing、Uncertainty in Games、Patterns in Game Design、控制论、Business Dynamics、Emergence、Expressive Processing、Play Anything） |
+| D 背景馆藏 | 6 种 | 现象学 / 博弈论史 / 文选（预算紧可缓购） |
+
+- 另有 **中文对照采购 10 种**（含《系统之美》《游戏设计艺术（第3版）》《游戏设计梦工厂（第5版）》等现行版 ISBN）。
+- 每条含：建议采购版、ISBN-13、复本建议、**在本项目中的具体用途**（对应 syllabus / methodology / 论文位置）。
+- 文末列出**不应误采为图书**的引用（MDA、RtD 等会议论文；Dys4ia 等游戏作品）。
+- **笔记覆盖现状**：40 种专著中仅 Salen & Zimmerman《Rules of Play》已建笔记（`foundational/salen-rules-of-play.md`）；其余可在书单用途栏找到引用锚点后按需补建。
+
 ## 待补建候选笔记
 
 以下文献已出现在主综述或论文框架中，但尚未形成独立笔记。后续扩展时优先补建：
@@ -54,3 +71,5 @@ Research through Design、设计型研究、实践型知识贡献
 | Research in Art and Design | Frayling | 1993/1994 | 区分 research into/for/through art and design |
 | "Whatever the Emotional Experience, It's Up to Them" | Denisova, Bopp, Nguyen & Mekler | 2021 | 设计师视角、玩家留白、情感体验评估缺口 |
 | Affective Game Computing: A Survey | Yannakakis & Melhart | 2023 | 情感计算综述，修正主综述中的作者和出处 |
+
+> 注：Dewey《Art as Experience》、van Manen《Researching Lived Experience》、《The Game Design Reader》已收录进[馆配书单](./library-acquisition-list.md)（A9 / B3 / B12，含现行版 ISBN）——采购与笔记补建并行推进。

@@ -1,0 +1,31 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 40, background: '#F6F1FA' }} />
+  <Box style={{ position: 'absolute', top: 36, left: 0, width: '100%', height: 4, background: '#57068C' }} />
+  <Box style={{ position: 'absolute', top: 130, left: 80, flexDirection: 'column', gap: 12 }}>
+    <Text style={{ fontSize: 16, color: '#57068C', fontWeight: 'bold', letterSpacing: 2 }}>PART ONE</Text>
+    <Text style={{ fontSize: 220, fontWeight: 'bold', fontFamily: 'Source Serif Pro, Georgia, serif', color: '#EEE6F3', lineHeight: 1 }}>01</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 260, left: 80, width: 1120, flexDirection: 'column', gap: 24 }}>
+    <Text style={{ fontSize: 48, fontWeight: 'bold', fontFamily: 'Source Serif Pro, Georgia, serif', color: '#330662', lineHeight: 1.15 }}>Setting the scene</Text>
+    <Box style={{ width: 80, height: 3, background: '#57068C' }} />
+    <Text style={{ fontSize: 22, color: '#1A2230', lineHeight: 1.55 }}>
+      A short trend that became a benchmark, the empirical evidence that follows, and why it matters in a classroom where students come to express something, not to learn an engine.
+    </Text>
+    <Box style={{ marginTop: 16, flexDirection: 'column', gap: 10 }}>
+      {[
+        '"A game in one sentence" as a 2025–26 industry signal',
+        'What 10,400 single-pass generations, an end-to-end benchmark, and a playtest loop tell us',
+        'NYU Shanghai IMA: who shows up, and what they are trying to do',
+      ].map((line, i) => (
+        <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
+          <Box style={{ width: 8, height: 8, borderRadius: 4, background: '#57068C', marginTop: 12 }} />
+          <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.5, flex: 1 }}>{line}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold' }}>03 / 16</Text>
+  </Box>
+</Slide>

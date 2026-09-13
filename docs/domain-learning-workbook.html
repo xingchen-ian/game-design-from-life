@@ -1436,37 +1436,130 @@
     ];
 
     const embeddedReferenceAnswers = {
-      s1q1: "Sailing a small sailboat.",
-      s1q2: "I once joined a beginner sailing lesson and realized that the boat does not simply go wherever I point it. It depends on wind direction, sail angle, boat angle, and speed.",
-      s1q3: "Beginners usually think the most important thing is steering directly toward the destination.",
-      s1q4: "I got stuck when the destination was upwind. I kept pointing the boat toward the target, but the boat slowed down and could not move forward well.",
-      s1q5: "I began to notice wind direction, the angle between the boat and the wind, sail shape, sail flapping, and whether the boat was losing speed.",
-      s1q6: "Judgment and environment. Sailing is interesting because the player must read an invisible force, the wind, through visible feedback from boat, sail, and water.",
-      s2q1: "Beginners think the boat should move directly toward the target if they steer correctly.",
-      s2q2: "A beginner sees the target and tries to steer straight toward it. An expert first checks wind direction, then decides whether the target can be reached directly or whether tacking is needed.",
-      s2q3: "The relationship between wind direction, boat direction, sail angle, and route planning.",
-      s2q4: "Beginners point the boat too close to the wind, forget to adjust sail angle, or try to sail straight when a zigzag route is needed.",
-      s2q5: "Boat speed, sail shape, sail flapping, boat tilt, wind indicator direction, and whether the boat drifts away from the planned route.",
-      s2q6: "Beginners think sailing means steering toward the target; experts know sailing means reading the wind and adjusting the boat, sail, and route in relation to it.",
-      s3q1: "Wind direction, target direction, sail shape, boat speed, boat angle, water current, obstacles, and distance to the goal.",
-      s3q2: "Whether the boat can reach the target directly, whether sail angle is efficient, whether the boat is too close to wind, and whether the route needs to change.",
-      s3q3: "Turn the boat left or right, adjust sail angle, choose a route, tack, slow down, or avoid obstacles.",
-      s3q4: "The boat speeds up or slows down, sail becomes smooth or flaps, boat tilts, route line drifts away from the goal, and a wind indicator shows wind direction.",
-      s3q5: "If sail flaps, adjust sail angle. If boat slows down near wind, turn away from wind. If the target is upwind, plan a zigzag route.",
-      s3q6: "Reading wind, choosing a workable angle, adjusting sail, and planning a route instead of steering directly toward the goal.",
-      s4q1: "Sail flaps: from sail and wind; tells player sail angle or boat angle is inefficient; appears as shaking sail animation and flapping sound.",
-      s4q2: "Boat speed drops: from boat movement; tells player boat is too close to wind or sail is poorly adjusted; speed bar drops and wake becomes smaller.",
-      s4q3: "Boat tilts strongly / route drifts sideways / target remains unreachable; these signals show instability, current compensation problems, or upwind target issues.",
-      s4q4: "Sail flapping, boat speed, and boat tilt should appear immediately because they teach action-feedback relationships.",
-      s4q5: "Route drift should appear over several seconds so players learn that a small wrong angle can create a large route error over time.",
-      s4q6: "Sail flapping should be visual and sound-based; boat speed should be shown through movement, wake, and sound; route drift should be shown spatially.",
-      s5q1: "Wind direction angle, wind strength, boat direction angle, sail angle, boat speed, distance to target, route drift, time remaining, and hull stability.",
-      s5q2: "Efficient / inefficient sail angle, stable / unstable boat, direct route possible / impossible, safe / danger zone, clear water / obstacle zone.",
-      s5q3: "Turning changes boat direction. Adjusting sail changes sail angle and speed. Tacking changes route direction. Steering into strong wind changes stability and speed.",
-      s5q4: "Reach the target within the time limit while keeping enough speed and avoiding obstacles or danger zones.",
-      s5q5: "Run out of time, get stuck pointing too close to wind, hit rocks, lose too much speed, or drift outside the safe area.",
-      s5q6: "Yes. Sail angle must match wind and boat direction. Too tight or too loose loses speed; boat direction also has a workable range.",
-      s5q7: "windDirection, windStrength, boatDirection, sailAngle, boatSpeed, routeDrift, stability, timeRemaining, with type, change rule, and role."
+      s1q1: {
+        zh: "驾驶一艘小型帆船。",
+        en: "Sailing a small sailboat."
+      },
+      s1q2: {
+        zh: "我曾参加过一次帆船入门课，发现船并不会简单地朝我指向的方向前进；它取决于风向、帆角、船身角度和速度。",
+        en: "I once joined a beginner sailing lesson and realized that the boat does not simply go wherever I point it. It depends on wind direction, sail angle, boat angle, and speed."
+      },
+      s1q3: {
+        zh: "初学者通常认为最重要的是把船直接朝目的地开过去。",
+        en: "Beginners usually think the most important thing is steering directly toward the destination."
+      },
+      s1q4: {
+        zh: "当目的地在上风方向时，我卡住了：一直把船头对准目标，但船速下降，很难继续前进。",
+        en: "I got stuck when the destination was upwind. I kept pointing the boat toward the target, but the boat slowed down and could not move forward well."
+      },
+      s1q5: {
+        zh: "我开始注意到风向、船与风的夹角、帆形、帆是否抖动，以及船是否在掉速。",
+        en: "I began to notice wind direction, the angle between the boat and the wind, sail shape, sail flapping, and whether the boat was losing speed."
+      },
+      s1q6: {
+        zh: "判断与环境。帆船有趣之处在于：玩家必须通过船、帆和水面的可见反馈，去读懂一股看不见的力——风。",
+        en: "Judgment and environment. Sailing is interesting because the player must read an invisible force, the wind, through visible feedback from boat, sail, and water."
+      },
+      s2q1: {
+        zh: "初学者认为：只要舵打得对，船就应该笔直朝目标前进。",
+        en: "Beginners think the boat should move directly toward the target if they steer correctly."
+      },
+      s2q2: {
+        zh: "初学者看到目标就想直线驶过去；专家会先看风向，再判断能否直达，还是需要抢风折航（zigzag）。",
+        en: "A beginner sees the target and tries to steer straight toward it. An expert first checks wind direction, then decides whether the target can be reached directly or whether tacking is needed."
+      },
+      s2q3: {
+        zh: "风向、船头方向、帆角与路线规划之间的关系。",
+        en: "The relationship between wind direction, boat direction, sail angle, and route planning."
+      },
+      s2q4: {
+        zh: "初学者常把船头顶得太迎风、忘记调整帆角，或在需要折航时仍试图直线航行。",
+        en: "Beginners point the boat too close to the wind, forget to adjust sail angle, or try to sail straight when a zigzag route is needed."
+      },
+      s2q5: {
+        zh: "船速、帆形、帆是否抖动、船身倾斜、风向标方向，以及船是否偏离计划航线。",
+        en: "Boat speed, sail shape, sail flapping, boat tilt, wind indicator direction, and whether the boat drifts away from the planned route."
+      },
+      s2q6: {
+        zh: "初学者以为帆船就是朝目标打舵；专家知道帆船是读风，并据此调整船头、帆角与航线。",
+        en: "Beginners think sailing means steering toward the target; experts know sailing means reading the wind and adjusting the boat, sail, and route in relation to it."
+      },
+      s3q1: {
+        zh: "风向、目标方向、帆形、船速、船身角度、洋流、障碍物，以及与目标的距离。",
+        en: "Wind direction, target direction, sail shape, boat speed, boat angle, water current, obstacles, and distance to the goal."
+      },
+      s3q2: {
+        zh: "船能否直达目标、帆角是否高效、船是否太迎风，以及是否需要改变航线。",
+        en: "Whether the boat can reach the target directly, whether sail angle is efficient, whether the boat is too close to wind, and whether the route needs to change."
+      },
+      s3q3: {
+        zh: "左右转向、调整帆角、选择航线、抢风折航、减速，或避开障碍。",
+        en: "Turn the boat left or right, adjust sail angle, choose a route, tack, slow down, or avoid obstacles."
+      },
+      s3q4: {
+        zh: "船速上升或下降、帆变顺或抖动、船身倾斜、航线偏离目标，以及风向标显示风向。",
+        en: "The boat speeds up or slows down, sail becomes smooth or flaps, boat tilts, route line drifts away from the goal, and a wind indicator shows wind direction."
+      },
+      s3q5: {
+        zh: "若帆抖动，就调帆角；若船在迎风附近掉速，就转向离开迎风；若目标在上风，就规划折航路线。",
+        en: "If sail flaps, adjust sail angle. If boat slows down near wind, turn away from wind. If the target is upwind, plan a zigzag route."
+      },
+      s3q6: {
+        zh: "读风、选择可用角度、调整船帆，以及规划航线，而不是直接朝目标打舵。",
+        en: "Reading wind, choosing a workable angle, adjusting sail, and planning a route instead of steering directly toward the goal."
+      },
+      s4q1: {
+        zh: "帆抖动：来自帆与风；告诉玩家帆角或船角不合适；表现为帆的抖动动画与拍打声。",
+        en: "Sail flaps: from sail and wind; tells player sail angle or boat angle is inefficient; appears as shaking sail animation and flapping sound."
+      },
+      s4q2: {
+        zh: "船速下降：来自船的运动；告诉玩家太迎风或帆调得不好；速度条下降，尾迹变短。",
+        en: "Boat speed drops: from boat movement; tells player boat is too close to wind or sail is poorly adjusted; speed bar drops and wake becomes smaller."
+      },
+      s4q3: {
+        zh: "船身大幅倾斜 / 航线侧漂 / 目标始终到不了：这些信号分别提示不稳定、洋流补偿问题，或目标在上风。",
+        en: "Boat tilts strongly / route drifts sideways / target remains unreachable; these signals show instability, current compensation problems, or upwind target issues."
+      },
+      s4q4: {
+        zh: "帆抖动、船速和船身倾斜应立刻出现，因为它们帮助玩家理解“动作—反馈”关系。",
+        en: "Sail flapping, boat speed, and boat tilt should appear immediately because they teach action-feedback relationships."
+      },
+      s4q5: {
+        zh: "航线漂移应在数秒后逐渐显现，让玩家学会：一个小小的角度错误，会随时间放大成很大的路线偏差。",
+        en: "Route drift should appear over several seconds so players learn that a small wrong angle can create a large route error over time."
+      },
+      s4q6: {
+        zh: "帆抖动应用视觉与声音表现；船速应通过运动、尾迹和声音呈现；航线漂移应空间化显示，而不是只给分数。",
+        en: "Sail flapping should be visual and sound-based; boat speed should be shown through movement, wake, and sound; route drift should be shown spatially."
+      },
+      s5q1: {
+        zh: "风向角、风力、船头方向角、帆角、船速、与目标距离、航线漂移、剩余时间，以及船体稳定性。",
+        en: "Wind direction angle, wind strength, boat direction angle, sail angle, boat speed, distance to target, route drift, time remaining, and hull stability."
+      },
+      s5q2: {
+        zh: "高效/低效帆角，稳定/不稳定船体，可直达/不可直达，安全区/危险区，开阔水域/障碍区。",
+        en: "Efficient / inefficient sail angle, stable / unstable boat, direct route possible / impossible, safe / danger zone, clear water / obstacle zone."
+      },
+      s5q3: {
+        zh: "转向改变船头方向；调帆改变帆角与速度；折航改变航线方向；驶入强风区会改变稳定性与速度。",
+        en: "Turning changes boat direction. Adjusting sail changes sail angle and speed. Tacking changes route direction. Steering into strong wind changes stability and speed."
+      },
+      s5q4: {
+        zh: "在时限内抵达目标，同时保持足够速度，并避开障碍或危险区。",
+        en: "Reach the target within the time limit while keeping enough speed and avoiding obstacles or danger zones."
+      },
+      s5q5: {
+        zh: "超时、卡在过于迎风的角度、撞上礁石、速度掉得太低，或漂出安全区。",
+        en: "Run out of time, get stuck pointing too close to wind, hit rocks, lose too much speed, or drift outside the safe area."
+      },
+      s5q6: {
+        zh: "有。帆角必须匹配风向与船头方向；太紧或太松都会掉速，船头方向也存在可用范围。",
+        en: "Yes. Sail angle must match wind and boat direction. Too tight or too loose loses speed; boat direction also has a workable range."
+      },
+      s5q7: {
+        zh: "windDirection、windStrength、boatDirection、sailAngle、boatSpeed、routeDrift、stability、timeRemaining，并写明类型、变化规则与作用。",
+        en: "windDirection, windStrength, boatDirection, sailAngle, boatSpeed, routeDrift, stability, timeRemaining, with type, change rule, and role."
+      }
     };
     const sailingGraphData = {
       zh: {
@@ -1596,10 +1689,17 @@
       document.getElementById("questionReason").textContent = item.question.reason[lang];
       answerBox.value = draft.answers[item.question.id] || "";
       answerBox.dataset.questionId = item.question.id;
-      const referenceText = readReferenceAnswers()[item.question.id] || "";
+      const referenceEntry = readReferenceAnswers()[item.question.id];
       const referencePanel = document.getElementById("referencePanel");
+      let referenceText = "";
+      if (referenceEntry && typeof referenceEntry === "object") {
+        referenceText = String(referenceEntry[lang] || referenceEntry.en || referenceEntry.zh || "").trim();
+      } else {
+        referenceText = String(referenceEntry || "").trim();
+      }
       document.getElementById("referenceAnswer").textContent = referenceText;
-      referencePanel.classList.toggle("is-visible", Boolean(referenceText.trim()));
+      referencePanel.classList.toggle("is-visible", Boolean(referenceText));
+    }
     }
 
     function isSailingDraft(draft) {

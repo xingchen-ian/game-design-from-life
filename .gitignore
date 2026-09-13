@@ -16,3 +16,9 @@ node_modules/
 *.zip
 *.bak
 *.tmp
+
+# 工具缓存 / 运行日志（slidep、渲染缓存等）
+.slidep/
+**/.slidep/
+.cache/
+**/.cache/

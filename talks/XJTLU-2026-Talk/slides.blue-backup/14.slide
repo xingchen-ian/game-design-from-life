@@ -1,0 +1,36 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 60, background: '#0E3F8C' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold', padding: '14px 60px' }}>Three things we saw</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, left: 60, width: 320, flexDirection: 'column', gap: 6 }}>
+    <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold', letterSpacing: 2 }}>FINDINGS</Text>
+    <Box style={{ width: 40, height: 3, background: '#1E4FA8' }} />
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, right: 60, width: 780, flexDirection: 'column', gap: 14 }}>
+    {[
+      { n: 'F1', t: 'It is feasible', d: 'Zero-coding students can produce a playable demo in a few days that still expresses the original emotional target. The democratization of the demo is real — at least at the level of "a build that someone can play".' },
+      { n: 'F2', t: 'Verification is asymmetric', d: 'AI can tell you whether the system runs. It cannot tell you whether the prototype still carries the feeling. That judgment lives with the student and with the log — and it is where a playtest loop and a human reader are indispensable.' },
+      { n: 'F3', t: 'Learning happens in the experiment', d: 'The classroom is too loud, the questions are too many, the feedback is not real-time. But the questions, the design moves, and the corrections are the lesson. The risk is treating the AI as a tutor and skipping the friction that is the learning.' },
+    ].map((f, i) => (
+      <Box key={i} style={{ flexDirection: 'row', gap: 20, padding: 18, background: '#F7F9FC', border: '1px solid #E5E7EB', borderRadius: 8, alignItems: 'flex-start' }}>
+        <Box style={{ width: 56, height: 56, background: '#0E3F8C', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold' }}>{f.n}</Text>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>{f.t}</Text>
+          <Text style={{ fontSize: 15, color: '#1A2230', lineHeight: 1.55 }}>{f.d}</Text>
+        </Box>
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ position: 'absolute', top: 620, left: 60, right: 60, height: 40, padding: 12, background: '#0E3F8C', borderRadius: 6, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Box style={{ width: 4, height: 20, background: '#FFC107' }} />
+    <Text style={{ fontSize: 15, color: '#FFFFFF', lineHeight: 1.4, flex: 1 }}>
+      <span style={{ fontWeight: 'bold' }}>F2 echoes CHI 2026 Best Paper (Väkevä et al.):</span> resonance with lived experience is the strongest anchor of meaningful gameplay. Tools must serve that anchor, not bypass it.
+    </Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#1E4FA8', fontWeight: 'bold' }}>14 / 16</Text>
+  </Box>
+</Slide>

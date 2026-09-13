@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>系统化设计学习 · System Learning</title>
+  <style>
+    :root {
+      --bg: #091015;
+      --paper: rgba(14, 21, 24, 0.9);
+      --ink: #edf2ef;
+      --muted: #a8b5b1;
+      --line: rgba(211, 223, 222, 0.2);
+      --accent: #78bcb6;
+      --accent-soft: rgba(120, 188, 182, 0.14);
+      --warm: #d2b48b;
+      --warm-soft: rgba(210, 180, 139, 0.14);
+      --blue: #86a9c9;
+      --purple: #a89bd6;
+      --amber: #d9a962;
+      --green: #8fb98a;
+      --pink: #cf8fae;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      line-height: 1.5;
+    }
+
+    body[data-lang="zh"] .en,
+    body[data-lang="en"] .zh { display: none !important; }
+
+    body {
+      background:
+        linear-gradient(180deg, rgba(23, 38, 44, 0.84), rgba(8, 13, 16, 0.97)),
+        repeating-linear-gradient(90deg, rgba(190, 205, 207, 0.06) 0 1px, transparent 1px 118px);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: minmax(190px, 0.8fr) minmax(520px, auto) auto;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(6, 11, 14, 0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand-title { margin: 0; font-size: 16px; font-weight: 800; }
+    .brand-subtitle { margin: 2px 0 0; color: #93a7a9; font-size: 13px; }
+
+    .mode-tabs, .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mode-tab, button {
+      min-height: 40px;
+      border: 1px solid rgba(202, 218, 220, 0.28);
+      border-radius: 3px;
+      padding: 8px 13px;
+      background: rgba(10, 16, 19, 0.44);
+      color: #dce5e2;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .mode-tab.active, button.active {
+      border-color: #7fc8c2;
+      background: var(--accent);
+      color: #06201d;
+    }
+
+    .mode-tab.disabled {
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    main {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 54px 0 70px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #9cc9c4;
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { letter-spacing: 0; }
+    h1 { margin: 0; max-width: 980px; font-size: clamp(42px, 5.4vw, 72px); line-height: 1.06; }
+    h2 { margin: 0; font-size: clamp(27px, 3.1vw, 42px); line-height: 1.1; }
+    h3 { margin: 0; font-size: 19px; line-height: 1.25; }
+    p { color: var(--muted); }
+
+    .lead {
+      max-width: 980px;
+      margin: 20px 0 0;
+      color: #d3ddda;
+      font-size: clamp(20px, 2.2vw, 28px);
+    }
+
+    .input-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .input-item strong { display: block; color: #f0f5f3; font-size: 16px; }
+    .input-item span { display: block; margin-top: 5px; color: #9fadaa; font-size: 14px; }
+
+    .section {
+      margin-top: 58px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-intro { max-width: 900px; margin: 10px 0 0; font-size: 17px; }
+
+    .module-map {
+      position: relative;
+      margin-top: 34px;
+      padding-left: 34px;
+    }
+
+    .module-map::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: rgba(168, 181, 177, 0.35);
+    }
+
+    .module-map::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: -6px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 10px solid #9cc9c4;
+    }
+
+    .module-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+      margin-top: 14px;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(10, 16, 19, 0.62);
+    }
+
+    .module-card::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      border-radius: 50%;
+      background: var(--mc);
+      border: 2px solid #091015;
+    }
+
+    .module-card.m5 { --mc: #cf8fae; border-left: 4px solid #cf8fae; }
+    .module-card.m4 { --mc: #8fb98a; border-left: 4px solid #8fb98a; }
+    .module-card.m3 { --mc: #d9a962; border-left: 4px solid #d9a962; }
+    .module-card.m2 { --mc: #a89bd6; border-left: 4px solid #a89bd6; }
+    .module-card.m1 { --mc: #86a9c9; border-left: 4px solid #86a9c9; }
+    .module-card.m0 { --mc: #78bcb6; border-left: 4px solid #78bcb6; }
+
+    .module-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 34px;
+      border: 1px solid var(--mc);
+      border-radius: 6px;
+      color: var(--mc);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .module-title { font-size: 19px; font-weight: 750; color: #f0f5f3; }
+    .module-sub { margin: 4px 0 0; font-size: 14px; color: var(--mc); }
+    .module-concepts { margin: 7px 0 0; font-size: 13px; color: #9fadaa; }
+    .module-tag { font-size: 12px; color: #6f8283; white-space: nowrap; }
+
+    .bridge {
+      margin-top: 30px;
+    }
+
+    .bridge-steps {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .bstep {
+      padding: 9px 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(10, 16, 19, 0.62);
+      text-align: center;
+    }
+
+    .bstep b { display: block; color: #9cc9c4; font-size: 12px; }
+    .bstep span { display: block; margin-top: 2px; color: #dce5e2; font-size: 12.5px; font-weight: 650; }
+
+    .bridge-bars {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .bridge-row {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 6px;
+      align-items: center;
+    }
+
+    .bridge-label {
+      grid-column: 1 / -1;
+      margin-bottom: -6px;
+      font-size: 12px;
+      color: #6f8283;
+    }
+
+    .bbar {
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .bbar.m0 { grid-column: 1 / 9; background: rgba(120, 188, 182, 0.16); border: 1px solid #78bcb6; color: #9fe1cb; }
+    .bbar.m1 { grid-column: 2 / 5; background: rgba(134, 169, 201, 0.16); border: 1px solid #86a9c9; color: #b5d4f4; }
+    .bbar.m2 { grid-column: 3 / 5; background: rgba(168, 155, 214, 0.16); border: 1px solid #a89bd6; color: #cecbf6; }
+    .bbar.m3 { grid-column: 5 / 7; background: rgba(217, 169, 98, 0.16); border: 1px solid #d9a962; color: #fac775; }
+    .bbar.m4 { grid-column: 8 / 9; background: rgba(143, 185, 138, 0.16); border: 1px solid #8fb98a; color: #c0dd97; justify-content: center; padding: 0; }
+    .bbar.m5 { grid-column: 7 / 8; background: rgba(207, 143, 174, 0.16); border: 1px solid #cf8fae; color: #f4c0d1; justify-content: center; padding: 0; }
+
+    .refnote {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-left: 4px solid #cf8fae;
+      background: rgba(207, 143, 174, 0.08);
+      color: #d8dfdc;
+      font-size: 14px;
+    }
+
+    .concept {
+      margin-top: 34px;
+    }
+
+    .concept h3 { font-size: 22px; color: #f0f5f3; }
+    .concept-body { margin-top: 12px; font-size: 16px; color: #c6d1cd; }
+    .concept-body strong { color: #f0f5f3; }
+
+    .sys-table {
+      width: 100%;
+      margin-top: 18px;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    .sys-table th, .sys-table td {
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .sys-table th { color: #9cc9c4; font-weight: 750; background: rgba(120, 188, 182, 0.07); }
+    .sys-table td { color: #c6d1cd; }
+
+    .codeblock {
+      margin: 18px 0 0;
+      padding: 17px;
+      border: 1px solid rgba(211, 223, 222, 0.22);
+      border-left: 5px solid var(--accent);
+      border-radius: 3px;
+      background: rgba(3, 6, 8, 0.72);
+      color: #e8efed;
+      white-space: pre-wrap;
+      font: 14px/1.55 "SFMono-Regular", Consolas, monospace;
+      overflow-x: auto;
+    }
+
+    .state-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .state-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 15px 17px;
+      background: rgba(10, 16, 19, 0.62);
+    }
+
+    .state-card h4 { margin: 0 0 10px; font-size: 15px; color: #cecbf6; }
+    .state-var {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      background: rgba(3, 6, 8, 0.55);
+      border: 1px solid rgba(211, 223, 222, 0.1);
+      margin-top: 5px;
+      font: 13px "SFMono-Regular", Consolas, monospace;
+      color: #d8dfdc;
+    }
+    .state-var i { font-style: normal; color: #6f8283; }
+    .state-arrow { text-align: center; color: #a89bd6; font-size: 20px; }
+
+    .state-space {
+      margin-top: 18px;
+      padding: 15px 17px;
+      border: 1px solid #a89bd6;
+      border-radius: 12px;
+      background: rgba(168, 155, 214, 0.08);
+    }
+
+    .state-space h4 { margin: 0 0 8px; font-size: 15px; color: #cecbf6; }
+    .state-space p { margin: 4px 0 0; font-size: 14px; }
+
+    .checklist {
+      margin: 16px 0 0;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent);
+      border-radius: 6px;
+      background: rgba(120, 188, 182, 0.07);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 14px;
+      line-height: 2;
+      color: #d8dfdc;
+    }
+
+    .cite-note {
+      margin-top: 14px;
+      padding: 11px 15px;
+      border-left: 4px solid var(--warm);
+      background: var(--warm-soft);
+      font-size: 14px;
+      color: #d8dfdc;
+    }
+
+    .cite-note strong { color: #f0f5f3; }
+
+    .ref-group { margin-top: 28px; }
+
+    .ref-group h3 { font-size: 18px; color: #9cc9c4; margin-bottom: 10px; }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    .ref-table th, .ref-table td {
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .ref-table th { color: #9cc9c4; font-weight: 750; background: rgba(120, 188, 182, 0.07); }
+    .ref-table td { color: #c6d1cd; }
+    .ref-table td:first-child { color: #dce5e2; font-weight: 650; }
+    .ref-star { color: #fac775; font-weight: 800; }
+
+    .guardrail {
+      margin-top: 32px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--warm);
+      background: var(--warm-soft);
+    }
+
+    .guardrail p { margin: 0; color: #d8dfdc; font-size: 16px; }
+    .guardrail strong { color: #f0f5f3; }
+
+    .system-diagram {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(10, 16, 19, 0.62);
+      padding: 6px;
+    }
+
+    .system-diagram svg { display: block; width: 100%; height: auto; }
+
+    footer {
+      padding: 17px 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #6f8283;
+      font-size: 12px;
+      font-weight: 750;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .topbar { grid-template-columns: 1fr auto; }
+      .mode-tabs { grid-column: 1 / -1; order: 3; overflow-x: auto; }
+      .module-card { grid-template-columns: 56px minmax(0, 1fr); }
+      .module-tag { grid-column: 2; }
+      .state-flow { grid-template-columns: 1fr; }
+      .state-arrow { transform: rotate(90deg); }
+    }
+
+    @media (max-width: 680px) {
+      main { width: min(100% - 28px, 1240px); padding-top: 34px; }
+      .brand-subtitle { display: none; }
+      .input-strip { grid-template-columns: 1fr; }
+      .bridge-steps, .bridge-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .bstep:nth-child(n + 5) { display: none; }
+      .bbar.m0 { grid-column: 1 / 5; }
+      .bbar.m1 { grid-column: 2 / 4; }
+      .bbar.m2 { grid-column: 2 / 3; }
+      .bbar.m3 { grid-column: 3 / 4; }
+      .bbar.m4 { grid-column: 4 / 5; }
+      .bbar.m5 { grid-column: 3 / 4; }
+      .mode-tab { white-space: nowrap; }
+    }
+  </style>
+</head>
+<body data-lang="zh">
+  <header class="topbar">
+    <div class="brand">
+      <p class="brand-title"><span class="zh">系统化设计学习</span><span class="en">Systematic Design Learning</span></p>
+      <p class="brand-subtitle"><span class="zh">配合「来自生活的游戏设计」方法论</span><span class="en">Supporting the Game Design from Life methodology</span></p>
+    </div>
+    <nav class="mode-tabs" aria-label="Learning modules">
+      <a class="mode-tab active" href="system-learning.html"><span class="zh">M0 系统思维地基</span><span class="en">M0 Systems Thinking</span></a>
+      <a class="mode-tab disabled" href="#"><span class="zh">M1 形式系统</span><span class="en">M1 Formal Systems</span></a>
+      <a class="mode-tab disabled" href="#"><span class="zh">M2 数据化建模</span><span class="en">M2 Modeling</span></a>
+      <a class="mode-tab disabled" href="#"><span class="zh">M3 学习与反馈</span><span class="en">M3 Learning</span></a>
+      <a class="mode-tab disabled" href="#"><span class="zh">M4 涌现拓展</span><span class="en">M4 Emergence</span></a>
+      <a class="mode-tab disabled" href="#"><span class="zh">M5 系统描述</span><span class="en">M5 Description</span></a>
+      <a class="mode-tab" href="agent-development-workshop.html"><span class="zh">人机协作开发 →</span><span class="en">AI Workshop →</span></a>
+    </nav>
+    <div class="controls" aria-label="Language">
+      <button type="button" class="lang active" data-lang="zh">中文</button>
+      <button type="button" class="lang" data-lang="en">English</button>
+    </div>
+  </header>
+
+  <main>
+    <p class="eyebrow"><span class="zh">Module 0 · 系统思维地基</span><span class="en">Module 0 · Systems Thinking Foundation</span></p>
+    <h1><span class="zh">把生活体验看作系统</span><span class="en">See Life Experience as a System</span></h1>
+    <p class="lead zh">建立「看见结构」的能力——把模糊的点子与体验看成「元素 + 关系 + 边界」的系统，用状态、反馈、存量与流量、涌现的语言描述它。这是数据化抽象（Step 3）、数据结构图（Step 3.5）与 AI 辅助（Step 5）的共同地基。</p>
+    <p class="lead en">Build the ability to see structure — to read vague ideas and experiences as systems of elements, relationships, and boundaries, described in the language of state, feedback, stocks and flows, and emergence. This is the shared foundation of Datalization (Step 3), Data Structure Diagrams (Step 3.5), and AI Assistance (Step 5).</p>
+
+    <div class="input-strip" aria-label="How we learn">
+      <div class="input-item"><strong><span class="zh">概念图解</span><span class="en">Concept Diagrams</span></strong><span><span class="zh">每个概念先以结构图讲透</span><span class="en">Each concept explained visually first</span></span></div>
+      <div class="input-item"><strong><span class="zh">对接方法论</span><span class="en">Methodology Mapping</span></strong><span><span class="zh">知识装回六步法的具体环节</span><span class="en">Knowledge plugs into a specific methodology step</span></span></div>
+      <div class="input-item"><strong><span class="zh">真实案例拆解</span><span class="en">Real Cases</span></strong><span><span class="zh">排队游戏、The Darkroom、帆船等</span><span class="en">Queue game, The Darkroom, sailing, etc.</span></span></div>
+    </div>
+
+    <section class="section">
+      <h2><span class="zh">六模块学习地图</span><span class="en">Six-Module Learning Map</span></h2>
+      <p class="section-intro zh">从地基（M0）到登顶（M5）。每一块知识都对应你方法论的一个环节，终点正是「系统描述」——用结构化规格让 AI 实现你的设计。</p>
+      <p class="section-intro en">From foundation (M0) to summit (M5). Each module maps to one part of your methodology; the summit is the System Description — a structured specification that lets AI build your design.</p>
+
+      <div class="module-map">
+        <article class="module-card m5">
+          <div class="module-badge">M5</div>
+          <div>
+            <div class="module-title"><span class="zh">系统描述与 AI · 登顶</span><span class="en">System Description &amp; AI · Summit</span></div>
+            <div class="module-sub"><span class="zh">用结构化规格让 AI 实现你的设计</span><span class="en">Make AI build your design from a structured spec</span></div>
+            <div class="module-concepts"><span class="zh">目标体验 · 核心循环 · 变量/规则 · 输入/输出 · 反馈/挑战</span><span class="en">Target experience · core loop · variables/rules · I/O · feedback/challenge</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">支撑 Step 5 + 核心论题</span><span class="en">Serves Step 5 + core thesis</span></span>
+        </article>
+        <article class="module-card m4">
+          <div class="module-badge">M4</div>
+          <div>
+            <div class="module-title"><span class="zh">涌现与系统拓展</span><span class="en">Emergence &amp; Expansion</span></div>
+            <div class="module-sub"><span class="zh">小系统如何长出大世界</span><span class="en">How small systems grow into large worlds</span></div>
+            <div class="module-concepts"><span class="zh">涌现 vs 渐进 · 模块化组合 · 经济系统 · 程序化生成</span><span class="en">Emergence vs progression · modularity · economies · PCG</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">深化 Step 6</span><span class="en">Deepens Step 6</span></span>
+        </article>
+        <article class="module-card m3">
+          <div class="module-badge">M3</div>
+          <div>
+            <div class="module-title"><span class="zh">玩家学习与反馈</span><span class="en">Player Learning &amp; Feedback</span></div>
+            <div class="module-sub"><span class="zh">系统如何教会玩家、留住玩家</span><span class="en">How systems teach and retain players</span></div>
+            <div class="module-concepts"><span class="zh">技能原子 · 模式识别 · 心流 · 反馈设计</span><span class="en">Skill atoms · pattern recognition · flow · feedback design</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">支撑 Step 3.75 / 4</span><span class="en">Serves Step 3.75 / 4</span></span>
+        </article>
+        <article class="module-card m2">
+          <div class="module-badge">M2</div>
+          <div>
+            <div class="module-title"><span class="zh">数据化抽象与系统建模</span><span class="en">Datalization &amp; System Modeling</span></div>
+            <div class="module-sub"><span class="zh">把体验变成可运行的结构</span><span class="en">Turn experience into runnable structure</span></div>
+            <div class="module-concepts"><span class="zh">变量设计 · 状态机 · 数据结构图 · 数值平衡</span><span class="en">Variable design · state machines · data structure diagrams · balancing</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">深化 Step 3 / 3.5</span><span class="en">Deepens Step 3 / 3.5</span></span>
+        </article>
+        <article class="module-card m1">
+          <div class="module-badge">M1</div>
+          <div>
+            <div class="module-title"><span class="zh">游戏作为形式系统</span><span class="en">Games as Formal Systems</span></div>
+            <div class="module-sub"><span class="zh">游戏由什么构成：规则、状态、信息</span><span class="en">What games are made of: rules, states, information</span></div>
+            <div class="module-concepts"><span class="zh">规则三类型 · MDA 框架 · 信息状态 · 挑战类型</span><span class="en">Rule types · MDA · information states · challenge types</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">Step 2–4 语言基础</span><span class="en">Language for Step 2–4</span></span>
+        </article>
+        <article class="module-card m0">
+          <div class="module-badge">M0</div>
+          <div>
+            <div class="module-title"><span class="zh">系统思维地基</span><span class="en">Systems Thinking Foundation</span></div>
+            <div class="module-sub"><span class="zh">一切系统分析的底层视角</span><span class="en">The base lens for all system analysis</span></div>
+            <div class="module-concepts"><span class="zh">状态与状态空间 · 反馈循环 · 存量/流量 · 涌现</span><span class="en">State &amp; state space · feedback loops · stocks/flows · emergence</span></div>
+          </div>
+          <span class="module-tag"><span class="zh">全程地基</span><span class="en">Foundation throughout</span></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="zh">方法论对接图</span><span class="en">Mapping to the Methodology</span></h2>
+      <p class="section-intro zh">上层是你的六步流程（v2.1），下层是每个知识模块直接服务的环节。色带覆盖范围 = 服务范围。</p>
+      <p class="section-intro en">Your six-step flow (v2.1) above; each knowledge module's service scope below as color bands.</p>
+
+      <div class="bridge">
+        <div class="bridge-steps">
+          <div class="bstep"><b>S1</b><span><span class="zh">生活感受</span><span class="en">Experience</span></span></div>
+          <div class="bstep"><b>S2</b><span><span class="zh">情感原型</span><span class="en">Prototype</span></span></div>
+          <div class="bstep"><b>S3</b><span><span class="zh">数据抽象</span><span class="en">Datalization</span></span></div>
+          <div class="bstep"><b>S3.5</b><span><span class="zh">数据结构图</span><span class="en">Data graph</span></span></div>
+          <div class="bstep"><b>S3.75</b><span><span class="zh">挑战空间</span><span class="en">Challenges</span></span></div>
+          <div class="bstep"><b>S4</b><span><span class="zh">Unity 搭建</span><span class="en">Unity build</span></span></div>
+          <div class="bstep"><b>S5</b><span><span class="zh">AI 辅助</span><span class="en">AI assist</span></span></div>
+          <div class="bstep"><b>S6</b><span><span class="zh">世界拓展</span><span class="en">World</span></span></div>
+        </div>
+        <div class="bridge-bars">
+          <div class="bridge-row"><span class="bridge-label"><span class="zh">系统化知识模块</span><span class="en">Knowledge modules</span></span></div>
+          <div class="bridge-row"><div class="bbar m0"><span class="zh">模块0 · 系统思维地基</span><span class="en">M0 · Systems thinking</span></div></div>
+          <div class="bridge-row"><div class="bbar m1"><span class="zh">模块1 · 游戏形式系统</span><span class="en">M1 · Formal systems</span></div></div>
+          <div class="bridge-row"><div class="bbar m2"><span class="zh">模块2 · 数据化建模</span><span class="en">M2 · Modeling</span></div></div>
+          <div class="bridge-row"><div class="bbar m3"><span class="zh">模块3 · 玩家学习与反馈</span><span class="en">M3 · Learning</span></div></div>
+          <div class="bridge-row"><div class="bbar m4"><span class="zh">模块4 · 涌现拓展</span><span class="en">M4 · Emergence</span></div></div>
+          <div class="bridge-row"><div class="bbar m5"><span class="zh">模块5 · 系统描述</span><span class="en">M5 · Description</span></div></div>
+        </div>
+        <div class="refnote"><span class="zh">模块5 的虚线回连：系统描述 = Step 3 / 3.5 / 3.75 产物的结构化组织，再交给 Step 5 的 AI。</span><span class="en">M5 dashed loop: the System Description is a structured organization of Step 3 / 3.5 / 3.75 outputs, then given to the AI at Step 5.</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="zh">M0 第一讲：系统与状态</span><span class="en">M0 Lesson 1 · Systems and States</span></h2>
+
+      <div class="concept">
+        <h3><span class="zh">① 为什么系统思维是地基</span><span class="en">1) Why systems thinking is the foundation</span></h3>
+        <div class="concept-body">
+          <p class="zh">方法论后半段（Step 3 → 3.5 → 3.75 → 4 → 5 → 6）全部是系统工作。系统思维提供三种能力：<strong>看穿结构</strong>（游戏不是点子，而是元素之间的关系网络）；<strong>与 AI 对话的前提</strong>（系统描述 = 用系统语言写规格）；以及「系统描述 vs Prompt」论题的底座。</p>
+          <p class="en">The second half of the methodology (Step 3 → 3.5 → 3.75 → 4 → 5 → 6) is entirely systems work. Systems thinking provides: seeing structure (a game is a network of relationships, not an idea), the prerequisite for talking to AI (a system description is a spec written in systems language), and the foundation for the "System Description vs Prompt" thesis.</p>
+        </div>
+      </div>
+
+      <div class="concept">
+        <h3><span class="zh">② 什么是系统（Meadows 定义）</span><span class="en">2) What is a system (Meadows)</span></h3>
+        <div class="concept-body">
+          <p class="zh">系统 = <strong>元素 + 相互连接 + 功能/目的</strong>，三者缺一不可；系统存在于边界之内，受环境影响。<strong>关键认知：是「关系」产生行为</strong>——同样的元素，连接方式不同，系统行为完全不同。</p>
+          <p class="en">A system = <strong>elements + interconnections + function/purpose</strong>, all three required; it exists within a boundary and is affected by its environment. Key insight: <strong>relationships produce behavior</strong> — the same elements, connected differently, behave completely differently.</p>
+        </div>
+        <div class="system-diagram">
+          <svg viewBox="0 0 680 330" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>系统定义：元素、连接、边界与目的</title>
+            <desc>以排队游戏为例展示系统的四要素</desc>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+            <text x="40" y="32" fill="#9cc9c4" font-size="14" font-weight="500">系统 = 元素 + 相互连接 + 功能；关系产生行为</text>
+            <rect x="40" y="52" width="600" height="232" rx="14" fill="none" stroke="#86a9c9" stroke-width="0.5"/>
+            <text x="56" y="72" fill="#86a9c9" font-size="12">边界：队列区域 / 单次排队流程</text>
+            <rect x="76" y="92" width="120" height="50" rx="8" fill="rgba(134,169,201,0.12)" stroke="#86a9c9" stroke-width="0.5"/>
+            <text x="136" y="112" text-anchor="middle" fill="#edf2ef" font-size="13" font-weight="500">玩家</text>
+            <text x="136" y="130" text-anchor="middle" fill="#86a9c9" font-size="11">位置 · 行动</text>
+            <rect x="264" y="92" width="120" height="50" rx="8" fill="rgba(134,169,201,0.12)" stroke="#86a9c9" stroke-width="0.5"/>
+            <text x="324" y="112" text-anchor="middle" fill="#edf2ef" font-size="13" font-weight="500">队列</text>
+            <text x="324" y="130" text-anchor="middle" fill="#86a9c9" font-size="11">位置 · 长度</text>
+            <rect x="452" y="92" width="120" height="50" rx="8" fill="rgba(134,169,201,0.12)" stroke="#86a9c9" stroke-width="0.5"/>
+            <text x="512" y="112" text-anchor="middle" fill="#edf2ef" font-size="13" font-weight="500">服务窗口</text>
+            <text x="512" y="130" text-anchor="middle" fill="#86a9c9" font-size="11">服务速度</text>
+            <rect x="196" y="178" width="120" height="50" rx="8" fill="rgba(217,169,98,0.10)" stroke="#d9a962" stroke-width="0.5"/>
+            <text x="256" y="198" text-anchor="middle" fill="#edf2ef" font-size="13" font-weight="500">插队者 NPC</text>
+            <text x="256" y="216" text-anchor="middle" fill="#d9a962" font-size="11">插队事件</text>
+            <rect x="400" y="178" width="180" height="50" rx="8" fill="rgba(217,169,98,0.10)" stroke="#d9a962" stroke-width="0.5"/>
+            <text x="490" y="198" text-anchor="middle" fill="#edf2ef" font-size="13" font-weight="500">等待时间计时</text>
+            <text x="490" y="216" text-anchor="middle" fill="#d9a962" font-size="11">waitTime · 耐心值</text>
+            <line x1="196" y1="117" x2="262" y2="117" stroke="#78bcb6" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <line x1="384" y1="117" x2="450" y2="117" stroke="#78bcb6" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <line x1="256" y1="176" x2="256" y2="144" stroke="#d9a962" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <line x1="316" y1="178" x2="446" y2="216" stroke="#d9a962" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <line x1="136" y1="144" x2="136" y2="168" stroke="#d9a962" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="144" y="162" fill="#d9a962" font-size="11">行动反馈</text>
+            <text x="520" y="166" fill="#d9a962" font-size="11">等待 → 耐心↓</text>
+            <rect x="40" y="240" width="600" height="34" rx="8" fill="rgba(134,169,201,0.08)" stroke="#86a9c9" stroke-width="0.5"/>
+            <text x="56" y="255" fill="#edf2ef" font-size="12" font-weight="500">功能/目的：公平到达窗口（= 情感目标）</text>
+            <text x="56" y="269" fill="#86a9c9" font-size="11">环境：社会规则、时间压力（游戏外输入，通过边界进入系统）</text>
+          </svg>
+        </div>
+        <div class="cite-note"><strong><span class="zh">📚 出处：</span><span class="en">Sources: </span></strong><span class="zh">Meadows, D. H. (2008). <em>Thinking in Systems: A Primer</em>. Chelsea Green Publishing. ｜ von Bertalanffy, L. (1968). <em>General System Theory</em>. George Braziller. ｜ Salen, K., &amp; Zimmerman, E. (2004). <em>Rules of Play</em>. MIT Press.</span><span class="en">Meadows, D. H. (2008). <em>Thinking in Systems: A Primer</em>. Chelsea Green Publishing. | von Bertalanffy, L. (1968). <em>General System Theory</em>. George Braziller. | Salen, K., &amp; Zimmerman, E. (2004). <em>Rules of Play</em>. MIT Press.</span></div>
+
+        <table class="sys-table">
+          <thead>
+            <tr><th><span class="zh">系统要素</span><span class="en">Element</span></th><th><span class="zh">排队游戏中的对应</span><span class="en">In the queue game</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="zh">元素</span><span class="en">Elements</span></td><td><span class="zh">玩家、队列、服务窗口、插队者(NPC)、等待时间计时</span><span class="en">Player, queue, service window, line-jumper (NPC), wait timer</span></td></tr>
+            <tr><td><span class="zh">相互连接</span><span class="en">Interconnections</span></td><td><span class="zh">位置 ↔ 等待时间 ↔ 耐心值；插队事件 → 公平感↓ → 玩家行动</span><span class="en">Position ↔ wait time ↔ patience; line-jump → fairness↓ → player action</span></td></tr>
+            <tr><td><span class="zh">功能/目的</span><span class="en">Function/Purpose</span></td><td><span class="zh">公平到达窗口（设计者的情感目标）</span><span class="en">Fairly reaching the window (the designer's emotional goal)</span></td></tr>
+            <tr><td><span class="zh">边界</span><span class="en">Boundary</span></td><td><span class="zh">队列区域、单次排队流程（游戏关卡的边界）</span><span class="en">Queue area, a single queue process (level boundary)</span></td></tr>
+            <tr><td><span class="zh">环境</span><span class="en">Environment</span></td><td><span class="zh">社会规则、时间压力、他人行为</span><span class="en">Social rules, time pressure, others' behavior</span></td></tr>
+          </tbody>
+        </table>
+        <div class="concept-body" style="margin-top:16px;">
+          <p class="zh"><strong>对方法论的意义：</strong>Step 1 生活感受的三维分析（动作/过程/情感）在收集<strong>元素</strong>；Step 2 情感结构分析在定义系统的<strong>目的</strong>；Step 3 数据化抽象把<strong>元素变成变量、关系变成规则</strong>。系统思维让你在 Step 1 就带着「结构」的眼光观察生活。</p>
+          <p class="en"><strong>For the methodology:</strong> Step 1's three-dimensional analysis (action/process/emotion) collects <strong>elements</strong>; Step 2's emotional structure analysis defines the system's <strong>purpose</strong>; Step 3 Datalization turns <strong>elements into variables and relationships into rules</strong>.</p>
+        </div>
+      </div>
+
+      <div class="concept">
+        <h3><span class="zh">③ 状态与状态空间</span><span class="en">3) State and state space</span></h3>
+        <div class="concept-body">
+          <p class="zh"><strong>状态（State）</strong>= 系统在某一时刻所有变量的取值快照。<strong>状态空间（State Space）</strong>= 所有可能状态的集合。排队游戏在时刻 t 与 t+1 的两个快照，中间由事件/输入触发<strong>状态转移</strong>：</p>
+          <p class="en"><strong>State</strong> = the snapshot of all variable values at one moment. <strong>State Space</strong> = the set of all possible states. Two snapshots of the queue game at t and t+1, connected by a <strong>state transition</strong> triggered by events/input:</p>
+        </div>
+        <div class="state-flow">
+          <div class="state-card">
+            <h4><span class="zh">时刻 t 的状态快照</span><span class="en">State snapshot at t</span></h4>
+            <div class="state-var"><span>queuePosition: 3</span><i><span class="zh">公开</span><span class="en">public</span></i></div>
+            <div class="state-var"><span>waitTime: 240s</span><i><span class="zh">公开</span><span class="en">public</span></i></div>
+            <div class="state-var"><span>patience: 0.35</span><i><span class="zh">公开</span><span class="en">public</span></i></div>
+            <div class="state-var"><span>fairness: 0.60</span><i><span class="zh">隐藏</span><span class="en">hidden</span></i></div>
+            <div class="state-var"><span>ruleBreaking: false</span><i><span class="zh">隐藏</span><span class="en">hidden</span></i></div>
+          </div>
+          <div class="state-arrow"><span class="zh">事件/输入<br/>状态转移</span><span class="en">event/input<br/>transition</span></div>
+          <div class="state-card">
+            <h4><span class="zh">时刻 t+1 的状态快照</span><span class="en">State snapshot at t+1</span></h4>
+            <div class="state-var"><span>queuePosition: 4（被插队）</span><i></i></div>
+            <div class="state-var"><span>waitTime: 300s</span><i></i></div>
+            <div class="state-var"><span>patience: 0.20</span><i></i></div>
+            <div class="state-var"><span>fairness: 0.30</span><i></i></div>
+            <div class="state-var"><span>ruleBreaking: true</span><i></i></div>
+          </div>
+        </div>
+        <div class="state-space">
+          <h4><span class="zh">状态空间（全部可能快照）</span><span class="en">State space (all possible snapshots)</span></h4>
+          <p class="zh">position(1–20) × waitTime(连续) × patience(0–1) × fairness(0–1) × ruleBreaking(bool) × 行动选项。数值上巨大，但<strong>规则剪枝</strong> → 只有部分状态可达。设计不是穷举，而是用规则划定「可达空间」。</p>
+          <p class="en">position(1–20) × waitTime(continuous) × patience(0–1) × fairness(0–1) × ruleBreaking(bool) × actions. Numerically huge, but <strong>rules prune it</strong> → only some states are reachable. Design is not enumeration; it is delimiting the reachable space with rules.</p>
+          <p class="zh"><strong>情感 = 状态轨迹：</strong>焦虑（patience↓ + waitTime↑）→ 转折（插队）→ 如释重负（到达窗口）。</p>
+          <p class="en"><strong>Emotion = state trajectory:</strong> anxiety (patience↓ + waitTime↑) → turning point (line-jump) → relief (reaching the window).</p>
+        </div>
+        <div class="cite-note"><strong><span class="zh">📚 出处：</span><span class="en">Sources: </span></strong><span class="zh">Kálmán, R. E. (1960). On the General Theory of Control Systems. <em>Proc. First IFAC Congress</em>. ｜ Juul, J. (2005). <em>Half-Real</em>. MIT Press（游戏规则=状态机）. ｜ Wang &amp; Xiong (2025). arXiv:2509.17610（游戏=状态空间）. ｜ Russell, J. A. (1980). <em>JPSP</em> 39(6): 1161–1178（情感空间）.</span><span class="en">Kálmán, R. E. (1960). On the General Theory of Control Systems. <em>Proc. First IFAC Congress</em>. | Juul, J. (2005). <em>Half-Real</em>. MIT Press (rules as state machine). | Wang &amp; Xiong (2025). arXiv:2509.17610 (game as state space). | Russell, J. A. (1980). <em>JPSP</em> 39(6): 1161–1178 (affect space).</span></div>
+      </div>
+
+      <div class="concept">
+        <h3><span class="zh">④ 带走工具：系统看图纸</span><span class="en">4) Takeaway tool: the Systems Blueprint</span></h3>
+        <div class="concept-body">
+          <p class="zh">分析任何系统（生活体验、现有游戏、学生作品）时，过一遍这张检查表——它把第一讲的所有概念变成可操作的问题：</p>
+          <p class="en">When analyzing any system — a lived experience, an existing game, a student project — run through this checklist. It turns every concept from Lesson 1 into actionable questions:</p>
+        </div>
+        <pre class="checklist"><span class="zh">□ 边界：这个系统在哪里结束？环境输入什么？
+□ 元素：有哪些实体？（人/物/信息/资源）——对应 Step 1 对象维度
+□ 关系：谁影响谁？箭头怎么画？（方向 + 强度）
+□ 目的：系统在「追求」什么？（对应情感目标/领域目标）
+□ 状态变量：哪些变量描述系统状态？类型？值域？（对应 Step 3 变量表）
+□ 状态空间：变量组合会涌现出什么局面？（对应 Step 3.5 数据结构图）
+□ 公开/隐藏：玩家能看到哪些？需要推断哪些？（信息设计）
+□ 规则：什么事件/输入触发状态转移？（对应 Step 4 实现）</span><span class="en">□ Boundary: where does this system end? What enters from the environment?
+□ Elements: what entities exist? (people/objects/info/resources) — Step 1 objects
+□ Relationships: who affects whom? Draw arrows (direction + strength)
+□ Purpose: what is the system "pursuing"? — emotional/domain goals
+□ State variables: what describes system state? type? range? — Step 3 table
+□ State space: what situations do variable combinations yield? — Step 3.5 graph
+□ Public/hidden: what can players see vs. infer? — information design
+□ Rules: what events/inputs trigger transitions? — Step 4 implementation</span></pre>
+        <div class="guardrail"><p class="zh"><strong>练习建议：</strong>用这张图纸重新分析 The Darkroom（摄影曝光 → 光迹机制）。它已是最强的 RtD 案例，用系统语言重述一遍，你会得到一段可直接进论文的「系统描述」草稿——提前练了 M5 的手感。</p><p class="en"><strong>Suggested exercise:</strong> Re-analyze The Darkroom (photographic exposure → light-trail mechanics) with this blueprint. It is already your strongest RtD case; restating it in systems language yields a "system description" draft ready for the paper — early practice for M5.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="zh">文献出处表（教学可分发版）</span><span class="en">Reference List (Distributable for Teaching)</span></h2>
+      <p class="section-intro zh">本讲全部概念的可追溯出处。标注 <span class="ref-star">⭐</span> 为第一手出处，其余为延伸/教学参考。可直接复制进课件与参考文献。</p>
+      <p class="section-intro en">Traceable sources for every concept in this lesson. <span class="ref-star">⭐</span> marks primary sources; the rest are extensions/references. Copy-ready for slides and bibliographies.</p>
+
+      <div class="ref-group">
+        <h3><span class="zh">A · 系统的定义与系统思维</span><span class="en">A · Systems definition &amp; systems thinking</span></h3>
+        <table class="ref-table">
+          <thead><tr><th><span class="zh">概念</span><span class="en">Concept</span></th><th><span class="zh">文献</span><span class="en">Reference</span></th><th><span class="zh">出版信息</span><span class="en">Publisher</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">系统三要素、边界、环境</span><span class="en">System elements, boundary, environment</span></td><td>Meadows, D. H. (2008). <em>Thinking in Systems: A Primer</em>.</td><td>Chelsea Green Publishing（中译：《系统之美》，浙江人民出版社）</td></tr>
+            <tr><td><span class="zh">一般系统论源头</span><span class="en">General System Theory origin</span></td><td>von Bertalanffy, L. (1968). <em>General System Theory</em>.</td><td>George Braziller（中译：清华大学出版社）</td></tr>
+            <tr><td><span class="zh">因果回路图教学</span><span class="en">Causal loop diagram teaching</span></td><td>Haraldsson, H. V. (2004). <em>Introduction to Systems Thinking and Causal Loop Diagrams</em>.</td><td>Lund University, Report 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-group">
+        <h3><span class="zh">B · 游戏作为系统</span><span class="en">B · Games as systems</span></h3>
+        <table class="ref-table">
+          <thead><tr><th><span class="zh">概念</span><span class="en">Concept</span></th><th><span class="zh">文献</span><span class="en">Reference</span></th><th><span class="zh">出版信息</span><span class="en">Publisher</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">游戏 = 正式系统；有意义玩法</span><span class="en">Games as formal systems; meaningful play</span></td><td>Salen, K., &amp; Zimmerman, E. (2004). <em>Rules of Play: Game Design Fundamentals</em>.</td><td>MIT Press</td></tr>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">游戏规则 = 状态机</span><span class="en">Rules as state machine</span></td><td>Juul, J. (2005). <em>Half-Real: Video Games between Real Rules and Fictional Worlds</em>.</td><td>MIT Press（第 1 章）</td></tr>
+            <tr><td><span class="zh">系统思维用于游戏设计教育</span><span class="en">Systems thinking in game design education</span></td><td>System Dynamics Society (2024). System Thinking in Game Design.</td><td>Proc. System Dynamics Conference 2024, Paper P1159</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-group">
+        <h3><span class="zh">C · 状态与状态空间</span><span class="en">C · State and state space</span></h3>
+        <table class="ref-table">
+          <thead><tr><th><span class="zh">概念</span><span class="en">Concept</span></th><th><span class="zh">文献</span><span class="en">Reference</span></th><th><span class="zh">出版信息</span><span class="en">Publisher</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">状态空间方法命名</span><span class="en">Naming the state-space method</span></td><td>Kálmán, R. E. (1960). On the General Theory of Control Systems.</td><td><em>Proceedings of the First IFAC Congress</em>, Moscow</td></tr>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">状态空间数学形式化</span><span class="en">Mathematical formalization</span></td><td>Kálmán, R. E. (1963). Mathematical description of linear dynamical systems.</td><td><em>SIAM Journal</em>, 1(2), 152–192</td></tr>
+            <tr><td><span class="zh">游戏 = 状态空间（最新框架）</span><span class="en">Game as state space (newest)</span></td><td>Wang, Z., &amp; Xiong, S. (2025). <em>Towards the State Space Interpretation (SSI)</em>.</td><td>arXiv:2509.17610（开放获取）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-group">
+        <h3><span class="zh">D · 信息与情感</span><span class="en">D · Information and emotion</span></h3>
+        <table class="ref-table">
+          <thead><tr><th><span class="zh">概念</span><span class="en">Concept</span></th><th><span class="zh">文献</span><span class="en">Reference</span></th><th><span class="zh">出版信息</span><span class="en">Publisher</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="zh">完全/不完全信息博弈</span><span class="en">Perfect vs imperfect information</span></td><td>von Neumann, J., &amp; Morgenstern, O. (1944). <em>Theory of Games and Economic Behavior</em>.</td><td>Princeton University Press</td></tr>
+            <tr><td><span class="zh">信息透镜（教学工具）</span><span class="en">Information lens (teaching tool)</span></td><td>Schell, J. (2019). <em>The Art of Game Design</em> (3rd ed.).</td><td>CRC Press（中译：《游戏设计艺术》，电子工业出版社，2021）</td></tr>
+            <tr><td><span class="ref-star">⭐</span> <span class="zh">效价-唤醒环形模型</span><span class="en">Circumplex model of affect</span></td><td>Russell, J. A. (1980). A circumplex model of affect.</td><td><em>J. Personality and Social Psychology</em>, 39(6), 1161–1178</td></tr>
+            <tr><td><span class="zh">认知评价理论</span><span class="en">Appraisal theory</span></td><td>Lazarus, R. S. (1991). <em>Emotion and Adaptation</em>.</td><td>Oxford University Press</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-group">
+        <h3><span class="zh">E · 后续讲次预告文献</span><span class="en">E · References for upcoming lessons</span></h3>
+        <table class="ref-table">
+          <thead><tr><th><span class="zh">概念</span><span class="en">Concept</span></th><th><span class="zh">文献</span><span class="en">Reference</span></th><th><span class="zh">使用讲次</span><span class="en">Used in</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="zh">反馈循环（控制论源头）</span><span class="en">Feedback loops (cybernetics)</span></td><td>Wiener, N. (1948). <em>Cybernetics</em>.</td><td>MIT Press · <span class="zh">第二讲</span><span class="en">Lesson 2</span></td></tr>
+            <tr><td><span class="zh">存量与流量</span><span class="en">Stocks and flows</span></td><td>Forrester, J. W. (1961). <em>Industrial Dynamics</em>; Sterman, J. D. (2000). <em>Business Dynamics</em>.</td><td>MIT Press / McGraw-Hill · <span class="zh">第三讲</span><span class="en">Lesson 3</span></td></tr>
+            <tr><td><span class="zh">涌现</span><span class="en">Emergence</span></td><td>Holland, J. H. (1998). <em>Emergence: From Chaos to Order</em>.</td><td>Oxford University Press / Basic Books · <span class="zh">第四讲</span><span class="en">Lesson 4</span></td></tr>
+            <tr><td><span class="zh">开放/封闭游戏</span><span class="en">Open vs closed games</span></td><td>Juul, J. (2005). <em>Half-Real</em>（开放游戏与封闭游戏的划分）.</td><td>MIT Press · <span class="zh">第四讲</span><span class="en">Lesson 4</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="guardrail"><p class="zh"><strong>引用说明：</strong>以上出处已于 2026-08 逐条核实（作者、年份、出版社、卷期/编号）。教学使用时建议保留完整出版信息；如需英文原版引文格式（APA/Chicago），可直接基于本表生成。</p><p class="en"><strong>Citation note:</strong> All sources above were verified item by item in August 2026 (author, year, publisher, volume/number). Keep full publication details when teaching; the table is directly convertible to APA/Chicago format.</p></div>
+    </section>
+  </main>
+
+  <footer>NYU Shanghai · IMA · Game Design · 系统化设计学习</footer>
+
+  <script>
+    const languageKey = "system-learning-language";
+    let lang = localStorage.getItem(languageKey) || "zh";
+
+    function setLanguage(nextLanguage) {
+      lang = nextLanguage === "zh" ? "zh" : "en";
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll(".lang").forEach((button) => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+      localStorage.setItem(languageKey, lang);
+    }
+
+    document.querySelectorAll(".lang").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    setLanguage(lang);
+  </script>
+</body>
+</html>

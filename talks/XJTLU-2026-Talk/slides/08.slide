@@ -1,0 +1,46 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 60, background: '#330662' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold', padding: '14px 60px' }}>Game Design from Life, in six steps</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, left: 60, right: 60, height: 220, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px' }}>
+    {[
+      { n: '1', t: 'Lived experience', d: 'A specific moment that stuck with you' },
+      { n: '2', t: 'Emotional structure', d: 'Trigger, tension, turn, peak, aftertaste' },
+      { n: '3', t: 'Datalization', d: 'Map the structure to adjustable variables' },
+      { n: '3.5', t: 'System graph', d: 'Show the variables, rules, and feedback as a diagram' },
+      { n: '4', t: 'Minimum playable', d: 'Prototype in Unity / Tuanjie Engine' },
+      { n: '5+6', t: 'AI partner + world', d: 'AI for implementation and reflection; expand the world' },
+    ].map((s, i, arr) => (
+      <Box key={s.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+        <Box style={{ flex: 1, padding: 14, background: '#F6F1FA', border: '1px solid #D9D0E4', borderRadius: 8, flexDirection: 'column', gap: 6 }}>
+          <Text style={{ fontSize: 12, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>STEP {s.n}</Text>
+          <Text style={{ fontSize: 16, color: '#330662', fontWeight: 'bold' }}>{s.t}</Text>
+          <Text style={{ fontSize: 12, color: '#4A5568', lineHeight: 1.4 }}>{s.d}</Text>
+        </Box>
+        {i < arr.length - 1 && (
+          <Box style={{ width: 24, height: 2, background: '#57068C', margin: '0 4px' }} />
+        )}
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ position: 'absolute', top: 360, left: 60, right: 60, height: 280, padding: 24, background: '#FAF8FC', border: '1px solid #E4DCEC', borderRadius: 10, flexDirection: 'column', gap: 14 }}>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold', letterSpacing: 2 }}>WHAT EACH STEP PRODUCES</Text>
+    {[
+      ['1 Lived experience', 'a specific moment, not a topic'],
+      ['2 Emotional structure', 'a sequence the player should feel'],
+      ['3 Datalization', 'named, bounded, tunable variables'],
+      ['3.5 System graph', 'an inspectable blueprint (who proposes, who decides)'],
+      ['4 Minimum playable', 'a runnable build that someone can actually play'],
+      ['5 + 6 AI partner + world', 'an expanded system with documented decision provenance'],
+    ].map((row, i) => (
+      <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold', width: 220 }}>{row[0]}</Text>
+        <Text style={{ fontSize: 16, color: '#1A2230' }}>{row[1]}</Text>
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold' }}>08 / 16</Text>
+  </Box>
+</Slide>

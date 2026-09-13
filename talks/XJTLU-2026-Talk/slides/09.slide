@@ -1,0 +1,67 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', position: 'relative', fontFamily: 'Source Han Sans, Noto Sans CJK SC, sans-serif' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 60, background: '#330662' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold', padding: '14px 60px' }}>From one prompt to a guided interview</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 100, left: 60, width: 1160, flexDirection: 'column', gap: 8 }}>
+    <Text style={{ fontSize: 16, color: '#57068C', fontWeight: 'bold', letterSpacing: 2 }}>THE DECISIVE MOVE</Text>
+    <Box style={{ width: 40, height: 3, background: '#57068C' }} />
+  </Box>
+  <Box style={{ position: 'absolute', top: 160, left: 60, width: 500, height: 380, padding: 24, background: '#FAF8FC', border: '1px solid #E4DCEC', borderRadius: 10, flexDirection: 'column', gap: 16 }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+      <Box style={{ padding: '4px 12px', background: '#D9534F', borderRadius: 4 }}>
+        <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: 'bold', letterSpacing: 1 }}>ONE PROMPT</Text>
+      </Box>
+    </Box>
+    <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.4 }}>
+      "Make me a game about feeling overwhelmed in a Shanghai subway at rush hour."
+    </Text>
+    <Box style={{ width: 32, height: 2, background: '#D9D0E4' }} />
+    {[
+      ['Intent', 'compressed into a few words'],
+      ['Iteration', 'one shot'],
+      ['Output', 'whatever the model proposes'],
+      ['Accountability', 'none beyond the chat log'],
+    ].map((row, i) => (
+      <Box key={i} style={{ flexDirection: 'row', gap: 12 }}>
+        <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold', width: 110 }}>{row[0]}</Text>
+        <Text style={{ fontSize: 15, color: '#4A5568', flex: 1 }}>{row[1]}</Text>
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ position: 'absolute', top: 240, left: 580, width: 80, height: 2, background: '#57068C' }} />
+  <Box style={{ position: 'absolute', top: 220, left: 600, width: 32, height: 32, borderRadius: 16, background: '#57068C', justifyContent: 'center', alignItems: 'center' }}>
+    <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: 'bold' }}>→</Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 160, left: 660, width: 560, height: 380, padding: 24, background: '#330662', borderRadius: 10, flexDirection: 'column', gap: 14 }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+      <Box style={{ padding: '4px 12px', background: '#FFC107', borderRadius: 4 }}>
+        <Text style={{ color: '#330662', fontSize: 12, fontWeight: 'bold', letterSpacing: 1 }}>GUIDED INTERVIEW</Text>
+      </Box>
+    </Box>
+    <Text style={{ fontSize: 16, color: '#EEE6F3', lineHeight: 1.5, fontStyle: 'italic' }}>
+      "What was happening just before the overwhelm? What time were you trying to be somewhere? What were you watching for — an empty seat, a face, the door closing?"
+    </Text>
+    <Box style={{ width: 32, height: 2, background: '#7B5AA6' }} />
+    {[
+      ['Intent', 'expanded through a question list, until inspectable'],
+      ['Iteration', 'multi-turn, with reflection pauses'],
+      ['Output', 'a system description, not a finished game'],
+      ['Accountability', 'a development log records who proposed what, and who accepted'],
+    ].map((row, i) => (
+      <Box key={i} style={{ flexDirection: 'row', gap: 12 }}>
+        <Text style={{ fontSize: 14, color: '#FFC107', fontWeight: 'bold', width: 110 }}>{row[0]}</Text>
+        <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1 }}>{row[1]}</Text>
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ position: 'absolute', top: 560, left: 60, right: 60, height: 80, padding: 18, background: '#F6F1FA', borderLeft: '4px solid #57068C', flexDirection: 'column', gap: 4 }}>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold', letterSpacing: 1 }}>SYSTEM DESCRIPTION, NOT PROMPT</Text>
+    <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.45 }}>
+      Intent is not compressed in five words. It is unfolded by a question list until a verifiable system description emerges — and that description is what the AI works from.
+    </Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 680, left: 60, right: 60, flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>Xingchen Zhang · NYU Shanghai · XJTLU 2026 · Panel 11</Text>
+    <Text style={{ fontSize: 14, color: '#57068C', fontWeight: 'bold' }}>09 / 16</Text>
+  </Box>
+</Slide>
