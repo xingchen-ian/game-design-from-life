@@ -4,6 +4,11 @@
 # 内部工作目录（含项目记忆，不公开）
 .workbuddy/
 
+# 私有研究材料（含学生身份信息，已转入私有仓库 game-design-from-life-research）
+course-tracking/
+papers/
+talks/
+
 # 夏令营独立站点（16G，已单独部署在 domain-learning-camp 仓库）
 distribution/
 
