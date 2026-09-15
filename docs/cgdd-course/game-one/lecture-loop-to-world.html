@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="INTM-SHU 247 lecture: from a playable loop to a game world." />
+  <title>From a Playable Loop to a Game World · INTM-SHU 247</title>
+  <link rel="stylesheet" href="../assets/lecture-slides.css?v=abc1" />
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body data-lang="en">
+<div class="stage" id="stage">
+
+  <!-- 0 cover -->
+  <section class="slide cover active" id="title" data-star data-note="今天只练后半段。前半段（有难度的过程 → 动作和挑战 → 最小循环）上周已经开始。">
+    <p class="eyebrow">INTM-SHU 247 · Game Design from Life</p>
+    <h1><span class="zh">从可玩循环到游戏世界</span><span class="en">From a Playable Loop to a Game World</span></h1>
+    <p class="today"><span class="zh">今天只练后半段：循环如何要求一个世界。</span><span class="en">Today we only practice the second half: how a loop requires a world.</span></p>
+    <p class="meta">Xingchen Zhang · NYU Shanghai · 2026-09-12</p>
+  </section>
+
+  <!-- 0.5 student graphs from Session 2 -->
+  <section class="slide" id="student-graphs" data-note="这是上周作业里的系统图。先认一下：循环和数据已经画出来了。今天不问图怎么画得更漂亮，问这组动作在不同条件下需要什么地方。">
+    <p class="eyebrow"><span class="zh">上周交的系统图</span><span class="en">Last week’s system graphs</span></p>
+    <h2><span class="zh">循环已经画出来了。今天从这里往世界走。</span><span class="en">The loop is already on paper. Today we go from here to a world.</span></h2>
+    <div class="graphs">
+      <figure>
+        <img src="assets/student-graphs/water-loop.png" alt="System graph by Joyce: water loop" />
+        <figcaption>
+          <span class="who">Joyce</span>
+          <span class="zh">套圈 · INTM-SHU 247 · NYU Shanghai · 2026 秋</span>
+          <span class="en">Ring toss · INTM-SHU 247 · NYU Shanghai · Fall 2026</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="assets/student-graphs/final-dash.png" alt="System graph by Yizhou: final dash" />
+        <figcaption>
+          <span class="who">Yizhou</span>
+          <span class="zh">俯冲 · INTM-SHU 247 · NYU Shanghai · 2026 秋</span>
+          <span class="en">Dive · INTM-SHU 247 · NYU Shanghai · Fall 2026</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="assets/student-graphs/cats.png" alt="System graph by CJ: feed the cats" />
+        <figcaption>
+          <span class="who">CJ</span>
+          <span class="zh">喂猫 · INTM-SHU 247 · NYU Shanghai · 2026 秋</span>
+          <span class="en">Feed the cats · INTM-SHU 247 · NYU Shanghai · Fall 2026</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="sub"><span class="zh">课堂作业。先有动作和数据，再问这些动作需要什么地方。</span><span class="en">From your homework. Actions and data first; then ask what place those actions need.</span></p>
+  </section>
+
+  <!-- 1 chain -->
+  <section class="slide" id="chain" data-star data-note="点每一步看文献。怎么连起来是我的，每一步的依据不是。">
+    <p class="eyebrow"><span class="zh">1 · 每一步都有文献</span><span class="en">1 · Each step has a source</span></p>
+    <h2><span class="zh">从一件难事抽出动作和挑战。<br>再用参数做出多种挑战，并给它们一个环境。</span><span class="en">Pull actions and challenges from one hard thing.<br>Then vary the parameters, and give those challenges a world.</span></h2>
+    <div class="chain" id="chainRow">
+      <button type="button" class="cnode" data-zh="游戏来自有阻力的过程 · Dewey 1934；Huizinga 1938；Suits 1978；Juul 2013" data-en="Games come from a process with resistance · Dewey 1934; Huizinga 1938; Suits 1978; Juul 2013">
+        <span class="n">01</span>
+        <span>
+          <span class="t"><span class="zh">生活里一件真正难的事</span><span class="en">Something hard you actually lived</span></span>
+          <span class="d"><span class="zh">游戏从你经历过的难事来，不是先想一个好看的世界。</span><span class="en">Start from a difficult process in real life, not from a cool setting.</span></span>
+        </span>
+      </button>
+      <button type="button" class="cnode" data-zh="从这件事里抽出：玩家做什么，什么在让它变难 · Anthropy &amp; Clark 2014；Salen &amp; Zimmerman 2003；MDA 2004" data-en="Extract what the player does, and what makes it hard · Anthropy &amp; Clark 2014; Salen &amp; Zimmerman 2003; MDA 2004">
+        <span class="n">02</span>
+        <span>
+          <span class="t"><span class="zh">动作与挑战的提取</span><span class="en">Extract actions and challenges</span></span>
+          <span class="d"><span class="zh">动作 = 反复做的事。挑战 = 什么在让这件事变难。</span><span class="en">Actions = what you keep doing. Challenges = what makes it hard.</span></span>
+        </span>
+      </button>
+      <button type="button" class="cnode" data-zh="多样化的挑战来自改参数，不是另做一套玩法 · Koster 2013；Schmidt 1975；Gibson 1979；Newell 1986" data-en="Diverse challenges come from changing parameters, not a new game · Koster 2013; Schmidt 1975; Gibson 1979; Newell 1986">
+        <span class="n">03</span>
+        <span>
+          <span class="t"><span class="zh">用动作与环境的参数，做出多种挑战</span><span class="en">Vary action and environment parameters</span></span>
+          <span class="d"><span class="zh">不另做一套玩法。改风速、航道宽度、能见度，就会出现不同的挑战。</span><span class="en">Do not invent a new game. Change wind, channel width, visibility — new challenges appear.</span></span>
+        </span>
+      </button>
+      <button type="button" class="cnode" data-zh="这组挑战如果发生在真实世界，会是什么地方 · Gibson 1979；Juul 2005；Meadows 2008" data-en="If these challenges happened in the real world, what place would they be · Gibson 1979; Juul 2005; Meadows 2008">
+        <span class="n">04</span>
+        <span>
+          <span class="t"><span class="zh">为这些挑战想象它们所处的环境</span><span class="en">Imagine the environment these challenges need</span></span>
+          <span class="d"><span class="zh">横流 + 窄航道 → 海峡。地方是挑战要求出来的，不是先画一张地图。</span><span class="en">Cross-current + a narrow channel → a strait. The place is required by the challenges, not drawn first.</span></span>
+        </span>
+      </button>
+      <button type="button" class="cnode" data-zh="谁住在这里，留下了什么，这个世界用什么美学说话 · Jenkins 2004；Carson 2000；Fernández-Vara 2011；Bogost 2007" data-en="Who lives here, what is left, and what aesthetic the world speaks · Jenkins 2004; Carson 2000; Fernández-Vara 2011; Bogost 2007">
+        <span class="n">05</span>
+        <span>
+          <span class="t"><span class="zh">为环境注入社会、文化要素</span><span class="en">Add social and cultural life to that environment</span></span>
+          <span class="d"><span class="zh">谁长期和这种约束相处？留下了什么？这个世界用什么美学说话？</span><span class="en">Who lives with this constraint? What is left? What aesthetic does this world speak?</span></span>
+        </span>
+      </button>
+    </div>
+    <p class="chain-cite" id="chainCite"><span class="zh">点任意一步，看对应文献。</span><span class="en">Tap a step to see the source.</span></p>
+    <p class="slide-cite">Dewey 1934 · Art as Experience</p>
+  </section>
+
+  <!-- 2 flip -->
+  <section class="slide" id="flip" data-star data-note="马里奥的核心动作是跳。水管、坑、砖块改变的是跳的条件。先有跳，才有蘑菇王国。">
+    <p class="eyebrow"><span class="zh">2 · 翻转句</span><span class="en">2 · The flip</span></p>
+    <div class="flip-grid">
+      <div>
+        <p class="gold">
+          <span class="zh">不要先发明有趣的世界，再给它找玩法。<br><strong>先让不同的挑战要求一个地方，<br>再让这个地方要求一段历史。</strong></span>
+          <span class="en">Do not invent a world first and then look for a way to play it.<br><strong>Let different challenges require a place.<br>Let that place require a history.</strong></span>
+        </p>
+        <p class="sub"><span class="zh">马里奥的核心动作是跳。水管、坑、砖块改变的是跳的条件。先有跳，才有蘑菇王国。</span><span class="en">Mario’s core action is jump. Pipes, pits, and bricks change the conditions for jumping. The jump comes first; then the Mushroom Kingdom.</span></p>
+      </div>
+      <figure>
+        <img class="mario-shot" src="assets/mario-jump.png" alt="Super Mario Bros. World 1-1: Mario jumping over a pipe" />
+        <p class="mario-cap"><span class="zh">《超级马里奥兄弟》World 1-1。动作是跳；水管是跳的条件。</span><span class="en">Super Mario Bros., World 1-1. The action is jump; the pipe is a condition of jumping.</span></p>
+      </figure>
+    </div>
+    <p class="slide-cite">Anthropy &amp; Clark 2014 · A Game Design Vocabulary &nbsp;·&nbsp; Juul 2005 · Half-Real</p>
+  </section>
+
+  <!-- 3 two movements -->
+  <section class="slide" id="map" data-note="我们把一次完整经验收成循环，再从循环推出世界。推出世界，不是把生活细节填回去。">
+    <p class="eyebrow"><span class="zh">3 · 整门课的两段</span><span class="en">3 · Two halves of the course</span></p>
+    <h2 class="split">
+      <span class="zh">前半段：从生活收成一个循环。<br>后半段：让这个循环要求一个世界。</span>
+      <span class="en">First half: a loop from real life.<br>Second half: a world that loop requires.</span>
+    </h2>
+    <div class="bands">
+      <div class="band cold">
+        <span class="lbl"><span class="zh">前半段</span><span class="en">First</span></span>
+        <span class="bnode"><span class="zh">现实生活里的过程</span><span class="en">Lived process in real life</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">动作和挑战</span><span class="en">Actions and challenges</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">最小循环</span><span class="en">Smallest loop</span></span>
+      </div>
+      <div class="band hot">
+        <span class="lbl"><span class="zh">后半段</span><span class="en">Second</span></span>
+        <span class="bnode"><span class="zh">循环</span><span class="en">Loop</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">不同的挑战</span><span class="en">Different challenges</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">地方</span><span class="en">Place</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">痕迹 / 谁住在这里</span><span class="en">Trace / who lives here</span></span>
+        <span class="barr">→</span>
+        <span class="bnode"><span class="zh">美学</span><span class="en">Aesthetics</span></span>
+      </div>
+    </div>
+    <div class="graphs playstills">
+      <figure>
+        <a href="https://xingchen-ian.github.io/Sailing/" target="_blank" rel="noopener">
+          <img class="sailing" src="assets/playstills/sailing.jpg" alt="Sailing: a small boat on open water" />
+        </a>
+        <figcaption>
+          <span class="who">Sailing</span>
+          <span class="zh">Xingchen Zhang</span>
+          <span class="en">Xingchen Zhang</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://shihanariel.github.io/cgdd-game1-skateboafd/game.html" target="_blank" rel="noopener">
+          <img src="assets/playstills/skateboard.png" alt="Skateboard game: first-person view down a city street" />
+        </a>
+        <figcaption>
+          <span class="who"><span class="zh">滑板</span><span class="en">Skateboard</span></span>
+          <span class="zh">Shihan Wang</span>
+          <span class="en">Shihan Wang</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="https://sidonia704.github.io/CGDD-Assignment1/index.html" target="_blank" rel="noopener">
+          <img class="drone" src="assets/playstills/drone.jpg" alt="Last Dash: drone approaching a target between buildings" />
+        </a>
+        <figcaption>
+          <span class="who">Last Dash</span>
+          <span class="zh">Yizhou Zhang</span>
+          <span class="en">Yizhou Zhang</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="sub"><span class="zh"><strong>动作和挑战</strong>：从那件难事里抽出玩家做什么、什么让它变难。<strong>不同的挑战</strong>：同一组动作，换参数。<strong>美学</strong>：这个世界用什么感觉说话，不是「奇幻 / 写实」标签。</span><span class="en"><strong>Actions and challenges</strong>: extract what the player does and what makes it hard. <strong>Different challenges</strong>: the same actions, new parameters. <strong>Aesthetics</strong>: how this world feels — not a “fantasy / realism” label.</span></p>
+    <p class="slide-cite">Dewey 1934 · Art as Experience, Ch.1 / Ch.3</p>
+  </section>
+
+  <!-- 4 part 1 -->
+  <section class="slide" id="beat-variant" data-star data-part="1" data-note="练习 B 只准写 contrast / cause / refrain / rest，不准写 harder。依据是 Koster 和 Schmidt，不是我的口味。">
+    <p class="eyebrow"><span class="zh">Part 1 · 同一循环的不同挑战</span><span class="en">Part 1 · Different challenges, same loop</span></p>
+    <h2 class="split"><span class="zh">先做一组难度的变体，<br>而不是一个逐渐变难的线性体验</span><span class="en">First make a set of difficulty variants,<br>not a linear experience that only gets harder.</span></h2>
+    <p class="lead"><span class="zh">挑战 = 系统变量的一种组合 + 对玩家能力的一种要求。</span><span class="en">A challenge is one combination of system variables and one demand on the player.</span></p>
+    <div class="vs">
+      <div class="side yes">
+        <h3><span class="zh">可以用</span><span class="en">Use this</span></h3>
+        <p><span class="zh">顺风 / 侧风 / 逆风。动词仍是读风、转舵、调帆。</span><span class="en">Tailwind / crosswind / upwind. The verbs stay: read the wind, steer, trim.</span></p>
+      </div>
+      <div class="mid">VS</div>
+      <div class="side no">
+        <h3><span class="zh">不要用</span><span class="en">Don’t</span></h3>
+        <p><span class="zh">「第 2 关加更多敌人。」</span><span class="en">“Level 2 adds more enemies.”</span></p>
+      </div>
+    </div>
+    <p class="slide-cite">Koster 2013 · A Theory of Fun</p>
+  </section>
+
+  <!-- 5 arrangement -->
+  <section class="slide" id="arrangement" data-note="把世界做成第 1、2、3 关越来越难，是把试玩顺序当成了世界结构。">
+    <p class="eyebrow"><span class="zh">按关系排，不要按关卡号排</span><span class="en">Order by relation, not by level number</span></p>
+    <h2 class="split"><span class="zh">挑战的衔接：对比、因果、反复、歇息、等</span><span class="en">How challenges connect: contrast, cause, refrain, rest, …</span></h2>
+    <div class="pillrow">
+      <span class="pill"><span class="zh">对比</span><span class="en">Contrast</span></span>
+      <span class="pill"><span class="zh">因果</span><span class="en">Cause</span></span>
+      <span class="pill"><span class="zh">反复</span><span class="en">Refrain</span></span>
+      <span class="pill"><span class="zh">歇息</span><span class="en">Rest</span></span>
+      <span class="pill hot"><span class="zh">不是「更难」</span><span class="en">Not “harder”</span></span>
+    </div>
+    <p class="lead"><span class="zh">《旷野之息》：雨让攀爬失效，所以卓拉领地常年下雨。如果格鲁德住在雪山，机制还成立吗？</span><span class="en">Breath of the Wild: rain stops climbing, so Zora’s Domain rains all the time. If the Gerudo lived in snow, would the mechanic still hold?</span></p>
+    <p class="slide-cite">Jenkins 2004 · Game Design as Narrative Architecture &nbsp;·&nbsp; Juul 2005 · emergence / progression</p>
+  </section>
+
+  <!-- 6 part 2 -->
+  <section class="slide" id="beat-place" data-star data-part="2" data-note="宫本说先做玩具再做游戏，这是工业做法（先有「跳」这个动作，再做适合跳的场地）。用来对照，不当论文引用。">
+    <p class="eyebrow"><span class="zh">Part 2 · 地点由这组挑战决定</span><span class="en">Part 2 · The challenge decides the place</span></p>
+    <h2><span class="zh">去掉这个地方，这组挑战还能成立吗？</span><span class="en">Remove the place. Would the challenge still hold?</span></h2>
+    <p class="lead"><span class="zh">如果这种挑战出现在真实世界，会是什么地形、气候、建筑或制度？不成立，说明这个地方是被挑战要求出来的。</span><span class="en">If this challenge happened in the real world, what terrain, weather, building, or institution would it be? If it would not hold, the place is required by the challenge.</span></p>
+    <div class="place-grid">
+      <div class="vs">
+        <div class="side yes">
+          <h3><span class="zh">可以用</span><span class="en">Use this</span></h3>
+          <p><span class="zh">横流 + 窄航道 → 海峡。信息不明 + 只有一个窗口 → 深夜大厅。</span><span class="en">Cross-current + narrow channel → a strait. Unclear information + one window → a late-night lobby.</span></p>
+        </div>
+        <div class="mid">VS</div>
+        <div class="side no">
+          <h3><span class="zh">不要用</span><span class="en">Don’t</span></h3>
+          <p><span class="zh">「难度 3」。这座山「代表」焦虑。</span><span class="en">“Difficulty 3.” A mountain that “represents” anxiety.</span></p>
+        </div>
+      </div>
+      <figure>
+        <img class="place-shot" src="assets/botw-hebra-peak.jpg" alt="Breath of the Wild: Link on a snowy Hebra peak" />
+        <p class="place-cap"><span class="zh">《塞尔达传说：旷野之息》赫布拉雪山。攀爬和寒冷要求这座山。</span><span class="en">Breath of the Wild, Hebra Mountains. Climbing and cold require this mountain.</span></p>
+      </figure>
+    </div>
+    <p class="slide-cite">Gibson 1979 · The Ecological Approach to Visual Perception</p>
+  </section>
+
+  <!-- 7 failures -->
+  <section class="slide" id="failures" data-note="练习时用这五种当判据。巡场只打这些。">
+    <p class="eyebrow"><span class="zh">五种不好玩的游戏世界</span><span class="en">Five unfun game worlds</span></p>
+    <h2><span class="zh">后半段常见错误</span><span class="en">Common mistakes in the second half</span></h2>
+    <div class="grid g5 fail">
+      <div class="card no">
+        <span class="sym"><span class="zh">设定</span><span class="en">Setting</span></span>
+        <h3><span class="zh">「游戏世界设定丰富」</span><span class="en">“A rich game world”</span></h3>
+        <p><span class="zh">玩法简单，缺少变化。</span><span class="en">Play is simple and barely changes.</span></p>
+      </div>
+      <div class="card no">
+        <span class="sym"><span class="zh">数字</span><span class="en">Numbers</span></span>
+        <h3><span class="zh">只有数字在变</span><span class="en">Only the numbers change</span></h3>
+        <p><span class="zh">同一组动作，只把数值调大：风速 1、2、3。没有新的难法，也没有海峡。</span><span class="en">Same actions, bigger values: wind 1 / 2 / 3. No new challenge, and no strait.</span></p>
+      </div>
+      <div class="card no">
+        <span class="sym"><span class="zh">剧情</span><span class="en">Plot</span></span>
+        <h3><span class="zh">先写剧情再找玩法</span><span class="en">Plot first, then a mechanic</span></h3>
+        <p><span class="zh">先写沉船爱情，再找操作。</span><span class="en">Write the shipwreck romance, then look for controls.</span></p>
+      </div>
+      <div class="card no">
+        <span class="sym"><span class="zh">线性</span><span class="en">Linear</span></span>
+        <h3><span class="zh">逐渐变难的线性关卡</span><span class="en">A linear sequence that only gets harder</span></h3>
+        <p><span class="zh">第 1、2、3 关一个比一个难。</span><span class="en">Levels 1, 2, 3 — each one harder.</span></p>
+      </div>
+      <div class="card no">
+        <span class="sym"><span class="zh">情绪</span><span class="en">Mood</span></span>
+        <h3><span class="zh">循环与地点结合松散</span><span class="en">Loop and place barely join</span></h3>
+        <p><span class="zh">地点只用来代表情绪。山「代表」焦虑。</span><span class="en">The place only stands for a feeling. The mountain “represents” anxiety.</span></p>
+      </div>
+    </div>
+    <p class="slide-cite">Juul 2005 · Half-Real &nbsp;·&nbsp; Bogost 2007 · Procedural Rhetoric &nbsp;·&nbsp; Koenitz 2015</p>
+  </section>
+
+  <!-- 8 part 3 -->
+  <section class="slide" id="beat-trace" data-star data-part="3" data-note="练习 C 的 Trace / Who 两格，直接用 Fernández-Vara 的词：index。不要写剧情大纲。">
+    <p class="eyebrow"><span class="zh">Part 3 · 为地点设定一段人文历史背景</span><span class="en">Part 3 · Give the place a human history</span></p>
+    <h2 class="split"><span class="zh">谁必须长期和这种挑战相处？<br>这里出过什么事？留下了什么？</span><span class="en">Who has to live with this challenge?<br>What happened here? What is left?</span></h2>
+    <p class="lead"><span class="zh">设计提醒：循环 → 一组挑战 → 地点 → 痕迹（这里出过什么事）→ 再决定有没有任务 → 最后才选气氛</span><span class="en">Design reminder: loop → a set of challenges → place → traces (what happened here) → then decide whether there is a quest → mood last</span></p>
+    <div class="place-grid">
+      <div class="vs">
+        <div class="side yes">
+          <h3><span class="zh">世界</span><span class="en">World</span></h3>
+          <p><span class="zh">沉船、折断的桅杆、错误的航标。</span><span class="en">Wrecks, broken masts, wrong beacons.</span></p>
+        </div>
+        <div class="mid">→</div>
+        <div class="side yes" style="background: var(--teal-soft); border-color: rgba(120,188,182,0.4);">
+          <h3><span class="zh">可玩的事</span><span class="en">Made playable</span></h3>
+          <p><span class="zh">救援任务 = 把痕迹做成可玩的事。顺序不能反。</span><span class="en">A rescue quest = a playable use of those traces. Do not reverse the order.</span></p>
+        </div>
+      </div>
+      <figure>
+        <img class="place-shot" src="assets/dredge-wreck.jpg" alt="Dredge: a wrecked hull in the water beside a small fishing boat" />
+        <p class="place-cap"><span class="zh">Dredge。海面上的沉船是痕迹：这里出过事，还留着。</span><span class="en">Dredge. The wreck on the water is a trace: something happened here, and it is still there.</span></p>
+      </figure>
+    </div>
+    <p class="slide-cite">Fernández-Vara 2011 · Game Spaces Speak Volumes</p>
+  </section>
+
+  <!-- 9 part 4 -->
+  <section class="slide" id="beat-tone" data-star data-part="4" data-note="同一套驾船循环：Dredge 是民俗恐怖，《风之杖》是冒险卡通。循环相近，世界内容完全不同。">
+    <p class="eyebrow"><span class="zh">Part 4 · 选一个美学，不一致的删掉</span><span class="en">Part 4 · Pick one aesthetic. Delete the rest.</span></p>
+    <h2><span class="zh">选一个词。不一致的内容删掉。</span><span class="en">Pick one word. Delete everything that does not match.</span></h2>
+    <p class="lead"><span class="zh">这些地方如果属于同一种气氛，会是什么感觉？</span><span class="en">If these places share one mood, what is that mood?</span></p>
+    <div class="vs tone-pair">
+      <div class="side yes">
+        <h3>Dredge</h3>
+        <p><span class="zh">同一套驾船循环 · 民俗恐怖</span><span class="en">The same sailing loop · folk horror</span></p>
+        <img class="tone-shot dredge" src="assets/dredge-sail.jpg" alt="Dredge: a small boat sailing between dark cliffs" />
+      </div>
+      <div class="mid">VS</div>
+      <div class="side yes" style="background: var(--blue-soft); border-color: rgba(134,169,201,0.45);">
+        <h3><span class="zh">风之杖</span><span class="en">The Wind Waker</span></h3>
+        <p><span class="zh">同一套驾船循环 · 冒险卡通</span><span class="en">The same sailing loop · cartoon adventure</span></p>
+        <img class="tone-shot ww" src="assets/wind-waker-sail.jpg" alt="The Wind Waker: Link sailing the King of Red Lions on a bright sea" />
+      </div>
+    </div>
+    <p class="sub"><span class="zh">不要用「奇幻 / 写实」代替美学；不要为了风格再加一套新玩法。</span><span class="en">Don’t replace aesthetics with “fantasy / realism.” Don’t add a new mechanic for style.</span></p>
+    <p class="slide-cite">Murray 2017 · Hamlet on the Holodeck &nbsp;·&nbsp; Carson 2000 · big picture</p>
+  </section>
+
+  <!-- 11 one path -->
+  <section class="slide" id="one-path" data-star data-note="这是正常做法，不是两条路后来汇合。没有难度，抽不出循环，后面的世界是空的。">
+    <p class="eyebrow"><span class="zh">玩法判断和美学感受</span><span class="en">Play-judgment and aesthetic feeling</span></p>
+    <h2 class="split"><span class="zh">玩法与美学的选择都来自于最初的设计灵感，<br>并存在于游戏始终</span><span class="en">Play and aesthetic choices both come from the first design impulse,<br>and they stay in the game throughout</span></h2>
+    <p class="lead"><span class="zh">《Celeste》：冲刺、攀爬、体力，和 Madeline 的情绪，用的是同一座山。</span><span class="en">In Celeste, dash / climb / stamina and Madeline’s feelings use the same mountain.</span></p>
+    <p class="sub"><span class="zh">没有难度，抽不出循环，后面的世界是空的。</span><span class="en">Without difficulty there is no loop, and the world after it is empty.</span></p>
+    <p class="slide-cite">Suits 1978 · The Grasshopper &nbsp;·&nbsp; Juul 2013 · The Art of Failure</p>
+  </section>
+
+  <!-- 13 exercises -->
+  <section class="slide" id="exercises" data-note="90 秒汇报格式：循环是 ____。这一难法是 ____。它要求的地方是 ____。抽掉这个地方会 ____。">
+    <p class="eyebrow"><span class="zh">练习 A–C</span><span class="en">Exercises A–C</span></p>
+    <h2><span class="zh">游戏设计纸上练习ABC</span><span class="en">Game design paper exercises A–C</span></h2>
+    <div class="grid g3">
+      <div class="card b1">
+        <h3><span class="zh">A · 锁定游戏循环</span><span class="en">A · Lock the game loop</span></h3>
+        <p><span class="zh">3～5个动词；有哪些阻力</span><span class="en">3–5 verbs; what resistances</span></p>
+        <p style="margin-top:8px;color:var(--warm)">Anthropy &amp; Clark 2014 · Juul 2013</p>
+      </div>
+      <div class="card b2">
+        <h3><span class="zh">B · 挑战的多样化设计</span><span class="en">B · Diversifying the challenges</span></h3>
+        <p><span class="zh">多挑战链接的节奏感：对比/因果/反复/间歇，而不是越来越难</span><span class="en">Rhythm of linked challenges: contrast / cause / refrain / rest — not just getting harder</span></p>
+        <p style="margin-top:8px;color:var(--warm)">Koster 2013 · Jenkins 2004 · Schmidt 1975</p>
+      </div>
+      <div class="card b3">
+        <h3><span class="zh">C · 地点四问</span><span class="en">C · Four questions of place</span></h3>
+        <p><span class="zh">地点/人文痕迹/谁/美学</span><span class="en">Place / human traces / who / aesthetics</span></p>
+        <p style="margin-top:8px;color:var(--warm)">Gibson 1979 · Fernández-Vara 2011 · Murray 2017</p>
+      </div>
+    </div>
+    <p class="slide-cite"><span class="zh">填不满 C = 循环没锁。</span><span class="en">If you cannot fill C, the loop is not locked.</span></p>
+  </section>
+
+  <!-- 15 references -->
+  <section class="slide" id="references" data-note="若被问「这是不是你自己的理论」：怎么连起来是我的，每一步的依据不是。">
+    <p class="eyebrow"><span class="zh">参考文献</span><span class="en">References</span></p>
+    <h2><span class="zh">课堂主干 · 世界展开的专项依据</span><span class="en">Core readings · sources for world expansion</span></h2>
+    <div class="refs">
+      <div>
+        <h3><span class="zh">课堂主干</span><span class="en">On the syllabus</span></h3>
+        <ul>
+          <li>Anthropy, A., &amp; Clark, N. (2014). <em>A Game Design Vocabulary</em>.</li>
+          <li>Bogost, I. (2007). <em>Persuasive Games</em>.</li>
+          <li>Dewey, J. (1934). <em>Art as Experience</em>.</li>
+          <li>Hunicke, R., LeBlanc, M., &amp; Zubek, R. (2004). MDA. <em>AAAI</em>.</li>
+          <li>Juul, J. (2005). <em>Half-Real</em>. (2011 pbk)</li>
+          <li>Juul, J. (2013). <em>The Art of Failure</em>.</li>
+          <li>Koster, R. (2013). <em>A Theory of Fun</em> (2nd ed.).</li>
+          <li>Meadows, D. H. (2008). <em>Thinking in Systems</em>.</li>
+          <li>Murray, J. H. (2017). <em>Hamlet on the Holodeck</em>.</li>
+          <li>Salen, K., &amp; Zimmerman, E. (2003). <em>Rules of Play</em>.</li>
+          <li>Schell, J. (2019). <em>The Art of Game Design</em> (3rd ed.).</li>
+          <li>Shneiderman, B. (2022). <em>Human-Centered AI</em>.</li>
+          <li>Suits, B. (1978). <em>The Grasshopper</em>.</li>
+        </ul>
+      </div>
+      <div>
+        <h3><span class="zh">世界展开（不必当周精读）</span><span class="en">World expansion (not this week’s close read)</span></h3>
+        <ul>
+          <li>Carson, D. (2000). Environmental storytelling. <em>Gamasutra</em>.</li>
+          <li>Fernández-Vara, C. (2011). Game spaces speak volumes. <em>DiGRA</em>.</li>
+          <li>Gibson, J. J. (1979). <em>The Ecological Approach to Visual Perception</em>.</li>
+          <li>Jenkins, H. (2004). Game design as narrative architecture. In <em>First Person</em>.</li>
+          <li>Koenitz, H. (2015). Towards a specific theory of IDN.</li>
+          <li>Newell, K. M. (1986). Constraints on the development of coordination.</li>
+          <li>Schmidt, R. A. (1975). A schema theory of discrete motor skill learning.</li>
+          <li>Short, E. (2019). Storylets: You want them. (practitioner)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="works"><span class="zh">作品：</span><span class="en">Works: </span>Celeste · Dredge · The Wind Waker · Breath of the Wild · Portal · Papers, Please · Outer Wilds · Majora’s Mask · Sailing</p>
+  </section>
+
+</div>
+
+<div class="hud top">
+  <button type="button" class="lang" data-lang="zh">中文</button>
+  <button type="button" class="lang active" data-lang="en">English</button>
+</div>
+<div class="hud bottom-left">
+  <span class="star-mark" id="starMark"></span>
+  <span class="counter" id="counter">1 / 18</span>
+</div>
+<div class="hud bottom-right">
+  <button type="button" id="btnNote"><span class="zh">备注</span><span class="en">Notes</span></button>
+  <button type="button" id="btnLecture"><span class="zh">15 分钟</span><span class="en">15 min</span></button>
+  <button type="button" id="btnFull">F</button>
+  <span class="kbd">← → space · N · L</span>
+</div>
+
+<div class="note" id="note"></div>
+
+<script>
+(function () {
+  var all = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var counter = document.getElementById("counter");
+  var starMark = document.getElementById("starMark");
+  var noteEl = document.getElementById("note");
+  var btnNote = document.getElementById("btnNote");
+  var btnLecture = document.getElementById("btnLecture");
+  var btnFull = document.getElementById("btnFull");
+  var lecture = /(?:\?|&)mode=lecture\b/.test(location.search);
+  var notesOn = false;
+  var cur = 0;
+
+  function deck() {
+    return lecture ? all.filter(function (s) { return s.hasAttribute("data-star"); }) : all;
+  }
+
+  function show(i, fromHash) {
+    var d = deck();
+    if (!d.length) return;
+    all.forEach(function (s) { s.classList.remove("active"); });
+    cur = Math.max(0, Math.min(d.length - 1, i));
+    var slide = d[cur];
+    slide.classList.add("active");
+    counter.textContent = (cur + 1) + " / " + d.length;
+    starMark.textContent = slide.hasAttribute("data-star") ? "★" : "";
+    if (notesOn) {
+      noteEl.textContent = slide.getAttribute("data-note") || "";
+      noteEl.classList.add("show");
+      document.body.classList.add("notes-on");
+    } else {
+      noteEl.classList.remove("show");
+      noteEl.textContent = "";
+      document.body.classList.remove("notes-on");
+    }
+    if (!fromHash && slide.id) {
+      history.replaceState(null, "", location.pathname + (lecture ? "?mode=lecture" : "") + "#" + slide.id);
+    }
+  }
+
+  function indexOfId(id) {
+    var d = deck();
+    for (var i = 0; i < d.length; i++) if (d[i].id === id) return i;
+    return -1;
+  }
+
+  function applyLecture(on, keepId) {
+    lecture = !!on;
+    btnLecture.classList.toggle("on", lecture);
+    var id = keepId || (document.querySelector(".slide.active") || {}).id;
+    var idx = indexOfId(id);
+    if (idx < 0) idx = 0;
+    history.replaceState(null, "", location.pathname + (lecture ? "?mode=lecture" : "") + (id ? "#" + id : ""));
+    show(idx, true);
+  }
+
+  btnNote.addEventListener("click", function () {
+    notesOn = !notesOn;
+    btnNote.classList.toggle("on", notesOn);
+    show(cur, true);
+  });
+  btnLecture.addEventListener("click", function () {
+    applyLecture(!lecture);
+  });
+  btnFull.addEventListener("click", function () {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(function () {});
+    else document.exitFullscreen().catch(function () {});
+  });
+
+  document.addEventListener("keydown", function (e) {
+    var tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); show(cur + 1); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); show(cur - 1); }
+    if (e.key === "Home") { e.preventDefault(); show(0); }
+    if (e.key === "End") { e.preventDefault(); show(deck().length - 1); }
+    if (e.key === "n" || e.key === "N") { e.preventDefault(); btnNote.click(); }
+    if (e.key === "l" || e.key === "L") { e.preventDefault(); btnLecture.click(); }
+    if (e.key === "f" || e.key === "F") { e.preventDefault(); btnFull.click(); }
+  });
+
+  document.getElementById("stage").addEventListener("click", function (e) {
+    if (e.target.closest("button, a, .cnode, .hud")) return;
+    show(cur + 1);
+  });
+
+  var chainCite = document.getElementById("chainCite");
+  var nodes = document.querySelectorAll("#chainRow .cnode");
+  nodes.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      nodes.forEach(function (n) { n.classList.remove("on"); });
+      btn.classList.add("on");
+      var lang = document.body.getAttribute("data-lang") || "en";
+      chainCite.textContent = btn.getAttribute(lang === "zh" ? "data-zh" : "data-en");
+    });
+  });
+  document.querySelectorAll(".lang").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var on = document.querySelector("#chainRow .cnode.on");
+      if (!on) return;
+      setTimeout(function () {
+        var lang = document.body.getAttribute("data-lang") || "en";
+        chainCite.textContent = on.getAttribute(lang === "zh" ? "data-zh" : "data-en");
+      }, 0);
+    });
+  });
+
+  btnLecture.classList.toggle("on", lecture);
+  var hash = (location.hash || "").replace("#", "");
+  var start = indexOfId(hash);
+  show(start < 0 ? 0 : start, true);
+
+  window.addEventListener("hashchange", function () {
+    var id = (location.hash || "").replace("#", "");
+    var idx = indexOfId(id);
+    if (idx >= 0) show(idx, true);
+  });
+})();
+</script>
+</body>
+</html>
