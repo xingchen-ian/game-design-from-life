@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>揽胜图两版对照：吴陈琰本与杨复吉跋《揽胜图谱》</title>
+  <meta name="description" content="识典上至少有吴陈琰本与杨复吉跋《揽胜图谱》两系；定马映射不同，勿当成同一印本。">
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --paper: #fffdf8;
+      --ink: #221c16;
+      --muted: #5e564c;
+      --line: #ddd4c6;
+      --link: #134074;
+      --cinnabar: #8f2d1f;
+      --callout: #f8f1e3;
+      --callout-edge: #b8893d;
+      --diff: #f4e4cc;
+      --pending: #f6f3ee;
+      --wu: #2f5d50;
+      --tu: #7a3e32;
+      --max: 70rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { font-size: 18px; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans SC",
+        "Source Han Sans SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "Droid Sans Fallback",
+        sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: var(--link); text-underline-offset: 0.18em; }
+    a:hover { color: var(--cinnabar); }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .page-head {
+      padding: 2.75rem 0 1.25rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin: 0 0 0.6rem;
+      color: var(--cinnabar);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: 2rem;
+      font-weight: 650;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 42em;
+      font-size: 1.12rem;
+      line-height: 1.7;
+    }
+
+    main { padding: 1.75rem 0 3rem; }
+
+    section { margin: 0 0 2.25rem; }
+
+    h2 {
+      margin: 0 0 0.85rem;
+      font-size: 1.25rem;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+
+    p { margin: 0.55rem 0; }
+
+    .note, .meta, figcaption, .pending-label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      background: var(--callout);
+      border-left: 4px solid var(--callout-edge);
+      padding: 1rem 1.15rem 1.05rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .callout h2 { margin-bottom: 0.35rem; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--line);
+      border-radius: 10px;
+      padding: 1.1rem 1.15rem 1.15rem;
+    }
+
+    .card.wu { border-top-color: var(--wu); }
+    .card.tu { border-top-color: var(--tu); }
+
+    .card .id {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+    }
+
+    dl { margin: 0.75rem 0 0; }
+    dt {
+      margin-top: 0.7rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    dd { margin: 0.1rem 0 0; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--link);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .btn:hover { background: #eef3f8; color: var(--link); }
+    .btn.primary { background: var(--ink); border-color: var(--ink); color: #fffdf8; }
+    .btn.primary:hover { background: var(--cinnabar); border-color: var(--cinnabar); color: #fff; }
+
+    .table-scroll {
+      overflow-x: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 40rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    caption {
+      caption-side: bottom;
+      padding: 0.75rem 0.9rem 0.85rem;
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f7f3eb;
+      font-weight: 650;
+    }
+
+    tbody th { font-weight: 600; white-space: nowrap; }
+
+    tr.diff td, tr.diff th { background: var(--diff); }
+    td.pending { background: var(--pending); color: var(--muted); }
+
+    blockquote {
+      margin: 0.6rem 0;
+      padding: 0.15rem 0 0.15rem 0.9rem;
+      border-left: 3px solid var(--line);
+    }
+
+    blockquote p { margin: 0.25rem 0; }
+
+    .who {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .places {
+      margin: 0.4rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .places li {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.15rem 0.7rem;
+      font-size: 0.92rem;
+    }
+
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.25rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer p { margin: 0.3rem 0; }
+
+    @media (max-width: 760px) {
+      html { font-size: 17px; }
+      .wrap { width: min(var(--max), calc(100% - 1.25rem)); }
+      .page-head { padding-top: 1.6rem; }
+      h1 { font-size: 1.55rem; }
+      .compare { grid-template-columns: 1fr; }
+      table { min-width: 36rem; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .card, .table-scroll, .doc { break-inside: avoid; }
+      a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #444;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="wrap">
+      <p class="kicker">识典古籍 · 清图戏印本</p>
+      <h1>揽胜图两版对照</h1>
+      <p class="lead">识典上至少有吴陈琰本与杨复吉跋《揽胜图谱》两系；定马映射不同，勿当成同一印本。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="callout" aria-labelledby="dingma-title">
+      <h2 id="dingma-title">定马不要混</h2>
+      <p>吴陈琰本正文写明一骰定马：么渔父、二羽士、三剑侠、四美人、五缁衣、六词客。金学诗《牧猪闲话》所记高兆定马是么词客、二羽士、三剑侠、四美人、五渔父、六缁衣。么、五、六三格不同。</p>
+      <p>《揽胜图谱》（杨复吉跋）格上亦见词客、羽士、剑侠、美人、渔父、缁衣六色，与吴本同为六色行旅图戏。该本定马映射尚未从正文对出，页上标「待核」。杨复吉跋本只是倾向高兆／昭代一系，不写成「即高兆本」。</p>
+    </section>
+
+    <section aria-labelledby="editions-title">
+      <h2 id="editions-title">两个识典本</h2>
+      <div class="compare">
+        <article class="card wu">
+          <p class="id">版本 A · 识典书号 HY6663</p>
+          <h3>吴陈琰《揽胜图》</h3>
+          <p>识典正文标明撰／改者为吴陈琰。学术常见归类：清《檀几丛书》一系，与高兆昭代本并列的另一改定本。</p>
+          <dl>
+            <dt>定马（一骰）</dt>
+            <dd>么＝渔父；二＝羽士；三＝剑侠；四＝美人；五＝缁衣；六＝词客</dd>
+            <dt>本采</dt>
+            <dd>再掷得本色赏免酒筹一；筹凡四赏；后掷本采者无赏</dd>
+            <dt>开局</dt>
+            <dd>齐集劳劳亭，统饮饯酒一杯，挨次掷数点前行</dd>
+            <dt>会</dt>
+            <dd>两人同至一处为会</dd>
+            <dt>终局</dt>
+            <dd>行至观止，饮洗尘酒；先到第一，主收局觞政；最后到另罚巨觥</dd>
+          </dl>
+          <div class="actions">
+            <a class="btn primary" href="https://www.shidianguji.com/book/HY6663/chapter/1kv0646r3ounn?page_from=searching_page&amp;version=3">打开识典本章</a>
+            <a class="btn" href="https://www.shidianguji.com/book/HY6663">识典书页</a>
+          </div>
+        </article>
+
+        <article class="card tu">
+          <p class="id">版本 B · 识典书号 NCL153500022A</p>
+          <h3>杨复吉跋《揽胜图谱》</h3>
+          <p>跋署「乙未夏日，松陵杨复吉识」。杨复吉常与《昭代丛书》编刻相关，整理时倾向高兆／昭代一系。待核原书序跋与馆藏叙录，勿武断写成「即高兆本」。</p>
+          <dl>
+            <dt>规则总则（摘录）</dt>
+            <dd>凡宜到而到者赏，不宜到而到者罚。所到而有费者纳，不易到而到者贺……</dd>
+            <dt>六色</dt>
+            <dd>格上见词客、羽士、剑侠、美人、渔父、缁衣。定马与骰点的对应尚未填入。</dd>
+            <dt>终点</dt>
+            <dd>跋称雅局。分角色终点在他书记载中各有专止（瀛洲、蓬莱、青门、天台、桃源、五老峰等）。以他书校，勿单凭本 OCR 断言。</dd>
+            <dt>跋文要点</dt>
+            <dd>作者自述不好俗博，独赏此图「雅人深致，尽扫俗氛」，不宜与凡局戏同类并讥。</dd>
+          </dl>
+          <div class="actions">
+            <a class="btn primary" href="https://www.shidianguji.com/book/NCL153500022A/chapter/1m0vc6aek2x46?page_from=searching_page&amp;version=3">打开识典本章</a>
+            <a class="btn" href="https://www.shidianguji.com/book/NCL153500022A">识典书页</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">图版不嵌在本页。识典图片地址带签名，过期后会失效。请用上面的章节链接到识典阅读。</p>
+    </section>
+
+    <section aria-labelledby="dice-title">
+      <h2 id="dice-title">骰点与角色</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>吴本取识典正文明文。高兆一列取金学诗《牧猪闲话》，只作文献对照，不是《揽胜图谱》页上的定马句。图谱本整列待核。</caption>
+          <thead>
+            <tr>
+              <th scope="col">骰点</th>
+              <th scope="col">吴陈琰本 HY6663<br>正文明文</th>
+              <th scope="col">高兆<br>金学诗《牧猪闲话》（对照）</th>
+              <th scope="col">《揽胜图谱》<br>NCL153500022A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="diff">
+              <th scope="row">么</th>
+              <td>渔父</td>
+              <td>词客</td>
+              <td class="pending">待核</td>
+            </tr>
+            <tr>
+              <th scope="row">二</th>
+              <td>羽士</td>
+              <td>羽士</td>
+              <td class="pending">待核</td>
+            </tr>
+            <tr>
+              <th scope="row">三</th>
+              <td>剑侠</td>
+              <td>剑侠</td>
+              <td class="pending">待核</td>
+            </tr>
+            <tr>
+              <th scope="row">四</th>
+              <td>美人</td>
+              <td>美人</td>
+              <td class="pending">待核</td>
+            </tr>
+            <tr class="diff">
+              <th scope="row">五</th>
+              <td>缁衣</td>
+              <td>渔父</td>
+              <td class="pending">待核</td>
+            </tr>
+            <tr class="diff">
+              <th scope="row">六</th>
+              <td>词客</td>
+              <td>缁衣</td>
+              <td class="pending">待核</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">着色三行是吴本与《牧猪闲话》所记高兆定马不一致处：么、五、六。二、三、四相同。</p>
+    </section>
+
+    <section aria-labelledby="mech-title">
+      <h2 id="mech-title">机制对照</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>按 2026-11-06 识典阅读笔记整理。图谱本定马与终点均未在本页写成已校定的印本原文。</caption>
+          <thead>
+            <tr>
+              <th scope="col">项目</th>
+              <th scope="col">吴陈琰本（HY6663）</th>
+              <th scope="col">图谱本（NCL153500022A）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">定马</th>
+              <td>明文：么渔父、二羽士、三剑侠、四美人、五缁衣、六词客</td>
+              <td>正文以格上赏罚展开。定马映射需对照《牧猪闲话》等高兆记载后再填。</td>
+            </tr>
+            <tr>
+              <th scope="row">高兆定马（文献对照）</th>
+              <td>本列不把《牧猪闲话》记成吴本正文</td>
+              <td>么词客、二羽士、三剑侠、四美人、五渔父、六缁衣。与吴本么、五、六不同。出处：金学诗《牧猪闲话》。此为旁证，不是图谱页上已对出的句子。</td>
+            </tr>
+            <tr>
+              <th scope="row">终点</th>
+              <td>观止。先到第一，主收局觞政。</td>
+              <td>跋称雅局。终点分角色在他书记载中各有专止（瀛洲、蓬莱、青门、天台、桃源、五老峰等）。以他书校，勿单凭本 OCR 断言。</td>
+            </tr>
+            <tr>
+              <th scope="row">媒介</th>
+              <td>图戏印本，丛书收录</td>
+              <td>图戏印本，丛书跋本</td>
+            </tr>
+            <tr>
+              <th scope="row">卧游</th>
+              <td>题跋明言「卧游之资」</td>
+              <td>跋强调雅人深致</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="rules-title">
+      <h2 id="rules-title">规则摘录</h2>
+      <div class="compare">
+        <article class="card wu">
+          <h3>吴陈琰本</h3>
+          <blockquote>
+            <p>齐集劳劳亭，统饮饯酒一杯，挨次掷数点前行。</p>
+            <span class="who">开局</span>
+          </blockquote>
+          <blockquote>
+            <p>再掷得本色赏免酒筹一；筹凡四赏；后掷本采者无赏。</p>
+            <span class="who">本采</span>
+          </blockquote>
+          <blockquote>
+            <p>两人同至一处为会。</p>
+            <span class="who">会</span>
+          </blockquote>
+          <blockquote>
+            <p>行至观止，饮洗尘酒；先到第一，主收局觞政；最后到另罚巨觥。</p>
+            <span class="who">终局</span>
+          </blockquote>
+        </article>
+        <article class="card tu">
+          <h3>《揽胜图谱》</h3>
+          <blockquote>
+            <p>凡宜到而到者赏，不宜到而到者罚。所到而有费者纳，不易到而到者贺……</p>
+            <span class="who">规则总则摘录，后有省略</span>
+          </blockquote>
+          <p>名胜与节点以下据识典 OCR 列出，供对照，容后校对。不把名单当成已校定的完本目录。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="colophon-title">
+      <h2 id="colophon-title">题跋</h2>
+      <div class="compare">
+        <article class="card wu">
+          <h3>吴本题跋</h3>
+          <blockquote>
+            <p>以游山行酒，极尽才人之致……可以为豪饮之助，可以为卧游之资。</p>
+            <span class="who">王丹麓</span>
+          </blockquote>
+          <blockquote>
+            <p>具此胜情，可不烦济胜之具矣。</p>
+            <span class="who">张山来</span>
+          </blockquote>
+        </article>
+        <article class="card tu">
+          <h3>杨复吉跋</h3>
+          <blockquote>
+            <p>乙未夏日，松陵杨复吉识。</p>
+            <span class="who">跋末署款</span>
+          </blockquote>
+          <blockquote>
+            <p>作者自述不好俗博，独赏此图「雅人深致，尽扫俗氛」，不宜与凡局戏同类并讥。</p>
+            <span class="who">跋文要点，非逐字全文</span>
+          </blockquote>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="places-title">
+      <h2 id="places-title">图谱本节点（OCR）</h2>
+      <p class="note">识典《揽胜图谱》页上 OCR 所见，供与吴本对照。容后校对。羊肠道旁注「24 步鱼贯」保留原笔记字样。</p>
+      <ul class="places">
+        <li>劳劳亭</li>
+        <li>超然台</li>
+        <li>天坛</li>
+        <li>博浪沙</li>
+        <li>洛浦</li>
+        <li>桐江</li>
+        <li>滕王阁</li>
+        <li>灵隐寺</li>
+        <li>龙潭</li>
+        <li>易水</li>
+        <li>会稽山／云亭</li>
+        <li>井陉</li>
+        <li>斗鸡台</li>
+        <li>终南山</li>
+        <li>东阁</li>
+        <li>挂剑台</li>
+        <li>雁塔</li>
+        <li>西子湖</li>
+        <li>苏堤</li>
+        <li>云梦山</li>
+        <li>田横岛</li>
+        <li>新丰市</li>
+        <li>尾生桥</li>
+        <li>夫人城</li>
+        <li>醴泉</li>
+        <li>羊肠道（24 步鱼贯）</li>
+        <li>龙门</li>
+        <li>函谷</li>
+        <li>三峡</li>
+        <li>滟滪滩</li>
+        <li>豫让桥</li>
+        <li>太平宫</li>
+        <li>轵里</li>
+        <li>三天竺</li>
+        <li>浣沙溪</li>
+        <li>丹砂井</li>
+        <li>九疑山</li>
+        <li>洞庭湖</li>
+        <li>灞桥</li>
+        <li>缑山</li>
+        <li>延平津</li>
+        <li>九折坂</li>
+        <li>磻溪</li>
+        <li>岳阳楼</li>
+        <li>邯郸道</li>
+        <li>虎溪</li>
+        <li>桃叶渡</li>
+        <li>醉翁亭</li>
+        <li>系马台</li>
+        <li>冠盖里</li>
+        <li>长安市</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="doc-title">
+      <h2 id="doc-title">文献调研</h2>
+      <div class="doc">
+        <p>更长的文献笔记在这份 Google 文档，本页不另作书目。</p>
+        <p><a href="https://docs.google.com/document/d/1RDWYepgXURkx5vMRZdlPSG5y6tFoVJ5_TZamuxWrMOo/edit">揽胜图文献调研文档</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>资料整理 2026-11-06。原文版权归识典古籍与原书。本页是研究笔记索引，不是全文转载。</p>
+      <p>未把杨复吉跋《揽胜图谱》写成高兆原刻本。图谱定马与分角色终点仍待核原书序跋、馆藏叙录和他书。</p>
+    </div>
+  </footer>
+</body>
+</html>
