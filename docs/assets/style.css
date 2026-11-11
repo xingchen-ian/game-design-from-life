@@ -2253,6 +2253,7 @@ button { cursor: pointer; }
   font-size: 0.92rem;
 }
 .hero-aside a { color: var(--accent); }
+.tool-entry { margin-top: 1.35rem; }
 
 .section--tight { padding: 4.5rem 0 5rem; }
 
@@ -2338,6 +2339,11 @@ button { cursor: pointer; }
   color: var(--text-2);
   border-color: var(--border-2);
   background: transparent;
+}
+.status-pill--doing {
+  color: #f0d48a;
+  border-color: rgba(212, 168, 83, 0.55);
+  background: rgba(212, 168, 83, 0.16);
 }
 
 .proc-callout {

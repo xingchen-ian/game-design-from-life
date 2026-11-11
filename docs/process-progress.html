@@ -41,7 +41,7 @@
       <div class="section-tag">Pipeline status</div>
       <h1 class="page-title">开发进度</h1>
       <p class="page-subtitle">只记「生活过程 → 系统图 → 第一版游戏 → 人改图再迭代」做到哪了。不是网站更新日志。这一页不在顶栏里。</p>
-      <p class="hero-aside">核对日期：2026-11-11（Asia/Shanghai）。过程怎么走，看 <a href="process.html">过程</a>。</p>
+      <p class="hero-aside">核对日期：2026-11-11（Asia/Shanghai）。过程怎么走，看 <a href="process.html">过程</a>。工具在 <a href="process-app.html">process-app.html</a>。</p>
     </div>
   </div>
 
@@ -60,25 +60,34 @@
             <span class="status-pill status-pill--done">完成</span>
           </header>
           <p class="status-date">2026-11-11（Asia/Shanghai）</p>
-          <p>本站 <a href="process.html">process.html</a>。阶段 1 按 2026-11-10 的设计说明整理，原文没有整篇贴上。页上的图和 Confirm 是示意，用来把交互讲清楚。</p>
+          <p>本站 <a href="process.html">process.html</a>。阶段 1 按 2026-11-10 的设计说明整理，原文没有整篇贴上。页上的图和 Confirm 仍是示意。能用的工具在 <a href="process-app.html">process-app.html</a>，不替换这一页。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>工具页：三栏，可以拉开</h3>
+            <span class="status-pill status-pill--done">完成</span>
+          </header>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>本站 <a href="process-app.html">process-app.html</a>。左「问题」，中「系统图」，右 Game。分栏可以拖，窄屏改成上下叠。入口在过程页的「打开工具」，没有放进顶栏。</p>
         </article>
 
         <article class="status-row">
           <header>
             <h3>尽早出带空位的起步图</h3>
-            <span class="status-pill status-pill--todo">未开始</span>
+            <span class="status-pill status-pill--done">完成</span>
           </header>
-          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>公开仓库里没有这张 8 节点起步图。当天检查 <a href="https://github.com/xingchen-ian/AI_GameCreator">AI_GameCreator</a> 的 main：没有 <code>blueprint-schema-v0.md</code>（raw 地址返回 404）。课站 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（更新于 2026-11-05）把 schema 标成进行中，并写明本学期范围不含 blueprint 节点编辑。本地若有草稿，公开站点上看不到，这里仍记未开始。</p>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>工具里，确认 Q1 就画出 8 个节点和 4 条预置边。空的 rule、variable、challenge、feedback、entity 看得见。Q3、Q4 只填候选 intent 和候选 mechanic。帆船可以载入当 Q1–Q4 的例子，不是唯一路径。课站引擎还没有这张图：<a href="https://github.com/xingchen-ian/AI_GameCreator">AI_GameCreator</a> 的 main 仍没有 <code>blueprint-schema-v0.md</code>（raw 地址返回 404）。<a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（2026-11-05）把 schema 标成进行中，并写明本学期不做 blueprint 节点编辑。</p>
         </article>
 
         <article class="status-row">
           <header>
-            <h3>核心题路径</h3>
-            <span class="status-pill status-pill--todo">未开始</span>
+            <h3>核心题先走，按题填图</h3>
+            <span class="status-pill status-pill--done">完成</span>
           </header>
-          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>21 题的文字在 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/lib/protocol/stages.ts">student/engine/lib/protocol/stages.ts</a>，仍按六个阶段排成一条。<code>question-scope.ts</code> 写的是每题先答什么、先不答什么，不是「核心约十题先走，其余等空位再补」。</p>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>工具里先列出 Q1–Q4、Q6、Q9–Q11、Q13、Q16、Q17、Q21。后补题不在开头排队，点到对应节点才出现。确认某一题，只改这一题拥有的节点或备注。课站 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/lib/protocol/stages.ts">stages.ts</a> 仍按六个阶段排成一条，这次没有改引擎。</p>
         </article>
 
         <article class="status-row">
@@ -87,34 +96,34 @@
             <span class="status-pill status-pill--todo">未开始</span>
           </header>
           <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>现有引擎在答案确认之后可以生成 GDD（workflow 里的 <code>generateGdd</code>），也有 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/app/api/build-brief/route.ts">build-brief</a> 接口。这些文字来自问答和 GDD，不是来自系统图。图还不是合同。</p>
+          <p>工具按图生成的是页内可玩草稿，不是阶段摘要、GDD 或 Build Brief。课站在答案确认之后可以生成 GDD（workflow 里的 <code>generateGdd</code>），也有 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/app/api/build-brief/route.ts">build-brief</a> 接口。那些文字来自问答和 GDD，不是来自系统图。图还不是文档的合同。</p>
         </article>
 
         <article class="status-row">
           <header>
             <h3>人直接改图</h3>
-            <span class="status-pill status-pill--todo">未开始</span>
+            <span class="status-pill status-pill--done">完成</span>
           </header>
-          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p><a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（2026-11-05）写明本学期先做能演示的 demo 和基本评测数据，并写了 no Blueprint node editing（不做 blueprint 节点编辑）。过程页上的点击只是说明。</p>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>工具里可以改节点上的字。再确认拥有这一格的题，会按答案写回。边仍是预置的 4 种，这一版不能改边。课站 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（2026-11-05）仍写本学期不做 blueprint 节点编辑。过程页上的点击还是示意。</p>
         </article>
 
         <article class="status-row">
           <header>
             <h3>AI 协助改图</h3>
-            <span class="status-pill status-pill--todo">未开始</span>
+            <span class="status-pill status-pill--doing">进行中</span>
           </header>
-          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>现有 AI 帮的是提问、记忆和 GDD，不是改这 7 类节点和 4 类边。过程页里的「让 AI 提议」是写死的几句帆船例子，没有调用模型。</p>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>工具里有「让 AI 提议」：按已经写下的答案，在本地收成一句。不调用模型，也不用密钥。人点写入才进图。这不是模型改图。课站现有 AI 帮的是提问、记忆和 GDD，不是改这 7 类节点。过程页上的提议仍是写死的帆船句子。</p>
         </article>
 
         <article class="status-row">
           <header>
             <h3>Confirm 按当前图生成第一版</h3>
-            <span class="status-pill status-pill--todo">未开始</span>
+            <span class="status-pill status-pill--doing">进行中</span>
           </header>
-          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>引擎里的 confirm 用来确认某一题的答案，或确认 GDD 的修改。没有「图上的 Confirm：只实现已有节点，空节点不做」。过程页的按钮只列出示意清单，不生成游戏。</p>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>工具的「生成游戏」按当前图，在页内做出能点、能看状态的第一版草稿。不检查 21 题、最低可玩集或四句话。空节点不做，并写在旁边。这不是 AI Game Creator 引擎，也不生成完整游戏工程。过程页的按钮仍只是示意。课站引擎里的 confirm 仍是确认某一题，或确认 GDD。</p>
         </article>
 
         <article class="status-row">
@@ -123,12 +132,12 @@
             <span class="status-pill status-pill--todo">未开始</span>
           </header>
           <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
-          <p>课上已有另一套做法：学生把 brief 和一张系统图交给 AI，做出可玩 demo。见本站工作坊页，以及 <a href="https://xingchen-ian.github.io/AI_GameCreator/">AI Game Creator 课站</a>。那还不是这条草案：玩，然后改图或退回对应的题，再更新游戏，而且文章不能盖掉已经确认的节点和边。</p>
+          <p>工具里玩过右边的草稿之后，不能自动退回某一题再出下一版。要更新，得自己改图或改答案，再点一次生成游戏。课上已有另一套做法：学生把 brief 和一张系统图交给 AI，做出可玩 demo。见本站工作坊页，以及 <a href="https://xingchen-ian.github.io/AI_GameCreator/">AI Game Creator 课站</a>。那还不是这条草案。</p>
         </article>
       </div>
 
       <div class="proc-callout">
-        没有标成「进行中」的项。21 题问答和 GDD 生成已经在课站引擎里，但它们不是上表这些增量。上表只在公开仓库里对过，没有把看不见的本地文件算成开始。
+        本站工具可以少答几题就出图，并按题往上填。生成游戏是页内的第一版草稿，不是课站引擎。课站里的 21 题问答和 GDD 仍是另一条，没有并到这张图上。
       </div>
     </div>
   </section>
@@ -138,7 +147,7 @@
       <div class="section-header">
         <div class="section-tag">Next engine increment</div>
         <h2 class="section-title">引擎下一增量</h2>
-        <p class="section-desc">从 2026-11-10 设计说明的第 7 节移到这里。上面已经核对过，这些都还没做。后三条是过程页上的草案交互，说明原文没有写成引擎清单，一并放在这里，避免写进过程页正文。</p>
+        <p class="section-desc">从 2026-11-10 设计说明的第 7 节移到这里。本站工具已经做了前半：少答几题就出图、按题填、人改节点上的字、按当前图在页内生成一个能操作的草稿。课站引擎这些仍然没做。后三条仍是草案交互，说明原文没有写成引擎清单。</p>
       </div>
       <div class="next-block">
         <ol>
@@ -162,7 +171,7 @@
         <h2 class="section-title">帆船走到哪</h2>
       </div>
       <p><a href="domain-learning.html">领域学习</a> 和 <a href="sailing-comparison.html">帆船对比</a> 写了判断转变、调帆和转向、挑战阶梯。过程页只用它把节点对上：候选体验是「读风，而不是硬控船」，候选动词是调帆、转向，规则「迎风过陡会失速」在起步图里仍是空位。</p>
-      <p>帆船没有按这 7 种节点、4 种边走完，也没有 Confirm 出来的第一版。案例停在教学材料，还没进入上面这条引擎流水线。</p>
+      <p>帆船没有按这 7 种节点、4 种边走完引擎。案例停在教学材料。工具里可以把前四题载入当例子，也可以换成别的过程。</p>
       <p class="hero-aside" style="margin-top: 1.5rem;"><a href="process.html">返回过程</a></p>
     </div>
   </section>
