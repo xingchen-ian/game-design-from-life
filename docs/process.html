@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>过程 · 来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="process.html" class="nav-link active">过程</a>
+        <a href="practice.html" class="nav-link">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero page-hero--process">
+    <div class="container">
+      <div class="section-tag">Process</div>
+      <h1 class="page-title">从生活过程到可迭代的游戏</h1>
+      <p class="page-subtitle">先把一段需要人判断的生活过程收成系统图。图可以很早出现。人可以直接改，也可以让 AI 一起改。点 Confirm，按当前这张图生成第一版游戏。</p>
+      <p class="hero-aside">阶段 1 按 2026-11-10 的设计说明来写。阶段 2 和阶段 3 是草案。做到哪一步，看 <a href="process-progress.html">开发进度</a>。</p>
+    </div>
+  </div>
+
+  <section class="section section--tight" id="pipeline">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Three stages</div>
+        <h2 class="section-title">三条，按这个顺序</h2>
+        <p class="section-desc">先看这条流水线。理论、题表和文献在页面后面。</p>
+      </div>
+
+      <div class="pipe">
+        <article class="pipe-step">
+          <header>
+            <span class="pipe-num">01</span>
+          </header>
+          <h3>难的过程，收成图</h3>
+          <p>一段生活里，人必须判断、必须回应。把它收成一张系统图。主产出是这张图，不是设计文档。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="pipe-step">
+          <header>
+            <span class="pipe-num">02</span>
+            <span class="draft-pill">草案</span>
+          </header>
+          <h3>图生成第一版</h3>
+          <p>图上有 Confirm。人决定现在就生成。第一版只做图上已经写了的内容，空节点不做。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="pipe-step">
+          <header>
+            <span class="pipe-num">03</span>
+            <span class="draft-pill">草案</span>
+          </header>
+          <h3>玩过再改</h3>
+          <p>人去玩。然后自己改图，或让 AI 一起改，或退回对应的题。再更新游戏。写顺的文章不能盖掉已经确认的节点和边。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark section--tight" id="confirm-model">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Draft protocol · stages 2–3</div>
+        <h2 class="section-title">改图，然后 Confirm</h2>
+        <p class="section-desc">阶段 2 和阶段 3 是草案。设计说明把阶段 1 写细了。后面两段是按「图是合同，文字从图来」推出来的用法，引擎里还没有这些按钮。</p>
+      </div>
+
+      <div class="confirm-flow" aria-label="改图、Confirm、第一版">
+        <article class="flow-box">
+          <h3>改图</h3>
+          <p>人可以直接改节点和边。也可以让 AI 帮忙改。AI 写上去之前，人还看得到。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="flow-box">
+          <h3>Confirm</h3>
+          <p>这是人决定：现在就生成。不要求 21 题答完，不要求最低可玩集凑齐，也不要求四句话都说得清。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="flow-box">
+          <h3>第一版游戏</h3>
+          <p>只实现图上已经有的内容。空节点保持不做。空位继续留在图上。</p>
+        </article>
+      </div>
+
+      <div class="proc-callout">
+        <strong>图从第一道确认的问题就开始出现。</strong>
+        前四题之后必须已经有一张带空位的起步图。空着的规则、结束、反馈都要看得见。Confirm 可以在这张还不完整的图上使用。
+      </div>
+
+      <div class="mock-board" style="margin-top: 1.5rem;">
+        <p class="sg-kicker">示意 · 不是引擎，也不会真的生成游戏</p>
+        <p class="sg-legend" style="margin-top: 0;">下面这张图从帆船例子的前四题起步。点节点，可以自己写，也可以看一句写好的提议。四种边保持预置，这张示意不改边。真的图里边也可以改，这里没做。</p>
+
+        <div id="mockGraph" style="margin-top: 1rem;">
+          <div class="sg-row">
+            <button type="button" class="sg-node is-filled" data-node="mechanic-main" aria-pressed="false">
+              <span class="sg-type">mechanic · 玩家动词</span>
+              <strong>mechanic-main</strong>
+              <p class="sg-text">调帆、转向</p>
+              <em class="sg-note">Q4 候选</em>
+            </button>
+            <div class="sg-edge">serves</div>
+            <button type="button" class="sg-node is-filled" data-node="intent-main" aria-pressed="false">
+              <span class="sg-type">intent · 目标体验</span>
+              <strong>intent-main</strong>
+              <p class="sg-text">读风，而不是硬控船</p>
+              <em class="sg-note">Q3 候选</em>
+            </button>
+          </div>
+          <div class="sg-row">
+            <button type="button" class="sg-node is-empty" data-node="challenge-1" aria-pressed="false">
+              <span class="sg-type">challenge · 挑战</span>
+              <strong>challenge-1</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">一次可玩的情境</em>
+            </button>
+            <div class="sg-edge">challenges</div>
+            <button type="button" class="sg-node is-empty" data-node="variable-a" aria-pressed="false">
+              <span class="sg-type">variable · 状态</span>
+              <strong>variable-a</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">会变、可测</em>
+            </button>
+            <div class="sg-edge">feeds</div>
+            <button type="button" class="sg-node is-empty" data-node="rule-main" aria-pressed="false">
+              <span class="sg-type">rule · 世界规则</span>
+              <strong>rule-main</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">世界如何回应，含结束</em>
+            </button>
+            <div class="sg-edge">signals</div>
+            <button type="button" class="sg-node is-empty" data-node="feedback-main" aria-pressed="false">
+              <span class="sg-type">feedback · 反馈</span>
+              <strong>feedback-main</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">人怎么感知规则在工作</em>
+            </button>
+          </div>
+          <div class="sg-row">
+            <button type="button" class="sg-node is-empty" data-node="entity-main" aria-pressed="false">
+              <span class="sg-type">entity · 对象</span>
+              <strong>entity-main</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">线索：船、帆、风。节点仍是空的</em>
+            </button>
+            <button type="button" class="sg-node is-empty" data-node="variable-b" aria-pressed="false">
+              <span class="sg-type">variable · 状态</span>
+              <strong>variable-b</strong>
+              <p class="sg-text">空</p>
+              <em class="sg-note">预置边不连它，节点仍要看见</em>
+            </button>
+          </div>
+        </div>
+
+        <div class="mock-edit">
+          <p>选中的节点：<strong id="selectedName">还没选</strong></p>
+          <label for="directEdit">直接改这个节点</label>
+          <textarea id="directEdit" placeholder="写下这个节点现在的内容。留空，空位就还在。"></textarea>
+          <div class="mock-actions">
+            <button type="button" class="btn btn-outline" id="applyDirect">写入图</button>
+            <button type="button" class="btn btn-outline" id="askAi">让 AI 提议</button>
+            <button type="button" class="btn btn-outline" id="applyAi" hidden>把提议写入图</button>
+          </div>
+          <p id="aiLine" hidden></p>
+          <p id="editHint" role="status"></p>
+        </div>
+
+        <div class="mock-confirm">
+          <div class="mock-actions">
+            <button type="button" class="btn btn-primary" id="confirmGraph">Confirm · 按当前图生成第一版</button>
+            <button type="button" class="btn btn-outline" id="resetGraph">回到前四题的起步图</button>
+          </div>
+          <p class="mock-fine">不检查 21 题有没有答完，不检查最低可玩集，也不检查四句话。空节点留着，第一版不做它们。</p>
+        </div>
+
+        <div class="mock-split">
+          <div class="mock-panel">
+            <h3>现在这张图，四句话能说到哪</h3>
+            <ol id="acceptNow"></ol>
+            <p class="sg-legend">只看图。前四题通常只能碰到第 1 句，规则和结束说不清。这是预期。</p>
+          </div>
+          <div class="mock-panel">
+            <h3>示意里的第一版</h3>
+            <p id="confirmLead">还没点过 Confirm。按钮一直可以点，不用等图填满。</p>
+            <div id="gamePanel" hidden>
+              <p>会做</p>
+              <ul id="gameDone"></ul>
+              <div id="gameEmpty">
+                <p>先不做</p>
+                <ul id="gameSkip"></ul>
+              </div>
+            </div>
+            <p id="driftNote" role="status"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm-flow" style="margin-top: 1.5rem;" aria-label="第一版之后怎么迭代">
+        <article class="flow-box">
+          <h3>人去玩</h3>
+          <p>玩的是刚刚那一版：图上有的才有，空的还没有。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="flow-box">
+          <h3>改图，或退回题</h3>
+          <p>自己改图，或让 AI 一起改。也可以回到对应的问题，改答案，再写回图。</p>
+        </article>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <article class="flow-box">
+          <h3>再更新游戏</h3>
+          <p>以改过的图为准。阶段摘要、GDD、Build Brief 都从图读出来，不从一篇改写过的 GDD 再转一层。</p>
+        </article>
+      </div>
+      <p class="proc-callout">已经确认的节点和边，不能被润色过的散文盖掉。文字和图打架时，改图，或退回那道题。不要在文档里把句子写圆。</p>
+    </div>
+  </section>
+
+  <section class="section" id="stage-1">
+    <div class="container proc-copy">
+      <div class="section-header">
+        <div class="section-tag">Stage 1</div>
+        <h2 class="section-title">过程怎么变成图</h2>
+        <p class="section-desc">这一段是已经写清的部分。帆船只用来把节点对上，案例正文不在这里。</p>
+      </div>
+
+      <h3 class="card-title">从难的过程开始</h3>
+      <p>不是随便切一块生活。要的是一段需要人判断、人回应的过程。帆船是一个例子：新手以为「我要控制船」，要学的是读风，再调帆、转向。风向自己会变，人必须看、必须动手。完整写法在 <a href="domain-learning.html" style="color: var(--accent);">领域学习</a> 和 <a href="sailing-comparison.html" style="color: var(--accent);">帆船对比</a>。</p>
+      <p>来源先记在图旁边，不另造一种节点。这里的来源是：学帆船时要读风再动手。</p>
+
+      <h3 class="card-title" style="margin-top: 2rem;">图是合同，文字是读法</h3>
+      <p>阶段摘要、GDD、Build Brief 都从图来。图改了，文字才跟着改。图上的空位，文档里也标成「尚未决定」。指不回某个节点或某条边的句子，不进文档。Build Brief 直接从图出，不再从 GDD 转写一层。</p>
+
+      <h3 class="card-title" style="margin-top: 2rem;">Q1 起就出图</h3>
+      <p>每确认一题，只更新这一题对应的节点或边。不用等 21 题齐了再画。Q1 到 Q4 之后，必须已经有一张起步图，空节点还在上面。</p>
+      <ul class="proc-list">
+        <li>Q1、Q2：来源，以及候选对象。步骤先不必全部变成节点。</li>
+        <li>Q3：空的 intent 上先写候选体验。</li>
+        <li>Q4：候选 mechanic，也就是人必须介入的动词。</li>
+        <li>rule、variable、challenge、feedback、结束条件：全部显式留空。</li>
+        <li>边先按起步图连上。这表示这类关系必须存在，不是说已经设计完。</li>
+      </ul>
+
+      <h3 class="card-title" style="margin-top: 2.4rem;">起步图</h3>
+      <p>和已冻结的预置一致：8 个节点，4 条边。节点可以空着。</p>
+
+      <figure class="starter-graph">
+        <figcaption class="sg-kicker">Q1–Q4 之后 · 帆船例子 · 8 节点 / 4 边</figcaption>
+        <div class="sg-row">
+          <div class="sg-node is-filled">
+            <span class="sg-type">mechanic · 玩家动词</span>
+            <strong>mechanic-main</strong>
+            <p class="sg-text">调帆、转向</p>
+            <em class="sg-note">Q4 候选</em>
+          </div>
+          <div class="sg-edge">serves</div>
+          <div class="sg-node is-filled">
+            <span class="sg-type">intent · 目标体验</span>
+            <strong>intent-main</strong>
+            <p class="sg-text">读风，而不是硬控船</p>
+            <em class="sg-note">Q3 候选</em>
+          </div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-node is-empty">
+            <span class="sg-type">challenge · 挑战</span>
+            <strong>challenge-1</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">还没有可玩情境</em>
+          </div>
+          <div class="sg-edge">challenges</div>
+          <div class="sg-node is-empty">
+            <span class="sg-type">variable · 状态</span>
+            <strong>variable-a</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">还没有要记住的状态</em>
+          </div>
+          <div class="sg-edge">feeds</div>
+          <div class="sg-node is-empty">
+            <span class="sg-type">rule · 世界规则</span>
+            <strong>rule-main</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">世界如何回应，含结束</em>
+          </div>
+          <div class="sg-edge">signals</div>
+          <div class="sg-node is-empty">
+            <span class="sg-type">feedback · 反馈</span>
+            <strong>feedback-main</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">人还看不见规则</em>
+          </div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-node is-empty">
+            <span class="sg-type">entity · 对象</span>
+            <strong>entity-main</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">线索：船、帆、风。节点仍是空的</em>
+          </div>
+          <div class="sg-node is-empty">
+            <span class="sg-type">variable · 状态</span>
+            <strong>variable-b</strong>
+            <p class="sg-text">空</p>
+            <em class="sg-note">预置的四条边不连它</em>
+          </div>
+        </div>
+        <ol class="edge-list">
+          <li><code>mechanic-main</code> serves <code>intent-main</code></li>
+          <li><code>variable-a</code> feeds <code>rule-main</code></li>
+          <li><code>challenge-1</code> challenges <code>variable-a</code></li>
+          <li><code>rule-main</code> signals <code>feedback-main</code></li>
+        </ol>
+        <p class="sg-legend">实线框是已有候选。虚线框是空位，必须看得见。</p>
+      </figure>
+
+      <h3 class="card-title" style="margin-top: 2.4rem;">这时四句话只说到一半</h3>
+      <p>验收只看图，不看文档。要能说出这四句：</p>
+      <ol class="proc-list">
+        <li>玩家反复做什么</li>
+        <li>世界如何回应</li>
+        <li>什么状态在变</li>
+        <li>一局何时结束</li>
+      </ol>
+      <p>只答了前四题，用上面这张帆船图来对：第 1 句有候选动词「调帆、转向」；第 3 句还只有线索，两个 variable 是空的；第 2 句和第 4 句说不清。空位继续留着。这时不检查能不能出 demo。</p>
+
+      <h3 class="card-title" style="margin-top: 2.4rem;">21 题都留着，先走核心</h3>
+      <p>必答路径大约十题，为的是能把图撑起来。非核心题负责填空位、收紧取舍，不负责能不能开始出图。空位被点到，或检查标出缺了什么，再引出对应的非核心题。不要在起步时把它们排进强制队列。</p>
+      <p class="q-label">先答</p>
+      <ul class="q-path">
+        <li class="is-core"><b>Q1</b>设计起点</li>
+        <li class="is-core"><b>Q2</b>过程地图</li>
+        <li class="is-core"><b>Q3</b>突出时刻</li>
+        <li class="is-core"><b>Q4</b>主动应对</li>
+        <li class="is-core"><b>Q6</b>目标体验</li>
+        <li class="is-core"><b>Q9</b>玩家身份</li>
+        <li class="is-core"><b>Q10</b>主要目标</li>
+        <li class="is-core"><b>Q11</b>核心挑战</li>
+        <li class="is-core"><b>Q13</b>核心动作</li>
+        <li class="is-core"><b>Q16</b>状态资源</li>
+        <li class="is-core"><b>Q17</b>行动后果</li>
+        <li class="is-core"><b>Q21</b>结束结果</li>
+      </ul>
+      <p class="q-label">后补</p>
+      <ul class="q-path">
+        <li><b>Q5</b>核心素材</li>
+        <li><b>Q7</b>抽象程度</li>
+        <li><b>Q8</b>主题信息</li>
+        <li><b>Q12</b>玩家动作</li>
+        <li><b>Q14</b>所需技能</li>
+        <li><b>Q15</b>变化来源</li>
+        <li><b>Q18</b>前后依赖</li>
+        <li><b>Q19</b>玩家反馈</li>
+        <li><b>Q20</b>游戏进程</li>
+      </ul>
+      <ul class="proc-list">
+        <li>只答 Q1–Q4：带空位的起步图。有来源、候选 intent、候选 mechanic。</li>
+        <li>再答 Q6、Q9–Q11、Q13：intent 写明确；出现 entity 和第一枚 challenge；mechanic 收成 1 到 3 个核心动词。</li>
+        <li>再答 Q16、Q17、Q21：补上要记住的状态、世界规则、结束条件。接近最低可玩，feedback 和第二枚挑战仍可能空着。</li>
+        <li>非核心题随后补：反馈、前后依赖、后面的挑战、抽象程度和主题。</li>
+      </ul>
+      <p>最低可玩的底线是另一件事：至少 1 个 intent、1 个 mechanic、1 个 variable、1 条 rule、1 个 challenge，关键边连上。entity 和 feedback 可以先空着，但必须看得见。Confirm 不等到这条线。</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Blueprint vocabulary</div>
+        <h2 class="section-title">只用这 7 种节点、4 种边</h2>
+        <p class="section-desc">词汇已经冻结。这一页不另造类型。</p>
+      </div>
+      <div class="vocab-grid">
+        <article class="vocab-card"><span>intent</span><p>目标体验，或领域学习里的判断转变。</p></article>
+        <article class="vocab-card"><span>mechanic</span><p>玩家动词。人做了什么。</p></article>
+        <article class="vocab-card"><span>rule</span><p>世界如何回应，包括结束条件。</p></article>
+        <article class="vocab-card"><span>entity</span><p>世界上的对象。</p></article>
+        <article class="vocab-card"><span>variable</span><p>可改、可测的状态。</p></article>
+        <article class="vocab-card"><span>challenge</span><p>一次可运行的情境：改哪些变量，成功是什么。</p></article>
+        <article class="vocab-card"><span>feedback</span><p>人如何感知规则在工作。</p></article>
+      </div>
+      <div class="vocab-grid" style="margin-top: 0.7rem;">
+        <article class="vocab-card"><span>serves</span><p>这个设计选择服务于该意图。</p></article>
+        <article class="vocab-card"><span>feeds</span><p>状态或对象参与该行为，读或写。</p></article>
+        <article class="vocab-card"><span>challenges</span><p>这个挑战改写或激活这些部分。</p></article>
+        <article class="vocab-card"><span>signals</span><p>这个行为或状态产生能感知的信号。</p></article>
+      </div>
+
+      <h3 class="card-title" style="margin-top: 2.2rem;">玩家动词不是世界规则</h3>
+      <div class="verb-rule">
+        <article class="vocab-card">
+          <span>mechanic</span>
+          <p>调帆、转向。这是人做的动词。Q12、Q13 写这个。</p>
+        </article>
+        <article class="vocab-card">
+          <span>rule</span>
+          <p>迎风过陡会失速。这是世界怎么回应。Q16、Q17 写这个。写在同一段文档里，这个区分会消失。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Later</div>
+        <h2 class="section-title">理论、题表、阅读</h2>
+        <p class="section-desc">用来支撑上面的流水线，不代替流水线。</p>
+      </div>
+      <div class="fold-stack">
+        <details class="index-group">
+          <summary>四层已经够用的理论</summary>
+          <div class="fold-body">
+            <h3>体验只能间接达到：MDA</h3>
+            <p>Hunicke, LeBlanc 与 Zubek（2004）。体验（Aesthetics）不能直接做出来，要经过机制（Mechanics），在运行里变成动态（Dynamics）。Q6 写目标体验；Q12 到 Q15 是玩家反复造成的动态；Q16 到 Q19 才是机制。问答若只收成文章，容易停在「描述了体验」，还没有能运行的机制。</p>
+            <h3>游戏是形式系统</h3>
+            <p>Salen 与 Zimmerman，《Rules of Play》。一个形式系统至少要说清对象、属性、内部关系、所处情境。Q9 到 Q11 给情境和目标，Q16 给对象和属性，Q17、Q18 给内部关系。缺关系时，文章仍可以写得很完整，图会断。</p>
+            <p>Juul 对「规则系统 + 可协商结果」的说明，用来撑 Q21：结束条件必须连回玩家一直在做的事，不能另写一套结局散文。</p>
+            <h3>存量、流量、反馈</h3>
+            <p>课上和实现里只用 Meadows 这一支的三个词。存量是系统必须记住什么（Q16）。流量是核心行动如何改变存量（Q17）。反馈是先前行动如何改变后面的选项，以及人如何看见自己做得怎样（Q18、Q19）。Q20 是这些反馈在时间里怎么积累，不是另起一条「越来越难」的轨道。</p>
+            <h3>P-Scaffold</h3>
+            <p>结构是一张可以从任意节点进入的提示地图，不是强制向导。首要的事是让缺了的结构看得见。所以不必 21 题全答完才出图。先答核心题，图上先出现带空位的结构；非核心题等空位出现再补。</p>
+          </div>
+        </details>
+
+        <details class="index-group">
+          <summary>21 题各自写入图的哪里</summary>
+          <div class="fold-body">
+            <p>核心题把最低可玩结构撑起来。非核心题填空位，不负责开门。</p>
+            <div class="proc-table-wrap">
+              <table class="proc-table">
+                <thead>
+                  <tr><th>题</th><th>短名</th><th>路径</th><th>写入系统图</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Q1</td><td>设计起点</td><td>核心</td><td>来源标签：哪段生活。不是新的节点类型。</td></tr>
+                  <tr><td>Q2</td><td>过程地图</td><td>核心</td><td>候选对象和步骤。先不必全部变成节点。</td></tr>
+                  <tr><td>Q3</td><td>突出时刻</td><td>核心</td><td>空的 <code>intent</code> 上先写候选体验。</td></tr>
+                  <tr><td>Q4</td><td>主动应对</td><td>核心</td><td>候选 <code>mechanic</code>。</td></tr>
+                  <tr><td>Q5</td><td>核心素材</td><td>后补</td><td>收紧 intent：保留哪条线索。</td></tr>
+                  <tr><td>Q6</td><td>目标体验</td><td>核心</td><td>主 <code>intent</code>。两三个具体词。</td></tr>
+                  <tr><td>Q7</td><td>抽象程度</td><td>后补</td><td>intent 上的约束：保过程、保感觉，还是换皮。</td></tr>
+                  <tr><td>Q8</td><td>主题信息</td><td>后补</td><td>可选注释。不能代替 mechanic 或 rule。</td></tr>
+                  <tr><td>Q9</td><td>玩家身份</td><td>核心</td><td><code>entity</code>（玩家 / 环境）。</td></tr>
+                  <tr><td>Q10</td><td>主要目标</td><td>核心</td><td><code>challenge</code> 的成功条件，或结束 <code>rule</code> 的线索。</td></tr>
+                  <tr><td>Q11</td><td>核心挑战</td><td>核心</td><td>第一枚 <code>challenge</code>。</td></tr>
+                  <tr><td>Q12</td><td>玩家动作</td><td>后补</td><td>候选 mechanic，供 Q13 筛选。</td></tr>
+                  <tr><td>Q13</td><td>核心动作</td><td>核心</td><td>1 到 3 枚 <code>mechanic</code>，<code>serves</code> 到 intent。</td></tr>
+                  <tr><td>Q14</td><td>所需技能</td><td>后补</td><td>写入 intent 的判断转变，或 mechanic 的说明。</td></tr>
+                  <tr><td>Q15</td><td>变化来源</td><td>后补</td><td>哪些 <code>variable</code> 会在重复里改变。</td></tr>
+                  <tr><td>Q16</td><td>状态资源</td><td>核心</td><td><code>variable</code> / <code>entity</code>，<code>feeds</code> 到 rule 或 mechanic。</td></tr>
+                  <tr><td>Q17</td><td>行动后果</td><td>核心</td><td>每个核心动作：行动、即时响应、后续后果。这是 <code>rule</code>。</td></tr>
+                  <tr><td>Q18</td><td>前后依赖</td><td>后补</td><td>早先行动如何改后面的选项和风险。</td></tr>
+                  <tr><td>Q19</td><td>玩家反馈</td><td>后补</td><td><code>feedback</code> 节点，<code>signals</code> 边。</td></tr>
+                  <tr><td>Q20</td><td>游戏进程</td><td>后补</td><td>第 2、第 3 枚 <code>challenge</code>。要改的是变量或规则。</td></tr>
+                  <tr><td>Q21</td><td>结束结果</td><td>核心</td><td>终止用的 <code>rule</code>，和 Q10、Q13 对得上。</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="index-group">
+          <summary>阅读</summary>
+          <div class="fold-body">
+            <div class="read-list">
+              <article>
+                <h3>MDA</h3>
+                <p>Hunicke, R., LeBlanc, M., &amp; Zubek, R. (2004). MDA: A Formal Approach to Game Design and Game Research. 对应目标体验、动态和机制。</p>
+                <p><a href="https://users.cs.northwestern.edu/~hunicke/MDA.pdf">PDF 全文（作者页）</a> · <a href="https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/">AAAI 记录页</a></p>
+              </article>
+              <article>
+                <h3>Rules of Play</h3>
+                <p>Salen, K., &amp; Zimmerman, E. (2004). Rules of Play: Game Design Fundamentals. MIT Press. 对应形式系统：对象、属性、内部关系、情境。馆藏记录常作 2003。</p>
+                <p><a href="https://search.library.nyu.edu/discovery/fulldisplay/alma990000868910107876/01NYU_INST:NYU">NYU Library 单书页</a>（需登录）</p>
+              </article>
+              <article>
+                <h3>规则与可协商的结果</h3>
+                <p>Juul, J. (2003). The Game, the Player, the World. 用来支撑结束条件。2005 年的 Half-Real 有更完整的展开，短文已够用。</p>
+                <p><a href="https://www.jesperjuul.net/text/gameplayerworld/">2003 作者公开全文</a> · <a href="https://search.library.nyu.edu/discovery/fulldisplay/alma990045714180107871/01NYU_INST:NYU">Half-Real，NYU Library</a>（需登录）</p>
+              </article>
+              <article>
+                <h3>Thinking in Systems</h3>
+                <p>Meadows, D. H. (2008). Thinking in Systems: A Primer. Chelsea Green. 教学只用 stocks、flows、feedback，不必读全书。</p>
+                <p><a href="https://search.library.nyu.edu/discovery/fulldisplay/alma990031243120107876/01NYU_INST:NYU">NYU Library 单书页</a>（需登录）</p>
+              </article>
+              <article>
+                <h3>本课题已有材料</h3>
+                <p>P-Scaffold 和四层图景的课内写法，在 AI Game Creator 的 theoretical framework。7 种节点和 4 种边以设计说明里已经冻结的词汇为准。blueprint schema 文件在 2026-11-11 的公开 main 上还没有。</p>
+                <p><a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/course/theoretical-framework.md">theoretical framework</a> · <a href="https://xingchen-ian.github.io/AI_GameCreator/library-acquisition-list.html">课站馆配清单</a>（Fullerton、Björk &amp; Holopainen、Sterman 等延伸书在这里，本文不展开）</p>
+              </article>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="resource-strip" style="margin-top: 2rem;">
+        <div>
+          <div class="section-tag">Elsewhere</div>
+          <h2>相关页面</h2>
+          <p>案例还是案例页。这条过程不把它们重写一遍。引擎功能做到哪，只看开发进度。</p>
+        </div>
+        <div class="resource-links">
+          <a href="process-progress.html">开发进度</a>
+          <a href="domain-learning.html">领域学习</a>
+          <a href="sailing-comparison.html">帆船对比</a>
+          <a href="practice.html">设计实践</a>
+          <a href="https://xingchen-ian.github.io/AI_GameCreator/">AI Game Creator 课站</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 从生活过程到可迭代的游戏</p>
+        <p class="footer-note">研究持续更新中 · 最后更新：2026年11月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("mockGraph");
+      if (!root) return;
+
+      var buttons = Array.prototype.slice.call(root.querySelectorAll("[data-node]"));
+      var selected = null;
+      var initial = {};
+      var confirmed = null;
+      var aiLines = {
+        "intent-main": "读风，而不是硬控船",
+        "mechanic-main": "调帆、转向",
+        "rule-main": "迎风过陡会失速",
+        "entity-main": "船、帆、风",
+        "variable-a": "帆角",
+        "variable-b": "船相对风的角度",
+        "challenge-1": "在侧风里把船开到标记",
+        "feedback-main": "船速掉下来，帆边在抖"
+      };
+
+      buttons.forEach(function (btn) {
+        var id = btn.getAttribute("data-node");
+        initial[id] = btn.classList.contains("is-empty") ? "" : btn.querySelector(".sg-text").textContent.trim();
+        btn.addEventListener("click", function () { select(id); });
+      });
+
+      function nodeButton(id) {
+        return root.querySelector('[data-node="' + id + '"]');
+      }
+
+      function nodeText(id) {
+        var btn = nodeButton(id);
+        return btn.classList.contains("is-empty") ? "" : btn.querySelector(".sg-text").textContent.trim();
+      }
+
+      function snapshot() {
+        var out = {};
+        buttons.forEach(function (btn) {
+          out[btn.getAttribute("data-node")] = nodeText(btn.getAttribute("data-node"));
+        });
+        return out;
+      }
+
+      function same(a, b) {
+        if (!a || !b) return false;
+        return buttons.every(function (btn) {
+          var id = btn.getAttribute("data-node");
+          return a[id] === b[id];
+        });
+      }
+
+      function setText(id, text) {
+        var btn = nodeButton(id);
+        var p = btn.querySelector(".sg-text");
+        var cleaned = (text || "").replace(/^\s+|\s+$/g, "");
+        if (!cleaned) {
+          btn.classList.add("is-empty");
+          p.textContent = "空";
+        } else {
+          btn.classList.remove("is-empty");
+          p.textContent = cleaned;
+        }
+        refreshAcceptance();
+        refreshDrift();
+      }
+
+      function select(id) {
+        selected = id;
+        buttons.forEach(function (btn) {
+          var on = btn.getAttribute("data-node") === id;
+          btn.classList.toggle("is-selected", on);
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        document.getElementById("directEdit").value = nodeText(id);
+        document.getElementById("selectedName").textContent = id;
+        document.getElementById("editHint").textContent = "";
+        document.getElementById("aiLine").hidden = true;
+        document.getElementById("applyAi").hidden = true;
+      }
+
+      function sentence(title, ok, say, missing) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(title + " — "));
+        var tag = document.createElement("b");
+        tag.textContent = ok ? "说得清" : "还说不清";
+        li.appendChild(tag);
+        li.appendChild(document.createTextNode(ok ? "：" + say : "。" + missing));
+        return li;
+      }
+
+      function refreshAcceptance() {
+        var list = document.getElementById("acceptNow");
+        var snap = snapshot();
+        var mech = snap["mechanic-main"];
+        var rule = snap["rule-main"];
+        var state = [snap["variable-a"], snap["variable-b"]].filter(Boolean).join("；");
+        var ending = rule.indexOf("结束") !== -1;
+        list.textContent = "";
+        list.appendChild(sentence("玩家反复做什么", !!mech, mech, "图上还没有玩家动词。"));
+        list.appendChild(sentence("世界如何回应", !!rule, rule, "规则还空着。只答前四题时，这样是预期。"));
+        list.appendChild(sentence("什么状态在变", !!state, state, "还没有写下会变的状态。"));
+        list.appendChild(sentence("一局何时结束", ending, rule, "结束要写在 rule 上。前四题不要求这句说得清。示意只检查 rule 里有没有「结束」二字。"));
+      }
+
+      function refreshDrift() {
+        var note = document.getElementById("driftNote");
+        if (!confirmed) {
+          note.textContent = "";
+          return;
+        }
+        note.textContent = same(confirmed, snapshot())
+          ? "图和这次 Confirm 时一样。"
+          : "图已经和这次 Confirm 时不一样。再点一次 Confirm，示意里的第一版才跟着变。";
+      }
+
+      document.getElementById("applyDirect").addEventListener("click", function () {
+        if (!selected) {
+          document.getElementById("editHint").textContent = "先点图上的一个节点。";
+          return;
+        }
+        setText(selected, document.getElementById("directEdit").value);
+        document.getElementById("editHint").textContent = "已写入 " + selected + "。这是直接改图。";
+      });
+
+      document.getElementById("askAi").addEventListener("click", function () {
+        if (!selected) {
+          document.getElementById("editHint").textContent = "先点图上的一个节点。";
+          return;
+        }
+        var line = document.getElementById("aiLine");
+        line.hidden = false;
+        line.textContent = "示意提议，不是模型回复：" + aiLines[selected];
+        document.getElementById("applyAi").hidden = false;
+      });
+
+      document.getElementById("applyAi").addEventListener("click", function () {
+        if (!selected) return;
+        setText(selected, aiLines[selected]);
+        document.getElementById("directEdit").value = aiLines[selected];
+        document.getElementById("editHint").textContent = "已把示意提议写入 " + selected + "。没有自动覆盖，是你点的写入。";
+      });
+
+      document.getElementById("confirmGraph").addEventListener("click", function () {
+        confirmed = snapshot();
+        var done = document.getElementById("gameDone");
+        var skip = document.getElementById("gameSkip");
+        done.textContent = "";
+        skip.textContent = "";
+        buttons.forEach(function (btn) {
+          var id = btn.getAttribute("data-node");
+          var text = confirmed[id];
+          var li = document.createElement("li");
+          if (text) {
+            var name = document.createElement("b");
+            name.textContent = id;
+            li.appendChild(name);
+            li.appendChild(document.createTextNode("：" + text));
+            done.appendChild(li);
+          } else {
+            li.textContent = id + "：空着，这一版不做";
+            skip.appendChild(li);
+          }
+        });
+        if (!done.children.length) {
+          var emptyGame = document.createElement("li");
+          emptyGame.textContent = "图上没有写好的节点。第一版是空的。这也算一次 Confirm。";
+          done.appendChild(emptyGame);
+        }
+        document.getElementById("gameEmpty").hidden = skip.children.length === 0;
+        document.getElementById("gamePanel").hidden = false;
+        document.getElementById("confirmLead").textContent = "这是示意，不是生成器。下面按你刚刚 Confirm 的图，列出第一版会做和先不做的。空节点还在图上。";
+        refreshDrift();
+      });
+
+      document.getElementById("resetGraph").addEventListener("click", function () {
+        buttons.forEach(function (btn) {
+          setText(btn.getAttribute("data-node"), initial[btn.getAttribute("data-node")]);
+        });
+        confirmed = null;
+        document.getElementById("gamePanel").hidden = true;
+        document.getElementById("confirmLead").textContent = "还没点过 Confirm。按钮一直可以点，不用等图填满。";
+        document.getElementById("driftNote").textContent = "";
+        document.getElementById("aiLine").hidden = true;
+        document.getElementById("applyAi").hidden = true;
+        if (selected) select(selected);
+        refreshAcceptance();
+      });
+
+      refreshAcceptance();
+    })();
+  </script>
+</body>
+</html>

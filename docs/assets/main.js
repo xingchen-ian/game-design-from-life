@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Scroll Reveal: Intersection Observer ----
   const revealEls = document.querySelectorAll(
-    '.card, .prototype-card, .mechanic-card, .chain-item, .timeline-item, .q-item, .coming-soon-card, .preview-card, .section-header, .evidence-item, .question-card, .student-project-card, .roadmap-item, .stat-card, .work-map-card, .index-group, .route-card, .evidence-preview-grid img, .path-card, .camp-step, .novice-expert-card, .template-card, .lane, .coding-item, .resource-strip, .domain-position, .paper-panel, .flow-step, .paper-evidence-card, .paper-claim'
+    '.card, .prototype-card, .mechanic-card, .chain-item, .timeline-item, .q-item, .coming-soon-card, .preview-card, .section-header, .evidence-item, .question-card, .student-project-card, .roadmap-item, .stat-card, .work-map-card, .index-group, .route-card, .evidence-preview-grid img, .path-card, .camp-step, .novice-expert-card, .template-card, .lane, .coding-item, .resource-strip, .domain-position, .paper-panel, .flow-step, .paper-evidence-card, .paper-claim, .pipe-step, .flow-box, .status-row, .vocab-card'
   );
 
   if ('IntersectionObserver' in window && revealEls.length) {
