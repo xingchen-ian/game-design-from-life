@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>开发进度 · 来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="process.html" class="nav-link active">过程</a>
+        <a href="practice.html" class="nav-link">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero page-hero--process">
+    <div class="container">
+      <div class="section-tag">Pipeline status</div>
+      <h1 class="page-title">开发进度</h1>
+      <p class="page-subtitle">只记「生活过程 → 系统图 → 第一版游戏 → 人改图再迭代」做到哪了。不是网站更新日志。这一页不在顶栏里。</p>
+      <p class="hero-aside">核对日期：2026-11-11（Asia/Shanghai）。过程怎么走，看 <a href="process.html">过程</a>。</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Status</div>
+        <h2 class="section-title">增量</h2>
+        <p class="section-desc">完成、进行中、未开始。有结果才写可核对的位置。引擎功能大多还没开始。</p>
+      </div>
+
+      <div class="status-list">
+        <article class="status-row">
+          <header>
+            <h3>过程页写清三阶段和交互</h3>
+            <span class="status-pill status-pill--done">完成</span>
+          </header>
+          <p class="status-date">2026-11-11（Asia/Shanghai）</p>
+          <p>本站 <a href="process.html">process.html</a>。阶段 1 按 2026-11-10 的设计说明整理，原文没有整篇贴上。页上的图和 Confirm 是示意，用来把交互讲清楚。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>尽早出带空位的起步图</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>公开仓库里没有这张 8 节点起步图。当天检查 <a href="https://github.com/xingchen-ian/AI_GameCreator">AI_GameCreator</a> 的 main：没有 <code>blueprint-schema-v0.md</code>（raw 地址返回 404）。课站 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（更新于 2026-11-05）把 schema 标成进行中，并写明本学期范围不含 blueprint 节点编辑。本地若有草稿，公开站点上看不到，这里仍记未开始。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>核心题路径</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>21 题的文字在 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/lib/protocol/stages.ts">student/engine/lib/protocol/stages.ts</a>，仍按六个阶段排成一条。<code>question-scope.ts</code> 写的是每题先答什么、先不答什么，不是「核心约十题先走，其余等空位再补」。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>文字从图派生</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>现有引擎在答案确认之后可以生成 GDD（workflow 里的 <code>generateGdd</code>），也有 <a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/student/engine/app/api/build-brief/route.ts">build-brief</a> 接口。这些文字来自问答和 GDD，不是来自系统图。图还不是合同。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>人直接改图</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p><a href="https://github.com/xingchen-ian/AI_GameCreator/blob/main/STATUS.md">STATUS.md</a>（2026-11-05）写明本学期先做能演示的 demo 和基本评测数据，并写了 no Blueprint node editing（不做 blueprint 节点编辑）。过程页上的点击只是说明。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>AI 协助改图</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>现有 AI 帮的是提问、记忆和 GDD，不是改这 7 类节点和 4 类边。过程页里的「让 AI 提议」是写死的几句帆船例子，没有调用模型。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>Confirm 按当前图生成第一版</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>引擎里的 confirm 用来确认某一题的答案，或确认 GDD 的修改。没有「图上的 Confirm：只实现已有节点，空节点不做」。过程页的按钮只列出示意清单，不生成游戏。</p>
+        </article>
+
+        <article class="status-row">
+          <header>
+            <h3>玩过之后，人和 AI 一起迭代游戏</h3>
+            <span class="status-pill status-pill--todo">未开始</span>
+          </header>
+          <p class="status-date">核对：2026-11-11（Asia/Shanghai）</p>
+          <p>课上已有另一套做法：学生把 brief 和一张系统图交给 AI，做出可玩 demo。见本站工作坊页，以及 <a href="https://xingchen-ian.github.io/AI_GameCreator/">AI Game Creator 课站</a>。那还不是这条草案：玩，然后改图或退回对应的题，再更新游戏，而且文章不能盖掉已经确认的节点和边。</p>
+        </article>
+      </div>
+
+      <div class="proc-callout">
+        没有标成「进行中」的项。21 题问答和 GDD 生成已经在课站引擎里，但它们不是上表这些增量。上表只在公开仓库里对过，没有把看不见的本地文件算成开始。
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark section--tight">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Next engine increment</div>
+        <h2 class="section-title">引擎下一增量</h2>
+        <p class="section-desc">从 2026-11-10 设计说明的第 7 节移到这里。上面已经核对过，这些都还没做。后三条是过程页上的草案交互，说明原文没有写成引擎清单，一并放在这里，避免写进过程页正文。</p>
+      </div>
+      <div class="next-block">
+        <ol>
+          <li>21 题保留。核心题先答，非核心题按空位补。</li>
+          <li>确认 Q1 起就出起步图。前四题之后必须已有带空位的图。</li>
+          <li>用已有 7 种节点、4 种边，不另造类型。</li>
+          <li>文字一律从图派生。图是合同，文档是读法。</li>
+          <li>验收用四句话。前四题只要求空位可见、候选体验和候选动词在图上，不要求通过完整验收。</li>
+          <li>人可以直接改图，也可以让 AI 改图。AI 的修改要人确认后才进图。</li>
+          <li>Confirm 按当前图生成第一版。不要求 21 题、最低可玩集或四句话通过。空节点不做。</li>
+          <li>第一版之后：人去玩，改图或退回对应的题，再更新游戏。文章不能覆盖已确认的节点和边。Build Brief 从图出，不从改写过的 GDD 出。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container case-note">
+      <div class="section-header">
+        <div class="section-tag">Case</div>
+        <h2 class="section-title">帆船走到哪</h2>
+      </div>
+      <p><a href="domain-learning.html">领域学习</a> 和 <a href="sailing-comparison.html">帆船对比</a> 写了判断转变、调帆和转向、挑战阶梯。过程页只用它把节点对上：候选体验是「读风，而不是硬控船」，候选动词是调帆、转向，规则「迎风过陡会失速」在起步图里仍是空位。</p>
+      <p>帆船没有按这 7 种节点、4 种边走完，也没有 Confirm 出来的第一版。案例停在教学材料，还没进入上面这条引擎流水线。</p>
+      <p class="hero-aside" style="margin-top: 1.5rem;"><a href="process.html">返回过程</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 开发进度</p>
+        <p class="footer-note">研究持续更新中 · 最后更新：2026年11月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
