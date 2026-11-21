@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>相关研究：从系统出发设计游戏 · 来自生活的游戏设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span class="logo-text">来自生活的游戏设计</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="project-index.html" class="nav-link">项目索引</a>
+        <a href="process.html" class="nav-link active">过程</a>
+        <a href="practice.html" class="nav-link">设计实践</a>
+        <a href="domain-learning.html" class="nav-link">领域学习</a>
+        <a href="research.html" class="nav-link">课程研究</a>
+        <a href="summer-camp.html" class="nav-link">夏令营</a>
+        <a href="literature.html" class="nav-link">文献</a>
+        <a href="paper.html" class="nav-link">论文内容</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero page-hero--process">
+    <div class="container">
+      <div class="section-tag">Working note</div>
+      <h1 class="page-title">相关研究：从系统出发设计游戏</h1>
+      <p class="page-subtitle">这是过程工具和「来自生活」方法的工作笔记，不是已发表的论文。从系统模型生成可玩的游戏，不是新的主张。</p>
+      <p class="page-subtitle" style="margin-top: 1.15rem;">先建立一个可执行的系统模型，再通过改这个系统来改游戏。这一想法并不新。过程工具和已有工具最接近的，是同一类循环：改系统描述，再生成可玩的游戏。和它们分开的，主要是入口。不是一上来画概念图或经济图，而是先被问题引导，从生活经验进入系统，并作为课堂实践来教。</p>
+      <p class="hero-aside">这一页不在顶栏里。过程怎么走，看 <a href="process.html">过程</a>。工具在 <a href="process-app.html">process-app.html</a>。</p>
+    </div>
+  </div>
+
+  <section class="section section--tight" id="closest-loop">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Closest loop</div>
+        <h2 class="section-title">改系统描述，再生成可玩的游戏</h2>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <p>已经有一条研究，把游戏系统的可执行模型当作主要的设计对象，把可玩的游戏当作从这份模型生成或投影出来的东西。在这条线上，改系统，就是在改游戏。</p>
+        <p>最接近的循环是：先写下系统，或写下设计意图，生成一个可玩的游戏；再改这份说明，再生成一次。</p>
+      </div>
+
+      <div class="status-list">
+        <article class="status-row" id="game-o-matic">
+          <h3>Game-O-Matic</h3>
+          <p class="status-date">Treanor、Blackford、Mateas、Bogost · PCG 2012</p>
+          <p>作者画一张概念图，名词用动词连起来，然后生成一个简单的街机式游戏，用来表示这些关系。他们也把这个工具当作一种想法：把事件想成系统，而不是想成故事。</p>
+          <p><a href="https://doi.org/10.1145/2538528.2538537">https://doi.org/10.1145/2538528.2538537</a></p>
+        </article>
+        <article class="status-row" id="gemini">
+          <h3>Gemini</h3>
+          <p class="status-date">Summerville、Martens、Samuel、Osborn、Wardrip-Fruin、Mateas · AIIDE 2018</p>
+          <p>从逻辑化的设计意图生成游戏，并检查得到的机制是否和这些意图的 proceduralist 读法一致。</p>
+          <p><a href="https://doi.org/10.1609/aiide.v14i1.13013">https://doi.org/10.1609/aiide.v14i1.13013</a></p>
+        </article>
+        <article class="status-row" id="germinate">
+          <h3>Germinate</h3>
+          <p class="status-date">Kreminski、Dickinson、Osborn、Summerville、Mateas、Wardrip-Fruin · AIIDE 2020 · 第 102–108 页</p>
+          <p>在 Gemini 上加了一层图形界面。作者用卡片写下实体、资源、关系和触发，得到一批可玩的游戏，再改这些卡片来迭代。</p>
+          <p><a href="https://doi.org/10.1609/aiide.v16i1.7417">https://doi.org/10.1609/aiide.v16i1.7417</a></p>
+        </article>
+      </div>
+
+      <div class="proc-callout">
+        <a href="process.html" style="color: var(--accent);">过程工具</a>和它们共享这一循环：改一份系统层面的描述，再生成可玩的游戏。
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark section--tight" id="economy">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Economy diagram</div>
+        <h2 class="section-title">迭代内部经济的图</h2>
+        <p class="section-desc">第二条线拿来迭代的，是游戏内部经济的图。</p>
+      </div>
+
+      <div class="status-list">
+        <article class="status-row" id="machinations">
+          <h3>Machinations</h3>
+          <p class="status-date">Dormans 2009；博士论文 Engineering Emergence，阿姆斯特丹大学，2012；Adams 与 Dormans，Game Mechanics: Advanced Game Design，2012</p>
+          <p>设计者用它写下资源如何产生、如何流动、如何转换，把图当作模拟来跑，再改。经典形式，以及后来的商业工具 <a href="https://machinations.io">machinations.io</a>，迭代的是一套可以模拟的经济，通常不是从这张图生成一个能在空间里玩的游戏。</p>
+          <p>2009 年那篇，他自己引用的题目是 “Machinations: Elemental Feedback Patterns for Game Design”，收在 Saur 与 Loper 编的 GAME-ON-NA 2009: 5th International North American Conference on Intelligent Games and Simulation，第 33–40 页。会议录目录印的是 “Structure”，不是 “Patterns”。这里用他自己的题目。</p>
+        </article>
+        <article class="status-row" id="vie">
+          <h3>Vie / Live Game Design</h3>
+          <p class="status-date">van Rozen · FDG 2025 · 第 1–12 页</p>
+          <p>图和正在运行的 2D 原型放在一起。加上一个 pool，可以生成一个精灵和一条标签；把一个节点做成可交互，可以生成一个按钮；机制一改，已经在玩的游戏跟着更新。</p>
+          <p>从界面看，这接近一边改系统，一边看到可玩的游戏。</p>
+          <p><a href="https://doi.org/10.1145/3723498.3723726">https://doi.org/10.1145/3723498.3723726</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="theory">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Earlier claim</div>
+        <h2 class="section-title">Nelson 与 Mateas 的主张</h2>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <p>这些工具底下，有 Nelson 与 Mateas 更早的主张。一种有用的游戏设计表示，应该可以展开细化，可以通过推理来批评，并且可以作为可玩的图形游戏来执行。游戏是同一个形式系统的投影，不是另外写成的一件作品。</p>
+        <p>Towards Automated Game Design，AI*IA 2007。Recombinable Game Mechanics for Automated Design Support，AIIDE 2008。</p>
+        <p><a href="https://doi.org/10.1609/aiide.v4i1.18677">https://doi.org/10.1609/aiide.v4i1.18677</a>（2008）</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark section--tight" id="adjacent">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Adjacent</div>
+        <h2 class="section-title">容易混在一起，但不是同一件事</h2>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <p>把游戏说成系统，以及系统式游戏设计，通常是在引擎里做会涌现的系统。那里没有一份单独的系统模型，再从它生成游戏。</p>
+        <p>ANGELINA（Cook、Colton 与 Gow，The ANGELINA Videogame Design System—Part I，IEEE TCIAIG 2016）是程序主要负责发明一个完整的游戏，而不是去支持一个人迭代一张系统图。</p>
+        <p><a href="https://doi.org/10.1109/TCIAIG.2016.2520256">https://doi.org/10.1109/TCIAIG.2016.2520256</a></p>
+        <p>混合主动的关卡设计工具，迭代的是空间和布局，不是整个系统。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="entry">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Entry</div>
+        <h2 class="section-title">从生活经验进入系统</h2>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <p><a href="process.html">过程工具</a>站在这条从系统出发的线上。分开的是入口，这个差别是教学上的。学生和设计者不是从画概念图开始，也不是从画经济图开始。他们先被问题引导，从生活情境里问出来源、经验和动词。这些回答变成一张系统图，图可以再改。第一版可玩的游戏，按当前这张图生成。</p>
+        <p>系统仍是主要的迭代对象。系统变了，游戏跟着变。</p>
+        <p>从系统模型生成游戏，不是新的主张。这里的贡献，是一条可教的路径：从日常生活进入这个模型，并且已经作为课堂实践在用。</p>
+      </div>
+      <div class="tool-entry">
+        <a class="btn btn-primary" href="process-app.html">打开工具</a>
+        <a class="btn btn-outline" href="process.html" style="margin-left: 0.75rem;">过程页</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark section--tight" id="english" lang="en">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Paper draft</div>
+        <h2 class="section-title">English related work (draft)</h2>
+        <p class="section-desc">论文用的英文相关工作草稿。措辞按原稿保留。</p>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <p>A line of research already treats an executable model of a game’s system as the primary design object, and treats a playable game as something generated or projected from that model. In this line, iterating the system is how the game is iterated.</p>
+        <p>The closest interaction loop is to specify a system or a design intent, generate a playable game, then revise the specification and generate again. Game-O-Matic lets authors draw a concept map of nouns linked by verbs and then generate a simple arcade-style game intended to represent those relations [<a href="#treanor-2012">Treanor et al. 2012</a>]. The authors also present the tool as a way of thinking about events as systems rather than as stories. Gemini generates games from logical design intents and checks that the resulting mechanics are consistent with a proceduralist reading of those intents [<a href="#summerville-2018">Summerville et al. 2018</a>]. Germinate places a graphical interface on Gemini: authors specify entities, resources, relationships, and triggers as cards, receive a batch of playable games, and revise the cards to iterate [<a href="#kreminski-2020">Kreminski et al. 2020</a>]. We share this loop of editing a system-level description and regenerating a playable game.</p>
+        <p>A second line takes a diagram of the game’s internal economy as the object to iterate. Dormans’s Machinations notation, later developed in his dissertation and in a textbook with Adams, lets designers model how resources are produced, flow, and convert, then run the diagram as a simulation and revise it [<a href="#dormans-2009">Dormans 2009</a>; <a href="#dormans-2012">Dormans 2012</a>; <a href="#adams-dormans-2012">Adams and Dormans 2012</a>]. In that classic form, and in the later commercial tool, what is iterated is a simulable economy, not usually a spatially playable game generated from the diagram. Van Rozen’s Vie brings the diagram and a running 2D prototype together: adding a pool can create a sprite and a label, making a node interactive can create a button, and changes to the mechanics update the game that is already being played [<a href="#van-rozen-2025">van Rozen 2025</a>]. In its interface, this is close to editing a system on one side and seeing a playable game on the other.</p>
+        <p>Underneath these tools is an early theoretical claim by Nelson and Mateas: a useful representation of a game design should be elaborable, open to critique through inference, and executable as a playable graphical game. The game is a projection of the same formal system, not a separately authored artifact [<a href="#nelson-mateas-2007">Nelson and Mateas 2007</a>; <a href="#nelson-mateas-2008">2008</a>]. Adjacent work is easy to confuse with this line but is not the same. Accounts of games as systems, and of systemic game design, usually describe building emergent systems inside an engine, without a separate system model from which a game is generated. Automated game design systems such as ANGELINA take primary responsibility for inventing a complete game, rather than supporting a human designer who iterates a system diagram [<a href="#cook-2016">Cook et al. 2016</a>]. Mixed-initiative tools for level design iterate spaces and layouts rather than the overall system.</p>
+        <p>Our process tool sits on this system-first line, but the entry point is different, and that difference is pedagogical. Students and designers do not begin by drawing a concept map or an economy diagram. They are guided through questions that elicit sources, experiences, and verbs from lived situations; those answers become a system diagram, which can then be edited; and a first playable version is generated from the current diagram. The system remains the primary object of iteration; the game changes as the system changes. We do not claim that generating a game from a system model is new. What we contribute is a teachable path into that model from everyday life, already used as classroom practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="bibliography">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">References</div>
+        <h2 class="section-title">参考文献</h2>
+        <p class="section-desc">本页提到的出处。</p>
+      </div>
+      <div class="fold-body" style="padding-top: 0;">
+        <div class="read-list">
+          <article id="treanor-2012">
+            <h3>Treanor, Blackford, Mateas, Bogost. 2012. Game-O-Matic.</h3>
+            <p>PCG 2012.</p>
+            <p><a href="https://doi.org/10.1145/2538528.2538537">https://doi.org/10.1145/2538528.2538537</a></p>
+          </article>
+          <article id="summerville-2018">
+            <h3>Summerville, Martens, Samuel, Osborn, Wardrip-Fruin, Mateas. 2018. Gemini.</h3>
+            <p>AIIDE 2018.</p>
+            <p><a href="https://doi.org/10.1609/aiide.v14i1.13013">https://doi.org/10.1609/aiide.v14i1.13013</a></p>
+          </article>
+          <article id="kreminski-2020">
+            <h3>Kreminski, Dickinson, Osborn, Summerville, Mateas, Wardrip-Fruin. 2020. Germinate.</h3>
+            <p>AIIDE 2020, pp. 102–108.</p>
+            <p><a href="https://doi.org/10.1609/aiide.v16i1.7417">https://doi.org/10.1609/aiide.v16i1.7417</a></p>
+          </article>
+          <article id="dormans-2009">
+            <h3>Dormans. 2009. Machinations: Elemental Feedback Patterns for Game Design.</h3>
+            <p>In Saur and Loper, eds., GAME-ON-NA 2009: 5th International North American Conference on Intelligent Games and Simulation, pp. 33–40.</p>
+            <p>会议录目录印的是 “Structure”，不是 “Patterns”。这里用作者自己引用的题目。</p>
+          </article>
+          <article id="dormans-2012">
+            <h3>Dormans. 2012. Engineering Emergence.</h3>
+            <p>PhD, University of Amsterdam.</p>
+          </article>
+          <article id="adams-dormans-2012">
+            <h3>Adams and Dormans. 2012. Game Mechanics: Advanced Game Design.</h3>
+          </article>
+          <article id="van-rozen-2025">
+            <h3>van Rozen. 2025. Vie / Live Game Design.</h3>
+            <p>FDG 2025, pp. 1–12.</p>
+            <p><a href="https://doi.org/10.1145/3723498.3723726">https://doi.org/10.1145/3723498.3723726</a></p>
+          </article>
+          <article id="nelson-mateas-2007">
+            <h3>Nelson and Mateas. 2007. Towards Automated Game Design.</h3>
+            <p>AI*IA 2007.</p>
+          </article>
+          <article id="nelson-mateas-2008">
+            <h3>Nelson and Mateas. 2008. Recombinable Game Mechanics for Automated Design Support.</h3>
+            <p>AIIDE 2008.</p>
+            <p><a href="https://doi.org/10.1609/aiide.v4i1.18677">https://doi.org/10.1609/aiide.v4i1.18677</a></p>
+          </article>
+          <article id="cook-2016">
+            <h3>Cook, Colton, and Gow. 2016. The ANGELINA Videogame Design System—Part I.</h3>
+            <p>IEEE TCIAIG 2016.</p>
+            <p><a href="https://doi.org/10.1109/TCIAIG.2016.2520256">https://doi.org/10.1109/TCIAIG.2016.2520256</a></p>
+          </article>
+        </div>
+      </div>
+
+      <div class="resource-strip" style="margin-top: 2rem;">
+        <div>
+          <div class="section-tag">Elsewhere</div>
+          <h2>相关页面</h2>
+          <p>这是工作笔记。过程怎么走，看过程页。工具本身在另一页。</p>
+        </div>
+        <div class="resource-links">
+          <a href="process.html">过程</a>
+          <a href="process-app.html">打开工具</a>
+          <a href="index.html">首页</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span>来自生活的游戏设计</span>
+        </div>
+        <p class="footer-tagline">Game Design from Life · 相关研究：从系统出发设计游戏</p>
+        <p class="footer-note">工作笔记，不是已发表论文 · 最后更新：2026年11月</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
